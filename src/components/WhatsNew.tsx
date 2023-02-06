@@ -5,21 +5,21 @@ import { Modal, ModalContent, ModalHeader } from "./ui/Modal";
 function WhatsNew() {
   const [currentVersion] = useState(require("../../package.json").version);
   const [lastVersion, setLastVersion] = useLocalStorage({ key: "whats-new-version-readed" });
-  // const [isChecked, setIsChecked] = useState(lastVersion === currentVersion);
-  const [isChecked, setIsChecked] = useState(false);
-
-  // useEffect(() => {
-  //   if (isChecked) {
-  //     setLastVersion(currentVersion);
-  //   }
-  // }, [currentVersion, setLastVersion, isChecked]);
+  const [isChecked, setIsChecked] = useState(lastVersion === currentVersion);
+  useEffect(() => {
+    if (isChecked) {
+      setLastVersion(currentVersion);
+    }
+  }, [currentVersion, setLastVersion, isChecked]);
 
   const onCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
   };
 
   return (
-    <Modal id="whats-new" open={true}>
+    <Modal id="whats-new" open={
+      !isChecked
+    }>
       <ModalHeader>
         <h4>What's new in version {currentVersion}</h4>
       </ModalHeader>
