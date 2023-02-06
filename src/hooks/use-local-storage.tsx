@@ -1,6 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 
-function useLocalStorage(key, initialValue) {
+interface localStorageProps {
+  key: string;
+  initialValue?: any;
+}
+
+function useLocalStorage({ key, initialValue }: localStorageProps): [any, (value: any) => void, () => void, () => boolean] {
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === "undefined") {
       return initialValue;
@@ -32,26 +37,25 @@ function useLocalStorage(key, initialValue) {
     };
   }, [storageEventListener]);
 
-  const setValue = useCallback(
-    (value) => {
-      try {
-        const valueToStore = value instanceof Function ? value(storedValue) : value;
-        setStoredValue(valueToStore);
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem(key, JSON.stringify(valueToStore));
-          window.dispatchEvent(new Event("storage"));
-        }
-      } catch (error) {
-        console.error(error);
+  const setValue = useCallback((value: any) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
+      setStoredValue(valueToStore);
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        window.dispatchEvent(new Event("storage"));
       }
-    },
-    [storedValue]
-  );
+    } catch (error) {
+      console.error(error);
+    }
+  }, [storedValue]);
+
 
   const itemExistsInLocalStorage = useCallback(() => {
     if (typeof window !== "undefined") {
       return window.localStorage.getItem(key) ? true : false;
     }
+    return false
   }, [key]);
 
   const removeItemFromLocalStorage = useCallback(() => {

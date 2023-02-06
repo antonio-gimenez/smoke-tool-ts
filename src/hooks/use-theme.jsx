@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "./use-local-storage";
 
 function useTheme() {
-  const [storedTheme, setStoredTheme, removeStoredTheme, storedThemeExists] = useLocalStorage("theme");
+  const [storedTheme, setStoredTheme, removeStoredTheme, storedThemeExists] = useLocalStorage({ key: "theme" });
   const [systemPreferredTheme, setSystemPreferredTheme] = useState(null);
 
   useEffect(() => {
