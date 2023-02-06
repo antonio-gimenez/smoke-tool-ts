@@ -1,0 +1,223 @@
+:root {
+  --input-width: 18rem;
+  --input-height: 2.5rem;
+  --padding-x: var(--space-2, 0.5rem);
+  --padding-y: var(--space-1, 0.25rem);
+  --border-opacity: 1;
+  --border-width: 1px;
+  --outline-opacity: 1;
+  --outline-width: var(--border-width, 1px);
+  --outline-offset: var(--outline-width, 1px);
+}
+
+.input,
+.textarea {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
+  width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), 100%);
+  max-width: 100%;
+  min-height: var(--input-height, 2.5rem);
+  line-height: normal;
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  color: hsl(var(--base-content) / var(--text-opacity, 1));
+  outline: currentColor none medium;
+  outline-offset: var(--outline-offset, 2px);
+  border: var(--border-width, 2px) solid;
+  --border-opacity: 0.25;
+  border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
+  resize: vertical;
+  transition: all 0.1s ease 0s;
+}
+
+.combobox {
+  position: relative;
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
+  width: clamp(300px, calc(var(--input-width) + 2 * var(--padding-x), 100%));
+  height: var(--input-height, 2.5rem);
+  line-height: normal;
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  outline: currentcolor none medium;
+  --border-opacity: 0.25;
+  border: var(--border-width, 2px) solid;
+  border-color: hsl(var(--base-content) / var(--border-opacity));
+  cursor: auto;
+  color: hsl(var(--base-content));
+  transition: all 0.1s ease 0s;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  justify-content: space-between;
+}
+
+.textarea-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.input:focus-within,
+.textarea:focus-within,
+.combobox:focus-within,
+.combobox:focus {
+  --outline-opacity: 1;
+  --border-opacity: 0;
+  outline: var(--outline-width, 2px) solid hsl(var(--accent) / var(--outline-opacity, 0.5));
+  border-color: hsl(var(--accent) / var(--border-opacity, 1));
+  outline-offset: var(--outline-offset, 2px);
+}
+
+/* if combobox is aria-expanded  add a blue border*/
+.combobox[aria-expanded="true"],
+.combobx[aria-expanded="true"]:focus-within,
+.combobox[aria-expanded="true"]:focus {
+  --border-opacity: 0;
+  --outline-opacity: 1;
+  border-color: hsl(var(--accent) / var(--border-opacity, 1));
+  outline: var(--outline-width, 2px) solid hsl(var(--accent) / var(--outline-opacity, 0.5));
+  outline-offset: var(--outline-offset, 2px);
+}
+
+input:disabled,
+textarea:disabled,
+.combobox:disabled,
+.combobox[aria-disabled="true"] {
+  opacity: 0.75;
+  cursor: not-allowed;
+  --border-opacity: 1;
+  --outline-opacity: 0;
+  border-color: hsl(var(--error) / var(--border-opacity, 1));
+  pointer-events: none;
+  user-select: none;
+}
+
+input::placeholder,
+textarea::placeholder,
+.combobox-placeholder {
+  font-size: var(--fs-regular);
+  --text-opacity: 0.75;
+  color: hsl(var(--base-content) / var(--text-opacity, 0.75));
+}
+
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+input:invalid,
+textarea:invalid {
+  --outline-opacity: 0.5;
+  --border-opacity: 0.8;
+  border-color: hsl(var(--error) / var(--border-opacity, 1));
+}
+
+.combobox-container {
+  position: relative;
+  width: clamp(300px, fit-content, 10rem);
+}
+
+.combobox-options {
+  position: absolute;
+  max-height: 25rem;
+  margin-top: var(--space-1, 0.25rem);
+  top: 100%;
+  border-radius: var(--border-radius);
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
+  width: 100%;
+  z-index: 1;
+  border-bottom-left-radius: var(--border-radius, none);
+  border-bottom-right-radius: var(--border-radius, none);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.combobox-option-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--space-3, 0.75rem);
+  gap: var(--space-2, 0.5rem);
+  transition: all 0.125s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+
+.combobox-option-item:hover {
+  --background-opacity: 0.25;
+  background-color: hsl(var(--primary) / var(--background-opacity, 1));
+  color: hsl(var(--base-content) / var(--text-opacity, 1));
+}
+
+.combobox-option-item.selected {
+  background: hsl(var(--accent) / var(--background-opacity, 1));
+  color: hsl(var(--accent-content) / var(--text-opacity, 1));
+}
+
+.combobox-selected-value {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  flex-wrap: nowrap;
+  gap: var(--space-1);
+  justify-content: space-between;
+}
+
+.combobox-display {
+  display: flex;
+  align-items: center;
+  /* flex-direction: row; */
+  /* width: 100%; */
+  flex-wrap: nowrap;
+  user-select: none;
+  gap: var(--space-1);
+  position: relative;
+}
+
+.combobox-tag-item {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-0) var(--space-1);
+  border-radius: var(--border-radius);
+  background-color: hsl(var(--accent) / var(--background-opacity, 1));
+  color: hsl(var(--accent-content) / var(--text-opacity, 1));
+}
+
+.combobox-input-container {
+  position: relative;
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
+  width: auto;
+  height: var(--input-height, 2.5rem);
+  line-height: normal;
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  outline: currentcolor none medium;
+  --border-opacity: 0.25;
+  border: var(--border-width, 2px) solid;
+  border-color: hsl(var(--base-content) / var(--border-opacity));
+  cursor: auto;
+  color: hsl(var(--base-content));
+  transition: all 0.1s ease 0s;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  justify-content: space-between;
+}
+.combobox-input-ghost {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  background: transparent;
+  border: none;
+}
+
+.combobox-indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  position: relative;
+}

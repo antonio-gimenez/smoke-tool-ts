@@ -1,0 +1,103 @@
+.alert-container {
+  position: fixed;
+  top: var(--space-2, 0.5rem);
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2, 0.5rem);
+  gap: var(--space-4, 1rem);
+  pointer-events: none;
+}
+
+.alert {
+  padding: var(--space-2, 0.5rem);
+  position: relative;
+  width: clamp(250px, 500px, 50vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--border-radius, 0.5rem);
+  /* gap: var(--space-2, 0.5rem); */
+  border: 2px solid transparent;
+}
+
+.alert-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: var(--space-4, 0.5rem);
+}
+
+.alert-icon {
+  flex-shrink: 0;
+}
+
+.alert-description {
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--space-1, 0.25rem); */
+}
+
+.alert-t {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-1, 0.25rem);
+}
+
+.alert-message {
+  text-align: auto;
+  white-space: pre-wrap;
+  max-width: 50ch;
+  font-size: var(--fs-regular, 15px);
+}
+
+.alert-title {
+  font-size: var(--fs-medium);
+  font-weight: var(--fw-semibold);
+}
+
+.alert-remaining-time {
+  font-size: var(--fs-small);
+  background-color: hsl(var(--base) / 1);
+  color: hsl(var(--base-content));
+  padding: var(--space-1, 0.25rem);
+  border-radius: var(--border-radius, 0.5rem);
+  pointer-events: none;
+}
+
+.alert-error {
+  background-color: hsl(var(--error) / var(--background-opacity));
+  color: hsl(var(--error-content));
+  border-color: hsl(var(--error) / var(--border-opacity, 0.5));
+}
+
+.alert-success {
+  background-color: hsl(var(--success) / var(--background-opacity));
+  color: hsl(var(--success-content));
+  border-color: hsl(var(--success) / var(--border-opacity, 0.5));
+}
+
+.alert-warning {
+  background-color: hsl(var(--warning) / var(--background-opacity));
+  color: hsl(var(--warning-content));
+  border-color: hsl(var(--warning) / var(--border-opacity, 0.5));
+}
+
+.alert-info {
+  background-color: hsl(var(--info, var(--base-100)) / var(--background-opacity));
+  color: hsl(var(--info-content));
+  border-color: hsl(var(--info) / var(--border-opacity, 0.5));
+}
+
+.alert-base {
+  background-color: hsl(var(--base-300) / var(--background-opacity, 1));
+  color: hsl(var(--base-content));
+  border-color: hsl(var(--base-300) / var(--border-opacity, 0.5));
+}

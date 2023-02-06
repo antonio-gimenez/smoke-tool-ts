@@ -1,0 +1,42 @@
+.tags-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+  gap: var(--space-2, 0.5rem);
+  border-radius: var(--border-radius);
+}
+
+.input-tag {
+  appearance: none;
+  border: none;
+  outline: none;
+  margin: 0;
+  /* background: transparent; */
+  padding: var(--space-2, 0.5rem);
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  user-select: none;
+  gap: var(--space-2, 0.5rem);
+  position: relative;
+}
+
+.close-tag {
+  width: 1rem;
+  height: 1rem;
+}
+.tag-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-0-5) var(--space-0-5);
+  border-radius: var(--border-radius);
+  background-color: hsl(var(--neutral) / var(--background-opacity, 1));
+  color: hsl(var(--neutral-content) / var(--text-opacity, 1));
+}

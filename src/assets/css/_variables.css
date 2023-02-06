@@ -1,0 +1,120 @@
+html {
+  --ff-family: "Fira Sans", sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* 
+  Default font size is --fs-regular.
+  --fs-small is 12px on desktop and 10px on mobile.
+  --fs-regular is 14px on desktop and 12px on mobile.
+  --fs-medium is 16px on desktop and 14px on mobile.
+  --fs-large is 18px on desktop and 16px on mobile.
+  --fs-big is 20px on desktop and 18px on mobile.
+  */
+  --fs-small: clamp(0.64rem, 0.05vw + 0.63rem, 0.67rem);
+  --fs-regular: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --fs-medium: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --fs-large: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --fs-big: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+
+  --header-height: clamp(32px, 64px, 64px);
+
+  --space-0: 0;
+  --space-0-5: 0.125rem;
+  --space-1: 0.25rem;
+  --space-2: 0.55rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+
+  --border-radius: var(--space-1);
+
+  --background-opacity: 1;
+  --text-opacity: 1;
+  --border-opacity: 1;
+  --glass-opacity: 0.5;
+}
+
+/* If no theme is set, use light theme */
+[data-theme="light"],
+root:not([data-theme]) {
+  color-scheme: light;
+  accent-color: hsl(var(--accent));
+  /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
+  The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
+  The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.
+  The accent color is used to add a pop of color and to create visual interest. It is often used for small details such as icons, highlights, and small accents.
+  The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
+  By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
+  /* Primary color */
+  --primary: 220 100% 50%; /* Primary color when focused */
+  --primary-active: 220 50% 50%; /* Foreground content color to use on primary color */
+  --primary-content: 220 70% 90%; /* Secondary color */
+  --secondary: 200 50% 50%; /* Secondary color when focused */
+  --secondary-active: 190 50% 50%; /* Foreground content color to use on secondary color */
+  --secondary-content: 210 50% 50%; /* Accent color */
+  --accent: 220 50% 50%; /* Accent color when focused */
+  --accent-active: 210 50% 50%; /* Foreground content color to use on accent color */
+  --accent-content: 230 50% 100%; /* Neutral color */
+  --neutral: 200 10% 22%; /* Neutral color when focused */
+  --neutral-active: 200 5% 45%; /* Foreground content color to use on neutral color */
+  --neutral-content: 200 10% 90%; /* Base color of page, used for blank backgrounds */
+  --base: 0 0% 96%; /* Base color for background pages */
+  --base-100: 231 15% 88%; /* Base color, a little darker */
+  --base-200: 230 14% 82%; /* Base color, even more darker */
+  --base-300: 229 13% 76%; /* Foreground content color to use on base color */
+  --base-content: 0 0% 10%; /* Info color */
+  --base-active: 0 0% 10%; /* Foreground content color to use on base color when focused */
+  --info: 200 50% 50%; /* Foreground content color to use on info color */
+  --info-content: 210 50% 95%; /* Info color */
+  --success: 150 66% 60%; /* Foreground content color to use on success color */
+  --success-content: 150 66% 15%; /* Warning color */
+  --warning: 40 88% 63%; /* Foreground content color to use on warning color */
+  --warning-content: 50 100% 15%; /* Error color */
+  --error: 0 90% 60%; /* Foreground content color to use on error color */
+  --error-content: 0 66% 17%;
+  --border: 0 0% 20%; /* Shadow color */
+  --shadow: 0 0% 20% 0.07;
+}
+
+[data-theme="dark"] {
+  /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
+  The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
+  The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.
+  The accent color is used to add a pop of color and to create visual interest. It is often used for small details such as icons, highlights, and small accents.
+  The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
+  By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
+  /* Primary color */
+  --primary: 220 90% 50%; /* Primary color when focused */
+  --primary-active: 220 90% 40%; /* Foreground content color to use on primary color */
+  --primary-content: 220 70% 90%; /* Secondary color */
+  --secondary: 200 30% 22%; /* Secondary color when focused */
+  --secondary-active: 50 20% 50%; /* Foreground content color to use on secondary color */
+  --secondary-content: 50 5% 10%; /* Accent color */
+  --accent: 220 90% 60%; /* Accent color when focused */
+  --accent-active: 220 90% 60%; /* Foreground content color to use on accent color */
+  --accent-hover: 220 90% 60%; /* Foreground content color to use on accent color */
+  --accent-content: 230 50% 100%; /* Neutral color */
+  --neutral: 230 14% 82%; /* Neutral color when focused */
+  --neutral-active: 250 10% 70%; /* Foreground content color to use on neutral color */
+  --neutral-content: 220 0% 10%; /* Base color of page, used for blank backgrounds */
+  --base: 0 0% 10%; /* Base color for background pages */
+  --base-100: 0 0% 13%; /* Base color, a little darker */
+  --base-200: 0 0% 16%; /* Base color, even more darker */
+  --base-300: 229 13% 6%; /* Foreground content color to use on base color */
+  --base-content: 0 0% 90%; /* Base color for background pages */
+  --base-active: 0 0% 80%; /* Foreground content color to use on base color when focused */
+  --info: 200 50% 50%; /* Foreground content color to use on info color */
+  --info-content: 210 50% 95%; /* Info color */
+  --success: 150 66% 60%; /* Foreground content color to use on success color */
+  --success-content: 150 100% 13%; /* Warning color */
+  --warning: 40 88% 63%; /* Foreground content color to use on warning color */
+  --warning-content: 50 100% 13%; /* Error color */
+  --error: 0 100% 65%; /* Foreground content color to use on error color */
+  --error-content: 0 100% 13%;
+  --border: 0 0% 20%; /* Shadow color */
+  --shadow: 0 0% 20% 0.07;
+}

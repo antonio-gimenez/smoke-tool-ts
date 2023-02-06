@@ -1,0 +1,72 @@
+button {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  font-weight: var(--fw-regular);
+  transition: background 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s;
+  pointer-events: auto;
+}
+
+.button {
+  position: relative;
+  font-size: var(--fs-medium);
+  font-weight: var(--fw-medium);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  outline: none;
+  white-space: nowrap;
+  text-align: center;
+  padding: var(--space-2) var(--space-2);
+  height: fit-content;
+  background-color: hsl(var(--secondary));
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: 2px solid transparent;
+  color: hsl(var(--base-content));
+  user-select: none;
+}
+
+/* button disabled */
+button[disabled="true"],
+button[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button:hover {
+  --background-opacity: 0.65;
+  background: hsl(var(--secondary) / var(--background-opacity, 0.65));
+}
+
+.button:focus,
+.button:focus-within {
+  --outline-opacity: 1;
+  outline: 2px solid hsl(var(--accent) / var(--outline-opacity, 0.45));
+  outline-offset: 1px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* if button has a class */
+
+.button.block {
+  width: 100%;
+}
+
+.button.ghost {
+  background: transparent;
+  color: hsl(var(--base-content));
+}
+
+.button.ghost:hover {
+  --background-opacity: 0.2;
+  background-color: hsl(var(--base-content) / var(--background-opacity));
+}

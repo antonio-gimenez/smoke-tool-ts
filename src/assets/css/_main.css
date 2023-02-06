@@ -1,0 +1,140 @@
+@import url("_variables.css");
+@import url("alert.css");
+@import url("buttons.css");
+@import url("card.css");
+@import url("collapse.css");
+@import url("dropdown.css");
+@import url("fonts.css");
+@import url("forms.css");
+@import url("header.css");
+@import url("layouts.css");
+@import url("modal.css");
+@import url("reset.css");
+@import url("table.css");
+@import url("tabs.css");
+@import url("tags.css");
+@import url("themes.css");
+@import url("typography.css");
+@import url("pagination.css");
+
+.glass {
+  /* border: none; */
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background-color: transparent;
+  background-image: linear-gradient(
+    135deg,
+    hsl(var(--base-100) / var(--glass-opacity)) 0%,
+    hsl(var(--base) / var(--glass-opacity)) 100%
+  );
+  box-shadow: 0 0 0 1px var(--base-100) inset, 0 0 0 2px #0000000d;
+  text-shadow: 0 1px var(--base-100);
+}
+
+html {
+  /*
+  This sets the base font size to 10px, which makes it easier to work with rems.
+  The important thing to understand is that the html tag font-size need not be the same as the font-size on the body tag. 
+  */
+  /* font-size: 62.5%; */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: hsl(var(--base-content));
+  background-color: hsl(var(--base) / var(--background-opacity, 1));
+  font-size: var(--fs-regular);
+  line-height: normal;
+  overflow: auto;
+  scroll-behavior: smooth;
+  font-family: var(--ff-family);
+  font-weight: var(--fw-regular);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.app {
+  padding-top: calc(var(--header-height) + 1rem);
+}
+
+.scrollable-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Progress */
+.selected-day {
+  background: hsl(var(--primary), 0.1);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-input);
+  border-radius: var(--border-radius);
+  height: 10px;
+}
+
+.progress .bar {
+  background: hsl(var(--primary));
+  border-radius: var(--border-radius);
+  height: var(--progress-height);
+}
+
+/* Symbols */
+
+.chevron {
+  /* margin-left: 0.25rem; */
+  transition: all 0.125s ease-in-out;
+}
+
+.rotated-180deg {
+  transform: rotate(-180deg);
+}
+
+.no-rotated {
+  transform: rotate(-0deg);
+}
+
+/* Icons */
+.icon-16 {
+  width: 16px;
+  height: 16px;
+}
+.icon-20 {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-24 {
+  width: 24px;
+  height: 24px;
+}

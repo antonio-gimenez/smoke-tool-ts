@@ -1,0 +1,53 @@
+/* if there are more than 2 collapse-container add a separator */
+.collapse:not(:last-child) {
+  border-radius: 0;
+  border-bottom: 1px dashed hsl(var(--border) / 0.5);
+}
+
+.collapse-button {
+  padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
+  margin: var(--space-2, 0.5rem) 0;
+}
+
+.collapse {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin: 0.25rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+  user-select: none;
+}
+
+.collapse-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--clr-text);
+  width: 100%;
+  line-height: normal;
+  font-weight: var(--fw-regular);
+}
+
+.collapse-content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 1rem 0;
+  border-radius: var(--border-radius);
+}
+
+.collapse-content.visible {
+  height: auto;
+  opacity: 1;
+  overflow: visible;
+  transition: height 200ms ease 0s, opacity 200ms ease 0s;
+}
+
+.collapse-content.hidden {
+  height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 200ms ease 0s, opacity 200ms ease 0s;
+}

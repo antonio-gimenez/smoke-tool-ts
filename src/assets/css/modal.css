@@ -1,0 +1,58 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* 
+  Setting the width and height to 100vw and 100vh will make the modal-wrapper appear full screen on the current viewport.
+  */
+  width: 100vw;
+  height: 100vh;
+  background: hsl(0 0% 0% / 0.5);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  width: clamp(30vw, auto, 95vw);
+  height: clamp(30vh, auto, 95vh);
+  padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
+  /* overflow-y: auto; */
+  --background-opacity: 1;
+  background: hsl(var(--base) / var(--background-opacity));
+  color: hsl(var(--base-content));
+  border-radius: var(--border-radius);
+  z-index: 3;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.modal-header {
+  display: flex;
+  font-weight: var(--fw-semibold, 500);
+  font-size: var(--fs-large);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  z-index: 2;
+  padding: 1rem 2rem;
+}
+
+.modal-actions {
+  padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.6rem;
+}

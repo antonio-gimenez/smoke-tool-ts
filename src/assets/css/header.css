@@ -1,0 +1,57 @@
+:root {
+  --top-offset: 0;
+}
+
+.header {
+  position: fixed;
+  top: var(--top-offset);
+  left: 0;
+  height: var(--header-height);
+  width: 100%;
+  --background-opacity: 0.5;
+  background-color: hsl(var(--base-100) / var(--background-opacity));
+  color: hsl(var(--base-content));
+  fill: hsl(var(--base-content));
+  border-bottom: 1px solid hsl(var(--base-100));
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  user-select: none;
+}
+
+.navbar nav {
+  white-space: nowrap;
+  flex: 1 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-branding {
+  text-transform: uppercase;
+  font-size: var(--fs-big);
+  font-weight: var(--fw-semibold);
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0 !important;
+  margin-right: 0;
+  justify-content: center;
+}
