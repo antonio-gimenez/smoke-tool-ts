@@ -9,8 +9,8 @@
   --border-radius: 0.25rem;
   --outline-width: var(--border-width, 1px);
   --outline-offset: var(--outline-width, 1px);
-  --checkbox-background: var(--accent);
-  --checkbox-foreground: var(--accent-content);
+  --checkbox-background: var(--warning);
+  --checkbox-foreground: var(--warning-content);
 }
 
 .input,
@@ -46,6 +46,7 @@
   border-width: var(--border-width);
   overflow: hidden;
   --border-opacity: 0.2;
+  --background-opacity: 0.2;
   background: hsl(var(--neutral) / var(--background-opacity, 1));
   border-color: hsl(var(--neutral) / var(--border-opacity));
   border-radius: var(--border-radius, 0.5rem);
