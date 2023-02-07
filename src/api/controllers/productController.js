@@ -13,19 +13,22 @@ const getProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  console.log(req.params.name);
+  const { name } = req.params;
   try {
-    const product = await Product.create(req.body);
-    return res.status(201).send({ data: product });
+    const newProduct = new Product({ name });
+    const product = await newProduct.save();
+    return res.status(200).send({ data: product });
   } catch (error) {
-    return res.status(400).send({ message: "Invalid request, please check your parameters" });
+    if (error.code === 11000) {
+      return res.status(409).send({ message: "Product already exists" });
+    }
+    return res.status(500).send({ message: "An error occurred" });
   }
 };
 
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
 
-  console.log({ id, params, body });
   try {
     if (!id) {
       return res.status(400).send({ message: "`id` not found or invalid, please check your parameters" });

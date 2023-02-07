@@ -6,13 +6,17 @@ const productSchema = new Schema(
     name: {
       type: String,
       required: true,
-      minlength: 2,
+      minlength: 3,
       maxlength: 25,
-      trim: true,
+      index: { unique: true },
+      upsert: false,
     },
   },
   { versionKey: false }
 );
+
+// ensre that the name is unique
+productSchema.index({ name: 1 }, { unique: true });
 
 const Product = mongoose.model("products", productSchema);
 

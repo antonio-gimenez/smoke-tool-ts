@@ -8,21 +8,23 @@ export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
 
   const addAlert = ({ id = generateUUID(), message, type = "base", duration = 0, title = null }) => {
-    switch (type) {
-      case "success":
-        title = "Operation Completed Successfully";
-        break;
-      case "info":
-        title = "Information";
-        break;
-      case "error":
-        title = "Something went wrong";
-        break;
-      case "warning":
-        title = "Attention Required";
-        break;
-      default:
-        title = "Notification";
+    if (!title) {
+      switch (type) {
+        case "success":
+          title = "Operation Completed Successfully";
+          break;
+        case "info":
+          title = "Information";
+          break;
+        case "error":
+          title = "Something went wrong";
+          break;
+        case "warning":
+          title = "Attention Required";
+          break;
+        default:
+          title = "Notification";
+      }
     }
 
     setAlerts((prevAlerts) => [...prevAlerts, { id, message, type, duration, title }]);

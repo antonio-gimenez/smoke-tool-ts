@@ -31,7 +31,7 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal closeOnOverlayClick={true} header={"New Test"} id="create-test">
+          <Modal closeOnOverlayClick={false} header={"New Test"} id="create-test">
             <ModalHeader>
               <p>New Test</p>
             </ModalHeader>

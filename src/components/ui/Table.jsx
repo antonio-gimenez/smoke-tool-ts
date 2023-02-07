@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const Table = ({ items }) => {
-  // if (!items) return null;
-  // const [height, setHeight] = useState(0);
-  // useEffect(() => {
-  //   const tableWrapper = document.querySelector(".table");
-  //   if (!tableWrapper) return;
-  //   const container = tableWrapper?.parentElement;
-  //   console.log({ tableWrapper, container });
-  // }, []);
-
   return (
     <table className="table ">
       <thead>

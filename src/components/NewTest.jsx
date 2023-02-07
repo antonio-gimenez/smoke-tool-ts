@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
-import useProducts from "../hooks/use-products";
+import useProducts from "../services/use-products";
 import Button from "./ui/Button";
 import ComboBox from "./ui/ComboBox";
 import Input from "./ui/Input";
 
-import { getProducts } from "../services/products";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -16,8 +15,7 @@ const PRIORITIES = [
 function NewTest() {
   const { addAlert } = useContext(AlertContext);
   const { closeModal } = useContext(ModalContext);
-  // const [products] = useState(getProducts() || []);
-  const { products } = useProducts();
+  const { products, productsAreEmpty, productsAreLoading, createProduct } = useProducts();
   const [form, setForm] = useState({
     priority: "medium",
   });
@@ -44,21 +42,34 @@ function NewTest() {
     }
   };
 
-  console.log("products", products);
-  // return;
+  const onChangeInput = async (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
+
+  const submitProduct = async (e) => {
+    e.preventDefault();
+
+    createProduct(form.product);
+  };
 
   return (
     <>
       {JSON.stringify(form)}
       <section className="grid-with-gap">
-        <ComboBox
+        <Input type="text" id="name" name="product" disabled={productsAreLoading} onChange={onChangeInput} />
+        <button name={"product"} onClick={submitProduct}>
+          Submit
+        </button>
+        {/* <ComboBox
           options={products}
-          disabled={false}
+          disabled={productsAreEmpty}
           id="product"
           multiple
           placeholder="Select a product"
           onChange={onChange}
-        />
+        /> */}
         <ComboBox
           options={PRIORITIES}
           id="priority"
