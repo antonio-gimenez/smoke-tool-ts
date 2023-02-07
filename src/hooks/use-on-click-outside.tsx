@@ -20,6 +20,7 @@ function useOnClickOutside({ ref, handler }: onClickOutsideProps) {
     [ref, handler]
   );
 
+
   useEffect(() => {
     // Add the event listener when the component mounts.
     // Mousedown is used to detect clicks outside the ref.

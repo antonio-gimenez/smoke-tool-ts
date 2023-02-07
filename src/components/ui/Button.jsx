@@ -3,7 +3,7 @@ import { generateUUID } from "../../utils/utils";
 
 function Button({
   as = "button",
-  color,
+  color = "secondary",
   ghost = false,
   type = "button",
   children,
@@ -13,7 +13,7 @@ function Button({
   ...props
 }) {
   // const id = props.id || Math.random().toString(36).substr(2, 9);
-  const buttonColor = color ? color : "";
+  const buttonColor = color;
   const buttonBlock = block ? "block" : "";
   const buttonGhost = ghost ? "ghost" : "";
   if (as === "link") {

@@ -1,4 +1,4 @@
-import axios from "./http";
+import api from "./use-axios";
 import { useContext, useEffect, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 
@@ -12,7 +12,7 @@ function useProducts() {
     setLoading(true);
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/products");
+        const response = await api.get("/products");
         if (response.status === 204) {
           addAlert({
             message: "No products found",
@@ -26,13 +26,8 @@ function useProducts() {
         const products = response.data.data;
         setProducts(products);
       } catch (error) {
-        const { message, code } = error;
-        addAlert({
-          message: "Error retrieving products: " + message,
-          type: "error",
-          title: code,
-        });
-        throw new Error(error);
+        console.table(error);
+        // throw new Error(error);
       }
       return setLoading(false);
     };
@@ -47,24 +42,24 @@ function useProducts() {
 
   const addProduct = async (name) => {
     try {
-      const response = await axios.post(`/products/${name}`);
+      const response = await api.post(`/products/${name}`);
+      const { message, title, type } = response.data;
       if (response.status === 200) {
-        addAlert({
-          message: `Product ${name} created`,
-          type: "success",
-          title: "Added product successfully!",
-          duration: 2000,
-        });
+        // addAlert({
+        //   message,
+        //   type,
+        //   title,
+        // });
         setProducts((prevProducts) => [...prevProducts, response.data.data]);
       }
     } catch (error) {
-      const { message, code } = error;
-      addAlert({
-        message: "Error creating product: " + message,
-        type: "error",
-        title: code,
-      });
-      throw new Error(error);
+      // const { message, title } = error.response.data;
+      // addAlert({
+      //   message: message,
+      //   type: "error",
+      //   title: title,
+      // });
+      console.log(error);
     }
   };
 

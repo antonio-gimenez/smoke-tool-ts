@@ -1,4 +1,7 @@
-:root {
+.input,
+.textarea,
+.checkbox,
+.combobox-container {
   --input-width: 18rem;
   --input-height: 2.5rem;
   --padding-x: var(--space-2, 0.5rem);
@@ -21,7 +24,6 @@
   border-radius: var(--border-radius);
   padding: var(--padding-y) var(--padding-x);
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), 100%);
-  max-width: 100%;
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
   background: hsl(var(--base-100) / var(--background-opacity, 1));
@@ -37,7 +39,7 @@
 
 .checkbox {
   flex-shrink: 0;
-  height: 1.2rem;
+  height: calc(var(--input-height) - 2 * var(--border-width));
   width: 1.2rem;
   cursor: pointer;
   position: relative;
@@ -115,11 +117,8 @@
 .textarea:focus-within,
 .combobox:focus-within,
 .combobox:focus {
-  --outline-opacity: 1;
-  --border-opacity: 0;
-  outline: var(--outline-width, 2px) solid hsl(var(--accent) / var(--outline-opacity, 0.5));
+  --border-opacity: 1;
   border-color: hsl(var(--accent) / var(--border-opacity, 1));
-  outline-offset: var(--outline-offset, 2px);
 }
 
 /* if combobox is aria-expanded  add a blue border*/
@@ -127,10 +126,7 @@
 .combobx[aria-expanded="true"]:focus-within,
 .combobox[aria-expanded="true"]:focus {
   --border-opacity: 0;
-  --outline-opacity: 1;
   border-color: hsl(var(--accent) / var(--border-opacity, 1));
-  outline: var(--outline-width, 2px) solid hsl(var(--accent) / var(--outline-opacity, 0.5));
-  outline-offset: var(--outline-offset, 2px);
 }
 
 input:disabled,
@@ -140,7 +136,6 @@ textarea:disabled,
   opacity: 0.75;
   cursor: not-allowed;
   --border-opacity: 1;
-  --outline-opacity: 0;
   border-color: hsl(var(--error) / var(--border-opacity, 1));
   pointer-events: none;
   user-select: none;
@@ -158,7 +153,6 @@ input[aria-invalid="true"],
 textarea[aria-invalid="true"],
 input:invalid,
 textarea:invalid {
-  --outline-opacity: 0.5;
   --border-opacity: 0.8;
   border-color: hsl(var(--error) / var(--border-opacity, 1));
 }

@@ -11,10 +11,19 @@ button {
 }
 
 .button {
+  --button-width: 18rem;
+  --button-height: 2.5rem;
+  --padding-x: var(--space-2, 0.5rem);
+  --padding-y: var(--space-1, 0.25rem);
+  --current-background: hsl(var(--base-100));
+  --current-color: hsl(var(--base-content));
+  --border-width: 2px;
+  --outline-width: var(--border-width, 1px);
+  --outline-offset: var(--outline-width, 1px);
+  --outline-opacity: 0;
   position: relative;
-  font-size: var(--fs-medium);
+  font-size: var(--fs-regular);
   font-weight: var(--fw-medium);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -22,13 +31,15 @@ button {
   outline: none;
   white-space: nowrap;
   text-align: center;
-  padding: var(--space-2) var(--space-2);
-  height: fit-content;
-  background-color: hsl(var(--secondary));
+  padding: var(--padding-y) var(--padding-x);
+  height: var(--button-height, 2.5rem);
+  width: auto;
+  max-width: calc(var(--button-width) + 2 * var(--padding-x));
+  background: var(--current-background);
   border-radius: var(--border-radius);
   cursor: pointer;
   border: 2px solid transparent;
-  color: hsl(var(--base-content));
+  color: var(--current-color);
   user-select: none;
 }
 
@@ -39,34 +50,94 @@ button[aria-disabled="true"] {
   opacity: 0.5;
 }
 
-.button:hover {
-  --background-opacity: 0.65;
-  background: hsl(var(--secondary) / var(--background-opacity, 0.65));
+.button.accent {
+  --current-background: hsl(var(--accent));
+  --current-color: hsl(var(--accent-content));
+}
+
+.button.primary {
+  --current-background: hsl(var(--primary));
+  --current-color: hsl(var(--primary-content));
+}
+
+.button.secondary {
+  --current-background: hsl(var(--secondary));
+  --current-color: hsl(var(--secondary-content));
+}
+
+.button.neutral {
+  --current-background: hsl(var(--neutral));
+  --current-color: hsl(var(--neutral-content));
+}
+
+.button.success {
+  --current-background: hsl(var(--success));
+  --current-color: hsl(var(--success-content));
+}
+
+.button.warning {
+  --current-background: hsl(var(--warning));
+  --current-color: hsl(var(--warning-content));
+}
+
+.button.error {
+  --current-background: hsl(var(--error));
+  --current-color: hsl(var(--error-content));
+}
+
+.button.info {
+  --current-background: hsl(var(--info));
+  --current-color: hsl(var(--info-content));
+}
+
+.button.accent:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--accent), var(--background-opacity, 1));
+}
+
+.button.primary:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--primary) / var(--background-opacity, 1));
+}
+.button.secondary:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--secondary) / var(--background-opacity, 1));
+}
+
+.button.neutral:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--neutral) / var(--background-opacity, 1));
+}
+
+.button.success:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--success) / var(--background-opacity, 1));
+}
+
+.button.warning:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--warning) / var(--background-opacity, 1));
+}
+
+.button.error:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--error) / var(--background-opacity, 1));
+}
+
+.button.info:hover {
+  --background-opacity: 0.9;
+  --current-background: hsl(var(--info) / var(--background-opacity, 1));
 }
 
 .button:focus,
 .button:focus-within {
-  --outline-opacity: 1;
-  outline: 2px solid hsl(var(--accent) / var(--outline-opacity, 0.45));
-  outline-offset: 1px;
+  outline: var(--outline-width) solid;
+  /* light */
+  outline-color: hsl(var(--neutral));
+  /* var(--current-color); */
+  outline-offset: var(--outline-offset);
 }
-
-button:active {
-  transform: scale(0.95);
-}
-
-/* if button has a class */
 
 .button.block {
   width: 100%;
-}
-
-.button.ghost {
-  background: transparent;
-  color: hsl(var(--base-content));
-}
-
-.button.ghost:hover {
-  --background-opacity: 0.2;
-  background-color: hsl(var(--base-content) / var(--background-opacity));
 }

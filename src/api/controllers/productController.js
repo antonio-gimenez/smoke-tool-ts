@@ -4,11 +4,14 @@ const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     if (!products || products.length === 0) {
-      return res.status(204).send(); // return 204 when no product(s) were found
+      return res.status(204).send({
+        message: "No products found",
+        type: "warning",
+      }); // return 204 when no product(s) were found
     }
     return res.status(200).send({ data: products });
   } catch (error) {
-    return res.status(400).send({ message: "Invalid request, please check your parameters" });
+    return res.status(400).send({ title: "Invalid request", message: "Please, check your parameters" });
   }
 };
 
@@ -17,12 +20,17 @@ const createProduct = async (req, res) => {
   try {
     const newProduct = new Product({ name });
     const product = await newProduct.save();
-    return res.status(200).send({ data: product });
+    return res.status(200).send({
+      data: product,
+      message: `Added ${product.name} to the database`,
+      type: "success",
+    });
   } catch (error) {
     if (error.code === 11000) {
-      return res.status(409).send({ message: "Product already exists" });
+      return res.status(409).send({ title: "Duplicated Item", type: "warning", message: "Product already exists" });
     }
-    return res.status(500).send({ message: "An error occurred" });
+
+    return res.status(500).send({ title: error.code, message: "An error occurred" });
   }
 };
 

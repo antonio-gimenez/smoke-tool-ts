@@ -13,4 +13,14 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    console.error(`Request failed with status code ${error.response.status}.`);
+    return Promise.reject(error);
+  }
+);
+
 export default api;

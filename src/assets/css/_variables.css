@@ -6,7 +6,6 @@ html {
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-
   /* 
   Default font size is --fs-regular.
   --fs-small is 12px on desktop and 10px on mobile.
@@ -97,7 +96,7 @@ root:not([data-theme]) {
   --accent: 220 90% 60%; /* Accent color when focused */
   --accent-active: 220 90% 60%; /* Foreground content color to use on accent color */
   --accent-hover: 220 90% 60%; /* Foreground content color to use on accent color */
-  --accent-content: 230 50% 100%; /* Neutral color */
+  --accent-content: 230 50% 13%; /* Neutral color */
   --neutral: 230 14% 82%; /* Neutral color when focused */
   --neutral-active: 250 10% 70%; /* Foreground content color to use on neutral color */
   --neutral-content: 220 0% 10%; /* Base color of page, used for blank backgrounds */
@@ -112,7 +111,7 @@ root:not([data-theme]) {
   --success: 150 66% 60%; /* Foreground content color to use on success color */
   --success-content: 150 100% 13%; /* Warning color */
   --warning: 40 88% 63%; /* Foreground content color to use on warning color */
-  --warning-content: 50 100% 13%; /* Error color */
+  --warning-content: 60 50% 10%; /* Error color */
   --error: 0 100% 65%; /* Foreground content color to use on error color */
   --error-content: 0 100% 13%;
   --border: 0 0% 20%; /* Shadow color */

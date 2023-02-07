@@ -8,24 +8,24 @@ export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
 
   const addAlert = ({ id = generateUUID(), message, type = "base", duration = 0, title = null }) => {
-    if (!title) {
-      switch (type) {
-        case "success":
-          title = "Operation Completed Successfully";
-          break;
-        case "info":
-          title = "Information";
-          break;
-        case "error":
-          title = "Something went wrong";
-          break;
-        case "warning":
-          title = "Attention Required";
-          break;
-        default:
-          title = "Notification";
-      }
-    }
+    // if (!title) {
+    //   switch (type) {
+    //     case "success":
+    //       title = "Operation Completed Successfully";
+    //       break;
+    //     case "info":
+    //       title = "Information";
+    //       break;
+    //     case "error":
+    //       title = "Something went wrong";
+    //       break;
+    //     case "warning":
+    //       title = "Attention Required";
+    //       break;
+    //     default:
+    //       title = "Notification";
+    //   }
+    // }
 
     setAlerts((prevAlerts) => [...prevAlerts, { id, message, type, duration, title }]);
   };
@@ -84,9 +84,8 @@ export function Alert({ id, children, duration, title, type, ...props }) {
           <div className="alert-t">{title ? <div className="alert-title">{title}</div> : null}</div>
           <div className="alert-message">{children}</div>
         </div>
-        {duration > 0 ? (
-          <p className="alert-remaining-time"> {remainingTime / 1000}s</p>
-        ) : (
+        {duration > 0 ? null : (
+          // <p className="alert-remaining-time"> {remainingTime / 1000}s</p>
           <button className="alert-dismiss" onClick={() => removeAlert(id)}>
             <CloseIcon />
           </button>

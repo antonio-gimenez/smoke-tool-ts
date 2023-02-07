@@ -15,8 +15,6 @@ function App() {
     html.setAttribute("data-theme", theme);
   }
 
-  console.log("theme", theme);
-
 
   return (
     <AlertProvider>

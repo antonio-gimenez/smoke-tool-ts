@@ -50,7 +50,6 @@ function NewTest() {
 
   const submitProduct = async (e) => {
     e.preventDefault();
-
     createProduct(form.product);
   };
 
@@ -58,30 +57,32 @@ function NewTest() {
     <>
       {JSON.stringify(form)}
       <section className="grid-with-gap">
-        <Input type="text" id="name" name="product" disabled={productsAreLoading} onChange={onChangeInput} />
-        <button name={"product"} onClick={submitProduct}>
+        <Input
+          placeholder="Product"
+          type="text"
+          id="name"
+          name="product"
+          disabled={productsAreLoading}
+          onChange={onChangeInput}
+        />
+        <Button color={"primary"} name={"product"} onClick={submitProduct}>
           Submit
-        </button>
-        {/* <ComboBox
-          options={products}
-          disabled={productsAreEmpty}
-          id="product"
-          multiple
-          placeholder="Select a product"
-          onChange={onChange}
-        /> */}
+        </Button>
+
         <ComboBox
-          options={PRIORITIES}
+          options={products}
           id="priority"
           disabled={false}
           multiple={false}
-          placeholder="Select a priority"
+          placeholder="Select a product"
           onChange={onChange}
         />
         <Input type="date" id="date" value={form.date || ""} onChange={onChange} />
       </section>
       <div>
-        <Button onClick={createTest}>Create</Button>
+        <Button color={"neutral"} block={true} onClick={createTest}>
+          Create
+        </Button>
       </div>
     </>
   );
