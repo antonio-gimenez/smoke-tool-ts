@@ -55,22 +55,26 @@ export function AlertProvider({ children }) {
 export function Alert({ id, children, duration, title, type, ...props }) {
   const [remainingTime, setRemainingTime] = useState(duration);
   const { removeAlert, isAlertVisible } = useContext(AlertContext);
+
   useEffect(() => {
     if (duration > 0) {
-      const interval = setInterval(() => {
-        setRemainingTime((prevRemainingTime) => {
-          if (prevRemainingTime <= 0) {
+      let interval;
+      const startTimer = () => {
+        interval = setInterval(() => {
+          if (remainingTime <= 0) {
             removeAlert(id);
             clearInterval(interval);
+          } else {
+            setRemainingTime(remainingTime - 1000);
           }
-          return prevRemainingTime - 1000;
-        });
-      }, 1000);
+        }, 1000);
+      };
+      startTimer();
       return () => {
         clearInterval(interval);
       };
     }
-  }, [duration]);
+  }, [duration, id, remainingTime, removeAlert]);
 
   if (!isAlertVisible(id) || !children) return null;
   return (
