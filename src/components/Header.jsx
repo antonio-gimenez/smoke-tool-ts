@@ -21,7 +21,7 @@ const Header = () => {
     <header className={`header ${isScrolled ? "glass" : ""}`}>
       <div className="navbar container">
         <nav aria-label="Main navigation">
-          <span className="navbar-branding">SmokeTest Tool</span>
+          <span className="navbar-branding">{process.env.REACT_APP_APP_NAME}</span>
         </nav>
         <nav aria-label="Links">
           <a className="link" href="/tests/">
@@ -31,7 +31,7 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal closeOnOverlayClick={false} header={"New Test"} id="create-test">
+          <Modal closeOnOverlayClick={true} header={"New Test"} id="create-test">
             <ModalHeader>
               <p>New Test</p>
             </ModalHeader>

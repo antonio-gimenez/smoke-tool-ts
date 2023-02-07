@@ -32,7 +32,7 @@ const DropdownToggle = ({ hideChevron = false, children, ...props }) => {
   return (
     <button {...props} onClick={() => setOpen(!open)} className="dropdown-toggle">
       {children}
-      {!hideChevron && <ChevronIcon />}
+      {!hideChevron && <ChevronIcon style={{ width: "18px", height: "18px" }} />}
     </button>
   );
 };

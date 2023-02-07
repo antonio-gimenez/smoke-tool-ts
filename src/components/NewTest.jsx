@@ -6,6 +6,7 @@ import Button from "./ui/Button";
 import ComboBox from "./ui/ComboBox";
 import Input from "./ui/Input";
 
+import { getProducts } from "../services/products";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -15,7 +16,8 @@ const PRIORITIES = [
 function NewTest() {
   const { addAlert } = useContext(AlertContext);
   const { closeModal } = useContext(ModalContext);
-  const { products, empty: productEmpty } = useProducts();
+  // const [products] = useState(getProducts() || []);
+  const { products } = useProducts();
   const [form, setForm] = useState({
     priority: "medium",
   });
@@ -41,6 +43,9 @@ function NewTest() {
       setForm((prevForm) => ({ ...prevForm, [id]: value }));
     }
   };
+
+  console.log("products", products);
+  // return;
 
   return (
     <>

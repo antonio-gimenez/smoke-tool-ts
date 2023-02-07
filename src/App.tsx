@@ -5,7 +5,7 @@ import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext.jsx";
-import useTheme from "./hooks/use-theme.jsx";
+import useTheme from "./hooks/use-theme";
 import SmokeTest from "./pages/SmokeTest.jsx";
 
 function App() {
@@ -14,6 +14,9 @@ function App() {
   if (html) {
     html.setAttribute("data-theme", theme);
   }
+
+  console.log("theme", theme);
+
 
   return (
     <AlertProvider>
