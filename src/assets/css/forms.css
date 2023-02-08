@@ -70,8 +70,10 @@ input[type="file"] {
   flex-direction: column;
   cursor: pointer;
   padding: var(--space-3, 0.25rem);
-  --background-opacity: 0.75;
-  background: hsl(var(--base-200) / var(--background-opacity, 1));
+  --background-opacity: 0.2;
+  border: var(--border-width, 1px) dashed;
+  border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
 }
 .checkbox {
   flex-shrink: 0;

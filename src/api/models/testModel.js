@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const { File } = require("./fileModel");
 
 const testSchema = new Schema(
   {
@@ -97,6 +98,7 @@ const testSchema = new Schema(
       type: Date,
       default: null,
     },
+    files: [{ type: Schema.Types.ObjectId, ref: "File" }],
   },
   {
     versionKey: false,
