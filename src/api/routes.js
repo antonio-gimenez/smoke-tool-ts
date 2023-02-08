@@ -1,20 +1,16 @@
 const testController = require("./controllers/testController");
 const productController = require("./controllers/productController");
 const branchController = require("./controllers/branchController");
+const fileController = require("./controllers/fileController");
 const express = require("express");
 const router = express.Router();
-
-// // HELP
-//req.params: for URL parameters, such as an id in a RESTful API endpoint, for example, /api/resources/:id.
-
-//req.query: for URL query parameters, such as pagination or filtering, for example, /api/resources?page=2&limit=10.
-
-//req.body: for JSON payload data in a POST or PUT request, for example, {name: "new resource", description: "a resource created by user"}.
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 router.get("/tests/", testController.getTests);
 router.post("/tests/", testController.createTest);
 router.delete("/tests/", testController.deleteTest);
-// router.delete("/tests/bulk-remove/", testController.bulkRemove);
 
 router.get("/products/", productController.getProducts);
 router.post("/products/:name", productController.createProduct);
@@ -24,4 +20,7 @@ router.get("/branches/", branchController.getBranches);
 router.post("/branches/:name", branchController.createBranch);
 router.delete("/branches/:id", branchController.deleteBranch);
 
+router.post("/files/", upload.single("file"), fileController.uploadFile);
+router.get("/files/", fileController.getFile);
+router.delete("/files/", fileController.removeFile);
 module.exports = router;

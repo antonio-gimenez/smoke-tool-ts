@@ -81,7 +81,7 @@ export function Alert({ id, children, duration, title, type, ...props }) {
     <div id={id} className={`alert alert-${type}`} {...props} role="alert">
       <div className="alert-section">
         <div className="alert-description">
-          <div className="alert-t">{title ? <div className="alert-title">{title}</div> : null}</div>
+          {title ? <div className="alert-title">{title}</div> : null}
           <div className="alert-message">{children}</div>
         </div>
         {duration > 0 ? null : (

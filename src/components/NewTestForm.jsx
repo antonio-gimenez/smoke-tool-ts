@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
@@ -7,7 +8,8 @@ import { formatSelectOptions } from "../utils/utils";
 import Button from "./ui/Button";
 import ComboBox from "./ui/ComboBox";
 import Input from "./ui/Input";
-
+import api from "../services/use-axios";
+import UploadFile from "./UploadFile";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -47,6 +49,7 @@ function NewTest() {
 
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
+
   return (
     <>
       <form className="form">
@@ -69,10 +72,8 @@ function NewTest() {
                 </option>
               ))}
           </select>
+          <UploadFile />
         </div>
-        <Button type="submit" color={"primary"} block={true} onClick={createTest}>
-          Create
-        </Button>
       </form>
     </>
   );

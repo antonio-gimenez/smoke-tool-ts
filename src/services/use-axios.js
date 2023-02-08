@@ -15,6 +15,7 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (response) => {
+    console.log(`Request succeeded with status code ${response.status}.`);
     return response;
   },
   (error) => {

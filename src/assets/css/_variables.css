@@ -98,9 +98,9 @@ root:not([data-theme]) {
   --neutral: 230 14% 82%; /* Neutral color when focused */
   --neutral-active: 250 10% 70%; /* Foreground content color to use on neutral color */
   --neutral-content: 220 0% 10%; /* Base color of page, used for blank backgrounds */
-  --base: 0 0% 10%; /* Base color for background pages */
-  --base-100: 0 0% 13%; /* Base color, a little darker */
-  --base-200: 0 0% 16%; /* Base color, even more darker */
+  --base: 220 13% 22%; /* Base color for background pages */
+  --base-100: 220 13% 11%; /* Base color, a little darker */
+  --base-200: 220 13% 16%; /* Base color, even more darker */
   --base-300: 229 13% 6%; /* Foreground content color to use on base color */
   --base-content: 0 0% 90%; /* Base color for background pages */
   --base-active: 0 0% 80%; /* Foreground content color to use on base color when focused */

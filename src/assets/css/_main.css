@@ -17,6 +17,13 @@
 @import url("typography.css");
 @import url("pagination.css");
 
+*:disabled,
+*[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
 .glass {
   /* border: none; */
   -webkit-backdrop-filter: blur(20px);

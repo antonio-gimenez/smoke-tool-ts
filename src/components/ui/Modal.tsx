@@ -65,7 +65,7 @@ const ModalContent = ({ children, ...props }: { children: React.ReactNode }) => 
 
 const ModalTrigger = ({ id, children, ...props }: { id: string, children: React.ReactNode }) => {
   const { openModal } = useContext(ModalContext);
-  return <button onClick={() => openModal(id)}>{children}</button>;
+  return <button type="button" onClick={() => openModal(id)}>{children}</button>;
 };
 
 const ModalHeader = ({ children, ...props }: { children: React.ReactNode }) => {

@@ -33,7 +33,7 @@ button {
   text-align: center;
   padding: var(--padding-y) var(--padding-x);
   height: var(--button-height, 2.5rem);
-  width: auto;
+  width: fit-content;
   max-width: calc(var(--button-width) + 2 * var(--padding-x));
   background: var(--current-background);
   border-radius: var(--border-radius);
@@ -45,8 +45,10 @@ button {
 
 /* button disabled */
 button[disabled="true"],
-button[aria-disabled="true"] {
+button[aria-disabled="true"],
+button:disabled {
   pointer-events: none;
+  cursor: not-allowed;
   opacity: 0.5;
 }
 
