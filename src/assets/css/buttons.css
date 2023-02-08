@@ -12,8 +12,8 @@ button {
 
 .button {
   --button-width: 18rem;
-  --button-height: 2.5rem;
-  --padding-x: var(--space-2, 0.5rem);
+  --button-height: 2.2rem;
+  --padding-x: var(--space-1, 0.25rem);
   --padding-y: var(--space-1, 0.25rem);
   --current-background: hsl(var(--base-100));
   --current-color: hsl(var(--base-content));
