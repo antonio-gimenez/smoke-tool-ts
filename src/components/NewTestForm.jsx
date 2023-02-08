@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
+import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions } from "../utils/utils";
 import Button from "./ui/Button";
@@ -17,6 +18,7 @@ function NewTest() {
   const { addAlert } = useContext(AlertContext);
   const { closeModal } = useContext(ModalContext);
   const { products, productsAreEmpty, productsAreLoading, createProduct } = useProducts();
+  const { branches, branchesAreEmpty, branchesAreLoading, createBranch } = useBranches();
   const [form, setForm] = useState({
     priority: "medium",
   });
@@ -43,50 +45,35 @@ function NewTest() {
     }
   };
 
-  const onChangeInput = async (e) => {
-    e.preventDefault();
-    const { name, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
-  };
-
-  const submitProduct = async (e) => {
-    e.preventDefault();
-    createProduct(form.product);
-  };
-
   const productsFormatted = formatSelectOptions({ options: products });
-  console.log(productsFormatted);
+  const branchesFormatted = formatSelectOptions({ options: branches });
   return (
     <>
-      <section className="grid-with-gap">
-        {/* <Input
-          placeholder="Product"
-          type="text"
-          id="name"
-          name="product"
-          disabled={productsAreLoading}
-          onChange={onChangeInput}
-        />
-        <Button color={"primary"} name={"product"} onClick={submitProduct}>
-          Submit
-        </Button> */}
-
-        <select className="select" name="products" id="products">
-          {products.length > 0 &&
-            productsFormatted.map((product) => (
-              <option key={product.value} value={product.value}>
-                {product.label}
-              </option>
-            ))}
-        </select>
-
-        {/* <Input type="date" id="date" value={form.date || ""} onChange={onChange} /> */}
-      </section>
-      <div>
-        <Button color={"primary"} block={true} onClick={createTest}>
+      <form className="form">
+        <div className="form-group">
+          <select className="select" name="products" id="products">
+            {products.length > 0 &&
+              productsFormatted.map((product) => (
+                <option key={product.value} value={product.value}>
+                  {product.label}
+                </option>
+              ))}
+          </select>
+          <input className="input" placeholder="Due date" type="date" />
+          <input className="input" placeholder="Test name" />
+          <select className="select" name="branches" id="branches">
+            {branches.length > 0 &&
+              branchesFormatted.map((branch) => (
+                <option key={branch.value} value={branch.value}>
+                  {branch.label}
+                </option>
+              ))}
+          </select>
+        </div>
+        <Button type="submit" color={"primary"} block={true} onClick={createTest}>
           Create
         </Button>
-      </div>
+      </form>
     </>
   );
 }

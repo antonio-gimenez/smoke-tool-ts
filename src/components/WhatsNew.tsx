@@ -25,7 +25,6 @@ function WhatsNew() {
       </ModalHeader>
       <ModalContent>
         <p>Here is a list of changes since the last version:</p>
-
         <label
           htmlFor="whats-new-checkbox"
         >

@@ -1,5 +1,6 @@
 const testController = require("./controllers/testController");
 const productController = require("./controllers/productController");
+const branchController = require("./controllers/branchController");
 const express = require("express");
 const router = express.Router();
 
@@ -18,5 +19,9 @@ router.delete("/tests/", testController.deleteTest);
 router.get("/products/", productController.getProducts);
 router.post("/products/:name", productController.createProduct);
 router.delete("/products/:id", productController.deleteProduct);
+
+router.get("/branches/", branchController.getBranches);
+router.post("/branches/:name", branchController.createBranch);
+router.delete("/branches/:id", branchController.deleteBranch);
 
 module.exports = router;

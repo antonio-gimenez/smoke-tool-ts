@@ -17,6 +17,23 @@
   --checkbox-foreground: var(--warning-content);
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  padding: var(--space-2, 0.5rem);
+  border-radius: var(--border-radius);
+  --background-opacity: 0.12;
+  background: hsl(var(--neutral) / var(--background-opacity, 1));
+  color: hsl(var(--base-content) / var(--text-opacity, 1));
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1, 0.25rem);
+}
+
 .input,
 .textarea,
 .select {
@@ -120,7 +137,7 @@
 .combobox:focus-within,
 .combobox:focus {
   --border-opacity: 1;
-  border-color: hsl(var(--accent) / var(--border-opacity, 1));
+  border-color: hsl(var(--primary) / var(--border-opacity, 1));
 }
 
 /* if combobox is aria-expanded  add a blue border*/
@@ -131,8 +148,8 @@
   border-color: hsl(var(--accent) / var(--border-opacity, 1));
 }
 
-input:disabled,
-textarea:disabled,
+.input:disabled,
+.textarea:disabled,
 .combobox:disabled,
 .combobox[aria-disabled="true"] {
   opacity: 0.75;
@@ -143,18 +160,18 @@ textarea:disabled,
   user-select: none;
 }
 
-input::placeholder,
-textarea::placeholder,
+.input::placeholder,
+.textarea::placeholder,
 .combobox-placeholder {
   font-size: var(--fs-regular);
   --text-opacity: 0.75;
   color: hsl(var(--base-content) / var(--text-opacity, 0.75));
 }
 
-input[aria-invalid="true"],
-textarea[aria-invalid="true"],
-input:invalid,
-textarea:invalid {
+.input[aria-invalid="true"],
+.textarea[aria-invalid="true"],
+.input:invalid,
+.textarea:invalid {
   --border-opacity: 0.8;
   border-color: hsl(var(--error) / var(--border-opacity, 1));
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NewTest from "./NewTest";
+import NewTestForm from "./NewTestForm";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
 const Header = () => {
@@ -31,12 +31,12 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal closeOnOverlayClick={false} header={"New Test"} id="create-test">
+          <Modal closeOnOverlayClick={false} id="create-test">
             <ModalHeader>
               <p>New Test</p>
             </ModalHeader>
             <ModalContent>
-              <NewTest />
+              <NewTestForm />
             </ModalContent>
           </Modal>
         </nav>
