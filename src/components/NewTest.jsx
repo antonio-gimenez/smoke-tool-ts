@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
 import useProducts from "../services/use-products";
+import { formatSelectOptions } from "../utils/utils";
 import Button from "./ui/Button";
 import ComboBox from "./ui/ComboBox";
 import Input from "./ui/Input";
@@ -53,11 +54,12 @@ function NewTest() {
     createProduct(form.product);
   };
 
+  const productsFormatted = formatSelectOptions({ options: products });
+  console.log(productsFormatted);
   return (
     <>
-      {JSON.stringify(form)}
       <section className="grid-with-gap">
-        <Input
+        {/* <Input
           placeholder="Product"
           type="text"
           id="name"
@@ -67,20 +69,21 @@ function NewTest() {
         />
         <Button color={"primary"} name={"product"} onClick={submitProduct}>
           Submit
-        </Button>
+        </Button> */}
 
-        <ComboBox
-          options={products}
-          id="priority"
-          disabled={false}
-          multiple={false}
-          placeholder="Select a product"
-          onChange={onChange}
-        />
-        <Input type="date" id="date" value={form.date || ""} onChange={onChange} />
+        <select className="select" name="products" id="products">
+          {products.length > 0 &&
+            productsFormatted.map((product) => (
+              <option key={product.value} value={product.value}>
+                {product.label}
+              </option>
+            ))}
+        </select>
+
+        {/* <Input type="date" id="date" value={form.date || ""} onChange={onChange} /> */}
       </section>
       <div>
-        <Button color={"neutral"} block={true} onClick={createTest}>
+        <Button color={"primary"} block={true} onClick={createTest}>
           Create
         </Button>
       </div>

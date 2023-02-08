@@ -1,9 +1,6 @@
-:root {
-  --top-offset: 0;
-}
-
 .header {
   position: fixed;
+  --top-offset: 0;
   top: var(--top-offset);
   left: 0;
   height: var(--header-height);

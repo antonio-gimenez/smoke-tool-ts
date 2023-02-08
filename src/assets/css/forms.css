@@ -1,7 +1,8 @@
 .input,
 .textarea,
 .checkbox,
-.combobox-container {
+.combobox-container,
+.select {
   --input-width: 18rem;
   --input-height: 2.5rem;
   --padding-x: var(--space-2, 0.5rem);
@@ -17,13 +18,14 @@
 }
 
 .input,
-.textarea {
+.textarea,
+.select {
   position: relative;
   overflow: hidden;
   display: inline-flex;
   border-radius: var(--border-radius);
-  padding: var(--padding-y) var(--padding-x);
-  width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), 100%);
+  padding: var(--padding-y, 0.25rem) var(--padding-x, 0.5rem);
+  width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
   background: hsl(var(--base-100) / var(--background-opacity, 1));

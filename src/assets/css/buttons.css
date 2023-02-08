@@ -92,41 +92,41 @@ button[aria-disabled="true"] {
 
 .button.accent:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--accent), var(--background-opacity, 1));
+  --current-background: hsl(var(--accent-active));
 }
 
 .button.primary:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--primary) / var(--background-opacity, 1));
+  --current-background: hsl(var(--primary-active));
 }
 .button.secondary:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--secondary) / var(--background-opacity, 1));
+  --current-background: hsl(var(--secondary-active));
 }
 
 .button.neutral:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--neutral) / var(--background-opacity, 1));
+  --current-background: hsl(var(--neutral-active));
 }
 
 .button.success:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--success) / var(--background-opacity, 1));
+  --current-background: hsl(var(--success-active));
 }
 
 .button.warning:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--warning) / var(--background-opacity, 1));
+  --current-background: hsl(var(--warning-active));
 }
 
 .button.error:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--error) / var(--background-opacity, 1));
+  --current-background: hsl(var(--error-active));
 }
 
 .button.info:hover {
   --background-opacity: 0.9;
-  --current-background: hsl(var(--info) / var(--background-opacity, 1));
+  --current-background: hsl(var(--info-active));
 }
 
 .button:focus,

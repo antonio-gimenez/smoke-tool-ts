@@ -23,7 +23,6 @@ html {
   --header-height: clamp(32px, 64px, 64px);
 
   --space-0: 0;
-  --space-0-5: 0.125rem;
   --space-1: 0.25rem;
   --space-2: 0.55rem;
   --space-3: 0.75rem;
@@ -93,10 +92,9 @@ root:not([data-theme]) {
   --secondary: 200 30% 22%; /* Secondary color when focused */
   --secondary-active: 50 20% 50%; /* Foreground content color to use on secondary color */
   --secondary-content: 50 5% 10%; /* Accent color */
-  --accent: 220 90% 60%; /* Accent color when focused */
-  --accent-active: 220 90% 60%; /* Foreground content color to use on accent color */
-  --accent-hover: 220 90% 60%; /* Foreground content color to use on accent color */
-  --accent-content: 230 50% 13%; /* Neutral color */
+  --accent: 350 70% 50%; /* Accent color when focused */
+  --accent-active: 350 90% 60%; /* Foreground content color to use on accent color */
+  --accent-content: 350 60% 89%; /* Neutral color */
   --neutral: 230 14% 82%; /* Neutral color when focused */
   --neutral-active: 250 10% 70%; /* Foreground content color to use on neutral color */
   --neutral-content: 220 0% 10%; /* Base color of page, used for blank backgrounds */
