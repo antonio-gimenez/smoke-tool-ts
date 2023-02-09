@@ -5,7 +5,7 @@
  * @param handler - The function to be called when the key is pressed.  
  */
 
-import axios from "axios";
+import api from "../services/use-axios";
 import React, { createContext, useContext, useState } from "react";
 import { AlertContext } from "./AlertContext";
 
@@ -51,15 +51,13 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
 
   const { addAlert } = useContext(AlertContext);
 
-  const API_URL: string = (process.env.REACT_APP_API_URL as string);
   const fetchTests = async (
     queryParams: QueryParams = initialParams
   ) => {
     // Set loading state to true
     setIsLoading(true);
     try {
-      // Fetch data from API
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}tests`, {
+      const response = await api.get(`tests`, {
         params: queryParams ?? initialParams,
       });
       const data = response.data;

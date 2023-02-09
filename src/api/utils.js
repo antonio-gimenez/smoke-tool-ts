@@ -1,17 +1,3 @@
-// parseNumber("limit");
-// parseNumber("skip");
-// parseNumber("sort");
-
-const status = ["Pending", "Running", "Success", "Fail", "Skipped", "HW Error", "Warning"];
-
-const isCompleted = (status) => {
-  return status === "Success" || status === "Fail" || status === "Skipped" || status === "HW Error";
-};
-
-const isRunning = (status) => {
-  return status === "Running" || status === "Pending";
-};
-
 const createPaginationOptions = ({ req, totalCount }) => {
   let options = {};
   let limit = parseInt(req.query.limit || 25);
@@ -112,6 +98,4 @@ module.exports = {
   stripNonNumeric,
   createPaginationOptions,
   stripNumeric,
-  isCompleted,
-  isRunning,
 };

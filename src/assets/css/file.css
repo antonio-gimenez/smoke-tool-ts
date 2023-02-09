@@ -1,0 +1,31 @@
+.file-display-container {
+  padding-block: var(--space-2, 0.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: var(--space-1, 0.15rem);
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-1, 0.25rem);
+  --background-opacity: 0.6;
+
+  justify-content: space-between;
+}
+
+.file-icon {
+  height: 1.125rem;
+  width: 1.125rem;
+  color: hsl(var(--base-content) / var(--background-opacity, 0.2));
+}
+
+.file-close-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: hsl(var(--base-content) / var(--background-opacity, 0.2));
+  cursor: pointer;
+}

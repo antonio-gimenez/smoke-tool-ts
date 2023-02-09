@@ -46,13 +46,13 @@
   text-align: auto;
   white-space: pre-wrap;
   max-width: 50ch;
-  font-weight: var(--fw-light);
+  font-weight: var(--fw-regular, --fw-medium);
   font-size: var(--fs-regular, 15px);
 }
 
 .alert-title {
   font-size: var(--fs-medium);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-semibold, --fw-bold);
 }
 
 .alert-error {

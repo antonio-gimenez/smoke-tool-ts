@@ -1,15 +1,12 @@
-import axios from "axios";
 import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
 import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions } from "../utils/utils";
-import Button from "./ui/Button";
-import ComboBox from "./ui/ComboBox";
-import Input from "./ui/Input";
-import api from "../services/use-axios";
 import UploadFile from "./UploadFile";
+import api from "../services/use-axios";
+import FileSelector from "./FileSelector";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -22,16 +19,11 @@ function NewTest() {
   const { products, productsAreEmpty, productsAreLoading, createProduct } = useProducts();
   const { branches, branchesAreEmpty, branchesAreLoading, createBranch } = useBranches();
   const [form, setForm] = useState({
-    priority: "medium",
+    name: "",
+    files: null,
   });
 
-  const createTest = async () => {
-    addAlert({
-      message: "Test created",
-      type: "error",
-    });
-    closeModal("create-test");
-  };
+  const [fileToUpload, setFileToUpload] = useState(null);
 
   const onChange = (e) => {
     const { id, value } = e.target ?? e;
@@ -47,14 +39,40 @@ function NewTest() {
     }
   };
 
+  const createTest = async (name, files) => {
+    try {
+      const response = await api.post("/tests", { name, files });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const { name } = form;
+    await createTest(name, fileToUpload);
+    addAlert({ message: "Test created successfully", type: "success" });
+  };
+
+  // const onFileUpload = (files) => {
+  //   if (!files) return;
+  //   if (!Array.isArray(files)) {
+  //     files = [files];
+  //   }
+  //   setForm((prevForm) => ({ ...prevForm, ["files"]: [fileToUpload] }));
+  //   console.log(form);
+  // };
+
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
-
   return (
     <>
-      <form className="form">
+      <div className="form">
+        {form.name}
         <div className="form-group">
-          <select className="select" name="products" id="products">
+          {`file` + fileToUpload}
+          <select className="select" name="products" id="name" onChange={onChange}>
             {products.length > 0 &&
               productsFormatted.map((product) => (
                 <option key={product.value} value={product.value}>
@@ -72,9 +90,13 @@ function NewTest() {
                 </option>
               ))}
           </select>
-          <UploadFile />
+          {/* <UploadFile onChange={setFileToUpload} /> */}
+          <FileSelector multiple={true} onSelectFile={setFileToUpload} />
         </div>
-      </form>
+        <button className="btn btn-primary" onClick={onSubmit}>
+          Submit data
+        </button>
+      </div>
     </>
   );
 }

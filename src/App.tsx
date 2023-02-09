@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
-import { TestProvider } from "./contexts/TestContext.jsx";
+import { TestProvider } from "./contexts/TestContext";
 import useTheme from "./hooks/use-theme";
 import SmokeTest from "./pages/SmokeTest.jsx";
 
@@ -19,15 +19,15 @@ function App() {
   return (
     <AlertProvider>
       <ModalProvider>
-        {/* <TestProvider> */}
-        <Header />
-        <div className="app container scrollable-content container-centered">
-          <WhatsNew />
-          <Routes>
-            <Route path="/" element={<SmokeTest />} />
-          </Routes>
-        </div>
-        {/* </TestProvider> */}
+        <TestProvider>
+          <Header />
+          <div className="app container scrollable-content container-centered">
+            <WhatsNew />
+            <Routes>
+              <Route path="/" element={<SmokeTest />} />
+            </Routes>
+          </div>
+        </TestProvider>
       </ModalProvider>
     </AlertProvider>
   );

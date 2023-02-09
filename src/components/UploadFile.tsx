@@ -3,16 +3,20 @@ import { AlertContext } from '../contexts/AlertContext';
 import api from '../services/use-axios';
 import Button from './ui/Button';
 
-function UploadFile() {
+function UploadFile({ onChange }: { onChange: (file: File) => void }) {
     const [file, setFile] = useState<File | null>(null);
     const { addAlert } = useContext(AlertContext);
     const [uploadedFile, setUploadedFile] = useState<Boolean>(false);
-
+    const [tmpFiles, setTmpFiles] = useState<File[]>([]);
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
-        setFile(event.target.files?.[0] || null);
-
+        const selectedFile = event.target.files?.[0] || null;
+        setFile(selectedFile);
+        if (selectedFile) {
+            setTmpFiles((prevFiles) => [...prevFiles, selectedFile]);
+        }
     };
+
 
     const handleFileSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -21,6 +25,7 @@ function UploadFile() {
         }
         const formData = new FormData();
         formData.append("file", file);
+
         if (event.type === "submit") {
             api
                 .post("/files/", formData)
@@ -31,6 +36,8 @@ function UploadFile() {
                             duration: 3000
                         });
                         setUploadedFile(true);
+                        setTmpFiles(tmpFiles.filter((tmpFile) => tmpFile !== file));
+                        onChange(tmpFiles[0]);
                     }
                 })
                 .catch((err) => {
@@ -39,21 +46,33 @@ function UploadFile() {
         }
     };
     return (
-        <>
-            <form className="form-group" onSubmitCapture={handleFileSubmit}>
-                <label htmlFor="upload-file" aria-disabled={!!uploadedFile} className='input-file-container'>
-                    <input type="file" id="upload-file" onChange={handleFileChange} />
-                    {file ? file.name : "Choose a file"}
-                </label>
+        <form onSubmitCapture={handleFileSubmit} className="upload-file" method="post" encType="multipart/form-data">
+            <label htmlFor="upload-file" aria-disabled={!!uploadedFile} className='input-file-container'>
+                <input type="file" id="upload-file" onChange={handleFileChange} />
+                {file ? file.name : "Choose a file"}
+            </label>
+            <div>
+                {
+                    tmpFiles.length > 0 && tmpFiles.map((tmpFile) => (
+                        <div key={tmpFile.name} className="tmp-file">
+                            <span>{tmpFile.name}</span>
+                            <Button type="button" onClick={() => {
+                                setTmpFiles(tmpFiles.filter((tmpFile) => tmpFile !== file));
+                                setFile(null);
+                            }
+                            } color={"danger"}>Remove</Button>
+                        </div>
+                    ))
+
+                }
                 {!uploadedFile &&
-                    <Button type="submit" disabled={uploadedFile} aria-disabled={uploadedFile} color={"primary"}>
-                        Upload file
+                    <Button type="submit" disabled={uploadedFile} aria-disabled={uploadedFile}
+                        color={"primary"}>
+                        Upload files
                     </Button>
                 }
-                <span className="text-muted">Max single file size: 15mb</span>
-
-            </form>
-        </>
+            </div>
+        </form>
     );
 }
 

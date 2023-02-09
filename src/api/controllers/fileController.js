@@ -11,12 +11,17 @@ const uploadFile = async (req, res) => {
     file: req.file.buffer,
     // Set the file type
     contentType: req.file.mimetype,
+    // How to set the name
+    name: req.file.originalname,
   });
 
   // Save the file to the database
   try {
     await newFile.save();
-    res.send(`File uploaded successfully!`);
+    res.send({
+      message: "File uploaded successfully",
+      data: newFile,
+    });
   } catch (err) {
     res.status(500).send(err);
   }
@@ -31,7 +36,7 @@ const getFile = async (req, res) => {
       return res.status(404).send("File not found");
     }
     // Set the content type header
-    res.contentType(file.contentType);
+    res.contentType(file.mimetype);
 
     // Send the file buffer in the response
     res.send(file.file);
