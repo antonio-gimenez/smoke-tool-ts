@@ -45,7 +45,7 @@ const FileSelector: React.FC<FileSelectorProps> = ({ multiple = false, onSelectF
 
 
     return (
-        <div>
+        <div className='file-selector'>
             <input
                 type="file"
                 multiple={multiple}
