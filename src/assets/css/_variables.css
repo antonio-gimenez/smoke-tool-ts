@@ -79,6 +79,7 @@ root:not([data-theme]) {
 }
 
 [data-theme="dark"] {
+  accent-color: hsl(var(--accent));
   /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
   The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
   The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.

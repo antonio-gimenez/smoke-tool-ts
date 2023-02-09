@@ -52,7 +52,7 @@ function NewTest() {
     e.preventDefault();
     const { name } = form;
     await createTest(name, fileToUpload);
-    addAlert({ message: "Test created successfully", type: "success" });
+    addAlert({ message: "Test created successfully", type: "success", title: "Success" });
   };
 
   // const onFileUpload = (files) => {

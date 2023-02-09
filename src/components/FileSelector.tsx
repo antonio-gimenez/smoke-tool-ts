@@ -24,55 +24,49 @@ const FileSelector: React.FC<FileSelectorProps> = ({ multiple = false, onSelectF
 
     const handleRemoveFile = (index: number) => {
         if (!selectedFiles) return;
-        var newFiles = new DataTransfer();
-
-        for (var i = 0; i < selectedFiles.length; i++) {
-            if (i !== index) {
-                newFiles.items.add(selectedFiles[i]);
-            }
+        const newFiles = Array.from(selectedFiles);
+        newFiles.splice(index, 1);
+        const fileList = new FileList();
+        for (let i = 0; i < newFiles.length; i++) {
+            fileList[i] = newFiles[i];
         }
-
-        setSelectedFiles(newFiles.files); // convert newFiles to FileList type
-
-
-
-        // convert newFiles to FileList type
-
-
+        setSelectedFiles(fileList);
     };
 
 
 
 
-    return (
-        <div className='file-selector'>
-            <input
-                type="file"
-                multiple={multiple}
-                onChange={handleFileChange}
-                accept="*/*"
-            />
-            {selectedFiles && selectedFiles.length > 0 && (
-                <ul className='file-display-container'>
-                    {Array.from({ length: selectedFiles.length }, (_, index) => (
-                        <li key={index} className='file'>
-                            <FileIcon className='file-icon' />
-                            <span className='file-name'>
-                                {selectedFiles[index].name}
-                            </span>
-                            <span className='file-size'>
-                                {humanFileSize(selectedFiles[index].size)}
-                            </span>
-                            <span className='file-action'>
-                                <CloseIcon className='file-close-icon' onClick={() => handleRemoveFile(index)} />
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-            )}
+    return <span className='file-selector-label'>Select file</span>
 
-        </div>
-    );
+    // return (
+    //     <div className='file-selector'>
+    //         <input
+    //             type="file"
+    //             multiple={multiple}
+    //             onChange={handleFileChange}
+    //             accept="*/*"
+    //         />
+    //         {selectedFiles && selectedFiles.length > 0 && (
+    //             <ul className='file-display-container'>
+    //                 {Array.from({ length: selectedFiles.length }, (_, index) => (
+    //                     <li key={index} className='file'>
+    //                         <FileIcon className='file-icon' />
+    //                         <span className='file-name'>
+    //                             {selectedFiles[index].name}
+    //                         </span>
+    //                         <span className='file-size'>
+    //                             {humanFileSize(selectedFiles[index].size)}
+    //                         </span>
+    //                         <span className='file-action'>
+    //                             <CloseIcon className='file-close-icon' onClick={() => handleRemoveFile(index)} />
+    //                         </span>
+    //                     </li>
+    //                 ))}
+    //             </ul>
+    //         )}
+
+    //     </div>
+    // );
 };
 
 export default FileSelector;

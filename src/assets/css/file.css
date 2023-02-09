@@ -18,23 +18,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  gap: var(--space-1, 0.15rem);
+  flex-wrap: wrap;
 }
 
 .file {
   display: flex;
   align-items: center;
-  width: 100%;
+
   padding: var(--space-1, 0.25rem);
   --background-opacity: 0.6;
-
+  gap: var(--space-1, 0.15rem);
   justify-content: space-between;
+}
+
+.file-name {
+  font-weight: var(--fw-medium);
+  --background-opacity: 1;
+  color: hsl(var(--primary) / var(--background-opacity, 0.8));
 }
 
 .file-icon {
   height: 1.125rem;
   width: 1.125rem;
-  color: hsl(var(--base-content) / var(--background-opacity, 0.2));
+  color: hsl(var(--base-content) / var(--background-opacity, 1));
 }
 
 .file-close-icon {

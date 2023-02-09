@@ -18,6 +18,8 @@ function useBranches() {
             message: "No branches found",
             type: "warning",
             title: "No branches",
+
+            duration: 5000,
           });
           setEmpty(true);
           setLoading(false);

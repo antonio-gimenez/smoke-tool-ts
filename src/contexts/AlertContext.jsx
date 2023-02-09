@@ -7,7 +7,7 @@ export const AlertContext = createContext();
 export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
 
-  const addAlert = ({ id = generateUUID(), message, type = "base", duration = 0, title = null }) => {
+  const addAlert = ({ id = generateUUID(), message, type = "base", duration = 1000, title = null }) => {
     // if (!title) {
     //   switch (type) {
     //     case "success":
