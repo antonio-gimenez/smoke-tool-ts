@@ -12,8 +12,9 @@ html {
   --fs-regular is 14px on desktop and 12px on mobile.
   --fs-medium is 16px on desktop and 14px on mobile.
   --fs-large is 18px on desktop and 16px on mobile.
-  --fs-big is 20px on desktop and 18px on mobile.
+  --fs-big is 20px on desktop and 18px on mobile
   */
+
   --fs-small: clamp(0.64rem, 0.05vw + 0.63rem, 0.67rem);
   --fs-regular: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
   --fs-medium: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
@@ -41,6 +42,7 @@ html {
 root:not([data-theme]) {
   color-scheme: light;
   accent-color: hsl(var(--accent));
+
   /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
   The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
   The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.
@@ -79,6 +81,8 @@ root:not([data-theme]) {
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
+
   accent-color: hsl(var(--accent));
   /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
   The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.

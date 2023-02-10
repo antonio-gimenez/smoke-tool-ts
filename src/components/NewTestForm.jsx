@@ -3,10 +3,11 @@ import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
 import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
-import { formatSelectOptions } from "../utils/utils";
+import { formatSelectOptions, selectRandomFromArray } from "../utils/utils";
 import UploadFile from "./UploadFile";
 import api from "../services/use-axios";
 import FileSelector from "./FileSelector";
+import Button from "./ui/Button";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -52,7 +53,7 @@ function NewTest() {
     e.preventDefault();
     const { name } = form;
     await createTest(name, fileToUpload);
-    addAlert({ message: "Test created successfully", type: "success", title: "Success" });
+    addAlert({ message: "Test created successfully", type: "success" });
   };
 
   // const onFileUpload = (files) => {
@@ -66,6 +67,15 @@ function NewTest() {
 
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
+
+  const addAlertOnPosition = (position = "top-left") => {
+    return addAlert({
+      message: "This is a test alert",
+      type: selectRandomFromArray(["success", "error", "warning", "info", "base"]),
+      position,
+    });
+  };
+
   return (
     <>
       <div className="form">
@@ -93,9 +103,28 @@ function NewTest() {
           {/* <UploadFile onChange={setFileToUpload} /> */}
           <FileSelector multiple={true} onSelectFile={setFileToUpload} />
         </div>
-        <button className="btn btn-primary" onClick={onSubmit}>
+        <Button color={"primary"} onClick={() => addAlertOnPosition()}>
+          top-left
+        </Button>
+        <Button color={"primary"} onClick={() => addAlertOnPosition("top-center")}>
+          top-center
+        </Button>
+        <Button color={"primary"} onClick={() => addAlertOnPosition("top-right")}>
+          top-right
+        </Button>
+        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-left")}>
+          bottom-left
+        </Button>
+        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-center")}>
+          bottom-center
+        </Button>
+        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-right")}>
+          bottom-right
+        </Button>
+
+        {/* <button className="btn btn-primary" onClick={onSubmit}>
           Submit data
-        </button>
+        </button> */}
       </div>
     </>
   );

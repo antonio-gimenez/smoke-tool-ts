@@ -25,7 +25,7 @@ const SmokeTest = () => {
     });
   }, [currentPage, status]);
 
-  return <>{tests?.length > 0 && <PaginatedTable />}</>;
+  return tests?.length > 0 ? <PaginatedTable /> : null;
 };
 
 export default SmokeTest;

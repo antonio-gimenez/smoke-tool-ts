@@ -1,4 +1,3 @@
-import React from "react";
 import { generateUUID } from "../../utils/utils";
 
 function Button({
@@ -12,17 +11,9 @@ function Button({
   onClick = () => {},
   ...props
 }) {
-  // const id = props.id || Math.random().toString(36).substr(2, 9);
   const buttonColor = color;
   const buttonBlock = block ? "block" : "";
   const buttonGhost = ghost ? "ghost" : "";
-  if (as === "link") {
-    return (
-      <a role="link" aria-label={children} id={id} className={`button link  ${buttonBlock}`} {...props}>
-        {children}
-      </a>
-    );
-  }
 
   return (
     <button

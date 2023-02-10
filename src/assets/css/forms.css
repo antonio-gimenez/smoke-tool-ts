@@ -58,10 +58,17 @@
   transition: all 0.1s ease 0s;
 }
 
-/* input[type="file"] {
-  appearance: none;
-  display: none;
-} */
+/* hide form control */
+.form-control-hidden {
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  border: 0;
+}
 
 .upload-file {
   display: flex;

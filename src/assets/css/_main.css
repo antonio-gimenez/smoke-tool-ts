@@ -18,6 +18,16 @@
 @import url("typography.css");
 @import url("pagination.css");
 
+::-moz-selection {
+  background-color: hsl(var(--base-content));
+  color: hsl(var(--base));
+}
+
+::selection {
+  background-color: hsl(var(--base-content));
+  color: hsl(var(--base));
+}
+
 *:disabled,
 *[aria-disabled="true"] {
   opacity: 0.5;
@@ -64,30 +74,6 @@ body {
   font-weight: var(--fw-regular);
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-ul,
-ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-
 .app {
   padding-top: calc(var(--header-height) + 1rem);
 }
@@ -97,30 +83,9 @@ ol {
   overflow-y: auto;
 }
 
-/* Progress */
-.selected-day {
-  background: hsl(var(--primary), 0.1);
-}
-
-.progress {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: var(--bg-input);
-  border-radius: var(--border-radius);
-  height: 10px;
-}
-
-.progress .bar {
-  background: hsl(var(--primary));
-  border-radius: var(--border-radius);
-  height: var(--progress-height);
-}
-
 /* Symbols */
 
 .chevron {
-  /* margin-left: 0.25rem; */
   transition: all 0.125s ease-in-out;
 }
 

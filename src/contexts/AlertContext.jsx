@@ -1,33 +1,22 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
-import { generateUUID } from "../utils/utils";
+import useDeviceType from "../hooks/use-device-type";
+import { generateUUID, groupBy } from "../utils/utils";
 
 export const AlertContext = createContext();
 
 export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
 
-  const addAlert = ({ id = generateUUID(), message, type = "base", duration = 1000, title = null }) => {
-    // if (!title) {
-    //   switch (type) {
-    //     case "success":
-    //       title = "Operation Completed Successfully";
-    //       break;
-    //     case "info":
-    //       title = "Information";
-    //       break;
-    //     case "error":
-    //       title = "Something went wrong";
-    //       break;
-    //     case "warning":
-    //       title = "Attention Required";
-    //       break;
-    //     default:
-    //       title = "Notification";
-    //   }
-    // }
-
-    setAlerts((prevAlerts) => [...prevAlerts, { id, message, type, duration, title }]);
+  const addAlert = ({
+    id = generateUUID(),
+    message,
+    type = "base",
+    duration = 0,
+    title = null,
+    position = "top-right",
+  }) => {
+    setAlerts((prevAlerts) => [...prevAlerts, { id, message, type, duration, title, position }]);
   };
 
   const removeAlert = (id) => {
@@ -38,24 +27,37 @@ export function AlertProvider({ children }) {
     return alerts.some((alert) => alert.id === id);
   };
 
+  const groupedAlerts = groupBy(alerts, "position");
+
   return (
     <AlertContext.Provider value={{ alerts, addAlert, removeAlert, isAlertVisible }}>
       {children}
-      <div className="alert-container">
-        {alerts?.map((alert, index) => (
-          <Alert key={alert.id} id={alert.id} title={alert.title} type={alert.type} duration={alert.duration}>
-            {alert.message}
-          </Alert>
+      <div className={`alert-wrapper`}>
+        {Object.entries(groupedAlerts).map(([position, alerts]) => (
+          <div key={`stack-alerts-on-${position}`} className={`position-${position}`}>
+            {alerts.map((alert) => (
+              <Alert
+                position={position}
+                key={alert.id}
+                id={alert.id}
+                title={alert.title}
+                type={alert.type}
+                duration={alert.duration}
+              >
+                {alert.message}
+              </Alert>
+            ))}
+          </div>
         ))}
       </div>
     </AlertContext.Provider>
   );
 }
 
-export function Alert({ id, children, duration, title, type, ...props }) {
+export function Alert({ id, children, duration, title, type, position, ...props }) {
   const [remainingTime, setRemainingTime] = useState(duration);
   const { removeAlert, isAlertVisible } = useContext(AlertContext);
-
+  const deviceType = useDeviceType();
   useEffect(() => {
     if (duration > 0) {
       let interval;
@@ -76,16 +78,30 @@ export function Alert({ id, children, duration, title, type, ...props }) {
     }
   }, [duration, id, remainingTime, removeAlert]);
 
+  function positionateOnMobile() {
+    if (deviceType === "mobile" || deviceType === "tablet") {
+      return "mobile";
+    }
+    return position;
+  }
+
+  function alertMobilePosition() {
+    if (deviceType === "mobile" || deviceType === "tablet") {
+      return "alert-mobile";
+    }
+    return "alert";
+  }
+
   if (!isAlertVisible(id) || !children) return null;
   return (
-    <div id={id} className={`alert alert-${type}`} {...props} role="alert">
+    <div id={id} className={`${alertMobilePosition()} alert-${type}`} {...props} role="alert">
       <div className="alert-section">
         <div className="alert-description">
+          <span>device-debug: {deviceType}</span>
           {title ? <div className="alert-title">{title}</div> : null}
           <div className="alert-message">{children}</div>
         </div>
-        {duration > 0 ? null : (
-          // <p className="alert-remaining-time"> {remainingTime / 1000}s</p>
+        {!duration && (
           <button className="alert-dismiss" onClick={() => removeAlert(id)}>
             <CloseIcon />
           </button>
