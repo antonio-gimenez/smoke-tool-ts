@@ -56,14 +56,9 @@ function NewTest() {
     addAlert({ message: "Test created successfully", type: "success" });
   };
 
-  // const onFileUpload = (files) => {
-  //   if (!files) return;
-  //   if (!Array.isArray(files)) {
-  //     files = [files];
-  //   }
-  //   setForm((prevForm) => ({ ...prevForm, ["files"]: [fileToUpload] }));
-  //   console.log(form);
-  // };
+  const addFileToSelectedFiles = (file) => {
+    setForm((prevForm) => ({ ...prevForm, files: [...prevForm.files, file] }));
+  };
 
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
@@ -100,7 +95,7 @@ function NewTest() {
                 </option>
               ))}
           </select>
-          {/* <UploadFile onChange={setFileToUpload} /> */}
+
           <FileSelector multiple={true} onSelectFile={setFileToUpload} />
         </div>
         <Button color={"primary"} onClick={() => addAlertOnPosition()}>

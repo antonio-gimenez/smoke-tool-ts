@@ -5,7 +5,8 @@
   /*Setting the width and height to 100vw and 100vh will make the modal-wrapper appear full screen on the current viewport.*/
   width: 100vw;
   height: 100vh;
-  background: hsl(0 0% 0% / 0.2);
+  --background-opacity: 0.05;
+  background: hsl(var(--base) / var(--background-opacity, 0.015));
   backdrop-filter: blur(2px);
   z-index: 1;
   display: flex;

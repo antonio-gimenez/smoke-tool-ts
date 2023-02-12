@@ -28,6 +28,19 @@
   color: hsl(var(--base));
 }
 
+/* style all placeholders */
+::-webkit-input-placeholder {
+  color: hsl(var(--error)) !important;
+}
+
+:-moz-placeholder {
+  color: hsl(var(--error)) !important;
+}
+
+:-ms-input-placeholder {
+  color: hsl(var(--error)) !important;
+}
+
 *:disabled,
 *[aria-disabled="true"] {
   opacity: 0.5;

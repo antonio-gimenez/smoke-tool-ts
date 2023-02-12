@@ -28,11 +28,13 @@
 .menu,
 .dropdown-content {
   max-height: 30rem;
+  min-width: 8rem;
   overflow: auto;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+
   border-radius: var(--border-radius);
   flex-wrap: wrap;
 }

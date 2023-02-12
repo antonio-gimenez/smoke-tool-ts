@@ -1,17 +1,16 @@
 .file-selector {
   padding: var(--space-2, 0.5rem);
   border-radius: var(--border-radius);
-  border: var(--border-width, 2px) dashed;
+  border: var(--border-width, 1px) dashed;
   --border-opacity: 0.25;
   border-color: hsl(var(--base-content) / var(--border-opacity, 1));
-  --background-opacity: 0.08;
-  background: hsl(var(--neutral) / var(--background-opacity, 1));
+  --background-opacity: 0.05;
+  background: hsl(var(--base-content) / var(--background-opacity, 1));
   /* add  border-bottom between items*/
 }
 
 .file-display-container {
   margin-top: var(--space-2, 0.5rem);
-  border-top: var(--border-width, 1px) solid;
   border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
   padding-block: var(--space-2, 0.5rem);
   display: flex;

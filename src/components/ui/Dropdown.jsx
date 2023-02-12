@@ -3,12 +3,18 @@ import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down.s
 import { ReactComponent as CheckIcon } from "../../assets/icons/check.svg";
 import useOnClickOutside from "../../hooks/use-on-click-outside";
 import useKeyPress from "../../hooks/use-key-press";
+import { generateUUID } from "../../utils/utils";
+import useHover from "../../hooks/use-hover";
 
 const DropdownContext = createContext();
 
 const Dropdown = ({ label, children, onClick = () => {}, ...props }) => {
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef();
+  const onHandleHover = (isHovered) => {
+    console.log("isHovered", isHovered);
+    setOpen(isHovered);
+  };
+  const [dropdownRef, isHovered] = useHover({ initialRef: null, handler: onHandleHover });
   useOnClickOutside({ ref: dropdownRef, handler: () => setOpen(false) });
   useKeyPress({ key: "Escape", handler: () => setOpen(false) });
 
@@ -48,7 +54,7 @@ const DropdownMenu = ({ children }) => {
   return (
     <ul id={"menu"} className={` dropdown-content menu ${open ? "open" : ""}`}>
       {children.map((child) => (
-        <DropdownItem key={child.id}>{child}</DropdownItem>
+        <DropdownItem key={child.id || generateUUID()}>{child}</DropdownItem>
       ))}
     </ul>
   );
@@ -59,7 +65,11 @@ const DropdownItem = ({ children, ...props }) => {
 
   return (
     <li key={children.id} className={`menu-item`} onClick={() => handleClick(children.value)} {...props}>
-      <div className="menu-item-check">{children.active && <CheckIcon className="icon-16" />}</div>
+      {children.active && (
+        <div className="menu-item-check">
+          <CheckIcon className="icon-16" />
+        </div>
+      )}
       {children.label}
     </li>
   );
