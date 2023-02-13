@@ -129,7 +129,7 @@ root:not([data-theme]) {
   --secondary-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
 
   --accent: 326 100% 74%; /*hsl( 326 100% 74%)*/
-  --accent-focus: 322 100% 78%; /*hsl( 322 100% 78%)*/
+  --accent-focus: 322 100% 82%; /*hsl( 322 100% 72%)*/
   --accent-content: 231 15% 18%; /*hsl(231 15% 18%)*/
 
   --neutral: 231 15% 18%; /*hsl(231 15% 18%)*/

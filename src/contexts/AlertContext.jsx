@@ -108,7 +108,12 @@ export function Alert({ id, children, duration, title, type, position, ...props 
       <div className="alert-section">
         <div className="alert-description">
           {/* <span>device-debug: {deviceType}</span> */}
-          {title ? <div className="alert-title">{title}</div> : null}
+          {title ? (
+            <div className="alert-title">
+              {/* {title}: {type} */}
+              {type}
+            </div>
+          ) : null}
           <div className="alert-message">{children}</div>
         </div>
         {!duration && (

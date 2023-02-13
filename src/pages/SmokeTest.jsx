@@ -37,7 +37,16 @@ const SmokeTest = () => {
       </CardContent>
       <CardFooter>
         <Button color={"primary"} onClick={() => setStatus("pending")}>
-          Pending
+          primary
+        </Button>
+        <Button color={"secondary"} onClick={() => setStatus("pending")}>
+          secondary
+        </Button>
+        <Button color={"accent"} onClick={() => setStatus("pending")}>
+          accent
+        </Button>
+        <Button color={"base"} onClick={() => setStatus("pending")}>
+          base
         </Button>
       </CardFooter>
     </Card>
