@@ -39,7 +39,7 @@ const Modal = ({
   useLockScroll(document, isOpen,);
 
   const modalWindow = (
-    <div className="modal-wrapper">
+    <div className="backdrop">
       <div className="modal" ref={modalRef} id={id}>
         <ModalCloseButton id={id} />
         {children}

@@ -1,0 +1,129 @@
+.primary-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--primary) / var(--background-opacity, 1));
+  color: hsl(var(--primary-content, --base-content) / var(--background-opacity, 1));
+}
+
+.secondary-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--secondary) / var(--background-opacity, 1));
+  color: hsl(var(--secondary-content, --base-content) / var(--background-opacity, 1));
+}
+
+.accent-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--accent) / var(--background-opacity, 1));
+  color: hsl(var(--accent-content, --base-content) / var(--background-opacity, 1));
+}
+
+.neutral-100-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--neutral-100) / var(--background-opacity, 1));
+  color: hsl(var(--neutral-content, --base-content) / var(--background-opacity, 1));
+}
+
+.neutral-200-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--neutral-200, --neutral-100) / var(--background-opacity, 1));
+  color: hsl(var(--neutral-content) / var(--background-opacity, 1));
+}
+
+.neutral-300-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--neutral-300, --neutral-100) / var(--background-opacity, 1));
+  color: hsl(var(--neutral-content) / var(--background-opacity, 1));
+}
+
+.base-100-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  color: hsl(var(--base-content, --base-content) / var(--background-opacity, 1));
+}
+
+.base-200-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--base-200, --base-100) / var(--background-opacity, 1));
+  color: hsl(var(--base-content) / var(--background-opacity, 1));
+}
+
+.base-300-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--base-300, --base-100) / var(--background-opacity, 1));
+  color: hsl(var(--base-content, --base-content) / var(--background-opacity, 1));
+}
+
+.info-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--info) / var(--background-opacity, 1));
+  color: hsl(var(--info-content, --base-content) / var(--background-opacity, 1));
+}
+
+.success-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--success) / var(--background-opacity, 1));
+  color: hsl(var(--success-content, --base-content) / var(--background-opacity, 1));
+}
+
+.warning-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--warning) / var(--background-opacity, 1));
+  color: hsl(var(--warning-content, --base-content) / var(--background-opacity, 1));
+}
+
+.error-showcase {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(var(--error) / var(--background-opacity, 1));
+  color: hsl(var(--error-content, --base-content) / var(--background-opacity, 1));
+}

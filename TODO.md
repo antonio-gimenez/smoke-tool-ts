@@ -1,4 +1,0 @@
-- Add alert anmiation
-- Fix file upload
-- Add file upload with droparea
-- Add a backdrop to reuse on other components

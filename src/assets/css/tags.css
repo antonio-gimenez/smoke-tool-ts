@@ -37,6 +37,6 @@
   align-items: center;
   padding: var(--space-1) var(--space-1);
   border-radius: var(--border-radius);
-  background-color: hsl(var(--neutral) / var(--background-opacity, 1));
-  color: hsl(var(--neutral-content) / var(--text-opacity, 1));
+  background-color: hsl(var(--neutral-100) / var(--background-opacity, 1));
+  color: hsl(var(--neutral-100-content) / var(--text-opacity, 1));
 }

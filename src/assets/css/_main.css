@@ -15,30 +15,24 @@
 @import url("tabs.css");
 @import url("tags.css");
 @import url("themes.css");
+@import url("showcase.css");
 @import url("typography.css");
 @import url("pagination.css");
 
-::-moz-selection {
-  background-color: hsl(var(--base-content));
-  color: hsl(var(--base));
-}
-
-::selection {
-  background-color: hsl(var(--base-content));
-  color: hsl(var(--base));
-}
-
-/* style all placeholders */
-::-webkit-input-placeholder {
-  color: hsl(var(--error)) !important;
-}
-
-:-moz-placeholder {
-  color: hsl(var(--error)) !important;
-}
-
-:-ms-input-placeholder {
-  color: hsl(var(--error)) !important;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
+  width: 100vw;
+  height: 100vh;
+  --background-opacity: 0.4;
+  background: hsl(var(--neutral-focus) / var(--background-opacity, 0.015));
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 *:disabled,
@@ -46,20 +40,6 @@
   opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
-}
-
-.glass {
-  /* border: none; */
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  background-color: transparent;
-  background-image: linear-gradient(
-    135deg,
-    hsl(var(--base-100) / var(--glass-opacity)) 0%,
-    hsl(var(--base) / var(--glass-opacity)) 100%
-  );
-  box-shadow: 0 0 0 1px var(--base-100) inset, 0 0 0 2px #0000000d;
-  text-shadow: 0 1px var(--base-100);
 }
 
 html {
@@ -78,7 +58,7 @@ html {
 
 body {
   color: hsl(var(--base-content));
-  background-color: hsl(var(--base) / var(--background-opacity, 1));
+  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
   font-size: var(--fs-regular);
   line-height: normal;
   overflow: auto;

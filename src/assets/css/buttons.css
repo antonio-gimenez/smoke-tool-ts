@@ -67,11 +67,6 @@ button:disabled {
   --current-color: hsl(var(--secondary-content));
 }
 
-.button.neutral {
-  --current-background: hsl(var(--neutral));
-  --current-color: hsl(var(--neutral-content));
-}
-
 .button.success {
   --current-background: hsl(var(--success));
   --current-color: hsl(var(--success-content));
@@ -93,41 +88,36 @@ button:disabled {
 }
 
 .button.accent:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--accent-active));
 }
 
 .button.primary:hover {
-  --background-opacity: 0.9;
-  --current-background: hsl(var(--primary-active));
+  /* --background-opacity: 0.9; */
+  --current-background: hsl(var(--primary-focus));
 }
 .button.secondary:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--secondary-active));
 }
 
-.button.neutral:hover {
-  --background-opacity: 0.9;
-  --current-background: hsl(var(--neutral-active));
-}
-
 .button.success:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--success-active));
 }
 
 .button.warning:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--warning-active));
 }
 
 .button.error:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--error-active));
 }
 
 .button.info:hover {
-  --background-opacity: 0.9;
+  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--info-active));
 }
 
@@ -135,7 +125,6 @@ button:disabled {
 .button:focus-within {
   outline: var(--outline-width) solid;
   /* light */
-  outline-color: hsl(var(--neutral));
   /* var(--current-color); */
   outline-offset: var(--outline-offset);
 }

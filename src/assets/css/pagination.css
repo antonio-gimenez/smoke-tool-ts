@@ -18,8 +18,7 @@
   gap: var(--space-1, 0.25rem);
   padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
   --background-opacity: 1;
-  border: 1px solid hsl(var(--base-300) / var(--border-opacity, 1));
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: hsl(var(--base-200, --base-100) / var(--background-opacity, 1));
   color: hsl(var(--base-content));
   border-radius: var(--border-radius, none);
   font-size: var(--fs-regular);

@@ -16,8 +16,8 @@
   position: absolute;
   overflow: hidden;
   right: 0;
-  background: hsl(var(--neutral));
-  color: hsl(var(--neutral-content));
+  background: hsl(var(--neutral-100));
+  color: hsl(var(--neutral-100-content));
 }
 
 .dropdown .dropdown-content.open {

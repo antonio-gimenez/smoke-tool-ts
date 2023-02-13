@@ -55,13 +55,10 @@ root:not([data-theme]) {
   --primary-content: 220 70% 90%; /* Secondary color */
   --secondary: 200 50% 50%; /* Secondary color when focused */
   --secondary-active: 190 50% 50%; /* Foreground content color to use on secondary color */
-  --secondary-content: 210 50% 50%; /* Accent color */
-  --accent: 220 50% 50%; /* Accent color when focused */
-  --accent-active: 210 50% 50%; /* Foreground content color to use on accent color */
-  --accent-content: 230 50% 100%; /* Neutral color */
-  --neutral: 200 10% 22%; /* Neutral color when focused */
-  --neutral-active: 200 5% 45%; /* Foreground content color to use on neutral color */
-  --neutral-content: 200 10% 90%; /* Base color of page, used for blank backgrounds */
+  --secondary-content: 210 50% 50%; /* Foreground content secondary color */
+  --accent: 0 50% 10%; /* Color to use for emphasizing UI */
+  --accent-active: 0 20% 13%; /* Foreground content color to use on accent color */
+  --accent-content: 0 50% 100%; /* Neutral color */
   --base: 0 0% 96%; /* Base color for background pages */
   --base-100: 231 15% 88%; /* Base color, a little darker */
   --base-200: 230 14% 82%; /* Base color, even more darker */
@@ -77,7 +74,6 @@ root:not([data-theme]) {
   --error: 0 90% 60%; /* Foreground content color to use on error color */
   --error-content: 0 66% 17%;
   --border: 0 0% 20%; /* Shadow color */
-  --shadow: 0 0% 20% 0.07;
 }
 
 [data-theme="dark"] {
@@ -89,33 +85,106 @@ root:not([data-theme]) {
   The accent color is used to add a pop of color and to create visual interest. It is often used for small details such as icons, highlights, and small accents.
   The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
   By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
-  /* Primary color */
-  --primary: 213 94% 50%; /* Primary color when focused */
-  --primary-active: 220 90% 40%; /* Foreground content color to use on primary color */
-  --primary-content: 220 70% 90%; /* Secondary color */
-  --secondary: 220 10% 50%; /* Secondary color when focused */
-  --secondary-active: 50 20% 50%; /* Foreground content color to use on secondary color */
-  --secondary-content: 50 5% 10%; /* Accent color */
-  --accent: 115 70% 50%; /* Accent color when focused */
-  --accent-active: 350 90% 60%; /* Foreground content color to use on accent color */
-  --accent-content: 350 60% 89%; /* Neutral color */
-  --neutral: 230 14% 82%; /* Neutral color when focused */
-  --neutral-active: 250 10% 70%; /* Foreground content color to use on neutral color */
-  --neutral-content: 220 0% 10%; /* Base color of page, used for blank backgrounds */
-  --base: 220 13% 22%; /* Base color for background pages */
-  --base-100: 220 13% 11%; /* Base color, a little darker */
-  --base-200: 220 13% 16%; /* Base color, even more darker */
-  --base-300: 229 13% 6%; /* Foreground content color to use on base color */
-  --base-content: 0 0% 90%; /* Base color for background pages */
-  --base-active: 0 0% 80%; /* Foreground content color to use on base color when focused */
-  --info: 200 50% 50%; /* Foreground content color to use on info color */
-  --info-content: 210 50% 95%; /* Info color */
-  --success: 150 66% 60%; /* Foreground content color to use on success color */
-  --success-content: 150 100% 13%; /* Warning color */
-  --warning: 40 88% 63%; /* Foreground content color to use on warning color */
-  --warning-content: 60 50% 10%; /* Error color */
-  --error: 0 100% 65%; /* Foreground content color to use on error color */
-  --error-content: 0 100% 13%;
-  --border: 0 0% 20%; /* Shadow color */
-  --shadow: 0 0% 20% 0.07;
+
+  --primary-focus: 262 80% 40%;
+  --secondary-focus: 315 70% 40%;
+  --accent-foucs: 174 70% 32%;
+  --info: 198 93% 60%;
+  --success: 158 64% 52%;
+  --warinng: 43 96% 56%;
+  --error: 0 91% 71;
+  --info-content: 198 100% 12%;
+  --success-content: 158 100% 10%;
+  --warning-content: 43 100% 11%;
+  --error-content: 0 100% 14%;
+
+  /* --primary: 262 80% 40%; */
+  --primary: 262 80% 50%;
+  --primary-content: 0 0% 100%;
+  /* --secondary: 315 70% 40%; */
+  --secondary: 315 70% 50%;
+  --secondary-content: 0 0% 100%;
+  /* --accent: 174 70% 32%; */
+  --accent: 174 70% 50%;
+  --accent-content: 0 0% 100%;
+  --neutral: 218 18% 11%;
+  --neutral-focus: 222 17% 8%;
+  --neutral-content: 220 13% 69%;
+  --base-100: 220 17% 20%;
+  --base-200: 221 17% 17%;
+  --base-300: 218 17 % 15%;
+  --base-content: 220 13% 69%;
+
+  --border: 0 0% 20%;
+}
+
+[data-theme="dracula"] {
+  /* This theme is based on the Dracula theme by Zeno Rocha */
+  --primary: 265 89% 78%; /*hsl( 265 89% 78%)*/
+  --primary-focus: 267 100% 81%; /*hsl(267 100% 81%)*/
+  --primary-content: 60 30% 96%; /*hsl(60 30% 96%)*/
+
+  --secondary: 225 27% 51%; /*hsl( 225 27% 51%)*/
+  --secondary-focus: 225 30% 58%; /*hsl(225 30% 58%)*/
+  --secondary-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --accent: 326 100% 74%; /*hsl( 326 100% 74%)*/
+  --accent-focus: 322 100% 78%; /*hsl( 322 100% 78%)*/
+  --accent-content: 231 15% 18%; /*hsl(231 15% 18%)*/
+
+  --neutral: 231 15% 18%; /*hsl(231 15% 18%)*/
+  --neutral-focus: 232 14% 31%; /*hsl( 232 14% 31%)*/
+  --neutral-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --base-100: 232 14% 31%; /*hsl( 232 14% 31%)*/
+  --base-200: 232 17% 26%; /*hsl( 232 17% 26%)*/
+  --base-300: 231 19% 22%; /*hsl( 231 19% 22%)*/
+  --base-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --info: 265 89% 78%; /*hsl( 265 89% 78%) */
+  --info-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --success: 135 94% 65%; /*hsl( 135 94% 65%)*/
+  --success-content: 231 15% 18%; /*hsl(231 15% 18%)*/
+
+  --warning: 65 92% 76%; /*hsl( 65 92% 76%)*/
+  --warning-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
+
+  --error: 0 100% 67%; /*hsl( 0 100% 67%)*/
+  --error-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
+}
+
+[data-theme="helsing"] {
+  --primary: 265 70% 55%; /*hsl( 265 70% 55%)*/
+  --primary-focus: 267 80% 60%; /*hsl(267 80% 60%)*/
+  --primary-content: 0 0% 20%; /*hsl(0 0% 20%)*/
+
+  --secondary: 225 35% 35%; /*hsl( 225 35% 35%)*/
+  --secondary-focus: 225 40% 45%; /*hsl(225 40% 45%)*/
+  --secondary-content: 0 0% 20%; /*hsl( 0 0% 20%)*/
+
+  --accent: 326 100% 60%; /*hsl( 326 100% 60%)*/
+  --accent-focus: 322 100% 65%; /*hsl( 322 100% 65%)*/
+  --accent-content: 0 0% 100%; /*hsl(0 0% 100%)*/
+
+  --neutral: 0 0% 90%; /*hsl(0 0% 90%)*/
+  --neutral-focus: 0 0% 80%; /*hsl( 0 0% 80%)*/
+  --neutral-content: 0 0% 20%; /*hsl( 0 0% 20%)*/
+
+  --base-100: 0 0% 100%; /*hsl( 0 0% 100%)*/
+  --base-200: 0 0% 95%; /*hsl( 0 0% 95%)*/
+  --base-300: 0 0% 90%; /*hsl( 0 0% 90%)*/
+  --base-content: 0 0% 20%; /*hsl( 0 0% 20%)*/
+
+  --info: 265 70% 55%; /**hsl( 265 70% 55%) **/
+  --info-content: 0 0% 20%; /*hsl( 0 0% 20%)*/
+
+  --success: 135 70% 50%; /*hsl( 135 70% 50%)*/
+  --success-content: 0 0% 100%; /*hsl(0 0% 100%)*/
+
+  --warning: 65 70% 55%; /*hsl( 65 70% 55%)*/
+  --warning-content: 0 0% 20%; /*hsl( 0 0% 20%)*/
+
+  --error: 0 100% 60%; /*hsl( 0 100% 60%)*/
+  --error-content: 0 0% 100%; /*hsl(0 0% 100%)*/
 }

@@ -115,7 +115,7 @@ function NewTest() {
         <Button color={"secondary"} onClick={() => addAlertOnPosition("bottom-center")}>
           bottom-center
         </Button>
-        <Button color={"neutral"} onClick={() => addAlertOnPosition("bottom-right")}>
+        <Button color={"base"} onClick={() => addAlertOnPosition("bottom-right")}>
           bottom-right
         </Button>
 

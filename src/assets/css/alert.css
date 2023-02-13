@@ -165,13 +165,13 @@
 }
 
 .alert-info {
-  background-color: hsl(var(--info, var(--base-100)) / var(--background-opacity));
+  background-color: hsl(var(--info, --base-100) / var(--background-opacity));
   color: hsl(var(--info-content));
   border-color: hsl(var(--info) / var(--border-opacity, 0.5));
 }
 
 .alert-base {
-  background-color: hsl(var(--base-300) / var(--background-opacity, 1));
+  background-color: hsl(var(--base-200, --base-100) / var(--background-opacity, 1));
   color: hsl(var(--base-content));
-  border-color: hsl(var(--base-300) / var(--border-opacity, 0.5));
+  border-color: hsl(var(--base-300, --base-100) / var(--border-opacity, 0.5));
 }

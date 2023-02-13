@@ -104,8 +104,8 @@
   overflow: hidden;
   --border-opacity: 0.2;
   --background-opacity: 0.2;
-  background: hsl(var(--neutral) / var(--background-opacity, 1));
-  border-color: hsl(var(--neutral) / var(--border-opacity));
+  background: hsl(var(--neutral-100) / var(--background-opacity, 1));
+  border-color: hsl(var(--neutral-100) / var(--border-opacity));
   border-radius: var(--border-radius, 0.5rem);
 }
 

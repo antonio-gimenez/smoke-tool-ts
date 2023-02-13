@@ -20,13 +20,13 @@
 
 .table > tr:nth-child(even) {
   --background-opacity: 1;
-  background-color: hsl(var(--base-200) / var(--background-opacity, 1));
+  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
 }
 
 .table thead {
   vertical-align: middle;
   padding: var(--space-4);
-  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
+  background-color: hsl(var(--base-300) / var(--background-opacity, 1));
 }
 
 .table thead tr {
@@ -48,10 +48,8 @@
 }
 
 .table tbody tr:hover {
-  --background-opacity: 0.55;
-  z-index: 1;
-  color: hsl(var(--base) / var(--text-opacity, 1));
-  background: hsl(var(--base-content) / var(--background-opacity, 1));
+  --background-opacity: 0.75;
+  background: hsl(var(--base-100) / var(--background-opacity, 1));
 }
 
 .table :where(th, td) {

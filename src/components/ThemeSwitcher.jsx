@@ -3,15 +3,16 @@ import { ReactComponent as Moon } from "../assets/icons/moon.svg";
 import { ReactComponent as Sun } from "../assets/icons/sun.svg";
 import { ReactComponent as System } from "../assets/icons/system.svg";
 import useTheme from "../hooks/use-theme";
+import { generateUUID } from "../utils/utils";
 import { Dropdown, DropdownMenu, DropdownToggle } from "./ui/Dropdown";
 
 function ThemeSwitcher() {
   const { theme, setTheme, remove, system } = useTheme();
   const [open, setOpen] = useState(false);
 
-  function toggleOpen() {
-    setOpen(!open);
-  }
+  // function toggleOpen() {
+  //   setOpen(!open);
+  // }
 
   function toggleTheme(theme) {
     if (theme === "system") {
@@ -26,24 +27,26 @@ function ThemeSwitcher() {
     if (system) return System;
     if (theme === "light") return Sun;
     if (theme === "dark") return Moon;
+    return Sun;
   }
 
   const Icon = getIcon();
 
   const themes = [
     {
-      id: 0,
+      id: generateUUID(),
       label: "Light",
       value: "light",
       active: theme === "light" && !system,
     },
     {
-      id: 1,
+      id: generateUUID(),
       label: "Dark",
       value: "dark",
       active: theme === "dark" && !system,
     },
-    { id: 2, label: "System", value: "system", active: system },
+    { id: generateUUID(), label: "Dracula", value: "dracula", active: theme === "dracula" && !system },
+    { id: generateUUID(), label: "System", value: "system", active: system },
   ];
 
   return (
