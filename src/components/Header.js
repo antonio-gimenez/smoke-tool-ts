@@ -50,7 +50,7 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal closeOnOverlayClick={false} id="create-test">
+          <Modal closeOnOverlayClick={false} closeOnEscape={false} id="create-test">
             <ModalHeader>
               <p>New Test</p>
             </ModalHeader>

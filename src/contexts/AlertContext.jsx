@@ -1,12 +1,21 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
 import useDeviceType from "../hooks/use-device-type";
+import useKeyPress from "../hooks/use-key-press";
 import { generateUUID, groupBy } from "../utils/utils";
 
 export const AlertContext = createContext();
 
 export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
+  useKeyPress({
+    key: "Escape",
+    handler: () => {
+      if (alerts.length > 0) {
+        setAlerts((prevAlerts) => prevAlerts.slice(1));
+      }
+    },
+  });
   const [animationDelay, setAnimationDelay] = useState(200);
   const addAlert = ({
     id = generateUUID(),
@@ -98,7 +107,7 @@ export function Alert({ id, children, duration, title, type, position, ...props 
     <div id={id} className={`${alertMobilePosition()} alert-${type}`} {...props} role="alert">
       <div className="alert-section">
         <div className="alert-description">
-          <span>device-debug: {deviceType}</span>
+          {/* <span>device-debug: {deviceType}</span> */}
           {title ? <div className="alert-title">{title}</div> : null}
           <div className="alert-message">{children}</div>
         </div>

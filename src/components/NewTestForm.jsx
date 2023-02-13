@@ -65,8 +65,10 @@ function NewTest() {
 
   const addAlertOnPosition = (position = "top-left") => {
     return addAlert({
-      message: "This is a test alert",
+      message:
+        "Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.",
       type: selectRandomFromArray(["success", "error", "warning", "info", "base"]),
+      title: "Sample title",
       position,
     });
   };
