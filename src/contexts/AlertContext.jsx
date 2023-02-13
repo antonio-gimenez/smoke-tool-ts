@@ -7,7 +7,7 @@ export const AlertContext = createContext();
 
 export function AlertProvider({ children }) {
   const [alerts, setAlerts] = useState([]);
-
+  const [animationDelay, setAnimationDelay] = useState(200);
   const addAlert = ({
     id = generateUUID(),
     message,
@@ -43,6 +43,7 @@ export function AlertProvider({ children }) {
                 title={alert.title}
                 type={alert.type}
                 duration={alert.duration}
+                animation={alert.animation}
               >
                 {alert.message}
               </Alert>

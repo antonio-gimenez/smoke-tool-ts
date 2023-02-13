@@ -1,20 +1,16 @@
-import React, { createContext, useContext, useRef, useState } from "react";
-import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down.svg";
+import { createContext, useContext, useRef, useState } from "react";
 import { ReactComponent as CheckIcon } from "../../assets/icons/check.svg";
-import useOnClickOutside from "../../hooks/use-on-click-outside";
+import { ReactComponent as ChevronIcon } from "../../assets/icons/chevron-down.svg";
 import useKeyPress from "../../hooks/use-key-press";
+import useOnClickOutside from "../../hooks/use-on-click-outside";
 import { generateUUID } from "../../utils/utils";
-import useHover from "../../hooks/use-hover";
 
 const DropdownContext = createContext();
 
 const Dropdown = ({ label, children, onClick = () => {}, ...props }) => {
   const [open, setOpen] = useState(false);
-  const onHandleHover = (isHovered) => {
-    console.log("isHovered", isHovered);
-    setOpen(isHovered);
-  };
-  const [dropdownRef, isHovered] = useHover({ initialRef: null, handler: onHandleHover });
+  const dropdownRef = useRef();
+
   useOnClickOutside({ ref: dropdownRef, handler: () => setOpen(false) });
   useKeyPress({ key: "Escape", handler: () => setOpen(false) });
 

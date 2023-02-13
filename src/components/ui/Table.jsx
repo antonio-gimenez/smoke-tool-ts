@@ -1,9 +1,9 @@
 const Table = ({ items }) => {
-  console.log(
-    items.map((item) => {
-      return item.files?.map((file) => file);
-    })
-  );
+  // console.log(
+  //   items.map((item) => {
+  //     return item.files?.map((file) => file);
+  //   })
+  // );
   return (
     <table className="table ">
       <thead>
@@ -17,7 +17,7 @@ const Table = ({ items }) => {
           <tr key={test._id + index}>
             <td>{test.name}</td>
             <td>
-              {test.files.length > 0 ? test.files.map((file, index) => <p key={index}>{file.name}</p>) : "No files"}
+              {test.files?.length > 0 ? test.files.map((file, index) => <p key={index}>{file.name}</p>) : "No files"}
             </td>
           </tr>
         ))}

@@ -18,8 +18,14 @@ function useBranches() {
             message: "No branches found",
             type: "warning",
             title: "No branches",
-            position: "top-center",
-            duration: 5000,
+            position: "top-right",
+            duration: 3000,
+          });
+          addAlert({
+            message: "No branches found",
+            type: "success",
+            title: "No branches",
+            position: "top-right",
           });
           setEmpty(true);
           setLoading(false);

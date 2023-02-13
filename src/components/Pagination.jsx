@@ -78,7 +78,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
         })}
         <li className="page-control">
           <button onClick={onNext} aria-disabled={currentPage === lastPage}>
-            <ChevronRightIcon />
+            <ChevronRightIcon className="icon-16" />
           </button>
         </li>
       </ol>

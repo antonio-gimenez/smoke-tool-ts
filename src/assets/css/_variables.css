@@ -90,13 +90,13 @@ root:not([data-theme]) {
   The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
   By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
   /* Primary color */
-  --primary: 160 100% 45%; /* Primary color when focused */
+  --primary: 213 94% 50%; /* Primary color when focused */
   --primary-active: 220 90% 40%; /* Foreground content color to use on primary color */
   --primary-content: 220 70% 90%; /* Secondary color */
-  --secondary: 200 30% 22%; /* Secondary color when focused */
+  --secondary: 220 10% 50%; /* Secondary color when focused */
   --secondary-active: 50 20% 50%; /* Foreground content color to use on secondary color */
   --secondary-content: 50 5% 10%; /* Accent color */
-  --accent: 350 70% 50%; /* Accent color when focused */
+  --accent: 115 70% 50%; /* Accent color when focused */
   --accent-active: 350 90% 60%; /* Foreground content color to use on accent color */
   --accent-content: 350 60% 89%; /* Neutral color */
   --neutral: 230 14% 82%; /* Neutral color when focused */

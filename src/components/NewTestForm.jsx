@@ -101,19 +101,19 @@ function NewTest() {
         <Button color={"primary"} onClick={() => addAlertOnPosition()}>
           top-left
         </Button>
-        <Button color={"primary"} onClick={() => addAlertOnPosition("top-center")}>
+        <Button color={"error"} onClick={() => addAlertOnPosition("top-center")}>
           top-center
         </Button>
-        <Button color={"primary"} onClick={() => addAlertOnPosition("top-right")}>
+        <Button color={"warning"} onClick={() => addAlertOnPosition("top-right")}>
           top-right
         </Button>
-        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-left")}>
+        <Button color={"accent"} onClick={() => addAlertOnPosition("bottom-left")}>
           bottom-left
         </Button>
-        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-center")}>
+        <Button color={"secondary"} onClick={() => addAlertOnPosition("bottom-center")}>
           bottom-center
         </Button>
-        <Button color={"primary"} onClick={() => addAlertOnPosition("bottom-right")}>
+        <Button color={"neutral"} onClick={() => addAlertOnPosition("bottom-right")}>
           bottom-right
         </Button>
 

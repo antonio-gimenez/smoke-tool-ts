@@ -15,7 +15,7 @@ const FileSelector: React.FC<FileSelectorProps> = ({ id = `file-selector-${gener
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(event.target.files, event.target);
+        console.log(event.target.files);
         if (event.target.files) {
             // setSelectedFiles(event.target.files);
             // add files to the list without replacing the existing files
@@ -92,9 +92,9 @@ const FileSelector: React.FC<FileSelectorProps> = ({ id = `file-selector-${gener
                         {Array.from({ length: selectedFiles.length }, (_, index) => (
                             <li key={index} className='file'>
                                 <FileIcon className='file-icon' />
-                                <span className='file-name'>
+                                <a className='text-accent' href={URL.createObjectURL(selectedFiles[index])} target='_blank' rel='noopener noreferrer'>
                                     {selectedFiles[index].name}
-                                </span>
+                                </a>
                                 <span className='file-size'>
                                     {humanFileSize(selectedFiles[index].size)}
                                 </span>
@@ -106,7 +106,7 @@ const FileSelector: React.FC<FileSelectorProps> = ({ id = `file-selector-${gener
                     </ul>
                 ) : (
                     <p className='dropzone-message'>
-                        Drag and drop your files here or <a href='#' onClick={handleFileSelect}>select files from your computer</a>
+                        Drag and drop your files here or <a href='#' className='text-accent' onClick={handleFileSelect}>select files from your computer</a>
                     </p>
                 )}
             </div>
