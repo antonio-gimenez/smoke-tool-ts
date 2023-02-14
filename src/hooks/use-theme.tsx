@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "./use-local-storage";
 
 interface ThemeState {
-  theme: "dark" | "light" | "dracula" | 'dracula-mod';
+  theme: "dark" | "light" | "dracula";
   system: boolean;
   remove: () => void;
-  setTheme: (theme: "dark" | "light" | "dracula" | 'dracula-mod') => void;
+  setTheme: (theme: "dark" | "light" | "dracula") => void;
 }
 
-const themeList = ["dark", "light", "dracula", 'dracula-mod'];
+const themeList = ["dark", "light", "dracula"];
 
 function useTheme() {
   const [storedTheme, setStoredTheme, removeStoredTheme, storedThemeExists] = useLocalStorage({ key: "theme" });

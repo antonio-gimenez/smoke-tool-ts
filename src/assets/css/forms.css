@@ -47,7 +47,7 @@
   line-height: normal;
 
   --background-opacity: 0.75;
-  background: hsl(var(--base-200) / var(--background-opacity, 1));
+  background: hsl(var(--base-300) / var(--background-opacity, 1));
   color: hsl(var(--base-content) / var(--text-opacity, 1));
   outline: currentColor none medium;
   outline-offset: var(--outline-offset, 2px);

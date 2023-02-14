@@ -88,36 +88,29 @@ button:disabled {
 }
 
 .button.accent:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--accent-focus));
 }
 
 .button.primary:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--primary-focus));
 }
 .button.secondary:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--secondary-focus));
 }
 
 .button.success:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--success-focus));
 }
 
 .button.warning:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--warning-focus));
 }
 
 .button.error:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--error-focus));
 }
 
 .button.info:hover {
-  /* --background-opacity: 0.9; */
   --current-background: hsl(var(--info-focus));
 }
 

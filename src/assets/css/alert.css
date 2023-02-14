@@ -87,32 +87,10 @@
 }
 
 .alert {
-  padding: var(--space-3, 0.75rem);
+  padding: var(--space-4, 1rem);
   position: relative;
   max-width: 100%;
   border-radius: var(--border-radius, 0.5rem);
-}
-
-.alert-enter {
-  opacity: 0;
-  transform: translateY(0.5rem);
-}
-
-.alert-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.alert-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.alert-exit-active {
-  opacity: 0;
-  transform: translateY(0.5rem);
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .alert-section {
@@ -171,7 +149,7 @@
 }
 
 .alert-base {
-  background-color: hsl(var(--base-200, --base-100) / var(--background-opacity, 1));
+  background-color: hsl(var(--neutral, --base-300) / var(--background-opacity, 1));
   color: hsl(var(--base-content));
-  border-color: hsl(var(--base-300, --base-100) / var(--border-opacity, 0.5));
+  border-color: hsl(var(--neutral, --base-300) / var(--border-opacity, 1));
 }

@@ -57,7 +57,7 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
     // Set loading state to true
     setIsLoading(true);
     try {
-      const response = await api.get(`tests`, {
+      const response = await api.get(`tesats`, {
         params: queryParams ?? initialParams,
       });
       const data = response.data;
@@ -67,7 +67,7 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
     } catch (error) {
       const { message, code } = error as axiosError;
 
-      addAlert({ message: "Error retrieving tests: " + message, type: "error", title: code, position: 'bottom-center' });
+      addAlert({ message: "Error retrieving tests: " + message, type: "error", position: 'bottom-center' });
     } finally {
       setIsLoading(false);
     }

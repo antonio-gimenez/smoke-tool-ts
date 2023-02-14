@@ -8,7 +8,7 @@
   color: hsl(var(--base-content));
   border-radius: var(--border-radius);
   z-index: 2;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25); */
 }
 
 .modal-close-button {

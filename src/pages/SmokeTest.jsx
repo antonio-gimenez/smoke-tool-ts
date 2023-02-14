@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Button from "../components/ui/Button.jsx";
 import Card, { CardHeader, CardContent, CardFooter } from "../components/ui/Card.jsx";
 import Table from "../components/ui/Table.jsx";
+import Tabs from "../components/ui/Tabs.jsx";
 import { TestContext } from "../contexts/TestContext";
 import withPagination from "../hocs/withPagination.jsx";
 const SmokeTest = () => {
@@ -28,28 +29,34 @@ const SmokeTest = () => {
   }, [currentPage, status]);
 
   return (
-    <Card>
-      <CardHeader>
-        <h2>Smoke Test</h2>
-      </CardHeader>
-      <CardContent>
-        <PaginatedTable />
-      </CardContent>
-      <CardFooter>
-        <Button color={"primary"} onClick={() => setStatus("pending")}>
-          primary
-        </Button>
-        <Button color={"secondary"} onClick={() => setStatus("pending")}>
-          secondary
-        </Button>
-        <Button color={"accent"} onClick={() => setStatus("pending")}>
-          accent
-        </Button>
-        <Button color={"base"} onClick={() => setStatus("pending")}>
-          base
-        </Button>
-      </CardFooter>
-    </Card>
+    <>
+      <Card>
+        <CardHeader>
+          <h2 className="">Smoke Test</h2>
+        </CardHeader>
+        <CardContent>
+          <Tabs>
+            <div label="Pending" />
+            <div label="Running" />
+          </Tabs>
+          <PaginatedTable />
+        </CardContent>
+        <CardFooter>
+          <Button color={"primary"} onClick={() => setStatus("pending")}>
+            primary
+          </Button>
+          <Button color={"secondary"} onClick={() => setStatus("pending")}>
+            secondary
+          </Button>
+          <Button color={"accent"} onClick={() => setStatus("pending")}>
+            accent
+          </Button>
+          <Button color={"base"} onClick={() => setStatus("pending")}>
+            base
+          </Button>
+        </CardFooter>
+      </Card>
+    </>
   );
   // return tests?.length > 0 ? <PaginatedTable /> : null;
 };
