@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NewTestForm from "./NewTestForm";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSelector from "./ThemeSelector";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
 import { Dropdown, DropdownMenu, DropdownToggle } from "./ui/Dropdown";
 const Header = () => {
@@ -28,6 +28,24 @@ const Header = () => {
       id: 2,
       label: "Passed",
       value: "passed",
+    },
+  ];
+
+  const themes = [
+    {
+      id: 1,
+      label: "Light",
+      value: "light",
+    },
+    {
+      id: 2,
+      label: "Dark",
+      value: "dark",
+    },
+    {
+      id: 3,
+      label: "Dracula",
+      value: "dracula",
     },
   ];
 
@@ -60,7 +78,7 @@ const Header = () => {
           </Modal>
         </nav>
         <nav aria-label="Theme switcher">
-          <ThemeSwitcher />
+          <ThemeSelector themes={themes} />
         </nav>
       </div>
     </header>

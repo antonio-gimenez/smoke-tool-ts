@@ -15,7 +15,7 @@ button {
   --button-height: 2.2rem;
   --padding-x: var(--space-1, 0.25rem);
   --padding-y: var(--space-1, 0.25rem);
-  --current-background: hsl(var(--base-100));
+  --current-background: transparent;
   --current-color: hsl(var(--base-content));
   --border-width: 2px;
   --outline-width: var(--border-width, 1px);
@@ -43,6 +43,22 @@ button {
   user-select: none;
 }
 
+.button:active {
+  animation: button-pop 0.1s ease 0s;
+}
+
+@keyframes button-pop {
+  0% {
+    transform: scale(var(--btn-focus-scale, 0.95));
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 /* button disabled */
 button[disabled="true"],
 button[aria-disabled="true"],
@@ -50,6 +66,14 @@ button:disabled {
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.button-ghost:hover {
+  --current-background: hsl(var(--base-300) / 0.7);
+}
+
+.button-ghost:active {
+  --current-background: hsl(var(--base-300) / 0.9);
 }
 
 .button.accent {

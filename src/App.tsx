@@ -5,14 +5,14 @@ import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext";
-import useTheme from "./hooks/use-theme";
+import useThemeState from "./hooks/use-theme-state";
 import SmokeTest from "./pages/SmokeTest.jsx";
 
 function App() {
-  const { theme } = useTheme();
+  const { value } = useThemeState();
   const html = document.querySelector("html");
   if (html) {
-    html.setAttribute("data-theme", theme);
+    html.setAttribute("data-theme", value);
   }
 
 

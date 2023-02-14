@@ -16,7 +16,7 @@ function useBranches() {
         if (response.status === 204) {
           addAlert({
             message: "No branches found",
-            type: "warning",
+            // type: "warning",
             position: "top-center",
             duration: 3000,
           });

@@ -4,7 +4,7 @@
   height: clamp(30vh, auto, 95vh);
   padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
   --background-opacity: 1;
-  background: hsl(var(--base-200) / var(--background-opacity));
+  background: hsl(var(--neutral) / var(--background-opacity));
   color: hsl(var(--base-content));
   border-radius: var(--border-radius);
   z-index: 2;

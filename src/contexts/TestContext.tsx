@@ -67,7 +67,7 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
     } catch (error) {
       const { message, code } = error as axiosError;
 
-      addAlert({ message: "Error retrieving tests: " + message, type: "error", position: 'bottom-center' });
+      addAlert({ message: "Error retrieving tests: " + message, type: 'error' });
     } finally {
       setIsLoading(false);
     }
