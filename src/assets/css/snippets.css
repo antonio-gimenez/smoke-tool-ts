@@ -1,0 +1,28 @@
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  display: inherit;
+}
+
+.bordered {
+  --border-opacity: 0.15;
+  border: var(--border-width, 1px) solid hsl(var(--base-content) / var(--border-opacity, 1));
+}
+
+.divider-horizontal {
+  --border-opacity: 0.15;
+  border: var(--border-width, 1px) solid hsl(var(--base-content) / var(--border-opacity, 1));
+  width: 100%;
+}
+
+.divider-vertical {
+  --border-opacity: 0.15;
+  border: var(--border-width, 1px) solid hsl(var(--base-content) / var(--border-opacity, 1));
+  height: 100%;
+}

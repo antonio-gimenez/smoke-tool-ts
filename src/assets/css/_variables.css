@@ -28,12 +28,19 @@ html {
   --space-2: 0.55rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
-
-  --border-radius: var(--space-1);
+  --space-5: 1.25rem;
 
   --background-opacity: 1;
   --text-opacity: 1;
   --border-opacity: 1;
+  --outline-opacity: 1;
+  --border-width: 1px;
+  /* 
+    The following calc fixes the border radius overlapping on some overflowed elements.
+  */
+  --border-radius: calc(var(--space-2) - var(--border-width));
+  --outline-width: var(--border-width, 1px);
+  --outline-offset: var(--outline-width, 1px);
   --glass-opacity: 0.5;
 }
 
@@ -41,51 +48,42 @@ html {
 [data-theme="light"],
 root:not([data-theme]) {
   color-scheme: light;
-  accent-color: hsl(var(--accent));
+  --primary: 221 83% 53%; /*hsl(221 83% 53%)*/
+  --primary-focus: 221 83% 55%; /*hsl(220 100% 65%)*/
+  --primary-content: 221 0% 96%; /*hsl(0 0% 96%)*/
 
-  /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
-  The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
-  The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.
-  The accent color is used to add a pop of color and to create visual interest. It is often used for small details such as icons, highlights, and small accents.
-  The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
-  By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
-  /* Primary color */
-  --primary: 220 100% 50%; /* Primary color when focused */
-  --primary-active: 220 50% 50%; /* Foreground content color to use on primary color */
-  --primary-content: 220 70% 90%; /* Secondary color */
-  --secondary: 200 50% 50%; /* Secondary color when focused */
-  --secondary-active: 190 50% 50%; /* Foreground content color to use on secondary color */
-  --secondary-content: 210 50% 50%; /* Foreground content secondary color */
-  --accent: 0 50% 10%; /* Color to use for emphasizing UI */
-  --accent-active: 0 20% 13%; /* Foreground content color to use on accent color */
-  --accent-content: 0 50% 100%; /* Neutral color */
-  --base: 0 0% 96%; /* Base color for background pages */
-  --base-100: 231 15% 88%; /* Base color, a little darker */
-  --base-200: 230 14% 82%; /* Base color, even more darker */
-  --base-300: 229 13% 76%; /* Foreground content color to use on base color */
-  --base-content: 0 0% 10%; /* Info color */
-  --base-active: 0 0% 10%; /* Foreground content color to use on base color when focused */
-  --info: 200 50% 50%; /* Foreground content color to use on info color */
-  --info-content: 210 50% 95%; /* Info color */
-  --success: 150 66% 60%; /* Foreground content color to use on success color */
-  --success-content: 150 66% 15%; /* Warning color */
-  --warning: 40 88% 63%; /* Foreground content color to use on warning color */
-  --warning-content: 50 100% 15%; /* Error color */
-  --error: 0 90% 60%; /* Foreground content color to use on error color */
-  --error-content: 0 66% 17%;
-  --border: 0 0% 20%; /* Shadow color */
+  --secondary: 210 15% 45%; /*hsl(210 15% 40%)*/
+  --secondary-focus: 210 20% 50%; /*hsl(210 20% 60%)*/
+  --secondary-content: 0 0% 96%; /*hsl(0 0% 96%)*/
+
+  --accent: 175 84% 32%; /*hsl(175 84% 32%)*/
+  --accent-focus: 175 84% 35%; /*hsl(175 84% 35%)*/
+  --accent-content: 175 40% 98%; /*hsl(50 15% 18%)*/
+
+  --neutral: 221 5% 39%; /*hsl(221 5% 39%)*/
+  --neutral-focus: 221 5% 41%; /*hsl(221 5% 41%)*/
+  --neutral-content: 0 0% 96%; /*hsl(0 0% 96%)*/
+
+  --base-100: 210 10% 91%; /*hsl( 210 10% 91%)*/
+  --base-200: 212 12% 86%; /*hsl( 212 12% 86%)*/
+  --base-300: 211 14% 80%; /*hsl( 211 14% 80%)*/
+  --base-content: 0 0% 16%; /*hsl( 0 0% 16%)*/
+
+  --info: 265 89% 78%; /*hsl( 265 89% 78%) */
+  --info-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --success: 135 94% 65%; /*hsl( 135 94% 65%)*/
+  --success-content: 231 15% 18%; /*hsl(231 15% 18%)*/
+
+  --warning: 65 92% 76%; /*hsl( 65 92% 76%)*/
+  --warning-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
+
+  --error: 0 100% 67%; /*hsl( 0 100% 67%)*/
+  --error-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  accent-color: hsl(var(--accent));
-  /* In design, primary, secondary, accent, and neutral colors are often used to create a color scheme that is visually balanced and harmonious.
-  The primary color is usually the most dominant color used in a design and it is often used to draw attention or create a sense of importance. It is typically used for key elements such as headings, buttons, and other interactive elements that need to stand out.
-  The secondary color is usually used to support the primary color and to create visual interest. It is often used to provide contrast and to break up large areas of the primary color. The secondary color can be used for less important elements such as subheadings, labels, and small details.
-  The accent color is used to add a pop of color and to create visual interest. It is often used for small details such as icons, highlights, and small accents.
-  The neutral color is used to provide a background and to balance the other colors. It is often used as a base color for text, backgrounds, and other non-interactive elements.
-  By using these colors in a balanced way, you can create a color scheme that is visually pleasing and easy to read. Additionally, these colors can be used in a way that convey a certain meaning for example, red for danger, green for success and so on. */
-
   --primary-focus: 262 80% 40%;
   --secondary-focus: 315 70% 40%;
   --accent-foucs: 174 70% 32%;
@@ -120,6 +118,7 @@ root:not([data-theme]) {
 
 [data-theme="dracula"] {
   /* This theme is based on the Dracula theme by Zeno Rocha */
+  color-scheme: dark;
   --primary: 265 89% 78%; /*hsl( 265 89% 78%)*/
   --primary-focus: 267 100% 81%; /*hsl(267 100% 81%)*/
   --primary-content: 60 30% 96%; /*hsl(60 30% 96%)*/

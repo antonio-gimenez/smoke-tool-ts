@@ -9,10 +9,10 @@ import useThemeState from "./hooks/use-theme-state";
 import SmokeTest from "./pages/SmokeTest.jsx";
 
 function App() {
-  const { value } = useThemeState();
+  const { currentTheme } = useThemeState();
   const html = document.querySelector("html");
   if (html) {
-    html.setAttribute("data-theme", value);
+    html.setAttribute("data-theme", currentTheme);
   }
 
 

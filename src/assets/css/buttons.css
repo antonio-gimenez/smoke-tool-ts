@@ -13,14 +13,8 @@ button {
 .button {
   --button-width: 18rem;
   --button-height: 2.2rem;
-  --padding-x: var(--space-1, 0.25rem);
-  --padding-y: var(--space-1, 0.25rem);
-  --current-background: transparent;
-  --current-color: hsl(var(--base-content));
-  --border-width: 2px;
-  --outline-width: var(--border-width, 1px);
-  --outline-offset: var(--outline-width, 1px);
-  --outline-opacity: 0;
+  --padding-x: var(--space-4, 0.25rem);
+  --padding-y: var(--space-4, 0.25rem);
   position: relative;
   font-size: var(--fs-regular);
   font-weight: var(--fw-medium);
@@ -35,11 +29,11 @@ button {
   height: var(--button-height, 2.5rem);
   width: fit-content;
   max-width: calc(var(--button-width) + 2 * var(--padding-x));
-  background: var(--current-background);
+  background: hsl(var(--neutral), var(--background-opacity, 1));
+  color: hsl(var(--neutral-content), var(--text-opacity, 1));
   border-radius: var(--border-radius);
   cursor: pointer;
   border: 2px solid transparent;
-  color: var(--current-color);
   user-select: none;
 }
 
@@ -59,93 +53,87 @@ button {
   }
 }
 
-/* button disabled */
-button[disabled="true"],
-button[aria-disabled="true"],
-button:disabled {
+.button[disabled="true"],
+.button[aria-disabled="true"],
+.button:disabled {
   pointer-events: none;
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 .button-ghost:hover {
-  --current-background: hsl(var(--base-300) / 0.7);
+  --background-opacity: 0.09;
+  background: hsl(var(--base-content) / var(--background-opacity, 0.2));
 }
 
 .button-ghost:active {
-  --current-background: hsl(var(--base-300) / 0.9);
+  background: hsl(var(--base-300) / 0.9);
 }
 
 .button.accent {
-  --current-background: hsl(var(--accent));
-  --current-color: hsl(var(--accent-content));
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-content));
 }
 
 .button.primary {
-  --current-background: hsl(var(--primary));
-  --current-color: hsl(var(--primary-content));
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-content));
 }
 
 .button.secondary {
-  --current-background: hsl(var(--secondary));
-  --current-color: hsl(var(--secondary-content));
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-content));
 }
 
 .button.success {
-  --current-background: hsl(var(--success));
-  --current-color: hsl(var(--success-content));
+  background: hsl(var(--success));
+  color: hsl(var(--success-content));
 }
 
 .button.warning {
-  --current-background: hsl(var(--warning));
-  --current-color: hsl(var(--warning-content));
+  background: hsl(var(--warning));
+  color: hsl(var(--warning-content));
 }
 
 .button.error {
-  --current-background: hsl(var(--error));
-  --current-color: hsl(var(--error-content));
+  background: hsl(var(--error));
+  color: hsl(var(--error-content));
 }
 
 .button.info {
-  --current-background: hsl(var(--info));
-  --current-color: hsl(var(--info-content));
+  background: hsl(var(--info));
+  color: hsl(var(--info-content));
 }
 
 .button.accent:hover {
-  --current-background: hsl(var(--accent-focus));
+  background: hsl(var(--accent-focus));
 }
 
 .button.primary:hover {
-  --current-background: hsl(var(--primary-focus));
+  background: hsl(var(--primary-focus));
 }
 .button.secondary:hover {
-  --current-background: hsl(var(--secondary-focus));
+  background: hsl(var(--secondary-focus));
 }
 
 .button.success:hover {
-  --current-background: hsl(var(--success-focus));
+  background: hsl(var(--success-focus));
 }
 
 .button.warning:hover {
-  --current-background: hsl(var(--warning-focus));
+  background: hsl(var(--warning-focus));
 }
 
 .button.error:hover {
-  --current-background: hsl(var(--error-focus));
+  background: hsl(var(--error-focus));
 }
 
 .button.info:hover {
-  --current-background: hsl(var(--info-focus));
+  background: hsl(var(--info-focus));
 }
 
 .button:hover {
-  --current-background: hsl(var(--base-300) / 0.7);
-}
-
-.button:focus,
-.button:focus-within {
-  outline: var(--outline-width) solid;
-  outline-offset: var(--outline-offset);
+  background: hsl(var(--base-300) / 0.7);
 }
 
 .button.block {

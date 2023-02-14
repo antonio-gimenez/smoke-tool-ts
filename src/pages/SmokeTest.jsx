@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Button from "../components/ui/Button.jsx";
-import Card, { CardHeader, CardContent, CardFooter } from "../components/ui/Card.jsx";
+import Card, { CardContent, CardFooter, CardHeader } from "../components/ui/Card.jsx";
 import Table from "../components/ui/Table.jsx";
 import Tabs from "../components/ui/Tabs.jsx";
 import { TestContext } from "../contexts/TestContext";
@@ -30,10 +30,6 @@ const SmokeTest = () => {
 
   return (
     <>
-      <div
-        style={{ height: "32px", width: "32px", borderRadius: "5px", background: "hsl(var(--neutral))" }}
-        data-theme="light"
-      ></div>
       <Card>
         <CardHeader>
           <h2 className="">Smoke Test</h2>

@@ -57,7 +57,7 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
     // Set loading state to true
     setIsLoading(true);
     try {
-      const response = await api.get(`tesats`, {
+      const response = await api.get(`tests`, {
         params: queryParams ?? initialParams,
       });
       const data = response.data;

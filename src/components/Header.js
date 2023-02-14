@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import NewTestForm from "./NewTestForm";
-import ThemeSelector from "./ThemeSelector";
+import ThemeSelector from "./ThemeSelector/ThemeSelector";
+import { Dropdown, DropdownContent, DropdownToggle } from "./ui/Dropdown";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
-import { Dropdown, DropdownMenu, DropdownToggle } from "./ui/Dropdown";
 const Header = () => {
   // add a glass effect to the header when is scrolled
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,11 +59,6 @@ const Header = () => {
           <a className="link" href="/tests/">
             Tests
           </a>
-
-          <Dropdown label="Test Cases" onClick={() => {}}>
-            <DropdownToggle>Test Cases</DropdownToggle>
-            <DropdownMenu>{testCases}</DropdownMenu>
-          </Dropdown>
           <a className="link" href="/testcases/">
             Test Cases
           </a>

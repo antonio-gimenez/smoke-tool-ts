@@ -1,15 +1,9 @@
-import React from "react";
-import { ReactComponent as CheckIcon } from "../assets/icons/check.svg";
+import { generateUUID } from "../../utils/utils";
 
-function Menu({ children, open = false, onClick = () => {} }) {
+function Menu({ id = `menu-${generateUUID()}`, children, open = false }) {
   return (
-    <ul id={"menu"} className={`menu  ${open ? "open" : ""}`}>
-      {children.map((child) => (
-        <li key={child.id} className={`menu-item`} onClick={() => onClick(child.value)}>
-          {child.active && <CheckIcon />}
-          <span>{child.label}</span>
-        </li>
-      ))}
+    <ul id={id} className={`menu  ${open ? "open" : ""}`}>
+      {children}
     </ul>
   );
 }

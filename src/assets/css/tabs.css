@@ -22,9 +22,11 @@
   padding: 0.5rem 1rem;
   border: none;
   background-color: transparent;
-  color: hsl(var(--secondary));
+  --text-opacity: 0.65;
+  color: hsl(var(--secondary) / var(--text-opacity));
   cursor: pointer;
-  border-bottom: 2px solid hsl(var(--secondary));
+  --border-opacity: 0.65;
+  border-bottom: 2px solid hsl(var(--secondary) / var(--border-opacity));
 }
 
 .tab-list-item-active .tab-button {

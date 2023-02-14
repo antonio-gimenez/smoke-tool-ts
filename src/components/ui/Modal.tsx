@@ -53,7 +53,7 @@ const Modal = ({
 const ModalCloseButton = ({ id }: { id: string }) => {
   const { closeModal } = useContext(ModalContext);
   return (
-    <button onClick={() => closeModal(id)} className="modal-close-button">
+    <button onClick={() => closeModal(id)} className="button modal-close-button">
       <CloseIcon className="icon-24" />
     </button>
   );
@@ -65,7 +65,7 @@ const ModalContent = ({ children, ...props }: { children: React.ReactNode }) => 
 
 const ModalTrigger = ({ id, children, ...props }: { id: string, children: React.ReactNode }) => {
   const { openModal } = useContext(ModalContext);
-  return <button type="button" onClick={() => openModal(id)}>{children}</button>;
+  return <button className="button" type="button" onClick={() => openModal(id)}>{children}</button>;
 };
 
 const ModalHeader = ({ children, ...props }: { children: React.ReactNode }) => {

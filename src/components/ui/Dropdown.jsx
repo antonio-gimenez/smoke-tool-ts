@@ -7,7 +7,7 @@ import { generateUUID } from "../../utils/utils";
 
 const DropdownContext = createContext();
 
-const Dropdown = ({ label, children, onClick = () => {}, ...props }) => {
+const Dropdown = ({ children, onClick = () => {}, ...props }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
 
@@ -44,31 +44,14 @@ const DropdownContent = ({ children }) => {
   return <div className={`dropdown-content ${open ? "open" : ""} `}>{children}</div>;
 };
 
-const DropdownMenu = ({ children }) => {
-  const { open } = useContext(DropdownContext);
-
-  return (
-    <ul id={"menu"} className={` dropdown-content menu ${open ? "open" : ""}`}>
-      {children.map((child) => (
-        <DropdownItem key={child.id || generateUUID()}>{child}</DropdownItem>
-      ))}
-    </ul>
-  );
-};
-
 const DropdownItem = ({ children, ...props }) => {
   const { handleClick } = useContext(DropdownContext);
 
   return (
     <li key={children.id} className={`menu-item`} onClick={() => handleClick(children.value)} {...props}>
-      {children.active && (
-        <div className="menu-item-check">
-          <CheckIcon className="icon-16" />
-        </div>
-      )}
       {children.label}
     </li>
   );
 };
 
-export { Dropdown, DropdownContent, DropdownToggle, DropdownMenu, DropdownItem };
+export { Dropdown, DropdownContent, DropdownToggle, DropdownItem };
