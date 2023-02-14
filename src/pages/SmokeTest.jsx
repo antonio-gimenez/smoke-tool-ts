@@ -30,6 +30,10 @@ const SmokeTest = () => {
 
   return (
     <>
+      <div
+        style={{ height: "32px", width: "32px", borderRadius: "5px", background: "hsl(var(--neutral))" }}
+        data-theme="light"
+      ></div>
       <Card>
         <CardHeader>
           <h2 className="">Smoke Test</h2>
