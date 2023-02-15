@@ -53,9 +53,12 @@ const Modal = ({
 const ModalCloseButton = ({ id }: { id: string }) => {
   const { closeModal } = useContext(ModalContext);
   return (
-    <button onClick={() => closeModal(id)} className="button modal-close-button">
-      <CloseIcon className="icon-24" />
-    </button>
+    <div className="modal-close-button">
+
+      <button onClick={() => closeModal(id)} className="button button-error">
+        <CloseIcon className="icon-24" />
+      </button>
+    </div>
   );
 };
 

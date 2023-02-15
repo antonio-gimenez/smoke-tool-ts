@@ -13,8 +13,8 @@ button {
 .button {
   --button-width: 18rem;
   --button-height: 2.2rem;
-  --padding-x: var(--space-4, 0.25rem);
-  --padding-y: var(--space-4, 0.25rem);
+  --padding-x: var(--space-2, 0.25rem);
+  --padding-y: var(--space-2, 0.25rem);
   position: relative;
   font-size: var(--fs-regular);
   font-weight: var(--fw-medium);
@@ -29,8 +29,8 @@ button {
   height: var(--button-height, 2.5rem);
   width: fit-content;
   max-width: calc(var(--button-width) + 2 * var(--padding-x));
-  background: hsl(var(--neutral), var(--background-opacity, 1));
-  color: hsl(var(--neutral-content), var(--text-opacity, 1));
+  /* background: hsl(var(--neutral), var(--background-opacity, 1)); */
+  /* color: hsl(var(--neutral-content), var(--text-opacity, 1)); */
   border-radius: var(--border-radius);
   cursor: pointer;
   border: 2px solid transparent;
@@ -39,6 +39,14 @@ button {
 
 .button:active {
   animation: button-pop 0.1s ease 0s;
+}
+
+/* if button doesn't contain any class, it will be a ghost button */
+.button:not(.button-accent):not(.button-primary):not(.button-secondary):not(.button-success):not(.button-warning):not(
+    .button-error
+  ):not(.button-info):hover {
+  --background-opacity: 0.09;
+  background: hsl(var(--base-content) / var(--background-opacity, 0.2));
 }
 
 @keyframes button-pop {
@@ -70,72 +78,68 @@ button {
   background: hsl(var(--base-300) / 0.9);
 }
 
-.button.accent {
+.button-accent {
   background: hsl(var(--accent));
   color: hsl(var(--accent-content));
 }
 
-.button.primary {
+.button-primary {
   background: hsl(var(--primary));
   color: hsl(var(--primary-content));
 }
 
-.button.secondary {
+.button-secondary {
   background: hsl(var(--secondary));
   color: hsl(var(--secondary-content));
 }
 
-.button.success {
+.button-success {
   background: hsl(var(--success));
   color: hsl(var(--success-content));
 }
 
-.button.warning {
+.button-warning {
   background: hsl(var(--warning));
   color: hsl(var(--warning-content));
 }
 
-.button.error {
+.button-error {
   background: hsl(var(--error));
   color: hsl(var(--error-content));
 }
 
-.button.info {
+.button-info {
   background: hsl(var(--info));
   color: hsl(var(--info-content));
 }
 
-.button.accent:hover {
+.button-accent:hover {
   background: hsl(var(--accent-focus));
 }
 
-.button.primary:hover {
+.button-primary:hover {
   background: hsl(var(--primary-focus));
 }
-.button.secondary:hover {
+.button-secondary:hover {
   background: hsl(var(--secondary-focus));
 }
 
-.button.success:hover {
+.button-success:hover {
   background: hsl(var(--success-focus));
 }
 
-.button.warning:hover {
+.button-warning:hover {
   background: hsl(var(--warning-focus));
 }
 
-.button.error:hover {
+.button-error:hover {
   background: hsl(var(--error-focus));
 }
 
-.button.info:hover {
+.button-info:hover {
   background: hsl(var(--info-focus));
 }
 
-.button:hover {
-  background: hsl(var(--base-300) / 0.7);
-}
-
-.button.block {
+.button-block {
   width: 100%;
 }

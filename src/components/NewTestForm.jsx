@@ -100,24 +100,24 @@ function NewTest() {
 
           <FileSelector multiple={true} onSelectFile={setFileToUpload} />
         </div>
-        <Button color={"primary"} onClick={() => addAlertOnPosition()}>
+        <button className={"button button-primary"} onClick={() => addAlertOnPosition()}>
           top-left
-        </Button>
-        <Button color={"error"} onClick={() => addAlertOnPosition("top-center")}>
+        </button>
+        <button className={"button button-error"} onClick={() => addAlertOnPosition("top-center")}>
           top-center
-        </Button>
-        <Button color={"warning"} onClick={() => addAlertOnPosition("top-right")}>
+        </button>
+        <button className={"button button-warning"} onClick={() => addAlertOnPosition("top-right")}>
           top-right
-        </Button>
-        <Button color={"accent"} onClick={() => addAlertOnPosition("bottom-left")}>
+        </button>
+        <button className={"button button-accent"} onClick={() => addAlertOnPosition("bottom-left")}>
           bottom-left
-        </Button>
-        <Button color={"secondary"} onClick={() => addAlertOnPosition("bottom-center")}>
+        </button>
+        <button className={"button button-secondary"} onClick={() => addAlertOnPosition("bottom-center")}>
           bottom-center
-        </Button>
-        <Button color={"base"} onClick={() => addAlertOnPosition("bottom-right")}>
+        </button>
+        <button className={"button button-base"} onClick={() => addAlertOnPosition("bottom-right")}>
           bottom-right
-        </Button>
+        </button>
 
         {/* <button className="btn btn-primary" onClick={onSubmit}>
           Submit data

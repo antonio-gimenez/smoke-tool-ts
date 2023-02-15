@@ -15,7 +15,7 @@ function useThemeState(defaultTheme?: 'light'): ThemeState {
   const [storedTheme, setStoredTheme, removeStoredTheme, storedThemeExists] =
     useLocalStorage({ key: "theme" });
   const [systemPreferredTheme, setSystemPreferredTheme] =
-    useState<'light' | 'dark' | 'system' | 'dracula' | undefined>(undefined);
+    useState<string | undefined>(undefined);
 
   useEffect(() => {
     const colorSchemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

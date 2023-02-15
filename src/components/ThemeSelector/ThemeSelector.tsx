@@ -2,13 +2,12 @@ import { useRef, useState } from "react";
 import useKeyPress from "../../hooks/use-key-press";
 import useOnClickOutside from "../../hooks/use-on-click-outside";
 import useThemeState from "../../hooks/use-theme-state";
-import { ReactComponent as CheckIcon } from "../../assets/icons/check.svg";
 import "./theme-selector.css";
 
 type ThemeOption = {
   id: string,
   label: string,
-  value: "dark" | "light" | "dracula" | "system",
+  value: string,
 };
 
 type ThemeSelectorProps = {
@@ -19,10 +18,12 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
   const { currentTheme, setTheme, systemPreference, removeTheme } = useThemeState();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   function set(theme: ThemeOption) {
     if (theme.value === "system") {
       removeTheme('system');
     } else {
+      console.log(theme.value);
       setTheme(theme.value);
     }
     setOpen(false);
@@ -39,7 +40,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
     handler: () => setOpen(false),
   })
 
-  const paletteColors = ['primary', 'secondary', 'accent', 'base', 'neutral']
+  const paletteColors = ['primary', 'secondary', 'accent', 'base-200', 'base-300', 'neutral']
 
 
 
@@ -51,9 +52,12 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
       </button>
 
       <ul className={`dropdown-content  ${open ? 'visible' : 'hidden'}`}>
-        <div className="theme-list-grid">
+        <div className="theme-list">
+          <li className="theme-list-item" data-theme={systemPreference} onClick={() => removeTheme(currentTheme)}>
+            System Theme: {systemPreference === "dark" ? "Dark" : "Light"}
+          </li>
           {themes.map((theme) => {
-            const active = theme.value === currentTheme;
+            const active = theme.value === currentTheme || null;
             return <div
               key={theme.id}
               data-theme={theme.value}
@@ -61,14 +65,12 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
                 } `}
               onClick={() => set(theme)}
             >
-              <span>
-                {active && <CheckIcon style={{ height: '12px' }} />}
-
+              <span className="theme-list-item-name">
                 {theme.label}
               </span>
               <div className="theme-list-palette">
                 {paletteColors.map((color) => (
-                  <div className={`theme-list-palette-${color}`} key={color}></div>
+                  <div className={`theme-list-palette-${color}`} key={color} />
                 ))}
               </div>
 
@@ -76,28 +78,8 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
           })}
 
         </div>
-      </ul>
-    </div>
-    // <div className="dropdown" ref={dropdownRef}>
-    //   <button className="button button-ghost" onClick={() => setOpen(!open)}>
-    //     Theme
-    //   </button>
-
-    //   <ul className={`dropdown-content   menu ${open ? 'visible' : 'hidden'}`}>
-
-    //     {themes.map((theme) => (
-    //       <li
-    //         key={theme.id}
-    //         className={theme.value === currentTheme ? 'active' : ''}
-    //         onClick={() => set(theme)}
-    //       >
-
-    //         {theme.label}
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
-
+      </ul >
+    </div >
   );
 }
 

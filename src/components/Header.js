@@ -47,6 +47,16 @@ const Header = () => {
       label: "Dracula",
       value: "dracula",
     },
+    {
+      id: 4,
+      label: "Midnight",
+      value: "midnight",
+    },
+    {
+      id: 5,
+      label: "Coffee Break",
+      value: "coffee",
+    },
   ];
 
   return (

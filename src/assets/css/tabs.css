@@ -29,6 +29,13 @@
   border-bottom: 2px solid hsl(var(--secondary) / var(--border-opacity));
 }
 
+.tab-button:hover {
+  --text-opacity: 1;
+  color: hsl(var(--secondary) / var(--text-opacity));
+  --border-opacity: 1;
+  border-bottom: 2px solid hsl(var(--secondary) / var(--border-opacity));
+}
+
 .tab-list-item-active .tab-button {
   color: hsl(var(--primary));
   border-bottom: 2px solid hsl(var(--primary));
