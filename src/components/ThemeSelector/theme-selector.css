@@ -29,6 +29,10 @@
   --outline-width: 2px;
   outline: var(--outline-width) solid hsl(var(--primary));
 }
+.theme-list-item-active {
+  color: hsl(var(--accent));
+  font-size: var(--fs-medium);
+}
 
 /* .theme-list-item:hover .theme-list-item-name {
   color: hsl(var(--primary));
