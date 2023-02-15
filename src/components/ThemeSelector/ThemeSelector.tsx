@@ -60,7 +60,8 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
             System Theme: {systemPreference === "dark" ? "Dark" : "Light"}
           </li>
           {themes.map((theme) => {
-            const active = theme.value === currentTheme || null;
+            console.log(theme.value);
+            const active = theme.value === currentTheme && theme.value !== null
             return <div
               key={theme.id}
               data-theme={theme.value}
