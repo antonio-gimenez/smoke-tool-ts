@@ -1,35 +1,13 @@
-import React, { useState } from "react";
 import NewTestForm from "./NewTestForm";
 import ThemeSelector from "./ThemeSelector/ThemeSelector";
-import { Dropdown, DropdownContent, DropdownToggle } from "./ui/Dropdown";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
+import useScrollState from "../hooks/use-scroll-state";
 const Header = () => {
-  // add a glass effect to the header when is scrolled
-  const [isScrolled, setIsScrolled] = useState(false);
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-  }, []);
-
-  const testCases = [
-    {
-      id: 1,
-      label: "Failed",
-      value: "failed",
-    },
-    {
-      id: 2,
-      label: "Passed",
-      value: "passed",
-    },
-  ];
+  const [isBodyScrolled] = useScrollState({
+    initialState: false,
+    axis: "y",
+    offset: 20,
+  });
 
   const themes = [
     {
@@ -65,7 +43,7 @@ const Header = () => {
   ];
 
   return (
-    <header className={`header ${isScrolled ? "glass" : ""}`}>
+    <header className={`header ${isBodyScrolled ? "glass" : ""}`}>
       <div className="navbar container">
         <nav aria-label="Main navigation">
           <span className="navbar-branding">{process.env.REACT_APP_APP_NAME}</span>

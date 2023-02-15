@@ -9,6 +9,7 @@
 @import url("forms.css");
 @import url("header.css");
 @import url("layouts.css");
+@import url("menu.css");
 @import url("modal.css");
 @import url("reset.css");
 @import url("table.css");
@@ -70,6 +71,12 @@ body {
 
 .app {
   padding-top: calc(var(--header-height) + 1rem);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .scrollable-content {

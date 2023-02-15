@@ -17,12 +17,11 @@
   justify-content: space-between;
   background-color: hsl(var(--base-100));
   color: hsl(var(--base-content));
-  border-radius: var(--radius-input);
   cursor: pointer;
 }
 
 .theme-list-item:hover {
-  background-color: hsl(var(--base-200));
+  background-color: hsl(var(--base-200)) !important;
 }
 
 .theme-list-item.active {

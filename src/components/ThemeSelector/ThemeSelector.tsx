@@ -5,25 +5,29 @@ import useThemeState from "../../hooks/use-theme-state";
 import "./theme-selector.css";
 
 type ThemeOption = {
-  id: string,
-  label: string,
-  value: string,
+  id: string;
+  label: string;
+  value: string;
 };
 
 type ThemeSelectorProps = {
-  themes: ThemeOption[],
+  themes: ThemeOption[];
 };
 
-function ThemeSelector({ themes }: ThemeSelectorProps) {
-  const { currentTheme, setTheme, systemPreference, isSystemPreferenceUsed, removeTheme } = useThemeState();
+function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
+  const {
+    currentTheme,
+    setTheme,
+    isSystemPreferenceUsed,
+    removeTheme,
+  } = useThemeState();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  function set(theme: ThemeOption) {
+  function set(theme: ThemeOption): void {
     if (theme.value === "system") {
-      removeTheme('system');
+      removeTheme("system");
     } else {
-      console.log(theme.value);
       setTheme(theme.value);
     }
     setOpen(false);
@@ -32,61 +36,79 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
   useOnClickOutside({
     ref: dropdownRef,
     handler: () => setOpen(false),
-  })
+  });
 
   useKeyPress({
     key: "Escape",
     handler: () => setOpen(false),
-  })
+  });
 
-  const paletteColors = ['primary', 'secondary', 'accent', 'base-200', 'base-300', 'neutral']
-
-  const setSystemTheme = () => {
+  const setSystemTheme = (): void => {
     removeTheme(currentTheme);
     setOpen(false);
-  }
+  };
 
+  const Palette = ({ color }: { color: string }): JSX.Element => (
+    <div className={`theme-list-palette-${color}`} />
+  );
 
   return (
     <div className="dropdown dropdown-end" ref={dropdownRef}>
-      <button className="button button-ghost" onClick={() => setOpen(!open)} aria-expanded={open}>
+      <button
+        className="button button-ghost"
+        onClick={() => setOpen(!open)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+      >
         Theme
       </button>
 
-      <div className={`dropdown-content  ${open ? 'visible' : 'hidden'}`} role="listbox" tabIndex={0}>
-        <div className="theme-list">
-          <button className={`theme-list-item button`} onClick={setSystemTheme} role="option" aria-selected={currentTheme === 'system'}>
-            System Preference
-          </button>
+      <div
+        className={`dropdown-content ${open ? "visible" : "hidden"}`}
+        role="listbox"
+        aria-labelledby="theme-selector"
+        tabIndex={0}
+      >
+        <ul className="theme-list">
+          <li>
+            <button
+              className="button theme-list-item"
+              onClick={setSystemTheme}
+              role="option"
+              aria-selected={currentTheme === "system"}
+            >
+              System Preference
+            </button>
+          </li>
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
-
-            return <button
-              tabIndex={0}
-              key={theme.id}
-              data-theme={theme.value}
-              className={`button theme-list-item ${active ? 'active' : ''}`}
-              onClick={() => set(theme)}
-              role="option"
-              aria-selected={active}
-              aria-label={theme.label}
-            >
-              <span className="theme-list-item-name">
-                {active && <span className="theme-list-item-active">*</span>}
-                {theme.label}
-              </span>
-              <div className="theme-list-palette">
-                {paletteColors.map((color) => (
-                  <div className={`theme-list-palette-${color}`} key={color} />
-                ))}
-              </div>
-            </button>
+            return (
+              <li key={theme.id}>
+                <button
+                  tabIndex={0}
+                  data-theme={theme.value}
+                  className={`button theme-list-item ${active ? "active" : ""}`}
+                  onClick={() => set(theme)}
+                  role="option"
+                  aria-selected={active}
+                  aria-label={theme.label}
+                >
+                  <span className="theme-list-item-name">
+                    {theme.label}
+                  </span>
+                  <div className="theme-list-palette">
+                    {["primary", "secondary", "accent", "base-200", "base-300", "neutral"].map((color) => (
+                      <Palette color={color} key={color} />
+                    ))}
+                  </div>
+                </button>
+              </li>
+            );
           })}
-        </div>
-      </div >
-      <div className="dropdown-fade-decoration" />
-    </div >
+        </ul>
+      </div>
 
+    </div>
   );
 }
 
