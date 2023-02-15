@@ -49,26 +49,27 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
 
   return (
     <div className="dropdown dropdown-end" ref={dropdownRef}>
-      <button className="button button-ghost" onClick={() => setOpen(!open)}>
+      <button className="button button-ghost" onClick={() => setOpen(!open)} aria-expanded={open}>
         Theme
       </button>
 
-      <div className={`dropdown-content  ${open ? 'visible' : 'hidden'}`} tabIndex={0}>
+      <div className={`dropdown-content  ${open ? 'visible' : 'hidden'}`} role="listbox" tabIndex={0}>
         <div className="theme-list">
-          <button className={`theme-list-item button`} onClick={setSystemTheme}>
+          <button className={`theme-list-item button`} onClick={setSystemTheme} role="option" aria-selected={currentTheme === 'system'}>
             System Preference
           </button>
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
 
             return <button
-
               tabIndex={0}
               key={theme.id}
               data-theme={theme.value}
-              className={`button theme-list-item ${active ? 'active' : ''
-                } `}
+              className={`button theme-list-item ${active ? 'active' : ''}`}
               onClick={() => set(theme)}
+              role="option"
+              aria-selected={active}
+              aria-label={theme.label}
             >
               <span className="theme-list-item-name">
                 {active && <span className="theme-list-item-active">*</span>}
@@ -79,13 +80,13 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
                   <div className={`theme-list-palette-${color}`} key={color} />
                 ))}
               </div>
-
             </button>
           })}
         </div>
       </div >
       <div className="dropdown-fade-decoration" />
     </div >
+
   );
 }
 
