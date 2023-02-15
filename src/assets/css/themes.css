@@ -1,0 +1,155 @@
+/* If no theme is set, use light theme */
+[data-theme="light"] {
+  color-scheme: light;
+  --primary: 221 83% 53%;
+  --primary-focus: 221 83% 55%;
+  --primary-content: 221 0% 96%;
+
+  --secondary: 210 15% 45%;
+  --secondary-focus: 210 20% 50%;
+  --secondary-content: 0 0% 96%;
+
+  --accent: 175 84% 32%;
+  --accent-focus: 175 84% 35%;
+  --accent-content: 175 40% 98%;
+
+  --neutral: 221 5% 39%;
+  --neutral-focus: 221 5% 41%;
+  --neutral-content: 0 0% 96%;
+
+  --base-100: 210 10% 91%;
+  --base-200: 212 12% 86%;
+  --base-300: 211 14% 80%;
+  --base-content: 0 0% 16%;
+
+  --info: 265 89% 78%;
+  --info-content: 60 30% 96%;
+
+  --success: 135 94% 65%;
+  --success-content: 231 15% 18%;
+
+  --warning: 65 92% 76%;
+  --warning-content: 231 15% 18%;
+
+  --error: 0 100% 67%;
+  --error-content: 231 15% 18%;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: 207 90% 54%;
+  --primary-focus: 210 79% 46%;
+  --primary-content: 0 0% 100%;
+  --secondary: 0 0% 62%;
+  --secondary-focus: 0 0% 46%;
+  --secondary-content: 0 0% 100%;
+  --accent: 45 100% 51%;
+  --accent-focus: 38 100% 50%;
+  --accent-content: 0 0% 13%;
+  --neutral: 0 0% 46%;
+  --neutral-focus: 0 0% 38%;
+  --neutral-content: 0 0% 100%;
+  --base-100: 0 0% 26%;
+  --base-200: 0 0% 19%;
+  --base-300: 0 0% 13%;
+  --base-content: 0 0% 100%;
+  --info: 199 98% 48%;
+  --info-content: 0 0% 100%;
+  --success: 122 39% 49%;
+  --success-content: 0 0% 100%;
+  --warning: 36 100% 50%;
+  --warning-content: 0 0% 13%;
+  --error: 4 90% 58%;
+  --error-content: 0 0% 100%;
+}
+
+[data-theme="dracula"] {
+  /* This theme is based on the Dracula theme by Zeno Rocha */
+  color-scheme: dark;
+  --primary: 265 89% 78%; /*hsl( 265 89% 78%)*/
+  --primary-focus: 267 100% 81%; /*hsl(267 100% 81%)*/
+  --primary-content: 60 30% 96%; /*hsl(60 30% 96%)*/
+
+  --secondary: 225 27% 51%; /*hsl( 225 27% 51%)*/
+  --secondary-focus: 225 30% 58%; /*hsl(225 30% 58%)*/
+  --secondary-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --accent: 326 100% 74%; /*hsl( 326 100% 74%)*/
+  --accent-focus: 322 100% 82%; /*hsl( 322 100% 72%)*/
+  --accent-content: 231 15% 18%; /*hsl(231 15% 18%)*/
+
+  --neutral: 231 15% 18%; /*hsl(231 15% 18%)*/
+  --neutral-focus: 232 14% 31%; /*hsl( 232 14% 31%)*/
+  --neutral-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --base-100: 232 14% 31%; /*hsl( 232 14% 31%)*/
+  --base-200: 232 17% 26%; /*hsl( 232 17% 26%)*/
+  --base-300: 231 19% 22%; /*hsl( 231 19% 22%)*/
+  --base-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --info: 265 89% 78%; /*hsl( 265 89% 78%) */
+  --info-content: 60 30% 96%; /*hsl( 60 30% 96%)*/
+
+  --success: 135 94% 65%; /*hsl( 135 94% 65%)*/
+  --success-content: 231 15% 18%; /*hsl(231 15% 18%)*/
+
+  --warning: 65 92% 76%; /*hsl( 65 92% 76%)*/
+  --warning-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
+
+  --error: 0 100% 67%; /*hsl( 0 100% 67%)*/
+  --error-content: 231 15% 18%; /*hsl( 231 15% 18%)*/
+}
+
+[data-theme="coffee"] {
+  --primary: 20 100% 72%;
+  --primary-focus: 215 25% 52%;
+  --primary-content: 96 96% 98%;
+  --secondary: 20 12% 50%;
+  --secondary-focus: 20 18% 40%;
+  --secondary-content: 20 16% 18%;
+  --accent: 46 82% 65%;
+  --accent-focus: 43 73% 57%;
+  --accent-content: 13% 20% 22%;
+  --neutral: 204 11% 68%;
+  --neutral-focus: 204 12% 61%;
+  --neutral-content: 96 96% 98%;
+  --base-100: 13 20% 22%;
+  --base-200: 12 18% 18%;
+  --base-300: 15 16% 15%;
+  --base-content: 96 96% 98%;
+  --info: 180 64% 73%;
+  --info-content: 13 20% 22%;
+  --success: 167 100% 44%;
+  --success-content: 13 20% 22%;
+  --warning: 45 87% 69%;
+  --warning-content: 13 20% 22%;
+  --error: 359 75% 44%;
+  --error-content: 96 96% 98%;
+}
+
+[data-theme="midnight"] {
+  --primary: 190 100% 65%;
+  --primary-focus: 190 100% 60%;
+  --primary-content: 190 56% 8%;
+  --secondary: 237 23% 47%;
+  --secondary-focus: 237 23% 57%;
+  --secondary-content: 96 96% 98%;
+  --accent: 46 82% 65%;
+  --accent-focus: 43 73% 57%;
+  --accent-content: 13 20% 22%;
+  --neutral: 204 11% 68%;
+  --neutral-focus: 204 12% 61%;
+  --neutral-content: 96 96% 98%;
+  --base-100: 220 30% 10%;
+  --base-200: 220 27% 13%;
+  --base-300: 221 22% 16%;
+  --base-content: 222 86% 92%;
+  --info: 180 64% 73%;
+  --info-content: 13 20% 22%;
+  --success: 167 100% 44%;
+  --success-content: 13 20% 22%;
+  --warning: 45 87% 69%;
+  --warning-content: 13 20% 22%;
+  --error: 359 75% 44%;
+  --error-content: 96 96% 98%;
+}
