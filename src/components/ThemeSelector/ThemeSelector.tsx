@@ -42,7 +42,10 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
 
   const paletteColors = ['primary', 'secondary', 'accent', 'base-200', 'base-300', 'neutral']
 
-
+  const setSystemTheme = () => {
+    removeTheme(currentTheme);
+    setOpen(false);
+  }
 
 
   return (
@@ -53,7 +56,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
 
       <ul className={`dropdown-content  ${open ? 'visible' : 'hidden'}`}>
         <div className="theme-list">
-          <li className="theme-list-item" data-theme={systemPreference} onClick={() => removeTheme(currentTheme)}>
+          <li className="theme-list-item" data-theme={systemPreference} onClick={setSystemTheme}>
             System Theme: {systemPreference === "dark" ? "Dark" : "Light"}
           </li>
           {themes.map((theme) => {

@@ -55,7 +55,7 @@ const ModalCloseButton = ({ id }: { id: string }) => {
   return (
     <div className="modal-close-button">
 
-      <button onClick={() => closeModal(id)} className="button button-error">
+      <button onClick={() => closeModal(id)} className="button">
         <CloseIcon className="icon-24" />
       </button>
     </div>

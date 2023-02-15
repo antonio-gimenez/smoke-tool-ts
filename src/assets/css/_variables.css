@@ -174,8 +174,8 @@ html {
 }
 
 [data-theme="midnight"] {
-  --primary: 1 74% 63%;
-  --primary-focus: 190 74% 58%;
+  --primary: 190 100% 65%;
+  --primary-focus: 190 100% 60%;
   --primary-content: 190 56% 8%;
   --secondary: 237 23% 47%;
   --secondary-focus: 237 23% 57%;
@@ -186,9 +186,9 @@ html {
   --neutral: 204 11% 68%;
   --neutral-focus: 204 12% 61%;
   --neutral-content: 96 96% 98%;
-  --base-100: 220 30% 15%;
+  --base-100: 220 30% 10%;
   --base-200: 220 27% 13%;
-  --base-300: 221 22% 11%;
+  --base-300: 221 22% 16%;
   --base-content: 222 86% 92%;
   --info: 180 64% 73%;
   --info-content: 13 20% 22%;

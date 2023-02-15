@@ -13,7 +13,7 @@
 .modal-close-button {
   position: absolute;
   top: var(--space-4);
-  right: var(--space-0);
+  right: var(--space-2);
   cursor: pointer;
 }
 
