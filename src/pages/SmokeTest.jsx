@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Button from "../components/ui/Button.jsx";
 import Card, { CardContent, CardFooter, CardHeader } from "../components/ui/Card.jsx";
-import Dropdown from "../components/ui/Dropdown";
 import Table from "../components/ui/Table.jsx";
 import Tabs from "../components/ui/Tabs.jsx";
 import { TestContext } from "../contexts/TestContext";
@@ -28,10 +27,6 @@ const SmokeTest = () => {
       pageSize,
     });
   }, [currentPage, status]);
-
-  const onItemSelected = (item) => {
-    console.log(`Item selected: ${item}`);
-  };
 
   return (
     <>

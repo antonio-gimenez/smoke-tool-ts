@@ -97,7 +97,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
                     {theme.label}
                   </span>
                   <div className="theme-list-palette">
-                    {["primary", "secondary", "accent", "base-200", "base-300", "neutral"].map((color) => (
+                    {["primary", "secondary", "accent", "neutral"].map((color) => (
                       <Palette color={color} key={color} />
                     ))}
                   </div>

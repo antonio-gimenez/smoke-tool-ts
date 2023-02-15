@@ -1,20 +1,23 @@
 .modal {
   position: relative;
-  width: clamp(30vw, auto, 95vw);
-  height: clamp(30vh, auto, 95vh);
+  width: auto;
+  height: auto;
+  max-width: 95vw;
+  max-height: 95vh;
   padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
   --background-opacity: 1;
   background: hsl(var(--base-200) / var(--background-opacity));
   color: hsl(var(--base-content));
-  border-radius: var(--radius-modal);
+  border-radius: var(--border-radius-xlarge);
   z-index: 2;
+  overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .modal-close-button {
   position: absolute;
   top: var(--space-4);
-  right: var(--space-2);
+  right: var(--space-4);
   cursor: pointer;
 }
 

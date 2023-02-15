@@ -5,6 +5,7 @@ interface DropdownProps {
   label: string;
   children: React.ReactNode;
 }
+
 const Dropdown = ({ position, label, children }: DropdownProps) => {
   const [open, setOpen] = useState(false);
 
@@ -19,7 +20,9 @@ const Dropdown = ({ position, label, children }: DropdownProps) => {
         {label}
       </button>
       <div
-        className={`dropdown-content ${open ? "visible" : "hidden"}`}
+        className={
+          `dropdown-content ${open ? "visible" : "hidden"}`
+        }
         role="listbox"
         aria-labelledby="theme-selector"
         tabIndex={0}

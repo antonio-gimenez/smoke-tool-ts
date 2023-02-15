@@ -5,8 +5,8 @@
 }
 
 .dropdown-content {
-  max-height: 15rem;
-  min-width: 13rem;
+  max-height: 30vh;
+  min-width: 10vw;
   overflow: auto;
   position: absolute;
   background: hsl(var(--base-300));
