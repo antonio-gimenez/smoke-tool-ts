@@ -47,6 +47,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
     setOpen(false);
   }
 
+  const isSystemTheme = currentTheme === systemPreference && currentTheme !== 'system';
 
   return (
     <div className="dropdown dropdown-end" ref={dropdownRef}>
@@ -56,12 +57,12 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
 
       <ul className={`dropdown-content  ${open ? 'visible' : 'hidden'}`}>
         <div className="theme-list">
-          <li className="theme-list-item" data-theme={systemPreference} onClick={setSystemTheme}>
+          <li className={`theme-list-item ${isSystemTheme ? 'active' : ''}`} onClick={setSystemTheme}>
             System Theme: {systemPreference === "dark" ? "Dark" : "Light"}
           </li>
           {themes.map((theme) => {
-            console.log(theme.value);
-            const active = theme.value === currentTheme && theme.value !== null
+            const active = theme.value === currentTheme && theme.value !== null && !isSystemTheme;
+            console.log(`theme: ${theme.value} currentTheme: ${currentTheme} active: ${active}`)
             return <div
               key={theme.id}
               data-theme={theme.value}
