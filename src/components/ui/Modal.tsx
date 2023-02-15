@@ -17,7 +17,6 @@ interface ModalProps {
 }
 
 
-
 const Modal = ({
   children,
   id = generateUUID(),

@@ -57,6 +57,11 @@ const Header = () => {
       label: "Coffee",
       value: "coffee",
     },
+    {
+      id: 6,
+      label: "Nord",
+      value: "nord",
+    },
   ];
 
   return (

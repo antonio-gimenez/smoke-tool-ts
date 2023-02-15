@@ -29,7 +29,6 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
     setOpen(false);
   }
 
-
   useOnClickOutside({
     ref: dropdownRef,
     handler: () => setOpen(false),
@@ -54,24 +53,25 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
         Theme
       </button>
 
-      <ul className={`dropdown-content  ${open ? 'visible' : 'hidden'}`}>
+      <div className={`dropdown-content  ${open ? 'visible' : 'hidden'}`} tabIndex={0}>
         <div className="theme-list">
-          <li className={`theme-list-item `} onClick={setSystemTheme}>
+          <button className={`theme-list-item button`} onClick={setSystemTheme}>
             System Preference
-          </li>
+          </button>
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
 
+            return <button
 
-            return <div
+              tabIndex={0}
               key={theme.id}
               data-theme={theme.value}
-              className={`theme-list-item ${active ? 'active' : ''
+              className={`button theme-list-item ${active ? 'active' : ''
                 } `}
               onClick={() => set(theme)}
             >
               <span className="theme-list-item-name">
-                {active && <span className="theme-list-item-active">✓</span>}
+                {active && <span className="theme-list-item-active">*</span>}
                 {theme.label}
               </span>
               <div className="theme-list-palette">
@@ -80,11 +80,11 @@ function ThemeSelector({ themes }: ThemeSelectorProps) {
                 ))}
               </div>
 
-            </div>
+            </button>
           })}
-
         </div>
-      </ul >
+      </div >
+      <div className="dropdown-fade-decoration" />
     </div >
   );
 }

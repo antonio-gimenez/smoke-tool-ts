@@ -15,7 +15,6 @@
   padding: 0.5rem;
   margin: 0.25rem;
   width: 100%;
-  border-radius: var(--border-radius);
   user-select: none;
 }
 
@@ -35,7 +34,6 @@
   position: relative;
   flex-direction: column;
   padding: 1rem 0;
-  border-radius: var(--border-radius);
 }
 
 .collapse-content.visible {

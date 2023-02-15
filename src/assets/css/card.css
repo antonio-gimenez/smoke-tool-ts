@@ -11,7 +11,7 @@
   height: fit-content;
   width: clamp(200px, 100%, 480px);
   color: hsl(var(--base-content));
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-large);
 }
 
 .card-header {

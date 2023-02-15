@@ -3,9 +3,10 @@
 - [ ] Fix file upload
 - [ ] Add file upload with droparea
 - [X] Add a backdrop to reuse on other components
-- [ ] Refactor ThemeSelector
-- [ ] Refactor buttons
-- [ ] Refactor dropdowns
+- [X] Refactor ThemeSelector
+- [X] Refactor buttons
+    <!-- https://coolors.co/c965b0-003094-00246b-ee5fa1-002e8c -->
+- [X] Refactor dropdowns
 
 # Used utilities
 - [Fluid Type Scale](https://www.fluid-type-scale.com/)
