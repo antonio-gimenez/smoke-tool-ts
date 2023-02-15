@@ -87,7 +87,8 @@
 }
 
 .alert {
-  padding: var(--space-4, 1rem);
+  margin: 0;
+  padding: var(--space-2, 0.5rem);
   position: relative;
   max-width: 100%;
   border-radius: var(--border-radius, 0.5rem);
@@ -149,7 +150,7 @@
 }
 
 .alert-base {
-  background-color: hsl(var(--neutral, --base-300) / var(--background-opacity, 1));
+  background-color: hsl(var(--base-300, --base-300) / var(--background-opacity, 1));
   color: hsl(var(--base-content));
-  border-color: hsl(var(--neutral, --base-300) / var(--border-opacity, 1));
+  border-color: hsl(var(--base-300, --base-300) / var(--border-opacity, 1));
 }

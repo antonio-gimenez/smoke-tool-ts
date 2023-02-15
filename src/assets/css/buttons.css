@@ -31,7 +31,7 @@ button {
   max-width: calc(var(--button-width) + 2 * var(--padding-x));
   /* background: hsl(var(--neutral), var(--background-opacity, 1)); */
   /* color: hsl(var(--neutral-content), var(--text-opacity, 1)); */
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-button);
   cursor: pointer;
   border: 2px solid transparent;
   user-select: none;
@@ -45,7 +45,7 @@ button {
 .button:not(.button-accent):not(.button-primary):not(.button-secondary):not(.button-success):not(.button-warning):not(
     .button-error
   ):not(.button-info):hover {
-  --background-opacity: 0.09;
+  --background-opacity: 0.045;
   background: hsl(var(--base-content) / var(--background-opacity, 0.2));
 }
 

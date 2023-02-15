@@ -27,9 +27,9 @@
   /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
   width: 100vw;
   height: 100vh;
-  --background-opacity: 0.4;
-  background: hsl(var(--neutral-focus) / var(--background-opacity, 0.015));
-  backdrop-filter: blur(1px);
+  --background-opacity: 0.45;
+  background: hsl(0 0% 0% / var(--background-opacity, 0.45));
+  backdrop-filter: blur(0px);
   z-index: 1;
   display: flex;
   justify-content: center;

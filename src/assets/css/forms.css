@@ -36,7 +36,7 @@
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-button);
   padding: var(--padding-y, 0.25rem) var(--padding-x, 0.5rem);
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
   min-height: var(--input-height, 2.5rem);

@@ -16,6 +16,7 @@
   background: hsl(var(--base-300));
   color: hsl(var(--base-content));
   border-radius: var(--border-radius);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .dropdown-content:not(.menu) {
