@@ -50,11 +50,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
   };
 
   const Palette = ({ color }: { color: string }): JSX.Element => (
-    <span className={`theme-list-palette-${color}`}>
-      {/* show only the first letter of the color in uppercase */}
-      {/* {color[0].toUpperCase()} */}
-      A
-    </span>
+    <span className={`theme-list-palette-${color}-bullet`} />
 
   );
 

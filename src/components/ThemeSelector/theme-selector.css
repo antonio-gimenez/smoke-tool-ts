@@ -38,38 +38,36 @@
   gap: var(--space-1);
 }
 
-.theme-list-palette-accent,
-.theme-list-palette-primary,
-.theme-list-palette-secondary,
-.theme-list-palette-neutral {
-  width: 10px;
-  height: 10px;
-  width: 1.5rem;
-  height: 1.5rem;
+.theme-list-palette-accent-bullet,
+.theme-list-palette-primary-bullet,
+.theme-list-palette-secondary-bullet,
+.theme-list-palette-neutral-bullet {
+  width: 12px;
+  height: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--fw-semibold);
   font-size: var(--fs-regular);
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius);
 }
 
-.theme-list-palette-accent {
+.theme-list-palette-accent-bullet {
   color: hsl(var(--base-content));
   background-color: hsl(var(--accent));
 }
 
-.theme-list-palette-primary {
+.theme-list-palette-primary-bullet {
   color: hsl(var(--primary-content));
   background-color: hsl(var(--primary));
 }
 
-.theme-list-palette-secondary {
+.theme-list-palette-secondary-bullet {
   color: hsv(var(--secondary-content));
   background-color: hsl(var(--secondary));
 }
 
-.theme-list-palette-neutral {
+.theme-list-palette-neutral-bullet {
   color: hsv(var(--neutral-content));
   background-color: hsl(var(--neutral));
 }
