@@ -73,3 +73,7 @@ export function humanFileSize(bytes, decimalPlaces = 2) {
   } while (Math.round(Math.abs(bytes) * r) / r >= threshold && u < units.length - 1);
   return bytes.toFixed(decimalPlaces) + " " + units[u];
 }
+
+export const upperCaseFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};

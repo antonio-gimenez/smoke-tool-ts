@@ -2,6 +2,7 @@ import NewTestForm from "./NewTestForm";
 import ThemeSelector from "./ThemeSelector/ThemeSelector";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
 import useScrollState from "../hooks/use-scroll-state";
+import { upperCaseFirstLetter } from "../utils/utils";
 const Header = () => {
   const [isBodyScrolled] = useScrollState({
     initialState: false,
@@ -9,38 +10,11 @@ const Header = () => {
     offset: 20,
   });
 
-  const themes = [
-    {
-      id: 1,
-      label: "Light",
-      value: "light",
-    },
-    {
-      id: 2,
-      label: "Dark",
-      value: "dark",
-    },
-    {
-      id: 3,
-      label: "Dracula",
-      value: "dracula",
-    },
-    {
-      id: 4,
-      label: "Midnight",
-      value: "midnight",
-    },
-    {
-      id: 5,
-      label: "Coffee",
-      value: "coffee",
-    },
-    {
-      id: 6,
-      label: "Nord",
-      value: "nord",
-    },
-  ];
+  const themes = ["light", "dark", "dracula", "midnight", "coffee"].map((theme) => ({
+    id: theme,
+    label: upperCaseFirstLetter(theme),
+    value: theme,
+  }));
 
   return (
     <header className={`header ${isBodyScrolled ? "glass" : ""}`}>

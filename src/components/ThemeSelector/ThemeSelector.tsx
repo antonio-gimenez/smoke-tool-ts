@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import useKeyPress from "../../hooks/use-key-press";
 import useOnClickOutside from "../../hooks/use-on-click-outside";
 import useThemeState from "../../hooks/use-theme-state";
+import { upperCaseFirstLetter } from "../../utils/utils";
 import "./theme-selector.css";
 
 type ThemeOption = {
@@ -49,7 +50,9 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
   };
 
   const Palette = ({ color }: { color: string }): JSX.Element => (
-    <div className={`theme-list-palette-${color}`} />
+    <span className={`theme-list-palette-${color}`}>
+    </span>
+
   );
 
   return (
@@ -60,7 +63,10 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        Theme
+        {/* check if isSystemPreferenceUsed, then only call theme */}
+        {isSystemPreferenceUsed
+          ? 'Theme'
+          : upperCaseFirstLetter(currentTheme)}
       </button>
 
       <div
@@ -83,25 +89,26 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
             return (
-              <li key={theme.id}>
-                <button
+              <li >
+                <div
+                  key={theme.id}
                   tabIndex={0}
                   data-theme={theme.value}
-                  className={`button theme-list-item ${active ? "active" : ""}`}
+                  className={`theme-list-item ${active ? "active" : ""}`}
                   onClick={() => set(theme)}
                   role="option"
                   aria-selected={active}
                   aria-label={theme.label}
                 >
-                  <span className="theme-list-item-name">
-                    {theme.label}
-                  </span>
+
+                  {theme.label}
+
                   <div className="theme-list-palette">
                     {["primary", "secondary", "accent", "neutral"].map((color) => (
                       <Palette color={color} key={color} />
                     ))}
                   </div>
-                </button>
+                </div>
               </li>
             );
           })}

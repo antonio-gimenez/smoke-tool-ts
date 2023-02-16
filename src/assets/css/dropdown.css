@@ -9,10 +9,11 @@
   min-width: 10vw;
   overflow: auto;
   position: absolute;
-  background: hsl(var(--base-300));
+  background: hsl(var(--base-200));
   color: hsl(var(--base-content));
   border-radius: var(--border-radius);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+  box-shadow: 1.95px 2.95px 1.95px 0px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-content:not(.menu) {

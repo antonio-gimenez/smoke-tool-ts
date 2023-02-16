@@ -22,6 +22,9 @@ function App() {
         <TestProvider>
           <Header />
           <div className="app container scrollable-content container-centered">
+
+
+
             <WhatsNew />
             <Routes>
               <Route path="/" element={<SmokeTest />} />
