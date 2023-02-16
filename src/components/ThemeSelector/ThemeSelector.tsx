@@ -92,9 +92,10 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
             return (
-              <li >
+              <li
+                key={theme.id}
+              >
                 <div
-                  key={theme.id}
                   tabIndex={0}
                   data-theme={theme.value}
                   className={`theme-list-item ${active ? "active" : ""}`}
@@ -108,7 +109,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
 
                   <div className="theme-list-palette">
                     {["primary", "secondary", "accent", "neutral"].map((color) => (
-                      <Palette color={color} key={color} />
+                      <Palette color={color} key={'theme-' + color} />
                     ))}
                   </div>
                 </div>
