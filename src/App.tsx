@@ -24,6 +24,16 @@ function App() {
           <div className="app container scrollable-content container-centered">
 
 
+            {/* 
+            <div className="example">
+              <h1 className="title">Some example title</h1>
+              <p className="text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                voluptates, quod, quia, voluptate quae voluptatem quibusdam quos
+                accusantium quas dolorum nemo. Quisquam, quae. Quisquam, quae. Quisquam,
+              </p>
+            </div> */}
+
 
             <WhatsNew />
             <Routes>
