@@ -1,3 +1,20 @@
+.backdrop-dark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
+  width: 100vw;
+  height: 100vh;
+  background: hsla(var(--color-dark), 0.8);
+  /* how to add opacity to the background only */
+
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .lightbox {
   position: fixed;
   top: 0;
@@ -23,7 +40,7 @@
 .lightbox-content {
   background-color: white;
   padding: 20px;
-  /* z-index: 1; */
+  z-index: 2;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

@@ -13,7 +13,7 @@ interface LightboxProps {
 // https://fslightbox.com/react
 const Lightbox: React.FC<LightboxProps> = ({ trigger, content, closeOnEscape, closeOnOverlayClick }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const lightBoxRef = useRef(document.createElement("div"));
+    const lightBoxRef = useRef(null);
     useKeyPress({
         key: "Escape",
         handler: closeOnEscape ? () => { setIsOpen(false) } : () => { }
@@ -31,9 +31,9 @@ const Lightbox: React.FC<LightboxProps> = ({ trigger, content, closeOnEscape, cl
                 {trigger}
             </div>
             {isOpen && (
-                <div className="lightbox" >
+                <div className="backdrop-dark" ref={lightBoxRef}>
                     <div className="lightbox-content">{content}</div>
-                    <div className="lightbox-background" ref={lightBoxRef} />
+                    {/* <div className="lightbox-background" ref={lightBoxRef} /> */}
                 </div>
             )}
         </>
