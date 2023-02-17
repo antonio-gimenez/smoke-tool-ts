@@ -39,15 +39,6 @@ button {
   animation: button-pop 0.1s ease 0s;
 }
 
-/* if button doesn't contain any class, it will be a ghost button */
-.button:not(.button-accent):not(.button-primary):not(.button-secondary):not(.button-success):not(.button-warning):not(
-    .button-error
-  ):not(.button-info):hover {
-  --background-opacity: 0.045;
-  /* background: var(--base); */
-  background: rgba(0, 0, 0, 0.1);
-}
-
 @keyframes button-pop {
   0% {
     transform: scale(0.95);
@@ -60,6 +51,17 @@ button {
   }
 }
 
+.button-base {
+  --background-opacity: 1;
+  background: hsla(var(--color-base), var(--background-opacity));
+  color: var(--base-content);
+}
+
+.button-base:hover {
+  --background-opacity: 0.2;
+  background: hsla(var(--color-base), var(--background-opacity));
+}
+
 .button[disabled="true"],
 .button[aria-disabled="true"],
 .button:disabled {
@@ -68,13 +70,11 @@ button {
   opacity: 0.5;
 }
 
-.button-ghost:hover {
-  --background-opacity: 0.09;
-  background: rgba(0, 0, 0, 0.1);
-}
-
+.button-ghost:hover,
+.button-ghost:focus,
 .button-ghost:active {
-  background: rgba(0, 0, 0, 0.1);
+  --background-opacity: 0.2;
+  background: hsla(var(--color-base-contet), var(--background-opacity));
 }
 
 .button-accent {
@@ -117,31 +117,35 @@ button {
   color: var(--info-content);
 }
 
+.button-neutral:hover {
+  background: hsla(var(--color-neutral), 0.9);
+}
+
 .button-accent:hover {
-  background: var(--accent-focus);
+  background: hsla(var(--color-accent), 0.9);
 }
 
 .button-primary:hover {
-  background: var(--primary-focus);
+  background: hsla(var(--color-primary), 0.9);
 }
 .button-secondary:hover {
-  background: var(--secondary-focus);
+  background: hsla(var(--color-secondary), 0.9);
 }
 
 .button-success:hover {
-  background: var(--success-focus);
+  background: hsla(var(--color-success), 0.9);
 }
 
 .button-warning:hover {
-  background: var(--warning-focus);
+  background: hsla(var(--color-warning), 0.9);
 }
 
 .button-error:hover {
-  background: var(--error-focus);
+  background: hsla(var(--color-error), 0.9);
 }
 
 .button-info:hover {
-  background: var(--info-focus);
+  background: hsla(var(--color-info), 0.9);
 }
 
 .button-block {

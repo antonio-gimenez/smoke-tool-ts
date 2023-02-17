@@ -20,18 +20,14 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
     currentTheme,
     setTheme,
     isSystemPreferenceUsed,
+    systemPreference,
     removeTheme,
   } = useThemeState();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   function set(theme: ThemeOption): void {
-    if (theme.value === "system") {
-      removeTheme("system");
-    } else {
-      setTheme(theme.value);
-    }
-    setOpen(false);
+    setTheme(theme.value);
   }
 
   useOnClickOutside({
@@ -43,11 +39,6 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
     key: "Escape",
     handler: () => setOpen(false),
   });
-
-  const setSystemTheme = (): void => {
-    removeTheme(currentTheme);
-    setOpen(false);
-  };
 
   const Palette = ({ color }: { color: string }): JSX.Element => (
     <span className={`theme-list-palette-${color}-bullet`} />
@@ -75,14 +66,20 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
       >
         <ul className="theme-list">
           <li>
-            <button
-              className="button theme-list-item"
-              onClick={setSystemTheme}
+            <div className={`theme-list-item `} data-theme={systemPreference} onClick={() => removeTheme(currentTheme)}
               role="option"
               aria-selected={currentTheme === "system"}
             >
-              System Preference
-            </button>
+              <span>
+
+                System
+              </span>
+              <div className="theme-list-palette">
+                {["primary", "secondary", "accent", "neutral"].map((color) => (
+                  <span className={`theme-list-palette-${color}-bullet`} key={color} />
+                ))}
+              </div>
+            </div>
           </li>
           {themes.map((theme) => {
             const active = theme.value === currentTheme && !isSystemPreferenceUsed;
@@ -115,7 +112,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
         </ul>
       </div>
 
-    </div>
+    </div >
   );
 }
 

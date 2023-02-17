@@ -10,7 +10,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: var(--base);
   border-radius: var(--border-radius-small);
   overflow: hidden;
 }
@@ -24,9 +23,7 @@
   padding: 0.5rem 1rem;
   border: none;
   background-color: transparent;
-
   color: var(--secondary);
-
   cursor: pointer;
   border-bottom: 2px solid var(--secondary);
 }

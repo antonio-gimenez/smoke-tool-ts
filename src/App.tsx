@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
+import Lightbox from "./components/Lightbox/Lightbox";
 import Button from "./components/ui/Button";
 import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
@@ -34,17 +35,13 @@ function App() {
                 accusantium quas dolorum nemo. Quisquam, quae. Quisquam, quae. Quisquam,
               </p>
             </div> */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '1rem' }}>
-              <Button color={"primary"}>primary</Button>
-              <Button color={"secondary"}>secondary</Button>
-              <Button color={"accent"}>accent</Button>
-              <Button color={"base"}>base</Button>
-              <Button color={"neutral"}>neutral</Button>
-              <Button color={"success"}>success</Button>
-              <Button color={"error"}>error</Button>
-              <Button color={"warning"}>warning</Button>
-              <Button color={"info"}>info</Button>
-            </div>
+            <Lightbox
+              closeOnEscape={true}
+              closeOnOverlayClick={true}
+              trigger={<img src="https://picsum.photos/64/64" alt="img" />}
+              content={<img src="https://picsum.photos/800" alt="img" />}
+            />
+
             <WhatsNew />
             <Routes>
               <Route path="/" element={<SmokeTest />} />

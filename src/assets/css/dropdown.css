@@ -5,15 +5,16 @@
 }
 
 .dropdown-content {
-  max-height: 85vh;
+  max-height: 25rem;
   min-width: 10vw;
   overflow: auto;
   position: absolute;
   background: var(--base-mid);
   color: var(--base-content);
   border-radius: var(--border-radius-large);
-  box-shadow: 1px 1px 2px 1px var(--base-deep);
-  outline: var(--outline-width) solid var(--base-deep);
+  /* box-shadow: 1px 1px 2px 1px var(--base-deep); */
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .dropdown-content:not(.menu) {

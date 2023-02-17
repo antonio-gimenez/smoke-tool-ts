@@ -1,27 +1,8 @@
 a.link {
-  color: var(--primary);
+  color: inherit;
   text-decoration: none;
 }
 
 a.link:hover {
   text-decoration: underline;
-}
-
-.card-title {
-  font-weight: var(--fw-medium);
-  margin: 0;
-  padding: 0;
-  line-height: normal;
-  text-transform: none;
-}
-
-.label {
-  display: block;
-  padding-inline: var(--space-2, 0.5rem);
-  --text-opacity: 0.5;
-  color: hsl(var(--base-content), var(--text-opacity));
-}
-
-.text-muted {
-  color: var(--muted);
 }

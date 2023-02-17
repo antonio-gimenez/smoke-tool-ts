@@ -38,14 +38,14 @@
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
-
   --background-opacity: 0.75;
   background: var(--base-deep);
-  color: var(--base-content);
+  color: hsla(var(--color-base-content), var(--background-opacity));
   outline: currentColor none medium;
   outline-offset: var(--outline-offset, 2px);
   border: var(--border-width, 2px) solid;
-  border-color: var(--base-content);
+  --border-opacity: 0.35;
+  border-color: hsla(var(--color-base-content), var(--border-opacity));
   resize: vertical;
   transition: all 0.1s ease 0s;
 }
@@ -81,7 +81,7 @@
   padding: var(--space-3, 0.25rem);
   --background-opacity: 0.2;
   border: var(--border-width, 1px) dashed;
-  border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
+  border-color: hsla(var(--color-base-content), var(--border-opacity));
   background: var(--base);
 }
 .checkbox {
@@ -97,7 +97,7 @@
   --border-opacity: 0.2;
   --background-opacity: 0.2;
   background: hsl(var(--neutral-100) / var(--background-opacity, 1));
-  border-color: hsl(var(--neutral-100) / var(--border-opacity));
+  border-color: hsla(var(--color-base-content), var(--border-opacity));
   border-radius: var(--border-radius-small);
 }
 

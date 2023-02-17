@@ -60,7 +60,7 @@ function UploadFile({ onChange }: { onChange: (file: File) => void }) {
                                 setTmpFiles(tmpFiles.filter((tmpFile) => tmpFile !== file));
                                 setFile(null);
                             }
-                            } color={"danger"}>Remove</Button>
+                            } color={"error"}>Remove</Button>
                         </div>
                     ))
 

@@ -127,25 +127,25 @@
 
 .alert-error {
   background-color: var(--error);
-  color: var(--base);
+  color: var(--error-content);
   border-color: var(--error);
 }
 
 .alert-success {
   background-color: var(--success);
-  color: var(--base);
+  color: var(--success-content);
   border-color: var(--success);
 }
 
 .alert-warning {
   background-color: var(--warning);
-  color: var(--base);
+  color: var(--warning-content);
   border-color: var(--warning);
 }
 
 .alert-info {
   background-color: var(--info);
-  color: var(--base);
+  color: var(--info-content);
   border-color: var(--info);
 }
 
