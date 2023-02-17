@@ -55,7 +55,8 @@
   font-size: var(--fs-big);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  color: var(--primary);
+  position: relative;
+  color: var(--base-content);
 }
 
 .nav-right {

@@ -38,10 +38,9 @@ html {
   /* 
     The following calc fixes the border radius overlapping on some overflowed elements.
   */
-  --radio: calc(var(--space-2, 0.5rem) - var(--border-width, 1px));
-  --border-radius-round: calc(var(--radio) / 2);
-  --border-radius-square: var(--radio);
-  --border-radius-circle: calc(var(--radio) * 2);
+  --border-radius-default: calc(var(--space-2, 1rem) - var(--border-width, 1px));
+  --border-radius-small: calc(var(--border-radius-default) / 2);
+  --border-radius-large: calc(var(--border-radius-default) * 2);
 
   --outline-width: var(--border-width, 1px);
   --outline-offset: var(--outline-width, 1px);

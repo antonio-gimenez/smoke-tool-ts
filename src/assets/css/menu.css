@@ -11,7 +11,7 @@
 
 .menu,
 .menu-horizontal {
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-large);
   background-color: var(--base-mid);
   z-index: 1;
   list-style: none;

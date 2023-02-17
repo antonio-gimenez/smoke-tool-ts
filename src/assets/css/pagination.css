@@ -16,7 +16,7 @@
   padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
   background-color: var(--base);
   color: var(--base-content);
-  border-radius: var(--border-radius, 0.25rem);
+  border-radius: var(--border-radius-small);
   font-size: var(--fs-regular);
 }
 
@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: var(--border-radius, 0.25rem);
+  border-radius: var(--border-radius-default);
   background-color: transparent;
   color: var(--base-content);
   transition: background-color 0.2s ease-in-out;

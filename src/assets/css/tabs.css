@@ -10,7 +10,9 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* border-bottom: 1px solid hsl(var(--secondary)); */
+  background-color: var(--base);
+  border-radius: var(--border-radius-small);
+  overflow: hidden;
 }
 
 .tab-list-item {

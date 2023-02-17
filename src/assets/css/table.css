@@ -9,12 +9,12 @@
   max-width: 100vw;
   border-collapse: collapse;
   border-spacing: 0;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
   overflow: auto;
   margin-block: var(--space-4);
   background-color: var(--base-mid);
   --border-opacity: 0.5;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
 }
 
 .table > tr:nth-child(even) {

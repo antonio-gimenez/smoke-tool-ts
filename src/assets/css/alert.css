@@ -91,7 +91,7 @@
   padding: var(--space-2, 0.5rem);
   position: relative;
   max-width: 100%;
-  border-radius: var(--border-radius, 0.5rem);
+  border-radius: var(--border-radius-default);
 }
 
 .alert-section {

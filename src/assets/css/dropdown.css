@@ -11,8 +11,9 @@
   position: absolute;
   background: var(--base-mid);
   color: var(--base-content);
-  border-radius: var(--border-radius);
-  box-shadow: 1.95px 2.95px 1.95px 0px rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius-large);
+  box-shadow: 1px 1px 2px 1px var(--base-deep);
+  outline: var(--outline-width) solid var(--base-deep);
 }
 
 .dropdown-content:not(.menu) {

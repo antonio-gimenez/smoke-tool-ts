@@ -62,7 +62,6 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        {/* check if isSystemPreferenceUsed, then only call theme */}
         {isSystemPreferenceUsed
           ? 'Theme'
           : upperCaseFirstLetter(currentTheme)}
@@ -100,7 +99,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
                   aria-selected={active}
                   aria-label={theme.label}
                 >
-                  <span className="theme-list-item-label">
+                  <span>
                     {theme.label}
                   </span>
 

@@ -33,7 +33,7 @@
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  border-radius: var(--border-radius-square);
+  border-radius: var(--border-radius-small);
   padding: var(--padding-y, 0.25rem) var(--padding-x, 0.5rem);
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
   min-height: var(--input-height, 2.5rem);
@@ -73,7 +73,7 @@
 .input-file-container {
   position: relative;
   /* display: flex; */
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
   flex-direction: column;
   cursor: pointer;
   width: 100%;
@@ -98,7 +98,7 @@
   --background-opacity: 0.2;
   background: hsl(var(--neutral-100) / var(--background-opacity, 1));
   border-color: hsl(var(--neutral-100) / var(--border-opacity));
-  border-radius: var(--border-radius-round, 0.5rem);
+  border-radius: var(--border-radius-small);
 }
 
 @keyframes checkbox {
@@ -134,7 +134,7 @@
 
 .combobox {
   position: relative;
-  border-radius: var(--border-radius-round);
+  border-radius: var(--border-radius-small);
   padding: var(--padding-y) var(--padding-x);
   width: clamp(300px, calc(var(--input-width) + 2 * var(--padding-x), 100%));
   height: var(--input-height, 2.5rem);
@@ -214,15 +214,15 @@
   max-height: 25rem;
   margin-top: var(--space-1, 0.25rem);
   top: 100%;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
   left: 0;
   overflow: hidden;
   overflow-y: auto;
   background-color: var(--base);
   width: 100%;
   z-index: 1;
-  border-bottom-left-radius: var(--border-radius, none);
-  border-bottom-right-radius: var(--border-radius, none);
+  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-small);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
@@ -274,14 +274,14 @@
   align-items: center;
   gap: 2px;
   padding: var(--space-0) var(--space-1);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
   background-color: hsl(var(--accent) / var(--background-opacity, 1));
   color: hsl(var(--accent-content) / var(--text-opacity, 1));
 }
 
 .combobox-input-container {
   position: relative;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-small);
   padding: var(--padding-y) var(--padding-x);
   width: auto;
   height: var(--input-height, 2.5rem);

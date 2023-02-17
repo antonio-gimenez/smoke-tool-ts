@@ -20,7 +20,9 @@ const Header = () => {
     <header className={`header ${isBodyScrolled ? "glass" : ""}`}>
       <div className="navbar container">
         <nav aria-label="Main navigation">
-          <span className="navbar-branding">{process.env.REACT_APP_APP_NAME}</span>
+          <span className="navbar-branding">
+            <span className="animate">{process.env.REACT_APP_APP_NAME}</span>
+          </span>
         </nav>
         <nav aria-label="Links">
           <a className="link" href="/tests/">

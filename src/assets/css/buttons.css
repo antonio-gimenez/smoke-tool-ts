@@ -29,7 +29,7 @@ button {
   height: var(--button-height, 2.5rem);
   width: fit-content;
   max-width: calc(var(--button-width) + 2 * var(--padding-x));
-  border-radius: var(--border-radius-round);
+  border-radius: var(--border-radius-small);
   cursor: pointer;
   border: 2px solid transparent;
   user-select: none;
@@ -44,7 +44,8 @@ button {
     .button-error
   ):not(.button-info):hover {
   --background-opacity: 0.045;
-  background: var(--base-content);
+  /* background: var(--base); */
+  background: rgba(0, 0, 0, 0.1);
 }
 
 @keyframes button-pop {
@@ -69,11 +70,11 @@ button {
 
 .button-ghost:hover {
   --background-opacity: 0.09;
-  background: var(--base-content);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .button-ghost:active {
-  background: var(--base-300);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .button-accent {
