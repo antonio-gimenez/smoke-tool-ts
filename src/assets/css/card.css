@@ -7,19 +7,17 @@
 
 .card {
   overflow: hidden;
-  background: hsl(var(--base-200) / var(--background-opacity, 1));
+  background: var(--base-mid);
   height: fit-content;
   width: clamp(200px, 100%, 480px);
-  color: hsl(var(--base-content));
+  padding: var(--space-4);
   border-radius: var(--border-radius-large);
 }
 
 .card-header {
-  padding: 2rem;
   font-size: var(--fs-regular);
   font-weight: var(--fw-light);
   height: auto;
-  box-shadow: 0 -0.2rem 0rem inset hsl(var(--base-100), 0.1);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -27,9 +25,9 @@
   justify-content: space-between;
 }
 
-.card-content {
+/* .card-content {
   padding: 2rem;
-}
+} */
 
 .card-actions {
   padding: 1rem 0rem;

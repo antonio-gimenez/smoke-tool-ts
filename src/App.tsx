@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
+import Button from "./components/ui/Button";
 import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
@@ -21,7 +22,7 @@ function App() {
       <ModalProvider>
         <TestProvider>
           <Header />
-          <div className="app container scrollable-content container-centered">
+          <div className="app container  container-centered">
 
 
             {/* 
@@ -33,8 +34,17 @@ function App() {
                 accusantium quas dolorum nemo. Quisquam, quae. Quisquam, quae. Quisquam,
               </p>
             </div> */}
-
-
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '1rem' }}>
+              <Button color={"primary"}>primary</Button>
+              <Button color={"secondary"}>secondary</Button>
+              <Button color={"accent"}>accent</Button>
+              <Button color={"base"}>base</Button>
+              <Button color={"neutral"}>neutral</Button>
+              <Button color={"success"}>success</Button>
+              <Button color={"error"}>error</Button>
+              <Button color={"warning"}>warning</Button>
+              <Button color={"info"}>info</Button>
+            </div>
             <WhatsNew />
             <Routes>
               <Route path="/" element={<SmokeTest />} />
@@ -42,7 +52,7 @@ function App() {
           </div>
         </TestProvider>
       </ModalProvider>
-    </AlertProvider>
+    </AlertProvider >
   );
 }
 

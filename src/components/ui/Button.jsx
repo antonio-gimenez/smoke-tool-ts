@@ -11,7 +11,7 @@ function Button({
   onClick = () => {},
   ...props
 }) {
-  const buttonColor = color;
+  const buttonColor = "button-" + color;
   const buttonBlock = block ? "block" : "";
   const buttonGhost = ghost ? "ghost" : "";
 

@@ -12,6 +12,8 @@
 .menu,
 .menu-horizontal {
   border-radius: var(--border-radius);
+  background-color: var(--base-mid);
+  z-index: 1;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -24,13 +26,13 @@
 }
 
 .menu li:hover {
-  background-color: hsl(var(--base-200));
-  color: hsl(var(--base-content));
+  background-color: var(--base);
+  color: var(--base-content);
 }
 
 .menu li:active {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-content));
+  background-color: var(--accent);
+  color: var(--base-content);
 }
 
 .menu li > a {
@@ -39,6 +41,6 @@
 }
 
 .menu li.active {
-  background-color: hsl(var(--accent) / var(--background-opacity));
-  color: hsl(var(--accent-content) / var(--text-opacity));
+  background-color: var(--accent);
+  color: var(--base-content);
 }

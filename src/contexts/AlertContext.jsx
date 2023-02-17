@@ -12,7 +12,7 @@ export function AlertProvider({ children }) {
     id = generateUUID(),
     message,
     type = "base",
-    duration = 2000,
+    duration = 25000,
     title = null,
     position = "top-right",
   }) => {
@@ -78,23 +78,9 @@ export function Alert({ id, children, duration, title, type, position, ...props 
     }
   }, [duration, id, remainingTime, removeAlert]);
 
-  function positionateOnMobile() {
-    if (deviceType === "mobile" || deviceType === "tablet") {
-      return "mobile";
-    }
-    return position;
-  }
-
-  function alertMobilePosition() {
-    if (deviceType === "mobile" || deviceType === "tablet") {
-      return "alert-mobile";
-    }
-    return "alert";
-  }
-
   if (!isAlertVisible(id) || !children) return null;
   return (
-    <div id={id} className={`${alertMobilePosition()} alert-${type}`} {...props} role="alert">
+    <div id={id} className={`alert alert-${type}`} {...props} role="alert">
       <div className="alert-section">
         <div className="alert-description">
           {title ? <div className="alert-title">{title} </div> : null}

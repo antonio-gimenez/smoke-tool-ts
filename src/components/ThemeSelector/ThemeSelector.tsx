@@ -100,8 +100,9 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
                   aria-selected={active}
                   aria-label={theme.label}
                 >
-
-                  {theme.label}
+                  <span className="theme-list-item-label">
+                    {theme.label}
+                  </span>
 
                   <div className="theme-list-palette">
                     {["primary", "secondary", "accent", "neutral"].map((color) => (

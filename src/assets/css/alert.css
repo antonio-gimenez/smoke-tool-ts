@@ -126,31 +126,31 @@
 }
 
 .alert-error {
-  background-color: hsl(var(--error) / var(--background-opacity));
-  color: hsl(var(--error-content));
-  border-color: hsl(var(--error) / var(--border-opacity, 0.5));
+  background-color: var(--error);
+  color: var(--base);
+  border-color: var(--error);
 }
 
 .alert-success {
-  background-color: hsl(var(--success) / var(--background-opacity));
-  color: hsl(var(--success-content));
-  border-color: hsl(var(--success) / var(--border-opacity, 0.5));
+  background-color: var(--success);
+  color: var(--base);
+  border-color: var(--success);
 }
 
 .alert-warning {
-  background-color: hsl(var(--warning) / var(--background-opacity));
-  color: hsl(var(--warning-content));
-  border-color: hsl(var(--warning) / var(--border-opacity, 0.5));
+  background-color: var(--warning);
+  color: var(--base);
+  border-color: var(--warning);
 }
 
 .alert-info {
-  background-color: hsl(var(--info, --base-100) / var(--background-opacity));
-  color: hsl(var(--info-content));
-  border-color: hsl(var(--info) / var(--border-opacity, 0.5));
+  background-color: var(--info);
+  color: var(--base);
+  border-color: var(--info);
 }
 
 .alert-base {
-  background-color: hsl(var(--base-300, --base-300) / var(--background-opacity, 1));
-  color: hsl(var(--base-content));
-  border-color: hsl(var(--base-300, --base-300) / var(--border-opacity, 1));
+  background-color: var(--base);
+  color: var(--base-content);
+  border-color: var(--base-content);
 }

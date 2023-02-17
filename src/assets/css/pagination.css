@@ -1,12 +1,9 @@
 .pagination-container {
-  /* position: sticky; */
-  /* bottom: 0; */
-  /* top: auto; */
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-block: var(--space-4, 1rem);
 }
 
 .pagination-list {
@@ -14,38 +11,41 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin-block: var(--space-1, 0.25rem);
+  margin-block: var(--space-2, 0.5rem);
   gap: var(--space-1, 0.25rem);
   padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
-  --background-opacity: 1;
-  background: hsl(var(--base-300, --base-100) / var(--background-opacity, 1));
-  color: hsl(var(--base-content));
-  border-radius: var(--border-radius, none);
+  background-color: var(--base);
+  color: var(--base-content);
+  border-radius: var(--border-radius, 0.25rem);
   font-size: var(--fs-regular);
-  --outline-opacity: 0.05;
 }
 
 .page-item,
 .page-control,
 .page-dots {
-  /* width: 1.6rem;
-  height: 1.6rem; */
-  padding: var(--space-1) var(--space-2);
+  padding: var(--space-1, 0.25rem) var(--space-2, 0.5rem);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius, 0.25rem);
+  background-color: transparent;
+  color: var(--base-content);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.page-control {
+  width: 2rem;
+  height: 2rem;
 }
 
 .page-item:hover,
 .page-control:hover {
-  --background-opacity: 1;
-  background-color: hsl(var(--base-200));
+  background-color: var(--base-mid);
 }
 
 .page-item.active {
-  color: hsl(var(--primary-content));
-  background: hsl(var(--primary));
+  background-color: var(--primary);
+  color: var(--base-content);
   font-weight: 600;
 }

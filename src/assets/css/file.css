@@ -3,15 +3,14 @@
   border-radius: var(--border-radius);
   border: var(--border-width, 1px) dashed;
   --border-opacity: 0.25;
-  border-color: hsl(var(--base-content) / var(--border-opacity, 1));
+  border-color: var(--base-content);
   --background-opacity: 0.05;
-  background: hsl(var(--base-content) / var(--background-opacity, 1));
-  /* add  border-bottom between items*/
+  background: var(--base-mid);
 }
 
 .file-display-container {
   margin-top: var(--space-2, 0.5rem);
-  border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
+  border-color: var(--base-content);
   padding-block: var(--space-2, 0.5rem);
   display: flex;
   flex-direction: column;
@@ -32,19 +31,22 @@
 
 .file-name {
   font-weight: var(--fw-medium);
-  --background-opacity: 1;
-  color: hsl(var(--primary) / var(--background-opacity, 0.8));
+  /* color: var(--primary) / var(--background-opacity, 0.8)); */
+  color: var(--accent) !important;
 }
 
 .file-icon {
   height: 1.125rem;
   width: 1.125rem;
-  color: hsl(var(--base-content) / var(--background-opacity, 1));
+  color: var(--base-content);
 }
 
 .file-close-icon {
   height: 1.5rem;
   width: 1.5rem;
-  color: hsl(var(--base-content) / var(--background-opacity, 0.2));
+  /* color: hsl(var(--base-content) / var(--background-opacity, 0.2)); */
+  color: var(--base-content);
+  /* add opacity to color */
+
   cursor: pointer;
 }

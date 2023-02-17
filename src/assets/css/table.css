@@ -12,21 +12,19 @@
   border-radius: var(--border-radius);
   overflow: auto;
   margin-block: var(--space-4);
-  background-color: hsl(var(--base-200) / var(--background-opacity, 1));
+  background-color: var(--base-mid);
   --border-opacity: 0.5;
   border-radius: var(--border-radius);
-  /* outline: 1px solid hsl(var(--base-100) / var(--border-opacity, 1)); */
 }
 
 .table > tr:nth-child(even) {
-  --background-opacity: 1;
-  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
+  background-color: var(--base);
 }
 
 .table thead {
   vertical-align: middle;
   padding: var(--space-4);
-  background-color: hsl(var(--base-300) / var(--background-opacity, 1));
+  background-color: var(--base-deep);
 }
 
 .table thead tr {
@@ -34,13 +32,12 @@
   text-align: left;
   text-transform: uppercase;
   font-weight: var(--font-weight-bold);
-  color: hsl(var(--base-content) / var(--text-opacity, 1));
+  color: var(--base-content);
 }
 
 .table tbody td {
   vertical-align: middle;
-  --border-opacity: 1;
-  border-bottom: 1px solid hsl(var(--base-100) / var(--border-opacity, 1));
+  border-bottom: 1px solid var(--base-mid);
 }
 
 .table tbody tr:last-child td {
@@ -48,8 +45,7 @@
 }
 
 .table tbody tr:hover {
-  --background-opacity: 0.75;
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: var(--base);
 }
 
 .table :where(th, td) {

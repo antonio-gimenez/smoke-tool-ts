@@ -92,7 +92,7 @@ const FileSelector: React.FC<FileSelectorProps> = ({ id = `file-selector-${gener
                         {Array.from({ length: selectedFiles.length }, (_, index) => (
                             <li key={index} className='file'>
                                 <FileIcon className='file-icon' />
-                                <a className='text-accent' href={URL.createObjectURL(selectedFiles[index])} target='_blank' rel='noopener noreferrer'>
+                                <a className='file-name' href={URL.createObjectURL(selectedFiles[index])} target='_blank' rel='noopener noreferrer'>
                                     {selectedFiles[index].name}
                                 </a>
                                 <span className='file-size'>
@@ -106,7 +106,7 @@ const FileSelector: React.FC<FileSelectorProps> = ({ id = `file-selector-${gener
                     </ul>
                 ) : (
                     <p className='dropzone-message'>
-                        Drag and drop your files here or <a href='#' className='text-accent' onClick={handleFileSelect}>select files from your computer</a>
+                        Drag and drop your files here or <a href='#' className='file-name' onClick={handleFileSelect}>select files from your computer</a>
                     </p>
                 )}
             </div>

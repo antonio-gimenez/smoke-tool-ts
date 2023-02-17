@@ -23,9 +23,5 @@ a.link:hover {
 }
 
 .text-muted {
-  color: hsl(var(--secondary) / var(--text-opacity));
-}
-
-.text-accent {
-  color: hsl(var(--primary));
+  color: var(--muted);
 }

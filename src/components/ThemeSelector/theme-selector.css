@@ -18,14 +18,14 @@
   border-radius: var(--border-radius);
   padding: var(--space-4);
   justify-content: space-between;
-  background-color: hsl(var(--base-100));
-  color: hsl(var(--base-content));
+  background-color: var(--base);
+  color: var(--base-content);
   cursor: pointer;
 }
 
 .theme-list-item.active {
   --outline-width: 2px;
-  outline: var(--outline-width) solid hsl(var(--primary));
+  outline: var(--outline-width) solid var(--primary);
   outline-offset: var(--outline-offset);
 }
 
@@ -36,6 +36,10 @@
   flex-shrink: 0;
   flex-wrap: nowrap;
   gap: var(--space-1);
+}
+
+.theme-list-item-label {
+  color: var(--primary);
 }
 
 .theme-list-palette-accent-bullet,
@@ -53,21 +57,17 @@
 }
 
 .theme-list-palette-accent-bullet {
-  color: hsl(var(--base-content));
-  background-color: hsl(var(--accent));
+  background-color: var(--accent);
 }
 
 .theme-list-palette-primary-bullet {
-  color: hsl(var(--primary-content));
-  background-color: hsl(var(--primary));
+  background-color: var(--primary);
 }
 
 .theme-list-palette-secondary-bullet {
-  color: hsv(var(--secondary-content));
-  background-color: hsl(var(--secondary));
+  background-color: var(--secondary);
 }
 
 .theme-list-palette-neutral-bullet {
-  color: hsv(var(--neutral-content));
-  background-color: hsl(var(--neutral));
+  background-color: var(--neutral);
 }

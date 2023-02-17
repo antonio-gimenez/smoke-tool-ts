@@ -15,7 +15,7 @@
   margin: 0;
   /* background: transparent; */
   padding: var(--space-2, 0.5rem);
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: var(--base);
 }
 
 .tags {

@@ -1,3 +1,20 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
+  width: 100vw;
+  height: 100vh;
+  background: var(--shadow);
+  /* how to add opacity to the background only */
+
+  backdrop-filter: blur(1px);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .modal {
   position: relative;
   width: auto;
@@ -5,10 +22,9 @@
   max-width: 95vw;
   max-height: 95vh;
   padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
-  --background-opacity: 1;
-  background: hsl(var(--base-200) / var(--background-opacity));
-  color: hsl(var(--base-content));
-  border-radius: var(--border-radius-xlarge);
+  background-color: var(--base-mid);
+  color: var(--base-content);
+  border-radius: var(--border-radius-circle);
   z-index: 2;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;

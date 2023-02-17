@@ -10,13 +10,11 @@ const Header = () => {
     offset: 20,
   });
 
-  const themes = ["light", "dark", "dracula", "midnight", "coffee", "solarized-dark", "solarized-light"].map(
-    (theme) => ({
-      id: theme,
-      label: upperCaseFirstLetter(theme),
-      value: theme,
-    })
-  );
+  const themes = ["light", "dark", "dracula", "midnight", "coffee", "solarized-dark"].map((theme) => ({
+    id: theme,
+    label: upperCaseFirstLetter(theme),
+    value: theme,
+  }));
 
   return (
     <header className={`header ${isBodyScrolled ? "glass" : ""}`}>

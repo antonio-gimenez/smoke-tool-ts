@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import Button from "../components/ui/Button.jsx";
-import Card, { CardContent, CardFooter, CardHeader } from "../components/ui/Card.jsx";
+import { useContext, useEffect, useRef, useState } from "react";
+import Card, { CardContent, CardHeader } from "../components/ui/Card.jsx";
 import Table from "../components/ui/Table.jsx";
 import Tabs from "../components/ui/Tabs.jsx";
 import { TestContext } from "../contexts/TestContext";
@@ -27,9 +26,34 @@ const SmokeTest = () => {
       pageSize,
     });
   }, [currentPage, status]);
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   return (
     <>
+      {/* <div className="dropdown " ref={dropdownRef}>
+        <button
+          className="button button-ghost"
+          onClick={() => setOpen(!open)}
+          aria-haspopup="listbox"
+          aria-expanded={open}
+        >
+          DropdownTest
+        </button>
+
+        <div
+          className={`dropdown-content menu ${open ? "visible" : "hidden"}`}
+          role="listbox"
+          aria-labelledby="theme-selector"
+          tabIndex={0}
+        >
+          <ul className="">
+            {tests?.map((theme) => {
+              return <li key={theme._id}>{theme.name}</li>;
+            })}
+          </ul>
+        </div>
+      </div> */}
       <Card>
         <CardHeader>
           <h2 className="">Smoke Test</h2>
@@ -41,20 +65,6 @@ const SmokeTest = () => {
           </Tabs>
           <PaginatedTable />
         </CardContent>
-        <CardFooter>
-          <Button color={"primary"} onClick={() => setStatus("pending")}>
-            primary
-          </Button>
-          <Button color={"secondary"} onClick={() => setStatus("pending")}>
-            secondary
-          </Button>
-          <Button color={"accent"} onClick={() => setStatus("pending")}>
-            accent
-          </Button>
-          <Button color={"base"} onClick={() => setStatus("pending")}>
-            base
-          </Button>
-        </CardFooter>
       </Card>
     </>
   );

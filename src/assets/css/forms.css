@@ -18,8 +18,7 @@
   flex-direction: column;
   gap: var(--space-2, 0.5rem);
   padding: var(--space-2, 0.5rem);
-  --border-opacity: 0.25;
-  border-color: hsl(var(--base-content) / var(--border-opacity, 0.25));
+  border-color: var(--base-content);
 }
 
 .form-group {
@@ -34,20 +33,19 @@
   position: relative;
   overflow: hidden;
   display: inline-flex;
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--border-radius-square);
   padding: var(--padding-y, 0.25rem) var(--padding-x, 0.5rem);
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
 
   --background-opacity: 0.75;
-  background: hsl(var(--base-300) / var(--background-opacity, 1));
-  color: hsl(var(--base-content) / var(--text-opacity, 1));
+  background: var(--base-deep);
+  color: var(--base-content);
   outline: currentColor none medium;
   outline-offset: var(--outline-offset, 2px);
   border: var(--border-width, 2px) solid;
-  --border-opacity: 0.25;
-  border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
+  border-color: var(--base-content);
   resize: vertical;
   transition: all 0.1s ease 0s;
 }
@@ -84,7 +82,7 @@
   --background-opacity: 0.2;
   border: var(--border-width, 1px) dashed;
   border-color: hsl(var(--base-content) / var(--border-opacity, 0.15));
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: var(--base);
 }
 .checkbox {
   flex-shrink: 0;
@@ -100,7 +98,7 @@
   --background-opacity: 0.2;
   background: hsl(var(--neutral-100) / var(--background-opacity, 1));
   border-color: hsl(var(--neutral-100) / var(--border-opacity));
-  border-radius: var(--border-radius, 0.5rem);
+  border-radius: var(--border-radius-round, 0.5rem);
 }
 
 @keyframes checkbox {
@@ -136,12 +134,12 @@
 
 .combobox {
   position: relative;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-round);
   padding: var(--padding-y) var(--padding-x);
   width: clamp(300px, calc(var(--input-width) + 2 * var(--padding-x), 100%));
   height: var(--input-height, 2.5rem);
   line-height: normal;
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: var(--base);
   outline: currentcolor none medium;
   --border-opacity: 0.25;
   border: var(--border-width, 2px) solid;
@@ -167,7 +165,7 @@
 .combobox:focus-within,
 .combobox:focus {
   --border-opacity: 1;
-  border-color: hsl(var(--primary) / var(--border-opacity, 1));
+  border-color: var(--primary);
 }
 
 /* if combobox is aria-expanded  add a blue border*/
@@ -195,15 +193,15 @@
 .combobox-placeholder {
   font-size: var(--fs-regular);
   --text-opacity: 0.75;
-  color: hsl(var(--base-content) / var(--text-opacity, 0.75));
+  opacity: 0.75;
+  color: var(--muted);
 }
 
 .input[aria-invalid="true"],
 .textarea[aria-invalid="true"],
 .input:invalid,
 .textarea:invalid {
-  --border-opacity: 0.8;
-  border-color: hsl(var(--error) / var(--border-opacity, 1));
+  border-color: var(--error);
 }
 
 .combobox-container {
@@ -220,7 +218,7 @@
   left: 0;
   overflow: hidden;
   overflow-y: auto;
-  background-color: hsl(var(--base-100) / var(--background-opacity, 1));
+  background-color: var(--base);
   width: 100%;
   z-index: 1;
   border-bottom-left-radius: var(--border-radius, none);
@@ -288,7 +286,7 @@
   width: auto;
   height: var(--input-height, 2.5rem);
   line-height: normal;
-  background: hsl(var(--base-100) / var(--background-opacity, 1));
+  background: var(--base);
   outline: currentcolor none medium;
   --border-opacity: 0.25;
   border: var(--border-width, 2px) solid;
