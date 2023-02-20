@@ -31,9 +31,8 @@ const Lightbox: React.FC<LightboxProps> = ({ trigger, content, closeOnEscape, cl
                 {trigger}
             </div>
             {isOpen && (
-                <div className="backdrop-dark" ref={lightBoxRef}>
-                    <div className="lightbox-content">{content}</div>
-                    {/* <div className="lightbox-background" ref={lightBoxRef} /> */}
+                <div className="backdrop-dark" >
+                    <div className="lightbox-content" ref={lightBoxRef}>{content}</div>
                 </div>
             )}
         </>

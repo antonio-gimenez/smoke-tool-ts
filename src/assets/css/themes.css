@@ -2,7 +2,7 @@
   color-scheme: light;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-primary: 221, 83%, 53%;
+  --color-primary: 215, 100%, 50%;
   --color-secondary: 210, 15%, 45%;
   --color-accent: 245, 50%, 50%;
   --color-neutral: 221, 5%, 39%;
@@ -77,7 +77,7 @@
 }
 
 [data-theme="dracula"] {
-  /* This theme is based on the Solarized Dark a theme by Zeno Rocha */
+  /* This theme is based on the Dracula theme by Zeno Rocha */
   color-scheme: dark;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
@@ -122,7 +122,8 @@
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
   --color-base: 192, 81%, 14%;
-  --color-base-mid: 192, 100%, 11%;
+  /* --color-base-mid: 192, 100%, 11%; */
+  --color-base-mid: 192, 82%, 15%;
   --color-base-deep: 192, 100%, 8%;
   --color-base-content: 180, 7%, 60%;
   --color-primary: 45, 100%, 35%;
@@ -228,46 +229,6 @@
   --info-content: hsl(var(--color-dark));
   --success: hsl(var(--color-success));
   --success-content: hsl(var(--color-dark));
-  --warning: hsl(var(--color-warning));
-  --warning-content: hsl(var(--color-dark));
-  --error: hsl(var(--color-error));
-  --error-content: hsl(var(--color-light));
-}
-
-[data-theme="ubuntu"] {
-  color-scheme: dark;
-  --color-dark: 0, 0%, 0%;
-  --color-light: 0, 0%, 100%;
-  /* --color-base: 250, 36%, 20%; */
-  --color-base: 16, 82%, 46%;
-  --color-base-mid: 16, 84%, 90%;
-  --color-base-deep: 231, 24%, 12%;
-  --color-base-content: 0, 0%, 96%;
-  --color-primary: 33, 82%, 51%;
-  --color-secondary: 216, 5%, 50%;
-  --color-accent: 180, 62%, 45%;
-  --color-neutral: 0, 0%, 62%;
-  --color-info: 207, 90%, 54%;
-  --color-success: 140, 35%, 45%;
-  --color-warning: 40, 100%, 50%;
-  --color-error: 4, 90%, 58%;
-
-  --base: hsl(var(--color-base));
-  --base-mid: hsl(var(--color-base-mid));
-  --base-deep: hsl(var(--color-base-deep));
-  --base-content: hsl(var(--color-base-content));
-  --primary: hsl(var(--color-primary));
-  --primary-content: hsl(var(--color-light));
-  --secondary: hsl(var(--color-secondary));
-  --secondary-content: hsl(var(--color-dark));
-  --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-dark));
-  --neutral: hsl(var(--color-neutral));
-  --neutral-content: hsl(var(--color-light));
-  --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-light));
-  --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-light));
   --warning: hsl(var(--color-warning));
   --warning-content: hsl(var(--color-dark));
   --error: hsl(var(--color-error));

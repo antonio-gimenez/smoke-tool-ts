@@ -12,7 +12,7 @@ export function AlertProvider({ children }) {
     id = generateUUID(),
     message,
     type = "base",
-    duration = 25000,
+    duration = 3000,
     title = null,
     position = "top-right",
   }) => {

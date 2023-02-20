@@ -1,0 +1,77 @@
+:root {
+  --toggle-switch-height: 20px;
+  --toggle-switch-width: 32px;
+  --toggle-switch-border-width: var(--border-width, 1px);
+  --toggle-switch-color-unchecked: hsl(var(--color-base-content), 0.1);
+  --toggle-switch-color-checked: hsl(215, 100%, 50%);
+  --slider-color: hsl(var(--color-base-content), 0.45);
+  --slider-color-checked: hsl(var(--color-light), 0.87);
+  --slider-offset: calc(var(--space-1) / 2);
+  --slider-size: calc(var(--toggle-switch-height) - (var(--slider-offset) * 2) - var(--toggle-switch-border-width) * 2);
+  --slider-border-radius: var(--toggle-switch-height);
+  --slider-translate-x: calc(var(--toggle-switch-width) - var(--toggle-switch-height));
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: var(--toggle-switch-width);
+  height: var(--toggle-switch-height);
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-switch-color-unchecked);
+  transition: all 0.2s;
+  --border-opacity: 0.2;
+  border: var(--toggle-switch-border-width) solid;
+  border-color: hsl(var(--color-base-content), var(--border-opacity));
+  border-radius: var(--slider-border-radius);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--slider-size);
+  width: var(--slider-size);
+  left: var(--slider-offset);
+  bottom: var(--slider-offset);
+  background-color: var(--slider-color);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--toggle-switch-color-checked);
+  --border-opacity: 0.75;
+  border: var(--border-width) solid transparent;
+}
+
+input:checked + .slider.primary {
+  --toggle-switch-color-checked: var(--primary);
+}
+
+input:checked + .slider.secondary {
+  --toggle-switch-color-checked: var(--secondary);
+}
+
+input:checked + .slider.accent {
+  --toggle-switch-color-checked: var(--accent);
+}
+
+input:checked + .slider.neutral {
+  --toggle-switch-color-checked: var(--neutral);
+}
+
+input:checked + .slider:before {
+  transform: translateX(var(--slider-translate-x));
+  background-color: var(--slider-color-checked);
+}

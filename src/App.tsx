@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -7,8 +8,58 @@ import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext";
+import useFileSelect from "./hooks/use-file-select";
+import useLocalStorage from "./hooks/use-local-storage";
 import useThemeState from "./hooks/use-theme-state";
 import SmokeTest from "./pages/SmokeTest.jsx";
+
+
+const MyComponent = () => {
+  const [multiple, setMultiple] = useState(false);
+  const [selectedFile, handleFileSelect, clearSelectedFile] = useFileSelect({ multiple, localStorageKey: 'myFile' });
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (selectedFile) {
+      const files = Array.from(selectedFile as FileList);
+      files.forEach((item) => {
+        console.log(item);
+      });
+    }
+  };
+
+  return (
+    <div>
+      <label htmlFor="multiple" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} >
+
+        <label htmlFor="multiple" className="toggle-switch">
+          <input id="multiple" type="checkbox" className="checkbox" checked={multiple} onChange={() => setMultiple(!multiple)} />
+          <span className="slider" />
+        </label>
+        <span>
+
+          Multiple
+        </span>
+      </label>
+      <form className="card" onSubmit={handleSubmit}>
+        <label htmlFor="fileInput">
+          <span className="button button-primary">Select File</span>
+          <input id="fileInput" className="hidden" type="file" multiple={multiple} onChange={handleFileSelect} />
+        </label>
+
+
+        <button disabled={false} className="button button-accent" type="submit">Submit</button>
+        <button className="button button-secondary" type="button" onClick={clearSelectedFile}>Clear</button>
+      </form>
+    </div>
+  );
+};
+
+{/* {selectedFile &&
+  <button className="button button-error" type="button" onClick={clearSelectedFile}>Clear</button>
+} */}
+
+
 
 function App() {
   const { currentTheme } = useThemeState();
@@ -35,17 +86,19 @@ function App() {
                 accusantium quas dolorum nemo. Quisquam, quae. Quisquam, quae. Quisquam,
               </p>
             </div> */}
-            <Lightbox
+            {/* <Lightbox
               closeOnEscape={true}
               closeOnOverlayClick={true}
               trigger={<img src="https://picsum.photos/64/64" alt="img" />}
               content={<img src="https://picsum.photos/800" alt="img" />}
-            />
+            /> */}
+
+            <MyComponent />
 
             <WhatsNew />
-            <Routes>
+            {/* <Routes>
               <Route path="/" element={<SmokeTest />} />
-            </Routes>
+            </Routes> */}
           </div>
         </TestProvider>
       </ModalProvider>

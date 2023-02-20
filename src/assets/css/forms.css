@@ -9,8 +9,8 @@
   --padding-y: var(--space-1, 0.25rem);
   --outline-width: var(--border-width, 1px);
   --outline-offset: var(--outline-width, 1px);
-  --checkbox-background: var(--warning);
-  --checkbox-foreground: var(--warning-content);
+  --checkbox-background: var(--accent);
+  --checkbox-foreground: red;
 }
 
 .form {
@@ -83,74 +83,6 @@
   border: var(--border-width, 1px) dashed;
   border-color: hsla(var(--color-base-content), var(--border-opacity));
   background: var(--base);
-}
-.checkbox {
-  flex-shrink: 0;
-  height: calc(var(--input-height) - 2 * var(--border-width));
-  width: 1.2rem;
-  cursor: pointer;
-  position: relative;
-  -webkit-appearance: none;
-  appearance: none;
-  border-width: var(--border-width);
-  overflow: hidden;
-  --border-opacity: 0.2;
-  --background-opacity: 0.2;
-  background: hsl(var(--neutral-100) / var(--background-opacity, 1));
-  border-color: hsla(var(--color-base-content), var(--border-opacity));
-  border-radius: var(--border-radius-small);
-}
-
-@keyframes checkbox {
-  0% {
-    background-position-y: 5px;
-  }
-  50% {
-    background-position-y: -2px;
-  }
-  100% {
-    background-position-y: 0px;
-  }
-}
-.checkbox:checked {
-  --border-opacity: 1;
-  --background-opacity: 1;
-  background-color: var(--checkbox-background);
-  background-repeat: no-repeat;
-  animation: checkbox 0.2s ease-in-out;
-  background-image: linear-gradient(-45deg, transparent 65%, hsl(var(--checkbox-background)) 65.99%),
-    linear-gradient(45deg, transparent 75%, hsl(var(--checkbox-background)) 75.99%),
-    linear-gradient(-45deg, hsl(var(--checkbox-background)) 40%, transparent 40.99%),
-    linear-gradient(
-      45deg,
-      hsl(var(--checkbox-background)) 30%,
-      hsl(var(--checkbox-foreground)) 30.99%,
-      hsl(var(--checkbox-foreground)) 40%,
-      transparent 40.99%
-    ),
-    linear-gradient(-45deg, hsl(var(--checkbox-foreground)) 50%, hsl(var(--checkbox-background)) 50.99%);
-  border-color: hsl(var(--accent) / var(--border-opacity, 1));
-}
-
-.combobox {
-  position: relative;
-  border-radius: var(--border-radius-small);
-  padding: var(--padding-y) var(--padding-x);
-  width: clamp(300px, calc(var(--input-width) + 2 * var(--padding-x), 100%));
-  height: var(--input-height, 2.5rem);
-  line-height: normal;
-  background: var(--base);
-  outline: currentcolor none medium;
-  --border-opacity: 0.25;
-  border: var(--border-width, 2px) solid;
-  border-color: hsl(var(--base-content) / var(--border-opacity));
-  cursor: auto;
-  color: hsl(var(--base-content));
-  transition: all 0.1s ease 0s;
-  display: flex;
-  align-items: center;
-  user-select: none;
-  justify-content: space-between;
 }
 
 .textarea-container {

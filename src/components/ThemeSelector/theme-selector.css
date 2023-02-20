@@ -4,6 +4,7 @@
   flex-wrap: nowrap;
   gap: var(--space-3);
   padding: var(--space-3);
+  /* background-color: var(--base-deep); */
   height: 100%;
 }
 

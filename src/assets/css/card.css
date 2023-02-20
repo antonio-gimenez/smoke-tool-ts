@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   align-items: center;
   text-transform: uppercase;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 /* .card-content {

@@ -1,13 +1,11 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { ModalContext } from "../contexts/ModalContext";
+import api from "../services/use-axios";
 import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions, selectRandomFromArray } from "../utils/utils";
-import UploadFile from "./UploadFile";
-import api from "../services/use-axios";
 import FileSelector from "./FileSelector";
-import Button from "./ui/Button";
 const PRIORITIES = [
   { label: "High", value: "high" },
   { label: "Medium", value: "medium" },
@@ -73,12 +71,19 @@ function NewTest() {
     });
   };
 
+  // how to iterate over a FileList object
+
+  if (fileToUpload) {
+    for (let i = 0; i < fileToUpload.length; i++) {
+      console.log(fileToUpload[i].name);
+    }
+  }
+
   return (
     <>
       <div className="form">
         {form.name}
         <div className="form-group">
-          {`file` + fileToUpload}
           <select className="select" name="products" id="name" onChange={onChange}>
             {products.length > 0 &&
               productsFormatted.map((product) => (
