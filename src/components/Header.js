@@ -1,7 +1,7 @@
 import NewTestForm from "./NewTestForm";
 import ThemeSelector from "./ThemeSelector/ThemeSelector";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
-import useScrollState from "../hooks/use-scroll-state";
+import useScrollState from "../hooks/useScrollState";
 import { upperCaseFirstLetter } from "../utils/utils";
 const Header = () => {
   const [isBodyScrolled] = useScrollState({

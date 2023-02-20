@@ -1,4 +1,4 @@
-import usePagination from "../hooks/use-pagination";
+import usePagination from "../hooks/usePagination";
 
 import { ReactComponent as ChevronLeftIcon } from "../assets/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "../assets/icons/chevron-right.svg";

@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from "react";
 
-interface keyPressProps {
+interface KeyProps {
   key: string;
   handler: (event: KeyboardEvent) => void;
 }
 
-const useKeyPress = ({ key, handler }: keyPressProps) => {
+const useKey = ({ key, handler }: KeyProps) => {
   // A callback is used to prevent the handler from being recreated on every render.
   const keyDownListener = useCallback(
     (event: KeyboardEvent) => {
@@ -30,4 +30,4 @@ const useKeyPress = ({ key, handler }: keyPressProps) => {
   }, [keyDownListener]);
 };
 
-export default useKeyPress;
+export default useKey;

@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { ReactComponent as ChevronDownIcon } from "../../assets/icons/chevron-down.svg";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 
-import useKeyPress from "../../hooks/use-key-press";
-import useOnClickOutside from "../../hooks/use-on-click-outside";
+import useKey from "../../hooks/useKey";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 const ComboBox = ({
   id = null,
@@ -31,12 +31,12 @@ const ComboBox = ({
     handler: () => setShowMenu(false),
   });
 
-  useKeyPress({
+  useKey({
     key: "Escape",
     handler: () => setShowMenu(false),
   });
 
-  useKeyPress({
+  useKey({
     key: " ",
     handler: () => {
       if (inputRef.current === document.activeElement) {

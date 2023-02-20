@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useLocalStorage from "./use-local-storage";
+import useLocalStorage from "./useLocalStorage";
 
 type FileHookReturnType = [
     File | FileList | null,

@@ -6,7 +6,7 @@ interface intersectionObserverProps {
     options?: IntersectionObserverInit;
 }
 
-const useIntersectionObserver = ({ ref, options }: intersectionObserverProps) => {
+const useObserver = ({ ref, options }: intersectionObserverProps) => {
     // State and setter for storing whether element is visible
     const [isIntersecting, setIsIntersecting] = useState(false);
 
@@ -34,4 +34,4 @@ const useIntersectionObserver = ({ ref, options }: intersectionObserverProps) =>
     return isIntersecting;
 };
 
-export default useIntersectionObserver;
+export default useObserver;

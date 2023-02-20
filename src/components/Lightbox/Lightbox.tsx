@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import useKeyPress from "../../hooks/use-key-press";
-import useOnClickOutside from "../../hooks/use-on-click-outside";
+import useKey from "../../hooks/useKey";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 interface LightboxProps {
     trigger: React.ReactNode;
@@ -14,7 +14,7 @@ interface LightboxProps {
 const Lightbox: React.FC<LightboxProps> = ({ trigger, content, closeOnEscape, closeOnOverlayClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const lightBoxRef = useRef(null);
-    useKeyPress({
+    useKey({
         key: "Escape",
         handler: closeOnEscape ? () => { setIsOpen(false) } : () => { }
     });

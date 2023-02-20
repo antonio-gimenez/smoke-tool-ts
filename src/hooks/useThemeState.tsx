@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useLocalStorage from "./use-local-storage";
+import useLocalStorage from "./useLocalStorage";
 
 
 

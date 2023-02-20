@@ -8,9 +8,9 @@ import WhatsNew from "./components/WhatsNew";
 import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext";
-import useFileSelect from "./hooks/use-file-select";
-import useLocalStorage from "./hooks/use-local-storage";
-import useThemeState from "./hooks/use-theme-state";
+import useFileSelect from "./hooks/useFileSelect";
+import useLocalStorage from "./hooks/useLocalStorage";
+import useThemeState from "./hooks/useThemeState";
 import SmokeTest from "./pages/SmokeTest.jsx";
 
 

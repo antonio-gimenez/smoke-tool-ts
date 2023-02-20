@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
-import useDeviceType from "../hooks/use-device-type";
 import { generateUUID, groupBy } from "../utils/utils";
 
 export const AlertContext = createContext();
@@ -57,7 +56,6 @@ export function AlertProvider({ children }) {
 export function Alert({ id, children, duration, title, type, position, ...props }) {
   const [remainingTime, setRemainingTime] = useState(duration);
   const { removeAlert, isAlertVisible } = useContext(AlertContext);
-  const deviceType = useDeviceType();
   useEffect(() => {
     if (duration > 0) {
       let interval;

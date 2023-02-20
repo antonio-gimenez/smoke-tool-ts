@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 
-import useKeyPress from "../../hooks/use-key-press";
+import useKey from "../../hooks/useKey";
 import Input from "./Input";
 import { generateUUID } from "../../utils/utils";
 
@@ -15,7 +15,7 @@ const Tags = ({ id = generateUUID(), placeholder = "Input tags", onChange = () =
     }
     onChange(selectedValues);
   };
-  useKeyPress({
+  useKey({
     key: "Enter",
     handler: handleAddTag,
   });

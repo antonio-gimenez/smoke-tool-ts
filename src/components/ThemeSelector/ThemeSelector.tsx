@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import useKeyPress from "../../hooks/use-key-press";
-import useOnClickOutside from "../../hooks/use-on-click-outside";
-import useThemeState from "../../hooks/use-theme-state";
+import useKey from "../../hooks/useKey";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+import useThemeState from "../../hooks/useThemeState";
 import { upperCaseFirstLetter } from "../../utils/utils";
 import "./theme-selector.css";
 
@@ -35,7 +35,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
     handler: () => setOpen(false),
   });
 
-  useKeyPress({
+  useKey({
     key: "Escape",
     handler: () => setOpen(false),
   });

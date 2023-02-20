@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useLocalStorage from "../hooks/use-local-storage";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { Modal, ModalContent, ModalHeader } from "./ui/Modal";
 
 function WhatsNew() {
