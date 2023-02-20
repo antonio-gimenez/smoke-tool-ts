@@ -16,7 +16,7 @@ type UseFileSelectProps = {
 const useFileSelect = ({
     multiple = false,
     localStorageKey,
-    expirationTime = 60, // Default expiration time is 60 minutes
+    expirationTime = 60, // Default time is 60 minutes
 }: UseFileSelectProps = {}): FileHookReturnType => {
     const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(null);
     const [storedFiles, setStoredFiles, removeStoredFiles, storedFilesExist] = useLocalStorage({

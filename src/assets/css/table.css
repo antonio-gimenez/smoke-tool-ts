@@ -37,7 +37,7 @@
 
 .table tbody td {
   vertical-align: middle;
-  border-bottom: 1px solid var(--base-mid);
+  border-bottom: 1px solid var(--base-deep);
 }
 
 .table tbody tr:last-child td {
@@ -45,7 +45,7 @@
 }
 
 .table tbody tr:hover {
-  background: var(--base);
+  background: var(--base-deep);
 }
 
 .table :where(th, td) {

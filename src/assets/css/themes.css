@@ -6,9 +6,9 @@
   --color-secondary: 210, 15%, 45%;
   --color-accent: 245, 50%, 50%;
   --color-neutral: 221, 5%, 39%;
-  --color-base: 210, 10%, 91%;
-  --color-base-mid: 212, 12%, 86%;
-  --color-base-deep: 211, 14%, 80%;
+  --color-base: 0, 0%, 93%;
+  --color-base-mid: 220, 10%, 89%;
+  --color-base-deep: 200, 5%, 85%;
   --color-base-content: 0, 0%, 16%;
   --color-info: 195, 100%, 50%;
   --color-success: 135, 94%, 65%;
@@ -41,9 +41,9 @@
   color-scheme: dark;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-base: 0, 0%, 26%;
-  --color-base-mid: 0, 0%, 19%;
-  --color-base-deep: 0, 0%, 14%;
+  --color-base: 220, 0%, 21%;
+  --color-base-mid: 220, 0%, 19%;
+  --color-base-deep: 220, 0%, 17%;
   --color-base-content: 0, 0%, 100%;
   --color-primary: 207, 90%, 54%;
   --color-secondary: 0, 0%, 62%;

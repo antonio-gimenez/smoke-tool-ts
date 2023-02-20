@@ -24,6 +24,7 @@ interface paginationProps {
 
 
 const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentPage }: paginationProps) => {
+
   const paginationRange = useMemo(() => {
     var totalPageCount = Math.ceil(totalCount / pageSize);
     // Check if we need to subtract 1 from the totalPageCount: If totalCount is not divisible by pageSize, we don't need to subtract 1  because Math.ceil() will automatically round up to the nearest whole number. 
@@ -75,7 +76,8 @@ const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentPage }: 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
   }, [totalCount, pageSize, siblingCount, currentPage]);
-
+  if (!totalCount || totalCount <= 0) return null;
+  console.log("totalCount", totalCount);
   return paginationRange;
 };
 

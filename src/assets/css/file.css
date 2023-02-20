@@ -1,52 +1,34 @@
-.file-selector {
-  padding: var(--space-2, 0.5rem);
-  border-radius: var(--border-radius);
-  border: var(--border-width, 1px) dashed;
-  --border-opacity: 0.25;
-  border-color: var(--base-content);
-  --background-opacity: 0.05;
-  background: var(--base-mid);
+.file-list {
+  background: var(--base-deep);
+  /* margin-block: var(--space-2); */
+  border-radius: var(--border-radius-small);
 }
-
-.file-display-container {
-  margin-top: var(--space-2, 0.5rem);
-  border-color: var(--base-content);
-  padding-block: var(--space-2, 0.5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
 .file {
   display: flex;
   align-items: center;
-
-  padding: var(--space-1, 0.25rem);
+  padding: var(--space-2, 0.25rem);
   --background-opacity: 0.6;
-  gap: var(--space-1, 0.15rem);
+  gap: var(--space-4, 0.15rem);
   justify-content: space-between;
 }
 
 .file-name {
-  font-weight: var(--fw-medium);
-  /* color: var(--primary) / var(--background-opacity, 0.8)); */
-  color: var(--accent) !important;
+  /* font-weight: var(--fw-medium); */
+  /* color: var(--accent); */
 }
-
-.file-icon {
-  height: 1.125rem;
-  width: 1.125rem;
+.file-size {
+  font-weight: var(--fw-light);
   color: var(--base-content);
 }
 
 .file-close-icon {
-  height: 1.5rem;
-  width: 1.5rem;
-  /* color: hsl(var(--base-content) / var(--background-opacity, 0.2)); */
+  height: 1.2rem;
+  width: 1.2rem;
   color: var(--base-content);
-  /* add opacity to color */
-
   cursor: pointer;
+}
+
+/* when hovering file-close-icon. set a .file background color */
+.file-close-icon:hover + .file {
+  background: red;
 }

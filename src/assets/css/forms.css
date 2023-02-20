@@ -39,7 +39,7 @@
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
   --background-opacity: 0.75;
-  background: var(--base-deep);
+  background: var(--base-mid);
   color: hsla(var(--color-base-content), var(--background-opacity));
   outline: currentColor none medium;
   outline-offset: var(--outline-offset, 2px);

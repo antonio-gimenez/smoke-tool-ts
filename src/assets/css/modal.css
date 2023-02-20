@@ -22,7 +22,7 @@
   max-width: 95vw;
   max-height: 95vh;
   padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
-  background-color: var(--base-mid);
+  background-color: var(--base);
   color: var(--base-content);
   border-radius: var(--border-radius-large);
   z-index: 2;

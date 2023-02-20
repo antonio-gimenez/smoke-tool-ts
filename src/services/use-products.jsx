@@ -12,7 +12,7 @@ function useProducts() {
     setLoading(true);
     const fetchProducts = async () => {
       try {
-        const response = await api.get("/praoducts");
+        const response = await api.get("/products");
         if (response.status === 204) {
           addAlert({
             message: "No products found",

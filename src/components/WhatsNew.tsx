@@ -20,8 +20,8 @@ function WhatsNew() {
 
   return (
     <Modal id="whats-new" open={
-      // !isChecked
-      true
+      !isChecked
+      // true
     }>
       <ModalHeader>
         <h4>What's new in version {currentVersion}</h4>

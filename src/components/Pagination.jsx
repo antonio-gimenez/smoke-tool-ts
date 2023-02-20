@@ -15,8 +15,8 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
     siblingCount,
     pageSize,
   });
-
   const [jumpTo, setJumpTo] = useState("");
+  if (totalCount <= 0 || !totalCount) return null;
 
   const onNext = () => {
     onPageChange(currentPage + 1);
@@ -32,6 +32,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
   };
 
   let lastPage = Math.ceil(totalCount / pageSize) - 1;
+
   return (
     <div className={"pagination-container"}>
       <ol className="pagination-list">
