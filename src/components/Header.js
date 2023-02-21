@@ -10,7 +10,7 @@ const Header = () => {
     offset: 20,
   });
 
-  const themes = ["light", "dark", "dracula", "midnight", "coffee", "solarized-dark"].map((theme) => ({
+  const themes = ["light", "dark", "dracula", "tokyo-neon", "coffee", "solarized-dark"].map((theme) => ({
     id: theme,
     label: upperCaseFirstLetter(theme),
     value: theme,
@@ -21,7 +21,7 @@ const Header = () => {
       <div className="navbar container">
         <nav aria-label="Main navigation">
           <span className="navbar-branding">
-            <span className="animate">{process.env.REACT_APP_APP_NAME}</span>
+            <span>{process.env.REACT_APP_APP_NAME}</span>
           </span>
         </nav>
         <nav aria-label="Links">

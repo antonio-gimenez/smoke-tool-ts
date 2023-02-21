@@ -22,23 +22,23 @@ function FileSelector() {
 
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
-        if (files) {
+        if (files && files.length > 0) {
             if (multiple && selectedFiles instanceof FileList) {
                 // append new files to the existing list
                 const newFiles = Array.from(selectedFiles).concat(Array.from(files));
-                console.log(`appending:`, newFiles)
+                console.log(`appending:`, newFiles);
                 setSelectedFiles(createFileList(newFiles));
-                addAlert({ type: 'success', message: 'Files added successfully' });
+                addAlert({ type: "success", message: "Files added" });
             } else {
-                console.log(`setting:`, files)
-                setSelectedFiles(files[0]);
-                addAlert({ type: 'success', message: `File ${files[0].name} added successfully` });
-
+                console.log(`setting:`, files);
+                setSelectedFiles(createFileList(Array.from(files)));
+                addAlert({ type: "success", message: "File added" });
             }
         } else {
             setSelectedFiles(null);
         }
     };
+
 
 
     const removeFile = (index: number) => {
@@ -65,7 +65,7 @@ function FileSelector() {
                 {item && (
                     Array.from({ length }, (_, index) => item(index)).map((file, index) => (
                         <li key={`file - ${index}`} className='file'>
-                            <a href={URL.createObjectURL(file)} target="_blank" className='file-name'>{file.name} ({humanFileSize(file.size)})</a>
+                            <a title={file.name} href={URL.createObjectURL(file)} target="_blank" className='link'>{file.name} ({humanFileSize(file.size)})</a>
                             <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
                         </li>
                     ))
@@ -76,16 +76,16 @@ function FileSelector() {
 
     return (
         <div>
+            <label htmlFor="multiple" >
+                <input
+                    id="multiple"
+                    type="checkbox"
+                    checked={multiple}
+                    onChange={() => setMultiple(!multiple)}
+                />
+                <span>Allow upload multiple files</span>
+            </label>
             <label htmlFor="fileInput">
-                {/* <label htmlFor="multiple" >
-                    <input
-                        id="multiple"
-                        type="checkbox"
-                        checked={multiple}
-                        onChange={() => setMultiple(!multiple)}
-                    />
-                    <span>Allow upload multiple files</span>
-                </label> */}
                 <span className="button button-primary">Add file</span>
                 <input id="fileInput" className="hidden" type="file" multiple={multiple} onChange={handleFileSelect} />
             </label>

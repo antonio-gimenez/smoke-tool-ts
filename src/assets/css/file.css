@@ -12,18 +12,14 @@
   justify-content: space-between;
 }
 
-.file-name {
-  /* font-weight: var(--fw-medium); */
-  /* color: var(--accent); */
-}
 .file-size {
   font-weight: var(--fw-light);
   color: var(--base-content);
 }
 
 .file-close-icon {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 20px;
+  width: 20px;
   color: var(--base-content);
   cursor: pointer;
 }

@@ -21,12 +21,13 @@
   background-color: transparent;
   background-image: linear-gradient(
     135deg,
-    hsl(var(--base) / var(--glass-opacity)) 0%,
-    hsl(var(--base-mid) / var(--glass-opacity)) 50%,
-    hsl(var(--base-deep) / var(--glass-opacity)) 100%
+    hsla(var(--color-base), var(--glass-opacity)) 0%,
+    hsla(var(--color-base-mid), var(--glass-opacity)) 20%,
+    hsla(var(--color-base-deep), var(--glass-opacity)) 100%
   );
-  box-shadow: 0 0 0 1px var(--base), 0 0 0 2px #0000000d;
-  text-shadow: 0 1px var(--base);
+  /* box-shadow: 0 0 0 1px var(--base), 0 0 0 2px #0000000d; */
+  border-bottom: 1px solid var(--base-mid);
+  /* text-shadow: 0 1px var(--base); */
 }
 
 .navbar {

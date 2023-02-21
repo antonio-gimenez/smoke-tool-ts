@@ -71,7 +71,7 @@ function NewTest() {
               </option>
             ))}
         </select>
-        <button className="button" onClick={onSubmit}>
+        <button className="button button-accent" onClick={onSubmit}>
           Create Test
         </button>
       </div>

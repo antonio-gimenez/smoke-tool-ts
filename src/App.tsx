@@ -21,6 +21,28 @@ function App() {
         <TestProvider>
           <Header />
           <div className="app container  container-centered">
+            <button className="button button-secondary" onClick={() => { }}>
+              Secondary
+            </button>
+            <button className="button button-primary" onClick={() => { }}>
+              Primary
+            </button>
+            <button className="button button-accent" onClick={() => { }}>
+              Accent
+            </button>
+
+            <div className="alert alert-info">
+              <p className="alert-text">This is a info</p>
+            </div>
+            <div className="alert alert-success">
+              <p className="alert-text">This is a success</p>
+            </div>
+            <div className="alert alert-warning">
+              <p className="alert-text">This is a warning</p>
+            </div>
+            <div className="alert alert-error">
+              <p className="alert-text">This is a error</p>
+            </div>
             {/*             
             <div className="example">
               <h1 className="title">Some example title</h1>

@@ -17,13 +17,12 @@ const Tabs = ({ children, active = 0, onClick }) => {
       <ul className="tab-list">
         {React.Children.map(children, (child, index) => {
           return (
-            <li className={`tab-list-item ${activeTab === index ? "tab-list-item-active" : ""}`}>
+            <li className={`tab-list-item ${activeTab === index ? "tab-list-item-active " : ""}`}>
               <button
-                className="tab-button"
+                className="tab-button "
                 onClick={() => onClickTabItem(index)}
                 role="tab"
                 aria-selected={activeTab === index}
-                aria-controls={`headlessui-tabs-panel-${index}`}
                 tabIndex={activeTab === index ? 0 : -1}
               >
                 {child.props.label}

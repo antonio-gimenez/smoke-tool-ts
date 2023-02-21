@@ -7,10 +7,6 @@
   --input-height: 2.5rem;
   --padding-x: var(--space-2, 0.5rem);
   --padding-y: var(--space-1, 0.25rem);
-  --outline-width: var(--border-width, 1px);
-  --outline-offset: var(--outline-width, 1px);
-  --checkbox-background: var(--accent);
-  --checkbox-foreground: red;
 }
 
 .form {
@@ -41,8 +37,7 @@
   --background-opacity: 0.75;
   background: var(--base-mid);
   color: hsla(var(--color-base-content), var(--background-opacity));
-  outline: currentColor none medium;
-  outline-offset: var(--outline-offset, 2px);
+  outline: var(--outline-width) solid transparent;
   border: var(--border-width, 2px) solid;
   --border-opacity: 0.35;
   border-color: hsla(var(--color-base-content), var(--border-opacity));
@@ -97,7 +92,7 @@
 .combobox:focus-within,
 .combobox:focus {
   --border-opacity: 1;
-  border-color: var(--primary);
+  border: var(--border-width) solid hsl(var(--color-primary), var(--border-opacity, 1));
 }
 
 /* if combobox is aria-expanded  add a blue border*/

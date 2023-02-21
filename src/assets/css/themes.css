@@ -2,18 +2,18 @@
   color-scheme: light;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-primary: 215, 100%, 50%;
-  --color-secondary: 210, 15%, 45%;
+  --color-base: 0, 0%, 93%;
+  --color-base-mid: 220, 10%, 90%;
+  --color-base-deep: 200, 5%, 87%;
+  --color-base-content: 0, 0%, 16%;
+  --color-primary: 210, 100%, 45%;
+  --color-secondary: 60, 15%, 41%;
   --color-accent: 245, 50%, 50%;
   --color-neutral: 221, 5%, 39%;
-  --color-base: 0, 0%, 93%;
-  --color-base-mid: 220, 10%, 89%;
-  --color-base-deep: 200, 5%, 85%;
-  --color-base-content: 0, 0%, 16%;
-  --color-info: 195, 100%, 50%;
-  --color-success: 135, 94%, 65%;
-  --color-warning: 39, 100%, 50%;
-  --color-error: 0, 80%, 40%;
+  --color-info: 199, 98%, 48%;
+  --color-success: 129, 81%, 34%;
+  --color-warning: 16, 82%, 52%;
+  --color-error: 0, 80%, 50%;
 
   --base: hsl(var(--color-base));
   --base-mid: hsl(var(--color-base-mid));
@@ -30,29 +30,32 @@
   --info: hsl(var(--color-info));
   --info-content: hsl(var(--color-light));
   --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-dark));
+  --success-content: hsl(var(--color-light));
   --warning: hsl(var(--color-warning));
   --warning-content: hsl(var(--color-dark));
   --error: hsl(var(--color-error));
   --error-content: hsl(var(--color-light));
+
+  /* Extra */
+  --glass-opacity: 0.5;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-base: 220, 0%, 21%;
-  --color-base-mid: 220, 0%, 19%;
-  --color-base-deep: 220, 0%, 17%;
-  --color-base-content: 0, 0%, 100%;
-  --color-primary: 207, 90%, 54%;
-  --color-secondary: 0, 0%, 62%;
-  --color-accent: 45, 100%, 51%;
-  --color-neutral: 0, 0%, 46%;
+  --color-base: 0, 0%, 17%;
+  --color-base-mid: 0, 0%, 15%;
+  --color-base-deep: 0, 0%, 13%;
+  --color-base-content: 0, 12%, 97%;
+  --color-primary: 210, 100%, 45%;
+  --color-secondary: 60, 15%, 41%;
+  --color-accent: 245, 50%, 50%;
+  --color-neutral: 0, 0%, 45%;
   --color-info: 199, 98%, 48%;
-  --color-success: 122, 39%, 49%;
-  --color-warning: 36, 100%, 50%;
-  --color-error: 4, 90%, 58%;
+  --color-success: 129, 81%, 34%;
+  --color-warning: 16, 82%, 52%;
+  --color-error: 0, 80%, 50%;
 
   --base: hsl(var(--color-base));
   --base-mid: hsl(var(--color-base-mid));
@@ -60,6 +63,44 @@
   --base-content: hsl(var(--color-base-content));
   --primary: hsl(var(--color-primary));
   --primary-content: hsl(var(--color-light));
+  --secondary: hsl(var(--color-secondary));
+  --secondary-content: hsl(var(--color-light));
+  --accent: hsl(var(--color-accent));
+  --accent-content: hsl(var(--color-light));
+  --neutral: hsl(var(--color-neutral));
+  --neutral-content: hsl(var(--color-light));
+  --info: hsl(var(--color-info));
+  --info-content: hsl(var(--color-light));
+  --success: hsl(var(--color-success));
+  --success-content: hsl(var(--color-light));
+  --warning: hsl(var(--color-warning));
+  --warning-content: hsl(var(--color-dark));
+  --error: hsl(var(--color-error));
+  --error-content: hsl(var(--color-light));
+}
+[data-theme="tokyo-neon"] {
+  color-scheme: dark;
+  --color-dark: 0, 0%, 0%;
+  --color-light: 0, 0%, 100%;
+  --color-base: 250, 50%, 15%;
+  --color-base-mid: 250, 50%, 12%;
+  --color-base-deep: 250, 50%, 9%;
+  --color-base-content: 0, 0%, 90%;
+  --color-primary: 300, 100%, 50%;
+  --color-secondary: 200, 100%, 50%;
+  --color-accent: 50, 100%, 55%;
+  --color-neutral: 220, 80%, 70%;
+  --color-info: 190, 100%, 30%;
+  --color-success: 140, 60%, 40%;
+  --color-warning: 40, 70%, 50%;
+  --color-error: 350, 70%, 40%;
+
+  --base: hsl(var(--color-base));
+  --base-mid: hsl(var(--color-base-mid));
+  --base-deep: hsl(var(--color-base-deep));
+  --base-content: hsl(var(--color-base-content));
+  --primary: hsl(var(--color-primary));
+  --primary-content: hsl(var(--color-dark));
   --secondary: hsl(var(--color-secondary));
   --secondary-content: hsl(var(--color-dark));
   --accent: hsl(var(--color-accent));
@@ -75,7 +116,6 @@
   --error: hsl(var(--color-error));
   --error-content: hsl(var(--color-light));
 }
-
 [data-theme="dracula"] {
   /* This theme is based on the Dracula theme by Zeno Rocha */
   color-scheme: dark;
@@ -122,8 +162,7 @@
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
   --color-base: 192, 81%, 14%;
-  /* --color-base-mid: 192, 100%, 11%; */
-  --color-base-mid: 192, 82%, 15%;
+  --color-base-mid: 192, 100%, 11%;
   --color-base-deep: 192, 100%, 8%;
   --color-base-content: 180, 7%, 60%;
   --color-primary: 45, 100%, 35%;
@@ -169,45 +208,6 @@
   --color-secondary: 20, 12%, 50%;
   --color-accent: 46, 82%, 64%;
   --color-neutral: 204, 11%, 68%;
-  --color-info: 180, 64%, 73%;
-  --color-success: 167, 100%, 44%;
-  --color-warning: 45, 87%, 69%;
-  --color-error: 359, 75%, 44%;
-
-  --base: hsl(var(--color-base));
-  --base-mid: hsl(var(--color-base-mid));
-  --base-deep: hsl(var(--color-base-deep));
-  --base-content: hsl(var(--color-base-content));
-  --primary: hsl(var(--color-primary));
-  --primary-content: hsl(var(--color-dark));
-  --secondary: hsl(var(--color-secondary));
-  --secondary-content: hsl(var(--color-light));
-  --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-dark));
-  --neutral: hsl(var(--color-neutral));
-  --neutral-content: hsl(var(--color-light));
-  --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-dark));
-  --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-dark));
-  --warning: hsl(var(--color-warning));
-  --warning-content: hsl(var(--color-dark));
-  --error: hsl(var(--color-error));
-  --error-content: hsl(var(--color-light));
-}
-
-[data-theme="midnight"] {
-  color-scheme: dark;
-  --color-dark: 0, 0%, 0%;
-  --color-light: 0, 0%, 100%;
-  --color-primary: 190, 100%, 65%;
-  --color-secondary: 237, 23%, 47%;
-  --color-accent: 46, 82%, 65%;
-  --color-neutral: 204, 11%, 68%;
-  --color-base: 220, 30%, 10%;
-  --color-base-mid: 220, 27%, 13%;
-  --color-base-deep: 221, 22%, 16%;
-  --color-base-content: 222, 86%, 92%;
   --color-info: 180, 64%, 73%;
   --color-success: 167, 100%, 44%;
   --color-warning: 45, 87%, 69%;

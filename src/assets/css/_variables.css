@@ -44,5 +44,5 @@ html {
 
   --outline-width: var(--border-width, 1px);
   --outline-offset: var(--outline-width, 1px);
-  --glass-opacity: 0.5;
+  --glass-opacity: 0.95;
 }
