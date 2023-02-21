@@ -21,6 +21,15 @@
   padding: var(--space-2, 0.5rem);
 }
 
+.dropdown-start .dropdown-content {
+  left: 0;
+}
+
+.drodpown-center .dropdown-content {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .dropdown-end .dropdown-content {
   right: 0;
 }

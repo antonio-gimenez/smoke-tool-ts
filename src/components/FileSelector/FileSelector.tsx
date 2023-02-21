@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { humanFileSize } from '../../utils/utils';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { AlertContext } from '../../contexts/AlertContext';
+import useLocalStorage from '../../hooks/useLocalStorage';
 interface FileListProps {
     length: number;
     item?: (index: number) => File;
@@ -16,7 +17,8 @@ const createFileList = (files: File[]) => {
 
 
 function FileSelector() {
-    const [selectedFiles, setSelectedFiles] = useState<FileList | File | null>(null);
+    const [filesOnLocalStorage, setFilesOnLocalStorage] = useLocalStorage({ key: "files", initialValue: null });
+    const [selectedFiles, setSelectedFiles] = useState<FileList | File | null>(filesOnLocalStorage ? createFileList(filesOnLocalStorage) : null);
     const [multiple, setMultiple] = useState(false);
     const { addAlert } = useContext(AlertContext)
 
@@ -24,14 +26,13 @@ function FileSelector() {
         const files = event.target.files;
         if (files && files.length > 0) {
             if (multiple && selectedFiles instanceof FileList) {
-                // append new files to the existing list
                 const newFiles = Array.from(selectedFiles).concat(Array.from(files));
-                console.log(`appending:`, newFiles);
                 setSelectedFiles(createFileList(newFiles));
+                setFilesOnLocalStorage(newFiles);
                 addAlert({ type: "success", message: "Files added" });
             } else {
-                console.log(`setting:`, files);
                 setSelectedFiles(createFileList(Array.from(files)));
+                setFilesOnLocalStorage(Array.from(files));
                 addAlert({ type: "success", message: "File added" });
             }
         } else {

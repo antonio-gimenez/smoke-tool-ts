@@ -21,7 +21,7 @@ function App() {
         <TestProvider>
           <Header />
           <div className="app container  container-centered">
-            <button className="button button-secondary" onClick={() => { }}>
+            {/* <button className="button button-secondary" onClick={() => { }}>
               Secondary
             </button>
             <button className="button button-primary" onClick={() => { }}>
@@ -42,7 +42,7 @@ function App() {
             </div>
             <div className="alert alert-error">
               <p className="alert-text">This is a error</p>
-            </div>
+            </div> */}
             {/*             
             <div className="example">
               <h1 className="title">Some example title</h1>
