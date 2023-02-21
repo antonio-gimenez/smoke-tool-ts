@@ -63,13 +63,14 @@ function NewTest() {
         <input className="input" name="dueDate" placeholder="Due date" type="date" id="dueDate" onChange={onChange} />
         <input className="input" name="testName" placeholder="Test name" id="name" onChange={onChange} />
         <FileSelector />
+
         <select className="select" name="branches" id="branches" onChange={onChange}>
-          {branches.length > 0 &&
+          {branches.length > 0 ? (
             branchesFormatted.map((branch: any) => (
               <option key={branch.value} value={branch.value}>
                 {branch.label}
               </option>
-            ))}
+            ))) : <option hidden={true} value="No branches">No branches</option>}
         </select>
         <button className="button button-accent" onClick={onSubmit}>
           Create Test

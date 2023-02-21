@@ -1,15 +1,18 @@
 .file-list {
   background: var(--base-deep);
-  /* margin-block: var(--space-2); */
   border-radius: var(--border-radius-small);
 }
 .file {
   display: flex;
   align-items: center;
-  padding: var(--space-2, 0.25rem);
+  padding: var(--space-2);
   --background-opacity: 0.6;
-  gap: var(--space-4, 0.15rem);
   justify-content: space-between;
+}
+
+.file:nth-child(odd) {
+  --background-opacity: 0.4;
+  background: hsla(var(--color-base), var(--background-opacity));
 }
 
 .file-size {

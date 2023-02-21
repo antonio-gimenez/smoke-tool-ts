@@ -82,18 +82,18 @@
   color-scheme: dark;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-base: 250, 50%, 15%;
-  --color-base-mid: 250, 50%, 12%;
-  --color-base-deep: 250, 50%, 9%;
+  --color-base: 250, 50%, 14%;
+  --color-base-mid: 250, 50%, 11%;
+  --color-base-deep: 250, 50%, 8%;
   --color-base-content: 0, 0%, 90%;
   --color-primary: 300, 100%, 50%;
-  --color-secondary: 200, 100%, 50%;
+  --color-secondary: 180, 100%, 50%;
   --color-accent: 50, 100%, 55%;
   --color-neutral: 220, 80%, 70%;
-  --color-info: 190, 100%, 30%;
-  --color-success: 140, 60%, 40%;
-  --color-warning: 40, 70%, 50%;
-  --color-error: 350, 70%, 40%;
+  --color-info: var(--color-secondary);
+  --color-success: 140, 100%, 50%;
+  --color-warning: var(--color-accent);
+  --color-error: 350, 100%, 50%;
 
   --base: hsl(var(--color-base));
   --base-mid: hsl(var(--color-base-mid));
@@ -108,9 +108,9 @@
   --neutral: hsl(var(--color-neutral));
   --neutral-content: hsl(var(--color-light));
   --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-light));
+  --info-content: hsl(var(--color-dark));
   --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-light));
+  --success-content: hsl(var(--color-dark));
   --warning: hsl(var(--color-warning));
   --warning-content: hsl(var(--color-dark));
   --error: hsl(var(--color-error));
