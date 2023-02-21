@@ -8,9 +8,15 @@ interface FileListProps {
     item?: (index: number) => File;
 }
 
-function FileSelector() {
+
+interface FileSelectorProps {
+    files?: File | FileList | null;
+    handler?: (files: File | FileList | null) => void;
+}
+
+function FileSelector({ files, handler }: FileSelectorProps) {
     const [multiple, setMultiple] = useState(false);
-    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple });
+    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple, initialFiles: files, handler });
 
 
 

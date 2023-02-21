@@ -1,15 +1,16 @@
-const testController = require("./controllers/testController");
 const productController = require("./controllers/productController");
 const branchController = require("./controllers/branchController");
 const fileController = require("./controllers/fileController");
+const testController = require("./controllers/testController");
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
+router.post("/tests/", upload.array("files"), testController.createTest);
+
 router.get("/tests/", testController.getTests);
-router.post("/tests/", testController.createTest);
 router.delete("/tests/", testController.deleteTest);
 
 router.get("/products/", productController.getProducts);

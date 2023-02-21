@@ -10,6 +10,15 @@ function NewTest() {
   const { addAlert } = useContext(AlertContext);
   const { products } = useProducts();
   const { branches } = useBranches();
+  const [filesToUpload, setFilesToUpload] = useState<File | FileList | null>(null);
+  const handleFileSelect = (files: File | FileList | null) => {
+    if (files) {
+      setFilesToUpload(files);
+    } else {
+      setFilesToUpload(null);
+    }
+  };
+
   const [form, setForm] = useState({
     name: "",
     files: null,
@@ -31,26 +40,37 @@ function NewTest() {
 
   const createTest = async (name: string, files: any) => {
     try {
-      const response = await api.post("/tests", { name, files });
-      console.log(response);
+      const formData = new FormData();
+      formData.append("name", name);
+      console.log(files)
+      if (files) {
+        for (let i = 0; i < files.length; i++) {
+          formData.append("files", files[i]);
+        }
+      }
+      const response = await api.post("/tests", formData);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
+
+
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const { name, files } = form;
-    await createTest(name, files);
+    const { name } = form;
+    await createTest(name, filesToUpload);
     addAlert({ message: "Test created successfully", type: "success" });
   };
 
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
 
+
   return (
     <div className="form">
-      {form.name}
+      {JSON.stringify(filesToUpload)}
       <div className="form-group">
         <select className="select" name="products" id="name" onChange={onChange}>
           {products.length > 0 &&
@@ -62,7 +82,7 @@ function NewTest() {
         </select>
         <input className="input" name="dueDate" placeholder="Due date" type="date" id="dueDate" onChange={onChange} />
         <input className="input" name="testName" placeholder="Test name" id="name" onChange={onChange} />
-        <FileSelector />
+        <FileSelector files={filesToUpload} handler={handleFileSelect} />
 
         <select className="select" name="branches" id="branches" onChange={onChange}>
           {branches.length > 0 ? (

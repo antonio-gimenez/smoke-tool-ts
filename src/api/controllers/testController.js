@@ -36,15 +36,32 @@ const getTests = async (req, res) => {
 };
 
 const createTest = async (req, res) => {
-  const { name, files } = req.body;
-  console.log({ body: req.body }, { query: req.query }, { params: req.params });
+  const { name } = req.body;
+  const files = req.files;
+
+  console.log(req.body);
+
+  if (!req.files) {
+    console.log(`No files were uploaded.`);
+  } else {
+    console.log(req.files);
+  }
+
+  const fileObjects = files.map((file) => {
+    return {
+      file: file.buffer,
+      contentType: file.mimetype,
+      name: file.originalname,
+    };
+  });
+
   if (!name) {
     return res.status(400).send({ message: "Test `name` not provided" });
   }
 
   const newTest = new Test({
     name,
-    files,
+    files: fileObjects,
   });
   try {
     await newTest.save();

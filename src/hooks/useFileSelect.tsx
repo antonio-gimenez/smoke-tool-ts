@@ -10,15 +10,23 @@ type FileHookReturnType = [
 
 type UseFileSelectProps = {
     multiple?: boolean
+    initialFiles?: File | FileList | null
+    handler?: (files: File | FileList | null) => void
 };
 
 
 
 const useFileSelect = ({
     multiple = false,
+    initialFiles = null,
+    handler = () => { },
 }: UseFileSelectProps = {}): FileHookReturnType => {
-    const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(null);
+    const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
 
+
+    useEffect(() => {
+        handler(selectedFiles);
+    }, [selectedFiles, handler]);
 
     const removeFile = (index: number) => {
         setSelectedFiles((prevFiles: any) => {
