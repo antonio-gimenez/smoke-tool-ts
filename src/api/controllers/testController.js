@@ -1,3 +1,4 @@
+const { File } = require("../models/fileModel");
 const { Test } = require("../models/testModel");
 const { createQuery, createPaginationOptions } = require("../utils");
 
@@ -37,7 +38,7 @@ const getTests = async (req, res) => {
 
 const createTest = async (req, res) => {
   const { name } = req.body;
-  const files = req.files;
+  const files = new File(req.files);
 
   console.log(req.body);
 
@@ -47,13 +48,7 @@ const createTest = async (req, res) => {
     console.log(req.files);
   }
 
-  const fileObjects = files.map((file) => {
-    return {
-      file: file.buffer,
-      contentType: file.mimetype,
-      name: file.originalname,
-    };
-  });
+  console.log(new File(req.files[0]));
 
   if (!name) {
     return res.status(400).send({ message: "Test `name` not provided" });
@@ -61,7 +56,7 @@ const createTest = async (req, res) => {
 
   const newTest = new Test({
     name,
-    files: fileObjects,
+    files,
   });
   try {
     await newTest.save();
