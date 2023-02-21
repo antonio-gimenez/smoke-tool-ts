@@ -1,56 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { humanFileSize } from '../../utils/utils';
+import { useState } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
-import { AlertContext } from '../../contexts/AlertContext';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useFileSelect from '../../hooks/useFileSelect';
+import { humanFileSize } from '../../utils/utils';
+
 interface FileListProps {
     length: number;
     item?: (index: number) => File;
 }
 
-
-const createFileList = (files: File[]) => {
-    const fileList = new DataTransfer();
-    files.forEach((file) => fileList.items.add(file));
-    return fileList.files;
-};
-
-
 function FileSelector() {
-    const [filesOnLocalStorage, setFilesOnLocalStorage] = useLocalStorage({ key: "files", initialValue: null });
-    const [selectedFiles, setSelectedFiles] = useState<FileList | File | null>(filesOnLocalStorage ? createFileList(filesOnLocalStorage) : null);
     const [multiple, setMultiple] = useState(false);
-    const { addAlert } = useContext(AlertContext)
-
-    const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const files = event.target.files;
-        if (files && files.length > 0) {
-            if (multiple && selectedFiles instanceof FileList) {
-                const newFiles = Array.from(selectedFiles).concat(Array.from(files));
-                setSelectedFiles(createFileList(newFiles));
-                setFilesOnLocalStorage(newFiles);
-                addAlert({ type: "success", message: "Files added" });
-            } else {
-                setSelectedFiles(createFileList(Array.from(files)));
-                setFilesOnLocalStorage(Array.from(files));
-                addAlert({ type: "success", message: "File added" });
-            }
-        } else {
-            setSelectedFiles(null);
-        }
-    };
+    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, localStorageKey: "files" });
 
 
-
-    const removeFile = (index: number) => {
-        setSelectedFiles((prevFiles) => {
-            if (prevFiles instanceof FileList) {
-                const newFiles = Array.from(prevFiles).filter((_, i) => i !== index);
-                return newFiles.length > 0 ? createFileList(newFiles) : null;
-            }
-            return null;
-        });
-    };
+    console.log(selectedFiles)
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
@@ -61,6 +24,7 @@ function FileSelector() {
         if (length === 0) {
             return <span>No files uploaded</span>
         }
+
         return (
             <ul className='file-list'>
                 {item && (
@@ -70,8 +34,9 @@ function FileSelector() {
                             <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
                         </li>
                     ))
-                )}
-            </ul>
+                )
+                }
+            </ul >
         )
     }
 
@@ -91,12 +56,9 @@ function FileSelector() {
                 <input id="fileInput" className="hidden" type="file" multiple={multiple} onChange={handleFileSelect} />
             </label>
             <ShowFileList {...fileListProps} />
-
+            <button onClick={clearAllFiles}>Clear all files</button>
         </div >
     )
 }
-
-
-
 
 export default FileSelector;

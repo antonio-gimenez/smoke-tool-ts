@@ -45,4 +45,7 @@ html {
   --outline-width: var(--border-width, 1px);
   --outline-offset: var(--outline-width, 1px);
   --glass-opacity: 0.95;
+
+  /* Gradients */
+  /* how to gradient text */
 }

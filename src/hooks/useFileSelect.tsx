@@ -4,13 +4,21 @@ import useLocalStorage from "./useLocalStorage";
 type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
-    () => void
+    (index: number) => void,
+    () => void,
 ];
 
 type UseFileSelectProps = {
     multiple?: boolean;
     localStorageKey?: string;
     expirationTime?: number;
+};
+
+
+const createFileList = (files: File[]) => {
+    const fileList = new DataTransfer();
+    files.forEach((file) => fileList.items.add(file));
+    return fileList.files;
 };
 
 const useFileSelect = ({
@@ -39,12 +47,14 @@ const useFileSelect = ({
             }
         }
     };
-
-    const clearSelectedFiles = () => {
-        setSelectedFiles(null);
-        if (localStorageKey) {
-            removeStoredFiles();
-        }
+    const removeFile = (index: number) => {
+        setSelectedFiles((prevFiles: any) => {
+            if (prevFiles instanceof FileList) {
+                const newFiles = Array.from(prevFiles).filter((_, i) => i !== index);
+                return newFiles.length > 0 ? createFileList(newFiles) : null;
+            }
+            return null;
+        });
     };
 
     useEffect(() => {
@@ -64,9 +74,10 @@ const useFileSelect = ({
                 removeStoredFiles();
             }
         }
-    }, [storedFiles, storedFilesExist, removeStoredFiles]);
+    }, [storedFiles, storedFilesExist, removeFile, removeStoredFiles]);
 
-    return [selectedFiles, handleFileSelect, clearSelectedFiles];
+
+    return [selectedFiles, handleFileSelect, (index) => removeFile(index), removeStoredFiles];
 };
 
 export default useFileSelect;
