@@ -1,6 +1,6 @@
-import api from "./use-axios";
 import { useContext, useEffect, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
+import api from "./use-axios";
 
 function useBranches() {
   const [branches, setBranches] = useState([]);
@@ -39,27 +39,15 @@ function useBranches() {
       setLoading(false);
       setEmpty(false);
     };
-  }, []);
+  }, [addAlert]);
 
   const createBranch = async (name) => {
     try {
       const response = await api.post(`/branches/${name}`);
-      const { message, title, type } = response.data;
       if (response.status === 200) {
-        // addAlert({
-        //   message,
-        //   type,
-        //   title,
-        // });
         setBranches((prevBranches) => [...prevBranches, response.data.data]);
       }
     } catch (error) {
-      // const { message, title } = error.response.data;
-      // addAlert({
-      //   message: message,
-      //   type: "error",
-      //   title: title,
-      // });
       console.log(error);
     }
   };

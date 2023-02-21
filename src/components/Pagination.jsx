@@ -1,12 +1,11 @@
 import usePagination from "../hooks/usePagination";
 
+import { useState } from "react";
 import { ReactComponent as ChevronLeftIcon } from "../assets/icons/chevron-left.svg";
 import { ReactComponent as ChevronRightIcon } from "../assets/icons/chevron-right.svg";
-import { Dropdown, DropdownContent, DropdownToggle } from "./ui/Dropdown";
-import { useState } from "react";
+import Button from "./ui/Button";
 import Input from "./ui/Input";
 import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
-import Button from "./ui/Button";
 
 const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, pageSize }) => {
   const paginationRange = usePagination({

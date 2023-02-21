@@ -28,9 +28,7 @@ const usePagination = ({ totalCount, pageSize, siblingCount = 1, currentPage }: 
   const paginationRange = useMemo(() => {
     var totalPageCount = Math.ceil(totalCount / pageSize);
     // Check if we need to subtract 1 from the totalPageCount: If totalCount is not divisible by pageSize, we don't need to subtract 1  because Math.ceil() will automatically round up to the nearest whole number. 
-    if (totalCount % pageSize === 0) {
-      totalPageCount = totalPageCount;
-    } else {
+    if (totalCount % pageSize !== 0) {
       totalPageCount = totalPageCount - 1;
     }
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS

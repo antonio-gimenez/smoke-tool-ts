@@ -10,35 +10,38 @@ interface FileListProps {
 
 function FileSelector() {
     const [multiple, setMultiple] = useState(false);
-    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, localStorageKey: "files" });
+    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple });
 
 
-    console.log(selectedFiles)
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
         item: selectedFiles ? (i: number) => (selectedFiles instanceof FileList ? selectedFiles[i] : selectedFiles) : undefined,
     };
 
+
     const ShowFileList = ({ length, item }: FileListProps) => {
         if (length === 0) {
             return <span>No files uploaded</span>
         }
-
         return (
             <ul className='file-list'>
                 {item && (
-                    Array.from({ length }, (_, index) => item(index)).map((file, index) => (
-                        <li key={`file - ${index}`} className='file'>
-                            <a title={file.name} href={URL.createObjectURL(file)} target="_blank" className='link'>{file.name} ({humanFileSize(file.size)})</a>
-                            <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
-                        </li>
-                    ))
-                )
-                }
-            </ul >
-        )
-    }
+                    Array.from({ length }, (_, index) => item(index)).map((file, index) => {
+                        const url = file ? URL.createObjectURL(file) : '';
+                        return (
+                            <li key={`file - ${index}`} className='file'>
+                                <a title={file.name} href={url} target="_blank"
+                                    rel="noreferrer"
+                                    className='link'>{file.name} ({humanFileSize(file.size)})</a>
+                                <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
+                            </li>
+                        );
+                    })
+                )}
+            </ul>
+        );
+    };
 
     return (
         <div>
