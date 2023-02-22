@@ -113,6 +113,44 @@ const getFiles = async (req, res) => {
   }
 };
 
+const removeFile = async (req, res) => {
+  const { testId, fileId } = req.params;
+  try {
+    const deletedFile = await File.findById(fileId);
+
+    if (!deletedFile) {
+      throw new Error("File not found in collection");
+    }
+
+    await deletedFile.remove();
+
+    // remove the file on the test
+
+    const test = await Test.findById(testId);
+
+    if (!test) {
+      throw new Error("Test not found in collection");
+    }
+
+    const files = test.files;
+
+    const fileIndex = files.findIndex((file) => file._id.toString() === fileId);
+
+    if (fileIndex === -1) {
+      throw new Error("File not found in test");
+    }
+
+    files.splice(fileIndex, 1);
+
+    await test.save();
+
+    return "File successfully removed";
+  } catch (error) {
+    console.log(error);
+    return error.message;
+  }
+};
+
 const deleteTest = async (req, res) => {
   const { id } = req.params;
 
@@ -133,4 +171,5 @@ module.exports = {
   createTest,
   getTests,
   getFiles,
+  removeFile,
 };

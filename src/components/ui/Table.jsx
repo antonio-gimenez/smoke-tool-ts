@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import api from "../../services/use-axios";
 import { getBase64 } from "../../utils/utils";
@@ -33,6 +33,20 @@ const Table = ({ items }) => {
     document.body.removeChild(link);
   };
 
+  const removeFile = async ({ testId, fileId }) => {
+    try {
+      const response = await api.delete(`/tests/files/${testId}/${fileId}`);
+      setTestFiles(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // how to update the table
+  useEffect(() => {
+    console.log("testFiles", testFiles);
+  }, [JSON.stringify(testFiles)]);
+
   return (
     <table className="table">
       <thead>
@@ -45,8 +59,8 @@ const Table = ({ items }) => {
         </tr>
       </thead>
       <tbody>
-        {items?.map((test, index) => (
-          <tr key={test._id + index}>
+        {items?.map((test, testIndex) => (
+          <tr key={test._id + testIndex}>
             <td>{test.name}</td>
             <td>
               {test.files?.length > 0 ? (
@@ -62,6 +76,17 @@ const Table = ({ items }) => {
                   <div key={file._id}>
                     <button className="link" onClick={() => downloadFile(file)}>
                       Download - {file.name}
+                    </button>
+                    <button
+                      className="link"
+                      onClick={() =>
+                        removeFile({
+                          testId: test._id,
+                          fileId: file._id,
+                        })
+                      }
+                    >
+                      Delete file: {file.name}
                     </button>
                     <figure>
                       {<img src={getBase64(file)} width={64} height={64} alt={file.name} />}
