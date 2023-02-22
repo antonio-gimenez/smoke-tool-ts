@@ -15,8 +15,8 @@ interface FileSelectorProps {
 }
 
 function FileSelector({ files, handler }: FileSelectorProps) {
-    const [multiple, setMultiple] = useState(false);
-    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple, initialFiles: files, handler });
+    // const [multiple, setMultiple] = useState(false);
+    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, initialFiles: files, handler });
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
@@ -24,9 +24,7 @@ function FileSelector({ files, handler }: FileSelectorProps) {
     };
 
     const ShowFileList = ({ length, item }: FileListProps) => {
-        if (length === 0) {
-            return <span>No files uploaded</span>
-        }
+
         return (
             <ul className='file-list'>
                 {item && (
@@ -36,7 +34,7 @@ function FileSelector({ files, handler }: FileSelectorProps) {
                             <li key={`file - ${index}`} className='file'>
                                 <a title={file.name} href={url} target="_blank"
                                     rel="noreferrer"
-                                    className='link'>{file.name} ({humanFileSize(file.size)})</a>
+                                    className='file-name'>{file.name} ({humanFileSize(file.size)})</a>
                                 <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
                             </li>
                         );
@@ -47,8 +45,8 @@ function FileSelector({ files, handler }: FileSelectorProps) {
     };
 
     return (
-        <div>
-            <label htmlFor="multiple" >
+        <div className="file-selector">
+            {/* <label htmlFor="multiple" >
                 <input
                     id="multiple"
                     type="checkbox"
@@ -56,13 +54,13 @@ function FileSelector({ files, handler }: FileSelectorProps) {
                     onChange={() => setMultiple(!multiple)}
                 />
                 <span>Allow upload multiple files</span>
-            </label>
+            </label> */}
+            {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>}
             <label htmlFor="fileInput">
                 <span className="button button-primary">Add file</span>
-                <input id="fileInput" className="hidden" type="file" multiple={multiple} onChange={handleFileSelect} />
+                <input id="fileInput" className="hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
             <ShowFileList {...fileListProps} />
-            <button onClick={clearAllFiles}>Clear all files</button>
         </div >
     )
 }
