@@ -55,9 +55,9 @@ function FileSelector({ files, handler }: FileSelectorProps) {
                 />
                 <span>Allow upload multiple files</span>
             </label> */}
-            {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>}
+            {/* {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>} */}
             <label htmlFor="fileInput">
-                <span className="button button-primary">Add file</span>
+                <span className="button button-primary">Add attachment</span>
                 <input id="fileInput" className="hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
             <ShowFileList {...fileListProps} />

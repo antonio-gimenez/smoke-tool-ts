@@ -40,7 +40,6 @@ function NewTest() {
 
   function uploadFiles(name: string, files: FileList) {
     const formData = new FormData();
-    console.log(files);
     // Append the name to the form data
     formData.append('name', name);
     // Append each file to the form data
@@ -68,7 +67,6 @@ function NewTest() {
 
   return (
     <div className="form">
-      {JSON.stringify(filesToUpload)}
       <div className="form-group">
         <select className="select" name="products" id="name" onChange={onChange}>
           {products.length > 0 &&
