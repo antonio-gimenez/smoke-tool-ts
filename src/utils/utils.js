@@ -87,3 +87,20 @@ export function getBase64(file) {
     return `data:${file.contentType};base64,${base64Data}`;
   }
 }
+
+const fileTypes = {
+  image: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
+  svg: ["image/svg+xml"],
+  video: ["video/mp4", "video/avi", "video/mov", "video/wmv", "video/3gp", "video/mkv"],
+  audio: ["audio/mpeg", "audio/mp3", "audio/wav", "audio/ogg"],
+  pdf: ["application/pdf"],
+  doc: ["application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
+  xls: ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],
+  ppt: ["application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
+  zip: ["application/zip", "application/x-7z-compressed"],
+  text: ["text/plain", "application/json", "application/xml", "application/log"],
+};
+
+export function typeIncludes(fileType, typeString) {
+  return fileType.includes(fileTypes[typeString]);
+}

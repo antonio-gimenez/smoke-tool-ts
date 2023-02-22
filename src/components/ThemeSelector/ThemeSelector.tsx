@@ -46,7 +46,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
   );
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
+    <div className="dropdown dropdown-end" ref={dropdownRef}>
       <button
         className="button button-ghost"
         onClick={() => setOpen(!open)}

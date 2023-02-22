@@ -37,12 +37,12 @@ const getTests = async (req, res) => {
 };
 
 const createTest = async (req, res) => {
-  const { name } = req.body;
+  const { name, branch, product, dueDate } = req.body;
   const filesToSave = [];
 
   if (!req.files) {
     console.log(`No files were uploaded.`);
-  } else if (Array.isArray(req.files)) {
+  } else if (req.files && Array.isArray(req.files)) {
     console.log(`Files uploaded: ${req.files.length}`);
     req.files.forEach((file) => {
       const newFile = new File({
@@ -80,6 +80,9 @@ const createTest = async (req, res) => {
 
   const newTest = new Test({
     name,
+    branch,
+    product,
+    dueDate,
     files: filesToSave,
   });
   try {

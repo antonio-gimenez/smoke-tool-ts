@@ -11,8 +11,9 @@
 
 .menu,
 .menu-horizontal {
-  border-radius: var(--border-radius-large);
-  background-color: var(--base-mid);
+  background-color: var(--base-deep);
+  color: var(--base-content);
+  border: 1px solid hsl(var(--color-base-content), 0.15);
   z-index: 1;
   list-style: none;
   padding: 0;
@@ -26,8 +27,8 @@
 }
 
 .menu li:hover {
-  background-color: var(--base);
-  color: var(--base-content);
+  background-color: var(--primary);
+  color: var(--primary-content);
 }
 
 .menu li:active {

@@ -21,7 +21,6 @@ function NewTest() {
 
   const [form, setForm] = useState({
     name: "",
-    files: null,
   });
 
   const onChange = (e: any) => {
@@ -38,14 +37,23 @@ function NewTest() {
     }
   };
 
-  function uploadFiles(name: string, files: FileList) {
+  function createTest(data: any, files?: FileList | null) {
     const formData = new FormData();
-    // Append the name to the form data
-    formData.append('name', name);
-    // Append each file to the form data
-    for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i]);
+
+    // Append each field of the form data
+    for (const field in data) {
+      if (Object.prototype.hasOwnProperty.call(data, field)) {
+        formData.append(field, data[field]);
+      }
     }
+
+    // Append each file to the form data
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        formData.append('files', files[i]);
+      }
+    }
+
     // Send the form data to the server
     api.post('/tests', formData).then(response => {
       console.log('Upload successful!', response.data);
@@ -54,10 +62,11 @@ function NewTest() {
     });
   }
 
+
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const { name } = form;
-    uploadFiles(name, filesToUpload as FileList);
+
+    createTest(form, filesToUpload as FileList | null);
     addAlert({ message: "Test created successfully", type: "success" });
   };
 
@@ -67,8 +76,12 @@ function NewTest() {
 
   return (
     <div className="form">
+      <div className="form-header">
+        <p>FORM: {JSON.stringify(form)}</p>
+        <p>FILES TO UPLOAD: {JSON.stringify(filesToUpload)}</p>
+      </div>
       <div className="form-group">
-        <select className="select" name="products" id="name" onChange={onChange}>
+        <select className="select" name="products" id="product" onChange={onChange}>
           {products.length > 0 &&
             productsFormatted.map((product: any) => (
               <option key={product.value} value={product.value}>
@@ -76,18 +89,25 @@ function NewTest() {
               </option>
             ))}
         </select>
-        <input className="input" name="dueDate" placeholder="Due date" type="date" id="dueDate" onChange={onChange} />
-        <input className="input" name="testName" placeholder="Test name" id="name" onChange={onChange} />
+        <input className="input" placeholder="Due date" type="date" id="dueDate" onChange={onChange} />
+        <input className="input" placeholder="Test name" id="name" onChange={onChange} />
         <FileSelector files={filesToUpload} handler={handleFileSelect} />
 
-        <select className="select" name="branches" id="branches" onChange={onChange}>
+        <select className="select" id="branch" onChange={onChange}>
           {branches.length > 0 ? (
             branchesFormatted.map((branch: any) => (
-              <option key={branch.value} value={branch.value}>
+              <option key={branch.value} value={branch.value} onChange={onChange}>
                 {branch.label}
               </option>
             ))) : <option hidden={true} value="No branches">No branches</option>}
         </select>
+        <select className="select" id="priority" onChange={onChange}>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="critical">Critical</option>
+        </select>
+        <input className="input" placeholder="Release" id="release" onChange={onChange} />
         <button className="button button-accent" onClick={onSubmit}>
           Create Test
         </button>

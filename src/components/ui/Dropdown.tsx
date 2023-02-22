@@ -1,35 +1,42 @@
-import { useState } from "react";
+import { useState, useRef } from 'react';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 interface DropdownProps {
-  position: "end" | "left" | "right" | "top" | "bottom";
   label: string;
-  children: React.ReactNode;
+  position?: 'start' | 'center' | 'end' | 'left' | 'right' | 'top' | 'bottom';
+  children: React.ReactNode | string;
+  className?: string;
+  isMenu?: boolean;
 }
 
-const Dropdown = ({ position, label, children }: DropdownProps) => {
-  const [open, setOpen] = useState(false);
+const Dropdown = ({ position = 'start', label, isMenu, children, className }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useOnClickOutside(
+    {
+      ref: dropdownRef,
+      handler: () => setIsOpen(false),
+    }
+  )
 
   return (
-    <div className={`dropdown dropdown-${position}`}>
-      <button
-        className="button button-ghost"
-        onClick={() => setOpen(!open)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-      >
+    <div className={`dropdown ${position} ${className || ''}`} ref={dropdownRef}>
+      <button className="dropdown-toggle" onClick={toggleDropdown}>
         {label}
       </button>
-      <div
-        className={
-          `dropdown-content ${open ? "visible" : "hidden"}`
-        }
-        role="listbox"
-        aria-labelledby="theme-selector"
-        tabIndex={0}
-      >
-        {children}
-      </div>
-    </div>
+      {isOpen && (
+        <div className={`dropdown-content ${isMenu ? 'menu' : ''
+          }`}>
+          <div className="dropdown-menu">{children}</div>
+        </div>
+      )
+      }
+    </div >
   );
 };
 
