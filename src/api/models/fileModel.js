@@ -14,11 +14,14 @@ const fileSchema = new Schema(
     name: {
       type: String,
     },
+    url: {
+      type: String,
+    },
   },
   { versionKey: false }
 );
 
-const File = mongoose.model("Files", fileSchema);
+const File = mongoose.model("File", fileSchema);
 
 module.exports = {
   File,

@@ -27,19 +27,7 @@ const SmokeTest = () => {
     });
   }, [currentPage, status]);
 
-  return (
-    <>
-      <Card>
-        <CardHeader>
-          <Tabs>
-            <div label="Pending" />
-            <div label="Running" />
-          </Tabs>
-        </CardHeader>
-        <CardContent>{tests?.length > 0 ? <PaginatedTable /> : null}</CardContent>
-      </Card>
-    </>
-  );
+  return <>{tests?.length > 0 ? <PaginatedTable /> : null}</>;
 };
 
 export default SmokeTest;

@@ -18,13 +18,10 @@ function FileSelector({ files, handler }: FileSelectorProps) {
     const [multiple, setMultiple] = useState(false);
     const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple, initialFiles: files, handler });
 
-
-
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
         item: selectedFiles ? (i: number) => (selectedFiles instanceof FileList ? selectedFiles[i] : selectedFiles) : undefined,
     };
-
 
     const ShowFileList = ({ length, item }: FileListProps) => {
         if (length === 0) {

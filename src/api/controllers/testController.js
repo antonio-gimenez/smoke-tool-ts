@@ -38,17 +38,41 @@ const getTests = async (req, res) => {
 
 const createTest = async (req, res) => {
   const { name } = req.body;
-  const files = new File(req.files);
-
-  console.log(req.body);
+  const filesToSave = [];
 
   if (!req.files) {
     console.log(`No files were uploaded.`);
+  } else if (Array.isArray(req.files)) {
+    console.log(`Files uploaded: ${req.files.length}`);
+    req.files.forEach((file) => {
+      const newFile = new File({
+        name: file.originalname,
+        file: file.buffer,
+        contentType: file.mimetype,
+      });
+      filesToSave.push(newFile);
+    });
+    try {
+      await File.insertMany(filesToSave);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({ message: "Error saving files" });
+    }
   } else {
-    console.log(req.files);
+    console.log(`File uploaded: ${req.files.originalname}`);
+    const newFile = new File({
+      name: req.files.originalname,
+      file: req.files.buffer,
+      contentType: req.files.mimetype,
+    });
+    filesToSave.push(newFile);
+    try {
+      await newFile.save();
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({ message: "Error saving file" });
+    }
   }
-
-  console.log(new File(req.files[0]));
 
   if (!name) {
     return res.status(400).send({ message: "Test `name` not provided" });
@@ -56,7 +80,7 @@ const createTest = async (req, res) => {
 
   const newTest = new Test({
     name,
-    files,
+    files: filesToSave,
   });
   try {
     await newTest.save();
@@ -65,6 +89,27 @@ const createTest = async (req, res) => {
     res.status(200).send({ message: `Test created successfully!`, data: newTest });
   } catch (error) {
     res.status(500).send(error);
+  }
+};
+
+const getFiles = async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (!id) {
+      return res.status(400).send({ message: "Test `id` not provided" });
+    }
+    const test = await Test.findById(id).populate("files");
+
+    if (!test) return res.status(404).send({ message: `Test not found` });
+
+    const files = test.files;
+    if (files.length === 0) {
+      return res.status(204).send({ message: "No files found" });
+    }
+
+    res.status(200).send({ data: files });
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -87,4 +132,5 @@ module.exports = {
   deleteTest,
   createTest,
   getTests,
+  getFiles,
 };

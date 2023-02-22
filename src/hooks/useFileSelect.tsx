@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import useLocalStorage from "./useLocalStorage";
+import { useEffect, useState } from "react";
 import { createFileList } from "../utils/file";
 type FileHookReturnType = [
     File | FileList | null,
@@ -14,8 +13,6 @@ type UseFileSelectProps = {
     handler?: (files: File | FileList | null) => void
 };
 
-
-
 const useFileSelect = ({
     multiple = false,
     initialFiles = null,
@@ -23,10 +20,9 @@ const useFileSelect = ({
 }: UseFileSelectProps = {}): FileHookReturnType => {
     const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
 
-
     useEffect(() => {
         handler(selectedFiles);
-    }, [selectedFiles, handler]);
+    }, [selectedFiles]);
 
     const removeFile = (index: number) => {
         setSelectedFiles((prevFiles: any) => {
@@ -45,16 +41,24 @@ const useFileSelect = ({
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (files) {
-            setSelectedFiles(multiple ? files : files[0]);
+            setSelectedFiles((prevFiles: FileList | File | null) => {
+                if (multiple) {
+                    const newFiles = prevFiles instanceof FileList ? Array.from(prevFiles) : [];
+                    for (let i = 0; i < files.length; i++) {
+                        newFiles.push(files[i]);
+                    }
+                    return createFileList(newFiles);
+                } else {
+                    return createFileList([files[0]]);
+                }
+            });
         } else {
             setSelectedFiles(null);
         }
     };
 
-
-
-
     return [selectedFiles, handleFileSelect, (index) => removeFile(index), clearAllFiles];
 };
+
 
 export default useFileSelect;

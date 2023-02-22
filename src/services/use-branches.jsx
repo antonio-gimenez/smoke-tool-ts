@@ -39,7 +39,7 @@ function useBranches() {
       setLoading(false);
       setEmpty(false);
     };
-  }, [addAlert]);
+  }, []);
 
   const createBranch = async (name) => {
     try {

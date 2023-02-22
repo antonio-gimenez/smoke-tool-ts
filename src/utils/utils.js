@@ -77,3 +77,14 @@ export function humanFileSize(bytes, decimalPlaces = 2) {
 export const upperCaseFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+
+export function getImageSrc(file) {
+  if (!file) return null;
+  if (file.contentType && file.contentType.startsWith("image/")) {
+    const bytes = new Uint8Array(file.file.data);
+    const binary = bytes.reduce((acc, byte) => acc + String.fromCharCode(byte), "");
+    const base64Data = btoa(binary);
+    return `data:${file.contentType};base64,${base64Data}`;
+  }
+  return null;
+}

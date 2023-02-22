@@ -38,29 +38,27 @@ function NewTest() {
     }
   };
 
-  const createTest = async (name: string, files: any) => {
-    try {
-      const formData = new FormData();
-      formData.append("name", name);
-      console.log(files)
-      if (files) {
-        for (let i = 0; i < files.length; i++) {
-          formData.append("files", files[i]);
-        }
-      }
-      const response = await api.post("/tests", formData);
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
+  function uploadFiles(name: string, files: FileList) {
+    const formData = new FormData();
+    console.log(files);
+    // Append the name to the form data
+    formData.append('name', name);
+    // Append each file to the form data
+    for (let i = 0; i < files.length; i++) {
+      formData.append('files', files[i]);
     }
-  };
-
-
+    // Send the form data to the server
+    api.post('/tests', formData).then(response => {
+      console.log('Upload successful!', response.data);
+    }).catch(error => {
+      console.error('Upload failed!', error);
+    });
+  }
 
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const { name } = form;
-    await createTest(name, filesToUpload);
+    uploadFiles(name, filesToUpload as FileList);
     addAlert({ message: "Test created successfully", type: "success" });
   };
 
