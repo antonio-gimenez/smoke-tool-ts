@@ -7,6 +7,7 @@ import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions } from "../utils/utils";
 import FileSelector from "./FileSelector/FileSelector";
+import { ModalFooter } from "./ui/Modal";
 
 function NewTest({ modalId }: { modalId: string }) {
   const { addAlert } = useContext(AlertContext);
@@ -79,13 +80,8 @@ function NewTest({ modalId }: { modalId: string }) {
   const productsFormatted = formatSelectOptions({ options: products });
   const branchesFormatted = formatSelectOptions({ options: branches });
 
-
   return (
     <div className="form">
-      <div className="form-header">
-        <p>FORM: {JSON.stringify(form)}</p>
-        <p>FILES TO UPLOAD: {JSON.stringify(filesToUpload)}</p>
-      </div>
       <div className="form-group">
         <select className="select" name="products" id="product" onChange={onChange}>
           {products.length > 0 &&
@@ -114,10 +110,10 @@ function NewTest({ modalId }: { modalId: string }) {
           <option value="critical">Critical</option>
         </select>
         <input className="input" placeholder="Release" id="release" onChange={onChange} />
-        <button className="button button-accent" onClick={onSubmit}>
-          Create Test
-        </button>
       </div>
+      <button className="button button-accent button-block" onClick={onSubmit}>
+        Create Test
+      </button>
     </div>
   );
 }

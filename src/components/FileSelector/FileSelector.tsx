@@ -44,6 +44,7 @@ function FileSelector({ files, handler }: FileSelectorProps) {
         );
     };
 
+
     return (
         <div className="file-selector">
             {/* <label htmlFor="multiple" >
@@ -56,10 +57,12 @@ function FileSelector({ files, handler }: FileSelectorProps) {
                 <span>Allow upload multiple files</span>
             </label> */}
             {/* {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>} */}
-            <label htmlFor="fileInput">
+
+            <label htmlFor="fileInput" className='input-file-container'>
                 <span className="button button-primary">Add attachment</span>
-                <input id="fileInput" className="hidden" type="file" multiple={true} onChange={handleFileSelect} />
+                <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
+
             <ShowFileList {...fileListProps} />
         </div >
     )

@@ -34,7 +34,8 @@ html {
   --text-opacity: 1;
   --border-opacity: 1;
   --outline-opacity: 1;
-  --border-width: 1px;
+  --border-width: 0.1rem;
+  /* --border-width: 2px; */
   /* 
     The following calc fixes the border radius overlapping on some overflowed elements.
   */

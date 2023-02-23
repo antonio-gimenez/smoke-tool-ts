@@ -118,10 +118,15 @@ export async function sendReport(selectedItems) {
       })
     );
 
+    console.log(`files length: ${files.length}`);
+
     const filteredFiles = files.flat().filter((file) => file);
+
+    console.log(`filteredFiles length: ${filteredFiles.length}`);
 
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
+        console.log(file);
         const data = btoa(String.fromCharCode(...file.file.data));
         return {
           filename: file.name,
@@ -129,6 +134,8 @@ export async function sendReport(selectedItems) {
         };
       })
     );
+
+    console.log(`attachments length: ${attachments.length}`);
 
     const subject = "Email with attachments";
     const body = "This is the body of the email.";
@@ -138,14 +145,16 @@ export async function sendReport(selectedItems) {
     const boundary = "my-multipart-boundary";
     const multipartContent = [
       `Content-Type: text/plain\r\n\r\n${body}\r\n`,
-      ...attachments.map(
-        (attachment) =>
+      ...attachments.map((attachment) => {
+        const { filename, data } = attachment;
+        return (
           `--${boundary}\r\n` +
           `Content-Type: application/octet-stream\r\n` +
-          `Content-Disposition: attachment; filename="${attachment.filename}"\r\n` +
+          `Content-Disposition: attachment; filename="${filename}"\r\n` +
           `Content-Transfer-Encoding: base64\r\n\r\n` +
-          `${attachment.data}\r\n`
-      ),
+          `${data}\r\n`
+        );
+      }),
       `--${boundary}--\r\n`,
     ].join("");
 

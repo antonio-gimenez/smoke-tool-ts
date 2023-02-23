@@ -21,13 +21,15 @@
   height: auto;
   max-width: 95vw;
   max-height: 95vh;
-  padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem);
+  /* padding: var(--space-1, 0.25rem) var(--space-4, 0.75rem); */
   background-color: var(--base);
   color: var(--base-content);
   border-radius: var(--border-radius-large);
   z-index: 2;
   overflow: auto;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border: 1px solid hsl(var(--color-base-content), 0.15);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .modal-close-button {
@@ -38,6 +40,8 @@
 }
 
 .modal-header {
+  z-index: 1;
+  top: 0;
   display: flex;
   font-weight: var(--fw-semibold, 500);
   font-size: var(--fs-large);
@@ -55,4 +59,16 @@
   align-items: center;
   justify-content: flex-end;
   gap: 1.6rem;
+}
+
+.modal-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: var(--base);
+  border-top: 1px solid hsl(var(--color-base-content), 0.15);
+  padding: var(--space-4);
+  /* padding-bottom: var(--space-4); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

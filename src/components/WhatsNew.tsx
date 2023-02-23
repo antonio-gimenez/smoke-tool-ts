@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { Modal, ModalContent, ModalHeader } from "./ui/Modal";
+import { Modal, ModalContent, ModalFooter, ModalHeader } from "./ui/Modal";
 
 function WhatsNew() {
   const [currentVersion] = useState(require("../../package.json").version);
@@ -34,7 +34,7 @@ function WhatsNew() {
           <li>Improved performance</li>
         </ul>
 
-        <label
+        {/* <label
           htmlFor="whats-new-checkbox"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}
         >
@@ -53,8 +53,12 @@ function WhatsNew() {
 
           <span className={`py-4 text-sm `}>I have readed the changes, don't show me this again for this version</span>
 
-        </label>
+        </label> */}
       </ModalContent>
+      <ModalFooter>
+        <button className="button button-primary" onClick={() => setIsChecked(true)}> Got it, don't show me this again for this version
+        </button>
+      </ModalFooter>
     </Modal>
   );
 }

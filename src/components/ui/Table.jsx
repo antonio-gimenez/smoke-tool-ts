@@ -68,18 +68,17 @@ const Table = ({ items }) => {
     }
   };
 
-  const sendReportMail = () => {
-    const status = sendReport(items);
+  const sendReportMail = async () => {
+    const status = await sendReport(items);
     if (status) {
       return addAlert({ type: "success", message: "Report generated successfully" });
     }
-
     return addAlert({ type: "error", message: "Report generation failed" });
   };
 
   return (
     <>
-      <button className="button button-accent" onClick={() => sendReport(items)}>
+      <button className="button button-accent" onClick={sendReportMail}>
         Convert to EML
       </button>
       <table className="table">
@@ -104,14 +103,15 @@ const Table = ({ items }) => {
               <td className="table-cell">{test.release}</td>
               <td className="table-cell">{test.branch}</td>
               <td className="table-cell">
-                {test.files?.length > 0 ? (
-                  <button className="badge badge-info" onClick={() => handleFileClick(test._id)}>
+                {test.files?.length}
+                {/* {test.files?.length > 0 ? (
+                  <button className="badge " onClick={() => handleFileClick(test._id)}>
                     <Paperclip style={{ width: "14px", height: "14px" }} />
                     {test.files?.length}
                   </button>
                 ) : (
                   <></>
-                )}
+                )} */}
                 {selectedTestId === test._id &&
                   testFiles &&
                   testFiles.map((file) => (

@@ -37,6 +37,7 @@ const Modal = ({
   useKey({ key: closeKey, handler: closeOnEscape ? () => closeModal(id) : () => { } });
   useLockScroll(document, isOpen,);
 
+
   const modalWindow = (
     <div className="backdrop">
       <div className="modal" ref={modalRef} id={id}>
@@ -46,17 +47,21 @@ const Modal = ({
     </div>
   );
 
+
   return <div ref={portalRef}>{isOpen && createPortal(modalWindow, portalRef.current)}</div>;
 };
 
 const ModalCloseButton = ({ id }: { id: string }) => {
-  const { closeModal } = useContext(ModalContext);
+  const { modals, closeModal } = useContext(ModalContext);
+  const isForcedOpen = modals[id];
   return (
     <div className="modal-close-button">
 
-      <button onClick={() => closeModal(id)} className="button">
-        <CloseIcon className="icon-24" />
-      </button>
+      {isForcedOpen &&
+        <button onClick={() => closeModal(id)} className="button">
+          <CloseIcon className="icon-24" />
+        </button>
+      }
     </div>
   );
 };
@@ -74,4 +79,8 @@ const ModalHeader = ({ children, ...props }: { children: React.ReactNode }) => {
   return <div className="modal-header">{children}</div>;
 };
 
-export { Modal, ModalContent, ModalTrigger, ModalHeader };
+const ModalFooter = ({ children, ...props }: { children: React.ReactNode }) => {
+  return <div className="modal-footer">{children}</div>;
+};
+
+export { Modal, ModalContent, ModalTrigger, ModalHeader, ModalFooter };
