@@ -68,6 +68,15 @@ const Table = ({ items }) => {
     }
   };
 
+  const sendReportMail = () => {
+    const status = sendReport(items);
+    if (status) {
+      return addAlert({ type: "success", message: "Report generated successfully" });
+    }
+
+    return addAlert({ type: "error", message: "Report generation failed" });
+  };
+
   return (
     <>
       <button className="button button-accent" onClick={() => sendReport(items)}>
