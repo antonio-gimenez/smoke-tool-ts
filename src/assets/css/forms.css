@@ -35,8 +35,9 @@
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
   --background-opacity: 0.75;
-  background: var(--base-mid);
-  color: hsla(var(--color-base-content), var(--background-opacity));
+  /* background: var(--base-mid); */
+  background: transparent;
+  color: hsla(var(--color-base-content), 1);
   outline: var(--outline-width) solid transparent;
   border: var(--border-width, 2px) solid;
   --border-opacity: 0.35;
