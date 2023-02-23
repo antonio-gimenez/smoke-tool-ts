@@ -32,7 +32,7 @@ const Dropdown = ({ position = 'start', label, isMenu, children, className }: Dr
       {isOpen && (
         <div className={`dropdown-content ${isMenu ? 'menu' : ''
           }`}>
-          <div className="dropdown-menu">{children}</div>
+          <ul>{children}</ul>
         </div>
       )
       }

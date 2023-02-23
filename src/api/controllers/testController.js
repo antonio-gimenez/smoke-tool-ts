@@ -37,7 +37,7 @@ const getTests = async (req, res) => {
 };
 
 const createTest = async (req, res) => {
-  const { name, branch, product, dueDate } = req.body;
+  const data = req.body;
   const filesToSave = [];
 
   if (!req.files) {
@@ -74,15 +74,10 @@ const createTest = async (req, res) => {
     }
   }
 
-  if (!name) {
-    return res.status(400).send({ message: "Test `name` not provided" });
-  }
+  if (!data) return res.status(400).send({ message: `Test not created, no data provided` });
 
   const newTest = new Test({
-    name,
-    branch,
-    product,
-    dueDate,
+    ...data,
     files: filesToSave,
   });
   try {

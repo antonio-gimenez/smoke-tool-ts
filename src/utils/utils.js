@@ -1,5 +1,7 @@
 // Description: This file contains all the utility functions used in the application
 
+import api from "../services/use-axios";
+
 // Fallback function to generate UUIDs if the browser does not support the crypto.randomUUID() function
 export function generateFallbackUUID() {
   let d = new Date().getTime();
@@ -98,9 +100,77 @@ const fileTypes = {
   xls: ["application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"],
   ppt: ["application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
   zip: ["application/zip", "application/x-7z-compressed"],
-  text: ["text/plain", "application/json", "application/xml", "application/log"],
+  text: ["text/plain", "application/json", "application/xml", "application/log", "text/x-log", "text/log"],
 };
 
 export function typeIncludes(fileType, typeString) {
   return fileType.includes(fileTypes[typeString]);
+}
+
+export async function sendReport(selectedItems) {
+  const files = await Promise.all(
+    selectedItems?.map(async (item) => {
+      if (item.files.length > 0) {
+        const response = await api.get(`/tests/files/${item._id}`);
+        return response.data.data;
+      }
+    })
+  );
+
+  const filteredFiles = files.flat().filter((file) => file);
+
+  const attachments = await Promise.all(
+    filteredFiles.map(async (file) => {
+      const blob = new Blob([file.file.data]);
+      const data = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onloadend = () => {
+          const base64data = reader.result.split(",")[1];
+          resolve(base64data);
+        };
+      });
+      return {
+        filename: file.name,
+        data,
+      };
+    })
+  );
+
+  const subject = "Email with attachments";
+  const body = "This is the body of the email.";
+  const from = "sender@example.com";
+  const to = "recipient@example.com";
+
+  const boundary = "my-multipart-boundary";
+  const multipartContent = [
+    `Content-Type: text/plain\r\n\r\n${body}\r\n`,
+    ...attachments.map(
+      (attachment) =>
+        `--${boundary}\r\n` +
+        `Content-Type: application/octet-stream\r\n` +
+        `Content-Disposition: attachment; filename="${attachment.filename}"\r\n` +
+        `Content-Transfer-Encoding: base64\r\n\r\n` +
+        `${attachment.data}\r\n`
+    ),
+    `--${boundary}--\r\n`,
+  ].join("");
+
+  const emailContent =
+    `From: ${from}\r\nTo: ${to}\r\nSubject: ${subject}\r\n` +
+    `Content-Type: multipart/mixed; boundary="${boundary}"\r\n\r\n${multipartContent}`;
+
+  const emlContent = `data:application/octet-stream;base64,${btoa(emailContent)}`;
+
+  var encodedUri = encodeURI(emlContent);
+  var a = document.createElement("a");
+  var linkText = document.createTextNode("fileLink");
+  a.appendChild(linkText);
+  a.href = encodedUri;
+  a.id = "fileLink";
+  a.download = "report.eml";
+  a.style = "display:none;";
+  document.body.appendChild(a);
+  document.getElementById("fileLink").click();
+  document.body.removeChild(a);
 }

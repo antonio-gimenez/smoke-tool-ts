@@ -3,14 +3,11 @@ const branchController = require("./controllers/branchController");
 const testController = require("./controllers/testController");
 const express = require("express");
 const router = express.Router();
-// const multer = require("multer");
-const multerHelper = require("./storage");
-// const storage = multer.memoryStorage();
-// const upload = multer({ storage: storage });
+const uploadFiles = require("./storage");
 
 router.get("/tests/", testController.getTests);
-router.delete("/tests/", testController.deleteTest);
-router.post("/tests/", multerHelper.uploadMultipleFiles, testController.createTest);
+router.delete("/tests/:id", testController.deleteTest);
+router.post("/tests/", uploadFiles, testController.createTest);
 // Files
 router.get("/tests/files/:id", testController.getFiles);
 router.delete("/tests/files/:testId/:fileId", testController.removeFile);

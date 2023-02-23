@@ -70,7 +70,7 @@
   --neutral: hsl(var(--color-neutral));
   --neutral-content: hsl(var(--color-light));
   --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-light));
+  --info-content: hsl(var(--color-dark));
   --success: hsl(var(--color-success));
   --success-content: hsl(var(--color-light));
   --warning: hsl(var(--color-warning));

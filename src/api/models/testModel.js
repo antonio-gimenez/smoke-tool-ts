@@ -31,6 +31,10 @@ const testSchema = new Schema(
       type: String,
       required: true,
     },
+    release: {
+      type: String,
+      required: true,
+    },
     priority: {
       type: String,
       required: true,

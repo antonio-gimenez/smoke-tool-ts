@@ -1,13 +1,17 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
+import { ModalContext } from "../contexts/ModalContext";
+import { TestContext } from "../contexts/TestContext";
 import api from "../services/use-axios";
 import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions } from "../utils/utils";
 import FileSelector from "./FileSelector/FileSelector";
 
-function NewTest() {
+function NewTest({ modalId }: { modalId: string }) {
   const { addAlert } = useContext(AlertContext);
+  const { closeModal } = useContext(ModalContext);
+  const { fetch } = useContext(TestContext);
   const { products } = useProducts();
   const { branches } = useBranches();
   const [filesToUpload, setFilesToUpload] = useState<File | FileList | null>(null);
@@ -68,6 +72,8 @@ function NewTest() {
 
     createTest(form, filesToUpload as FileList | null);
     addAlert({ message: "Test created successfully", type: "success" });
+    closeModal(modalId);
+    fetch()
   };
 
   const productsFormatted = formatSelectOptions({ options: products });

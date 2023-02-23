@@ -37,7 +37,7 @@ const Header = () => {
               <p>New Test</p>
             </ModalHeader>
             <ModalContent>
-              <NewTestForm />
+              <NewTestForm modalId="create-test" />
             </ModalContent>
           </Modal>
         </nav>

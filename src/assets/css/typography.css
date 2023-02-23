@@ -1,5 +1,5 @@
 a.link,
 *.link {
-  color: var(--accent);
+  color: var(--primary);
   text-decoration: underline;
 }
