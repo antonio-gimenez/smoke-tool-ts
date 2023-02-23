@@ -119,17 +119,11 @@ export async function sendReport(selectedItems) {
 
   const filteredFiles = files.flat().filter((file) => file);
 
+  console.log(filteredFiles);
+
   const attachments = await Promise.all(
     filteredFiles.map(async (file) => {
-      const blob = new Blob([file.file.data]);
-      const data = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-          const base64data = reader.result.split(",")[1];
-          resolve(base64data);
-        };
-      });
+      const data = btoa(String.fromCharCode(...file.file.data));
       return {
         filename: file.name,
         data,
