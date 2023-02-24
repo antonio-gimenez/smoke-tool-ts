@@ -3,7 +3,7 @@ import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import { AlertContext } from "../../contexts/AlertContext";
 import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
-import { getBase64, generateReport } from "../../utils/utils";
+import { getBase64, generateReport, generateReportWithAttachments } from "../../utils/utils";
 import Dropdown from "./Dropdown";
 const Table = ({ items }) => {
   const [selectedTestId, setSelectedTestId] = useState(null);
@@ -69,11 +69,12 @@ const Table = ({ items }) => {
   };
 
   const generateReportMail = async () => {
-    const status = await generateReport(items);
-    if (status) {
-      return addAlert({ type: "success", message: "Report generated successfully" });
+    const status = await generateReportWithAttachments(items);
+    if (status.type === "success") {
+      addAlert(status);
+      return;
     }
-    return addAlert({ type: "error", message: "Report generation failed" });
+    return addAlert(status);
   };
 
   return (

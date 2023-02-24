@@ -191,17 +191,18 @@ export async function generateReport(selectedItems) {
     document.body.removeChild(a);
 
     console.log("Email sent successfully.");
-    return true;
   } catch (error) {
     console.error("An error occurred while sending the email:", error);
   }
 }
 
-// Call this function to send the report
-async function generateReportWithAttachments(selectedItems) {
+// Call this function to generate the report
+export async function generateReportWithAttachments(selectedItems) {
   try {
     await generateReport(selectedItems);
+    return { type: "success", message: "Report generated successfully" };
   } catch (error) {
     console.error("An error occurred while sending the report:", error);
+    return { type: "error", message: `An error occurred while sending the report: ${error}` };
   }
 }
