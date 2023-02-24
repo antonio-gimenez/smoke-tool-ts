@@ -114,7 +114,6 @@ const Table = ({ items }) => {
                   <></>
                 )}
                 {test.files.map((file, index) => {
-                  console.log(file);
                   return (
                     <div key={`${file._id}_${index}`} className="file">
                       <Dropdown isMenu={true} label={<span className="link">{file.name}</span>}>

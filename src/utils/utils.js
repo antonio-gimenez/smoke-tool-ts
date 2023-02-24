@@ -113,10 +113,27 @@ function encodeBase64(data) {
   return btoa(String.fromCharCode(...new Uint8Array(data)));
 }
 
-function getAttachmentData(file) {
-  return encodeBase64(file.file.data);
-}
+// function getAttachmentData(file) {
+//   return encodeBase64(file.file.data);
+// }
 
+const attachmentDataIsBase64 = (attachment) => {
+  return attachment.data.includes("data:");
+};
+
+function getAttachmentData(file) {
+  // const data = file.file.data;
+  // if (typeof data === "string") {
+  //   return encodeBase64(data);
+  // } else {
+  //   return encodeBase64(new Uint8Array(data));
+  // }
+  if (attachmentDataIsBase64(file.file)) {
+    return file.file;
+  } else {
+    return encodeBase64(file.file.data);
+  }
+}
 function getEmailContent(from, to, subject, body, attachments) {
   const boundary = "my-multipart-boundary";
   const attachmentHeaders = attachments
