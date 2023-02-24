@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const createPaginationOptions = ({ req, totalCount }) => {
   let options = {};
   let limit = parseInt(req.query.limit || 25);
@@ -93,9 +94,16 @@ const stripNumeric = (str) => {
   return str.replace(/[0-9]/g, "");
 };
 
+function calculateChecksum(buffer) {
+  const hash = crypto.createHash("sha256");
+  hash.update(buffer);
+  return hash.digest("hex");
+}
+
 module.exports = {
   createQuery,
   stripNonNumeric,
   createPaginationOptions,
   stripNumeric,
+  calculateChecksum,
 };

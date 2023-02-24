@@ -1,6 +1,6 @@
 const { File } = require("../models/fileModel");
 const { Test } = require("../models/testModel");
-const { createQuery, createPaginationOptions } = require("../utils");
+const { createQuery, createPaginationOptions, calculateChecksum } = require("../utils");
 
 const getTests = async (req, res) => {
   console.log(req.query);
@@ -48,6 +48,7 @@ const createTest = async (req, res) => {
       const newFile = new File({
         name: file.originalname,
         file: file.buffer,
+        checksum: calculateChecksum(file.buffer),
         contentType: file.mimetype,
       });
       filesToSave.push(newFile);
@@ -62,6 +63,7 @@ const createTest = async (req, res) => {
     console.log(`File uploaded: ${req.files.originalname}`);
     const newFile = new File({
       name: req.files.originalname,
+      checksum: calculateChecksum(req.files.buffer),
       file: req.files.buffer,
       contentType: req.files.mimetype,
     });

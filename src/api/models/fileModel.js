@@ -14,7 +14,7 @@ const fileSchema = new Schema(
     name: {
       type: String,
     },
-    url: {
+    checksum: {
       type: String,
     },
   },

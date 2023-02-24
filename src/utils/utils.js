@@ -1,6 +1,5 @@
-// Description: This file contains all the utility functions used in the application
-
 import api from "../services/use-axios";
+// Description: This file contains all the utility functions used in the application
 
 // Fallback function to generate UUIDs if the browser does not support the crypto.randomUUID() function
 export function generateFallbackUUID() {
@@ -118,15 +117,10 @@ export async function sendReport(selectedItems) {
       })
     );
 
-    console.log(`files length: ${files.length}`);
-
     const filteredFiles = files.flat().filter((file) => file);
-
-    console.log(`filteredFiles length: ${filteredFiles.length}`);
 
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
-        console.log(file);
         const data = btoa(String.fromCharCode(...file.file.data));
         return {
           filename: file.name,
@@ -134,8 +128,6 @@ export async function sendReport(selectedItems) {
         };
       })
     );
-
-    console.log(`attachments length: ${attachments.length}`);
 
     const subject = "Email with attachments";
     const body = "This is the body of the email.";

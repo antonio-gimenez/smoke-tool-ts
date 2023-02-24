@@ -104,18 +104,18 @@ const Table = ({ items }) => {
               <td className="table-cell">{test.branch}</td>
               <td className="table-cell">
                 {test.files?.length}
-                {/* {test.files?.length > 0 ? (
+                {test.files?.length > 0 ? (
                   <button className="badge " onClick={() => handleFileClick(test._id)}>
                     <Paperclip style={{ width: "14px", height: "14px" }} />
                     {test.files?.length}
                   </button>
                 ) : (
                   <></>
-                )} */}
-                {selectedTestId === test._id &&
-                  testFiles &&
-                  testFiles.map((file) => (
-                    <div key={file._id} className="file">
+                )}
+                {test.files.map((file, index) => {
+                  console.log(file);
+                  return (
+                    <div key={`${file._id}_${index}`} className="file">
                       <Dropdown isMenu={true} label={<span className="link">{file.name}</span>}>
                         <li onClick={() => downloadFile(file)}>View/download file</li>
                         <li
@@ -130,7 +130,8 @@ const Table = ({ items }) => {
                         </li>
                       </Dropdown>
                     </div>
-                  ))}
+                  );
+                })}
               </td>
               <td className="table-cell">{test.priority}</td>
 
