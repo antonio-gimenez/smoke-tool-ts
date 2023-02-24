@@ -106,6 +106,10 @@ export function typeIncludes(fileType, typeString) {
   return fileType.includes(fileTypes[typeString]);
 }
 
+const attachmentDataIsBase64 = (attachment) => {
+  return attachment.data.includes("data:");
+};
+
 export async function sendReport(selectedItems) {
   try {
     const files = await Promise.all(
@@ -121,11 +125,13 @@ export async function sendReport(selectedItems) {
 
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
-        const data = btoa(String.fromCharCode(...file.file.data));
-        return {
-          filename: file.name,
-          data,
-        };
+        const data = attachmentDataIsBase64(file.file) ? file.file : btoa(String.fromCharCode(...file.file.data));
+        if (data) {
+          return {
+            filename: file.name,
+            data,
+          };
+        }
       })
     );
 
@@ -156,9 +162,9 @@ export async function sendReport(selectedItems) {
 
     const emlContent = `data:application/octet-stream;base64,${btoa(emailContent)}`;
 
-    var encodedUri = encodeURI(emlContent);
-    var a = document.createElement("a");
-    var linkText = document.createTextNode("fileLink");
+    const encodedUri = encodeURI(emlContent);
+    const a = document.createElement("a");
+    const linkText = document.createTextNode("fileLink");
     a.appendChild(linkText);
     a.href = encodedUri;
     a.id = "fileLink";
@@ -174,3 +180,106 @@ export async function sendReport(selectedItems) {
     return false; // indicate failure
   }
 }
+
+/* 
+function encodeBase64(data) {
+  if (typeof data === "string") {
+    data = new TextEncoder().encode(data);
+  }
+  return btoa(String.fromCharCode(...new Uint8Array(data)));
+}
+
+function getAttachmentData(file) {
+  if (attachmentDataIsBase64(file.file)) {
+    return file.file;
+  } else {
+    return encodeBase64(file.file.data);
+  }
+}
+
+function getEmailContent(from, to, subject, body, attachments) {
+  const boundary = "my-multipart-boundary";
+  const attachmentHeaders = attachments
+    .map(({ filename }) =>
+      [
+        `--${boundary}`,
+        `Content-Type: application/octet-stream`,
+        `Content-Disposition: attachment; filename="${filename}"`,
+        `Content-Transfer-Encoding: base64`,
+        "",
+      ].join("\r\n")
+    )
+    .join("\r\n");
+
+  const attachmentData = attachments
+    .map(({ filename, data }) =>
+      [
+        `--${boundary}`,
+        `Content-Type: application/octet-stream`,
+        `Content-Disposition: attachment; filename="${filename}"`,
+        `Content-Transfer-Encoding: base64`,
+        "",
+        data,
+      ].join("\r\n")
+    )
+    .join("\r\n");
+
+  return [
+    `From: ${from}`,
+    `To: ${to}`,
+    `Subject: ${subject}`,
+    `Content-Type: multipart/mixed; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    `Content-Type: text/plain`,
+    "",
+    body,
+    attachmentHeaders,
+    attachmentData,
+    `--${boundary}--`,
+    "",
+  ].join("\r\n");
+}
+
+export async function sendReport(selectedItems) {
+  if (!Array.isArray(selectedItems)) {
+    throw new TypeError("selectedItems must be an array");
+  }
+
+  const files = await Promise.all(
+    selectedItems
+      .filter((item) => item.files.length > 0)
+      .map(async (item) => {
+        const response = await api.get(`/tests/files/${item._id}`);
+        return response.data.data;
+      })
+  );
+
+  const attachments = files
+    .flat()
+    .filter((file) => file)
+    .map((file) => ({
+      filename: file.name,
+      data: getAttachmentData(file),
+    }));
+
+  const from = "sender@example.com";
+  const to = "recipient@example.com";
+  const subject = "Email with attachments";
+  const body = "This is the body of the email.";
+
+  const emailContent = getEmailContent(from, to, subject, body, attachments);
+  const emlContent = `data:application/octet-stream;base64,${encodeBase64(emailContent)}`;
+
+  const a = document.createElement("a");
+  a.href = emlContent;
+  a.download = "report.eml";
+  a.style.display = "none";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  return true;
+}
+
+*/
