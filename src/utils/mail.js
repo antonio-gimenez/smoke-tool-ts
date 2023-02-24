@@ -1,6 +1,16 @@
 import api from "../services/use-axios";
 
-export async function generateReportWithAttachments(selectedItems) {
+function arrayBufferToBase64(buffer) {
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  const len = bytes.byteLength;
+  for (let i = 0; i < len; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return window.btoa(binary);
+}
+
+export async function generateReport(selectedItems) {
   try {
     const files = await Promise.all(
       selectedItems?.map(async (item) => {
@@ -15,16 +25,35 @@ export async function generateReportWithAttachments(selectedItems) {
 
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
-        const data = btoa(String.fromCharCode(...file.file.data));
-
-        if (data) {
+        try {
+          const data = arrayBufferToBase64(file.file.data);
           return {
             filename: file.name,
             data,
           };
+        } catch (error) {
+          console.error("Error encoding file:", error);
+          throw new Error("Failed to encode file");
         }
       })
-    );
+      // filter out any falsy values from the array
+    ).then((attachments) => attachments.filter(Boolean));
+
+    // const attachments = await Promise.all(
+    //   filteredFiles.map(async (file) => {
+    //     try {
+    //       const data = btoa(String.fromCharCode(...new Uint8Array(file.file.data)));
+    //       if (data) {
+    //         return {
+    //           filename: file.name,
+    //           data,
+    //         };
+    //       }
+    //     } catch (error) {
+    //       console.error("Error encoding file:", error);
+    //     }
+    //   })
+    // );
 
     const subject = "Email with attachments";
     const body = "This is the body of the email.";
@@ -35,6 +64,7 @@ export async function generateReportWithAttachments(selectedItems) {
     const multipartContent = [
       `Content-Type: text/plain\r\n\r\n${body}\r\n`,
       ...attachments.map((attachment) => {
+        if (!attachment) return "";
         const { filename, data } = attachment;
         return (
           `--${boundary}\r\n` +
@@ -69,5 +99,15 @@ export async function generateReportWithAttachments(selectedItems) {
   } catch (error) {
     console.error("Error sending report:", error);
     return false; // indicate failure
+  }
+}
+
+export async function generateReportWithAttachments(selectedItems) {
+  try {
+    await generateReport(selectedItems);
+    return { type: "success", message: "Report generated successfully" };
+  } catch (error) {
+    console.error("An error occurred while sending the report:", error);
+    return { type: "error", message: `An error occurred while sending the report: ${error}` };
   }
 }

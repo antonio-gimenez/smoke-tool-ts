@@ -13,8 +13,16 @@
 }
 
 .input-file-container {
+  display: flex;
+  align-items: center;
   position: relative;
-  width: fit-content;
+  /* width: fit-content; */
+  gap: var(--space-2);
+}
+
+.file-size-limit {
+  /* font-weight: var(--fw-light); */
+  color: hsl(var(--color-base-content), 0.5);
 }
 
 .file-actions {

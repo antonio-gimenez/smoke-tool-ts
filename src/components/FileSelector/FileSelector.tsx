@@ -47,21 +47,15 @@ function FileSelector({ files, handler }: FileSelectorProps) {
 
     return (
         <div className="file-selector">
-            {/* <label htmlFor="multiple" >
-                <input
-                    id="multiple"
-                    type="checkbox"
-                    checked={multiple}
-                    onChange={() => setMultiple(!multiple)}
-                />
-                <span>Allow upload multiple files</span>
-            </label> */}
-            {/* {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>} */}
+
+            {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>}
 
             <label htmlFor="fileInput" className='input-file-container'>
                 <span className="button button-primary">Add attachment</span>
+                <span className="file-size-limit">Max file size: 10mb</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
+            {/* max file size to 10mb */}
 
             <ShowFileList {...fileListProps} />
         </div >
