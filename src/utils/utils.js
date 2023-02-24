@@ -106,10 +106,6 @@ export function typeIncludes(fileType, typeString) {
   return fileType.includes(fileTypes[typeString]);
 }
 
-const attachmentDataIsBase64 = (attachment) => {
-  return attachment.data.includes("data:");
-};
-
 function encodeBase64(data) {
   if (typeof data === "string") {
     data = new TextEncoder().encode(data);
@@ -118,11 +114,7 @@ function encodeBase64(data) {
 }
 
 function getAttachmentData(file) {
-  if (attachmentDataIsBase64(file.file)) {
-    return file.file;
-  } else {
-    return encodeBase64(file.file.data);
-  }
+  return encodeBase64(file.file.data);
 }
 
 function getEmailContent(from, to, subject, body, attachments) {
@@ -139,18 +131,7 @@ function getEmailContent(from, to, subject, body, attachments) {
     )
     .join("\r\n");
 
-  const attachmentData = attachments
-    .map(({ filename, data }) =>
-      [
-        `--${boundary}`,
-        `Content-Type: application/octet-stream`,
-        `Content-Disposition: attachment; filename="${filename}"`,
-        `Content-Transfer-Encoding: base64`,
-        "",
-        data,
-      ].join("\r\n")
-    )
-    .join("\r\n");
+  const attachmentData = attachments.map(({ data }) => data).join("\r\n--" + boundary + "\r\n");
 
   return [
     `From: ${from}`,
@@ -162,6 +143,7 @@ function getEmailContent(from, to, subject, body, attachments) {
     `Content-Type: text/plain`,
     "",
     body,
+    `--${boundary}`,
     attachmentHeaders,
     attachmentData,
     `--${boundary}--`,
