@@ -3,7 +3,9 @@ import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import { AlertContext } from "../../contexts/AlertContext";
 import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
-import { getBase64, generateReport, generateReportWithAttachments } from "../../utils/utils";
+import { getBase64 } from "../../utils/utils";
+import { generateReportWithAttachments } from "../../utils/mail";
+
 import Dropdown from "./Dropdown";
 const Table = ({ items }) => {
   const [selectedTestId, setSelectedTestId] = useState(null);
@@ -104,7 +106,6 @@ const Table = ({ items }) => {
               <td className="table-cell">{test.release}</td>
               <td className="table-cell">{test.branch}</td>
               <td className="table-cell">
-                {test.files?.length}
                 {test.files?.length > 0 ? (
                   <button className="badge " onClick={() => handleFileClick(test._id)}>
                     <Paperclip style={{ width: "14px", height: "14px" }} />
@@ -113,9 +114,10 @@ const Table = ({ items }) => {
                 ) : (
                   <></>
                 )}
-                {test.files.map((file, index) => {
-                  return (
-                    <div key={`${file._id}_${index}`} className="file">
+                {selectedTestId === test._id &&
+                  testFiles &&
+                  testFiles.map((file) => (
+                    <div key={file._id} className="file">
                       <Dropdown isMenu={true} label={<span className="link">{file.name}</span>}>
                         <li onClick={() => downloadFile(file)}>View/download file</li>
                         <li
@@ -130,8 +132,7 @@ const Table = ({ items }) => {
                         </li>
                       </Dropdown>
                     </div>
-                  );
-                })}
+                  ))}
               </td>
               <td className="table-cell">{test.priority}</td>
 
