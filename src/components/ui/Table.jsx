@@ -3,7 +3,7 @@ import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import { AlertContext } from "../../contexts/AlertContext";
 import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
-import { getBase64, sendReport } from "../../utils/utils";
+import { getBase64, generateReport } from "../../utils/utils";
 import Dropdown from "./Dropdown";
 const Table = ({ items }) => {
   const [selectedTestId, setSelectedTestId] = useState(null);
@@ -68,8 +68,8 @@ const Table = ({ items }) => {
     }
   };
 
-  const sendReportMail = async () => {
-    const status = await sendReport(items);
+  const generateReportMail = async () => {
+    const status = await generateReport(items);
     if (status) {
       return addAlert({ type: "success", message: "Report generated successfully" });
     }
@@ -78,7 +78,7 @@ const Table = ({ items }) => {
 
   return (
     <>
-      <button className="button button-accent" onClick={sendReportMail}>
+      <button className="button button-accent" onClick={generateReportMail}>
         Convert to EML
       </button>
       <table className="table">
