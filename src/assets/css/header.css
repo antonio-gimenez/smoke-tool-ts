@@ -14,6 +14,7 @@
   align-items: center;
   /* flex-wrap: wrap; */
   padding: 1rem;
+  border-bottom: 1px solid hsl(var(--color-base-content), 0.07);
 }
 
 .glass {

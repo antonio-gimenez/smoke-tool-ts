@@ -47,6 +47,7 @@
   display: flex;
   font-weight: var(--fw-semibold, 500);
   font-size: var(--fs-large);
+  background-color: var(--base-mid);
   justify-content: center;
   align-items: center;
 }
