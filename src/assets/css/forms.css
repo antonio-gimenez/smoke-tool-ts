@@ -31,7 +31,7 @@
   display: inline-flex;
   border-radius: var(--border-radius-small);
   padding: var(--padding-y, 0.25rem) var(--padding-x, 0.5rem);
-  width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), calc(var(--input-width) + 2 * var(--padding-x)));
+  width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), 100%);
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
   --background-opacity: 0.75;
