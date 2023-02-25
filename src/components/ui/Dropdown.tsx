@@ -7,22 +7,21 @@ interface DropdownProps {
   children: React.ReactNode | string;
   className?: string;
   isMenu?: boolean;
+  open?: boolean;
 }
 
-const Dropdown = ({ position = 'start', label, isMenu, children, className }: DropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Dropdown = ({ position = 'start', label, isMenu, children, className, open }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(open || false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  useOnClickOutside(
-    {
-      ref: dropdownRef,
-      handler: () => setIsOpen(false),
-    }
-  )
+  useOnClickOutside({
+    ref: dropdownRef,
+    handler: () => setIsOpen(false),
+  });
 
   return (
     <div className={`dropdown ${position} ${className || ''}`} ref={dropdownRef}>
@@ -30,13 +29,11 @@ const Dropdown = ({ position = 'start', label, isMenu, children, className }: Dr
         {label}
       </button>
       {isOpen && (
-        <div className={`dropdown-content ${isMenu ? 'menu' : ''
-          }`}>
+        <div className={`dropdown-content ${isMenu ? 'menu' : ''}`}>
           <ul>{children}</ul>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 };
 

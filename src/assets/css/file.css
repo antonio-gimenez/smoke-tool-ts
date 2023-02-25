@@ -8,8 +8,11 @@
 }
 
 .file-list {
-  background: hsl(var(--color-dark), 0.075);
-  border-radius: var(--border-radius-small);
+  /* background: hsl(var(--color-dark), 0.075);
+  border-radius: var(--border-radius-small); */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .input-file-container {
@@ -28,39 +31,13 @@
   color: var(--error);
 }
 
-.file-actions {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-2);
-  justify-content: flex-end;
-  border-radius: 0.25rem;
-  border: 1px solid red;
-}
-
 .file {
   display: flex;
   align-items: center;
-  padding: var(--space-2);
-  --background-opacity: 0.6;
+  padding: var(--space-1);
+  border: 1px solid hsl(var(--color-base-content), 0.15);
+  border-radius: var(--border-radius-small);
   justify-content: space-between;
-}
-
-.file-link {
-  cursor: pointer;
-  text-decoration: underline;
-  color: var(--primary);
-}
-
-.file-trash {
-  width: 18px;
-  height: 18px;
-  color: var(--base-content);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.file-trash:hover {
-  color: var(--error);
 }
 
 .file-name {
@@ -69,14 +46,8 @@
   text-overflow: ellipsis;
 }
 
-/* .file:nth-child(odd) {
-  --background-opacity: 0.4;
-  background: hsla(var(--color-base), var(--background-opacity));
-} */
-
 .file-size {
-  font-weight: var(--fw-light);
-  color: var(--base-content);
+  color: hsl(var(--color-base-content), 0.5);
 }
 
 .file-close-icon {

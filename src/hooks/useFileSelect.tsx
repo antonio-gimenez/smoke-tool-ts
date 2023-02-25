@@ -44,6 +44,7 @@ const useFileSelect = ({
 
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
+        console.log(files);
         if (files) {
             let totalSize = 0;
             let isSizeValid = true;

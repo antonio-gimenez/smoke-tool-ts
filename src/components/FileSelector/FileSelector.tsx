@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
+import { ReactComponent as ImageIcon } from '../../assets/icons/image.svg';
+import { ReactComponent as FileIcon } from '../../assets/icons/file.svg';
 import useFileSelect from '../../hooks/useFileSelect';
 import { humanFileSize } from '../../utils/utils';
 
@@ -36,9 +38,15 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
                         const url = file ? URL.createObjectURL(file) : '';
                         return (
                             <li key={`file - ${index}`} className='file'>
+                                {file.type.startsWith('image') ? (
+                                    <ImageIcon className="file-image-icon" />
+                                ) : (
+                                    <FileIcon style={{ height: '18' }} />
+                                )}
                                 <a title={file.name} href={url} target="_blank"
                                     rel="noreferrer"
-                                    className='file-name'>{file.name} ({humanFileSize(file.size)})</a>
+                                    className='file-name'>{file.name}</a>
+                                <span className='file-size'>{humanFileSize(file.size)}</span>
                                 <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
                             </li>
                         );
