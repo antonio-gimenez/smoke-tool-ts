@@ -42,6 +42,8 @@
 .modal-header {
   z-index: 1;
   top: 0;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid hsl(var(--color-base-content), 0.15);
   display: flex;
   font-weight: var(--fw-semibold, 500);
   font-size: var(--fs-large);

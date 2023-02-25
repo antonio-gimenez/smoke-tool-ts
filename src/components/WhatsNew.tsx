@@ -24,7 +24,7 @@ function WhatsNew() {
       // true
     }>
       <ModalHeader>
-        <h4>What's new in version {currentVersion}</h4>
+        <span>What's new in version {currentVersion}</span>
       </ModalHeader>
       <ModalContent>
         <p>Here is a list of changes since the last version:</p>

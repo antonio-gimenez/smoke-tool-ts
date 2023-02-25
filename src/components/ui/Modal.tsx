@@ -53,7 +53,7 @@ const Modal = ({
 
 const ModalCloseButton = ({ id }: { id: string }) => {
   const { modals, closeModal } = useContext(ModalContext);
-  const isForcedOpen = modals[id];
+  const isForcedOpen = modals[id]
   return (
     <div className="modal-close-button">
 

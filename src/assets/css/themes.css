@@ -8,7 +8,7 @@
   --color-base-content: 0, 0%, 16%;
   --color-primary: 210, 100%, 45%;
   --color-secondary: 60, 15%, 41%;
-  --color-accent: 245, 50%, 50%;
+  --color-accent: 45, 100%, 50%;
   --color-neutral: 221, 5%, 39%;
   --color-info: 199, 98%, 48%;
   --color-success: 129, 81%, 34%;
@@ -24,7 +24,7 @@
   --secondary: hsl(var(--color-secondary));
   --secondary-content: hsl(var(--color-light));
   --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-light));
+  --accent-content: hsl(var(--color-dark));
   --neutral: hsl(var(--color-neutral));
   --neutral-content: hsl(var(--color-light));
   --info: hsl(var(--color-info));
@@ -50,7 +50,7 @@
   --color-base-content: 0, 12%, 97%;
   --color-primary: 210, 100%, 45%;
   --color-secondary: 60, 15%, 41%;
-  --color-accent: 245, 50%, 50%;
+  --color-accent: 300, 50%, 40%;
   --color-neutral: 0, 0%, 45%;
   --color-info: 199, 98%, 48%;
   --color-success: 129, 81%, 34%;
