@@ -24,7 +24,7 @@ const Header = () => {
             <span>{process.env.REACT_APP_APP_NAME}</span>
           </span>
         </nav>
-        <nav aria-label="Links">
+        <nav className="nav-links" aria-label="Links">
           <a className="link" href="/tests/">
             Tests
           </a>
