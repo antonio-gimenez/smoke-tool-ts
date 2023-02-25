@@ -12,9 +12,11 @@ interface FileListProps {
 interface FileSelectorProps {
     files?: File | FileList | null;
     handler?: (files: File | FileList | null) => void;
+    maxFileSize?: number;
 }
 
-function FileSelector({ files, handler }: FileSelectorProps) {
+function FileSelector({ files, handler, maxFileSize = 10 * 1024 * 1024 // 10mb
+}: FileSelectorProps) {
     // const [multiple, setMultiple] = useState(false);
     const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, initialFiles: files, handler });
 

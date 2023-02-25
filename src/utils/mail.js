@@ -1,6 +1,5 @@
 import api from "../services/use-axios";
 
-// Converts an ArrayBuffer to a Base64-encoded string
 function arrayBufferToBase64(buffer) {
   let binary = "";
   const bytes = new Uint8Array(buffer);
@@ -11,10 +10,8 @@ function arrayBufferToBase64(buffer) {
   return window.btoa(binary);
 }
 
-// Generates an email report with attachments
 export async function generateReport(selectedItems) {
   try {
-    // Get the files from the selected items
     const files = await Promise.all(
       selectedItems?.map(async (item) => {
         if (item.files?.length > 0) {
@@ -24,27 +21,22 @@ export async function generateReport(selectedItems) {
       })
     );
 
-    // Filter out empty files and convert them to attachments
     const filteredFiles = files.flat().filter((file) => file);
-    let attachments = [];
 
-    if (filteredFiles.length) {
-      attachments = await Promise.all(
-        filteredFiles.map(async (file) => {
-          try {
-            const { data, name } = file;
-            const encodedData = arrayBufferToBase64(data);
-            return {
-              filename: name,
-              data: encodedData,
-            };
-          } catch (error) {
-            console.error("Error encoding file:", error);
-            throw new Error("Failed to encode file");
-          }
-        })
-      );
-    }
+    const attachments = await Promise.all(
+      filteredFiles.map(async (file) => {
+        try {
+          const data = arrayBufferToBase64(file.file.data);
+          return {
+            filename: file.name,
+            data,
+          };
+        } catch (error) {
+          console.error("Error encoding file:", error);
+          throw new Error("Failed to encode file");
+        }
+      })
+    ).then((attachments) => attachments.filter(Boolean));
 
     const subject = "Email with attachments";
     const body = "This is the body of the email.";
@@ -95,12 +87,8 @@ export async function generateReport(selectedItems) {
 
 export async function generateReportWithAttachments(selectedItems) {
   try {
-    const result = await generateReport(selectedItems);
-    if (result) {
-      return { type: "success", message: "Report generated successfully" };
-    } else {
-      throw new Error("Failed to generate report");
-    }
+    await generateReport(selectedItems);
+    return { type: "success", message: "Report generated successfully" };
   } catch (error) {
     console.error("An error occurred while sending the report:", error);
     return { type: "error", message: `An error occurred while sending the report: ${error}` };
