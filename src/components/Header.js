@@ -1,8 +1,8 @@
-import NewTestForm from "./NewTestForm";
-import ThemeSelector from "./ThemeSelector/ThemeSelector";
-import { Modal, ModalContent, ModalFooter, ModalHeader, ModalTrigger } from "./ui/Modal";
 import useScrollState from "../hooks/useScrollState";
 import { upperCaseFirstLetter } from "../utils/utils";
+import NewTestForm from "./NewTestForm";
+import ThemeSelector from "./ThemeSelector/ThemeSelector";
+import { Modal, ModalTrigger } from "./ui/Modal";
 const Header = () => {
   const [isBodyScrolled] = useScrollState({
     initialState: false,
@@ -32,13 +32,8 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal closeOnOverlayClick={false} closeOnEscape={false} id="create-test">
-            <ModalHeader>
-              <p>New Test</p>
-            </ModalHeader>
-            <ModalContent>
-              <NewTestForm modalId="create-test" />
-            </ModalContent>
+          <Modal header={"New Test"} closeOnOverlayClick={false} closeOnEscape={false} id="create-test">
+            <NewTestForm modalId="create-test" />
           </Modal>
         </nav>
         <nav aria-label="Theme switcher">

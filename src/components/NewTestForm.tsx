@@ -7,7 +7,6 @@ import useBranches from "../services/use-branches";
 import useProducts from "../services/use-products";
 import { formatSelectOptions } from "../utils/utils";
 import FileSelector from "./FileSelector/FileSelector";
-import { ModalFooter } from "./ui/Modal";
 
 function NewTest({ modalId }: { modalId: string }) {
   const { addAlert } = useContext(AlertContext);

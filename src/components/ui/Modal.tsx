@@ -14,6 +14,9 @@ interface ModalProps {
   closeOnEscape?: boolean;
   closeKey?: string;
   open?: boolean;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
+  trigger?: React.ReactNode;
 }
 
 
@@ -24,6 +27,9 @@ const Modal = ({
   closeOnEscape = true,
   closeKey = "Escape",
   open = false,
+  header,
+  footer,
+  trigger,
 }: ModalProps) => {
   const modalRef = useRef(document.createElement("div"));
   const portalRef = useRef(document.createElement("div"));
@@ -35,20 +41,29 @@ const Modal = ({
     handler: closeOnOverlayClick ? () => closeModal(id) : () => { },
   });
   useKey({ key: closeKey, handler: closeOnEscape ? () => closeModal(id) : () => { } });
-  useLockScroll(document, isOpen,);
+  useLockScroll(document, isOpen);
 
+  const modalHeader = header ? <div className="modal-header">{header}        <ModalCloseButton id={id} /></div> : <ModalCloseButton id={id} />;
+  const modalFooter = footer ? <div className="modal-footer">{footer}</div> : null;
 
   const modalWindow = (
     <div className="backdrop">
       <div className="modal" ref={modalRef} id={id}>
-        <ModalCloseButton id={id} />
-        {children}
+        {modalHeader}
+        <div className="modal-content">{children}</div>
+        {modalFooter}
       </div>
     </div>
   );
 
-
-  return <div ref={portalRef}>{isOpen && createPortal(modalWindow, portalRef.current)}</div>;
+  return (
+    <>
+      {trigger}
+      <div ref={portalRef}>
+        {isOpen && createPortal(modalWindow, portalRef.current)}
+      </div>
+    </>
+  );
 };
 
 const ModalCloseButton = ({ id }: { id: string }) => {
@@ -66,21 +81,9 @@ const ModalCloseButton = ({ id }: { id: string }) => {
   );
 };
 
-const ModalContent = ({ children, ...props }: { children: React.ReactNode }) => {
-  return <div className="modal-content">{children}</div>;
-};
-
 const ModalTrigger = ({ id, children, ...props }: { id: string, children: React.ReactNode }) => {
   const { openModal } = useContext(ModalContext);
   return <button className="button" type="button" onClick={() => openModal(id)}>{children}</button>;
 };
 
-const ModalHeader = ({ children, ...props }: { children: React.ReactNode }) => {
-  return <div className="modal-header">{children}</div>;
-};
-
-const ModalFooter = ({ children, ...props }: { children: React.ReactNode }) => {
-  return <div className="modal-footer">{children}</div>;
-};
-
-export { Modal, ModalContent, ModalTrigger, ModalHeader, ModalFooter };
+export { Modal, ModalTrigger };

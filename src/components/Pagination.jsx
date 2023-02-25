@@ -47,20 +47,17 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
                 <ModalTrigger key={`${index}`} id={`${pageNumber}-${index}`} hideChevron>
                   ...
                 </ModalTrigger>
-                <Modal id={`${pageNumber}-${index}`}>
-                  <ModalHeader>Jump to page</ModalHeader>
-                  <ModalContent>
-                    Jump to:
-                    <Input
-                      min={1}
-                      max={lastPage}
-                      defaultValue={1}
-                      onChange={(event) => setJumpTo(event.target.value)}
-                    />
+                <Modal
+                  id={`${pageNumber}-${index}`}
+                  footer={
                     <Button block color={"accent"} onClick={() => jumpToPage(jumpTo)}>
                       Go
                     </Button>
-                  </ModalContent>
+                  }
+                  header={"Jump to page"}
+                >
+                  Jump to:
+                  <Input min={1} max={lastPage} defaultValue={1} onChange={(event) => setJumpTo(event.target.value)} />
                 </Modal>
               </div>
             );

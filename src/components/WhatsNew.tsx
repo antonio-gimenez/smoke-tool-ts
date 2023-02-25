@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { Modal, ModalContent, ModalFooter, ModalHeader } from "./ui/Modal";
+import { Modal } from "./ui/Modal";
 
 function WhatsNew() {
   const [currentVersion] = useState(require("../../package.json").version);
@@ -19,22 +19,23 @@ function WhatsNew() {
 
 
   return (
-    <Modal id="whats-new" open={
+    <Modal id="whats-new" footer={
+      <button className="button button-primary" onClick={() => setIsChecked(true)}> Got it, don't show me this again for this version
+      </button>
+    } header={<span>What's new in version {currentVersion}</span>} open={
       !isChecked
       // true
     }>
-      <ModalHeader>
-        <span>What's new in version {currentVersion}</span>
-      </ModalHeader>
-      <ModalContent>
-        <p>Here is a list of changes since the last version:</p>
-        <ul>
-          <li>Added a new feature</li>
-          <li>Fixed a bug</li>
-          <li>Improved performance</li>
-        </ul>
 
-        {/* <label
+
+      <p>Here is a list of changes since the last version:</p>
+      <ul>
+        <li>Added a new feature</li>
+        <li>Fixed a bug</li>
+        <li>Improved performance</li>
+      </ul>
+
+      {/* <label
           htmlFor="whats-new-checkbox"
           style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}
         >
@@ -54,11 +55,8 @@ function WhatsNew() {
           <span className={`py-4 text-sm `}>I have readed the changes, don't show me this again for this version</span>
 
         </label> */}
-      </ModalContent>
-      <ModalFooter>
-        <button className="button button-primary" onClick={() => setIsChecked(true)}> Got it, don't show me this again for this version
-        </button>
-      </ModalFooter>
+
+
     </Modal>
   );
 }
