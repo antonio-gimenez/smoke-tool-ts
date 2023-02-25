@@ -58,7 +58,11 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
                 <span className="button button-primary">Add attachment</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
-            <span className="file-size-limit">{humanFileSize(currentSize)}/{humanFileSize(maxSize)}</span>
+            <span className="file-size-limit">
+                <span className={`file-size-limit-${currentSize > maxSize ? 'error' : 'success'}`}>
+                    {humanFileSize(currentSize)}
+                </span>
+                /{humanFileSize(maxSize)}</span>
             {/* max file size to 10mb */}
 
             <ShowFileList {...fileListProps} />
