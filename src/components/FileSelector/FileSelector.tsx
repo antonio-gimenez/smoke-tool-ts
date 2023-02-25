@@ -51,21 +51,17 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
 
     return (
         <div className="file-selector">
-
-            {selectedFiles && selectedFiles instanceof FileList && selectedFiles.length > 0 && <a href='#' onClick={clearAllFiles}>Clear all files</a>}
-
             <label htmlFor="fileInput" className='input-file-container'>
                 <span className="button button-primary">Add attachment</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
-            <span className="file-size-limit">
-                <span className={`file-size-limit-${currentSize > maxSize ? 'error' : 'success'}`}>
-                    {humanFileSize(currentSize)}
-                </span>
-                /{humanFileSize(maxSize)}</span>
-            {/* max file size to 10mb */}
-
-            <ShowFileList {...fileListProps} />
+            {currentSize > 0 && (
+                <span className="file-size-limit">
+                    <span className={`file-size-limit-${currentSize > 0 && 'success'}`}>
+                        {humanFileSize(currentSize)}
+                    </span>
+                    / {humanFileSize(maxSize)}</span>)
+            }            <ShowFileList {...fileListProps} />
         </div >
     )
 }

@@ -69,7 +69,7 @@ const useFileSelect = ({
                         if (totalSize > maxSize) {
                             addAlert({
                                 type: 'error',
-                                message: `Total file size exceeds the maximum file size of ${humanFileSize(maxSize)}.`
+                                message: `Total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`
                             });
                             return prevFiles;
                         }

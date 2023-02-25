@@ -78,17 +78,17 @@
   --error: hsl(var(--color-error));
   --error-content: hsl(var(--color-light));
 }
-[data-theme="tokyo-neon"] {
-  color-scheme: dark;
+[data-theme="ubuntu"] {
+  /* color-scheme: light; */
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-base: 250, 50%, 14%;
-  --color-base-mid: 250, 50%, 11%;
-  --color-base-deep: 250, 50%, 8%;
-  --color-base-content: 0, 0%, 90%;
-  --color-primary: 300, 100%, 50%;
+  --color-base: 0, 0%, 95%;
+  --color-base-mid: 32, 8%, 65%;
+  --color-base-deep: 328, 49%, 41%;
+  --color-base-content: 0, 0%, 10%;
+  --color-primary: 16, 82%, 52%;
   --color-secondary: 180, 100%, 50%;
-  --color-accent: 50, 100%, 55%;
+  --color-accent: 306, 57%, 30%;
   --color-neutral: 220, 80%, 70%;
   --color-info: var(--color-secondary);
   --color-success: 140, 100%, 50%;
@@ -104,7 +104,7 @@
   --secondary: hsl(var(--color-secondary));
   --secondary-content: hsl(var(--color-dark));
   --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-dark));
+  --accent-content: hsl(var(--color-light));
   --neutral: hsl(var(--color-neutral));
   --neutral-content: hsl(var(--color-light));
   --info: hsl(var(--color-info));
