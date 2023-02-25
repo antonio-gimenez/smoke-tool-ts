@@ -36,7 +36,7 @@ button {
 }
 
 .button:active {
-  animation: button-pop 0.1s ease 0s;
+  animation: button-pop 0.9s;
 }
 
 @keyframes button-pop {

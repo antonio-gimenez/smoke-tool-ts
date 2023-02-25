@@ -8,7 +8,7 @@
 }
 
 .file-list {
-  background: var(--base-deep);
+  background: hsl(var(--color-dark), 0.075);
   border-radius: var(--border-radius-small);
 }
 

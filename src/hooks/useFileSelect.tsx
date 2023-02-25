@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { createFileList } from "../utils/file";
+import { humanFileSize } from "../utils/utils";
 type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
@@ -12,14 +13,14 @@ type UseFileSelectProps = {
     multiple?: boolean
     initialFiles?: File | FileList | null
     handler?: (files: File | FileList | null) => void
-    maxFileSize?: number
+    maxSize?: number
 };
 
 const useFileSelect = ({
     multiple = false,
     initialFiles = null,
     handler = () => { },
-    maxFileSize = 10 * 1024 * 1024,
+    maxSize = 10 * 1024 * 1024,
 }: UseFileSelectProps = {}): FileHookReturnType => {
     const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
     const { addAlert } = useContext(AlertContext);
@@ -47,7 +48,7 @@ const useFileSelect = ({
             let totalSize = 0;
             let isSizeValid = true;
             for (let i = 0; i < files.length; i++) {
-                if (files[i].size > maxFileSize) {
+                if (files[i].size > maxSize) {
                     addAlert({
                         type: 'error',
                         message: `File ${files[i].name} is too large. Max file size is 10mb.`
@@ -65,20 +66,20 @@ const useFileSelect = ({
                             newFiles.push(files[i]);
                         }
                         totalSize += (prevFiles instanceof FileList ? Array.from(prevFiles) : []).reduce((size, file) => size + file.size, 0);
-                        if (totalSize > maxFileSize) {
+                        if (totalSize > maxSize) {
                             addAlert({
                                 type: 'error',
-                                message: 'Total file size exceeds the maximum file size of 10mb.'
+                                message: `Total file size exceeds the maximum file size of ${humanFileSize(maxSize)}.`
                             });
                             return prevFiles;
                         }
                         return createFileList(newFiles);
                     } else {
                         const file = files[0];
-                        if (file.size > maxFileSize) {
+                        if (file.size > maxSize) {
                             addAlert({
                                 type: 'error',
-                                message: `File ${file.name} is too large. Max file size is 10mb.`
+                                message: `File ${file.name} is too large. Max file size is ${humanFileSize(maxSize)}.`
                             });
                             return prevFiles;
                         }

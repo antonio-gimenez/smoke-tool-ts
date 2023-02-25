@@ -12,18 +12,20 @@ interface FileListProps {
 interface FileSelectorProps {
     files?: File | FileList | null;
     handler?: (files: File | FileList | null) => void;
-    maxFileSize?: number;
+    maxSize?: number;
 }
 
-function FileSelector({ files, handler, maxFileSize = 10 * 1024 * 1024 // 10mb
+function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
 }: FileSelectorProps) {
     // const [multiple, setMultiple] = useState(false);
-    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, initialFiles: files, handler });
+    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, initialFiles: files, handler, maxSize });
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
         item: selectedFiles ? (i: number) => (selectedFiles instanceof FileList ? selectedFiles[i] : selectedFiles) : undefined,
     };
+
+    const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
 
     const ShowFileList = ({ length, item }: FileListProps) => {
 
@@ -54,9 +56,9 @@ function FileSelector({ files, handler, maxFileSize = 10 * 1024 * 1024 // 10mb
 
             <label htmlFor="fileInput" className='input-file-container'>
                 <span className="button button-primary">Add attachment</span>
-                <span className="file-size-limit">Max file size: 10mb</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
+            <span className="file-size-limit">{humanFileSize(currentSize)}/{humanFileSize(maxSize)}</span>
             {/* max file size to 10mb */}
 
             <ShowFileList {...fileListProps} />
