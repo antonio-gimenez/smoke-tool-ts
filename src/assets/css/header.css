@@ -23,9 +23,9 @@
   background-color: transparent;
   background-image: linear-gradient(
     135deg,
-    hsla(var(--color-base), var(--glass-opacity)) 0%,
-    hsla(var(--color-base-mid), var(--glass-opacity)) 20%,
-    hsla(var(--color-base-deep), var(--glass-opacity)) 100%
+    hsla(var(--color-base), 0.35) 0%,
+    hsla(var(--color-base-mid), 0.35) 50%,
+    hsla(var(--color-base-deep), 0.35) 100%
   );
   border-bottom: 1px solid var(--base-mid);
 }

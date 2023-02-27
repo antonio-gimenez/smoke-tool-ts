@@ -1,10 +1,10 @@
 [data-theme="light"] {
-  color-scheme: light;
-  --color-dark: 0, 0%, 20%;
-  --color-light: 0, 0%, 80%;
+  color-scheme: light dark !important;
+  --color-dark: 0, 0%, 10%;
+  --color-light: 0, 0%, 90%;
   --color-base: 0, 0%, 93%;
-  --color-base-mid: 220, 10%, 90%;
-  --color-base-deep: 200, 5%, 87%;
+  --color-base-mid: 220, 10%, 85%;
+  --color-base-deep: 200, 5%, 80%;
   --color-base-content: 0, 0%, 16%;
   --color-primary: 210, 100%, 45%;
   --color-secondary: 60, 15%, 41%;
@@ -200,11 +200,10 @@
 
 [data-theme="nord"] {
   --color-dark: 216, 15%, 8%; /* hsl(216, 15%, 8%) */
-  --color-light: 224, 14%, 62%; /* hsl(224, 14%, 62%) */
+  --color-light: 224, 14%, 92%; /* hsl(224, 14%, 62%) */
   --color-base: 220, 16%, 22%; /* hsl(220, 16%, 22%) */
   --color-base-mid: 222, 16%, 28%; /* hsl(222, 16%, 28%) */
   --color-base-deep: 220, 17%, 32%; /* hsl(220, 17%, 32%) */
-  /* --color-base-content: 218, 27%, 92%; */
   --color-base-content: 219, 28%, 88%; /* hsl(219, 28%, 88%) */
   --color-primary: 213, 32%, 52%; /* hsl(213, 32%, 52%) */
   --color-secondary: 210, 34%, 63%; /* hsl(210, 34%, 63%) */
