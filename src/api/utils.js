@@ -14,7 +14,7 @@ const createPaginationOptions = ({ req, totalCount }) => {
     }
     options.page = page;
     options.skip = options.page * limit;
-    options.currentItems = `${options.limit + options.skip} / ${totalCount}`;
+    options.currentItems = options.skip + limit;
   }
   options.limit = limit;
 
@@ -33,31 +33,26 @@ const createQuery = (req) => {
     product = undefined,
     date = undefined,
     deleted = false,
+    id = undefined,
     testId = undefined,
   } = req.query;
   const validateParameter = ({ paramName, paramValue, paramType, isArray, minValue }) => {
     // Helper function to validate query parameters
-
-    // Check if paramValue is not undefined
     if (paramValue === undefined) return false;
 
     if (paramValue && typeof paramValue !== paramType) {
-      // return res.status(400).send({ message: `Invalid ${paramName}, it should be a ${paramType}` });
       throw new Error(`Invalid ${paramName}, it should be a ${paramType}`);
     }
     if (paramValue && isArray && !Array.isArray(paramValue)) {
-      // return res.status(400).send({ message: `Invalid ${paramName}, it should be a array of ${paramType}` });
       throw new Error(`Invalid ${paramName}, it should be a array of ${paramType}`);
     }
     if (paramValue && minValue && paramValue < minValue) {
-      // return res
-      //   .status(400)
-      //   .send({ message: `Invalid ${paramName}, it should be greater than or equal to ${minValue}` });
       throw new Error(`Invalid ${paramName}, it should be greater than or equal to ${minValue}`);
     }
   };
 
   validateParameter({ paramName: "testId", paramValue: testId, paramType: "string" });
+  validateParameter({ paramName: "id", paramValue: id, paramType: "string" });
   validateParameter({ paramName: "product", paramValue: product, paramType: "object" });
   validateParameter({ paramName: "status", paramValue: status, paramType: "object" });
   validateParameter({ paramName: "days", paramValue: days, paramType: "number", minValue: 0 });
@@ -82,7 +77,7 @@ const createQuery = (req) => {
   }
   query.deleted = deleted || false;
   if (testId) query.testId = testId;
-
+  if (id) query._id = id;
   return query;
 };
 

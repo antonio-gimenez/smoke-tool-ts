@@ -24,7 +24,7 @@ const TestContext = createContext(
 
 const defaultParams = {
   page: 1,
-  status: ["Pending"],
+  // status: [''],
 };
 
 interface Props {

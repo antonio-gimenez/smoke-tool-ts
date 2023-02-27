@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   padding: var(--space-1);
-  border: 1px solid hsl(var(--color-base-content), 0.15);
+  /* border: 1px solid hsl(var(--color-base-content), 0.15); */
   border-radius: var(--border-radius-small);
   justify-content: space-between;
 }

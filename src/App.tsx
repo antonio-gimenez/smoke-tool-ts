@@ -7,6 +7,7 @@ import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext";
 import useThemeState from "./hooks/useThemeState";
 import SmokeTest from "./pages/SmokeTest.jsx";
+import ViewTest from "./pages/ViewTest";
 
 function App() {
   const { currentTheme } = useThemeState();
@@ -24,6 +25,8 @@ function App() {
             <WhatsNew />
             <Routes>
               <Route path="/" element={<SmokeTest />} />
+              <Route path="/view/:id" element={<ViewTest />} />
+              <Route path="*" element={<h1>404</h1>} />
             </Routes>
           </div>
         </TestProvider>

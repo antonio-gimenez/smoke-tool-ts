@@ -36,7 +36,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
     <div className={"pagination-container"}>
       <ol className="pagination-list">
         <li className="page-control">
-          <button onClick={onPrevious} aria-disabled={currentPage === 1}>
+          <button onClick={onPrevious} aria-disabled={currentPage <= 1}>
             <ChevronLeftIcon className="icon-16" />
           </button>
         </li>
@@ -74,7 +74,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
           );
         })}
         <li className="page-control">
-          <button onClick={onNext} aria-disabled={currentPage === lastPage}>
+          <button onClick={onNext} disabled={currentPage >= lastPage} aria-disabled={currentPage >= lastPage}>
             <ChevronRightIcon className="icon-16" />
           </button>
         </li>

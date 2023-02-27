@@ -3,34 +3,32 @@ const { Test } = require("../models/testModel");
 const { createQuery, createPaginationOptions, calculateChecksum } = require("../utils");
 
 const getTests = async (req, res) => {
-  console.log(req.query);
   try {
-    // const query = createQuery(req);
-    const query = {};
+    const query = createQuery(req);
     const totalCount = await Test.countDocuments(query);
-    // const options = createPaginationOptions({ req, totalCount });
-    const options = {};
-    console.log({ query, options });
+    const options = createPaginationOptions({ req, totalCount });
     let tests;
+    console.log({ query, options });
     try {
-      tests = await Test.find(query, null, options).sort({ dateScheduled: -1 });
+      tests = await Test.find(query, null, options);
       if (!tests) {
         return res.status(204).send({ message: "No tests found" });
       }
     } catch (error) {
       console.log(error);
     }
-    return res.status(200).send({ data: tests });
-    // if (req.query.page) {
-    //   return res.status(200).send({
-    //     data: tests,
-    //     totalCount: totalCount,
-    //     currentItems: `${options.limit + options.skip} / ${totalCount}`,
-    //     hasMore: options.skip + options.limit < totalCount,
-    //   });
-    // } else {
-    //   return res.status(200).send({ data: tests });
-    // }
+    if (req.query.page) {
+      return res.status(200).send({
+        data: tests,
+        totalCount: totalCount,
+        currentItems: `${
+          options.limit + options.skip > totalCount ? totalCount : options.limit + options.skip
+        } / ${totalCount}`,
+        hasMore: options.skip + options.limit < totalCount,
+      });
+    } else {
+      return res.status(200).send({ data: tests });
+    }
   } catch (error) {
     return res.status(400).send({ message: "Invalid request, please check your parameters" });
   }
