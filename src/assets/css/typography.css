@@ -3,3 +3,9 @@ a.link,
   color: var(--primary);
   text-decoration: underline;
 }
+
+.title {
+  font-size: var(--fs-large);
+  font-weight: var(--fw-semibold, 500);
+  margin-block: var(--space-1);
+}

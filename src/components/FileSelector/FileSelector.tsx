@@ -4,6 +4,7 @@ import { ReactComponent as ImageIcon } from '../../assets/icons/image.svg';
 import { ReactComponent as FileIcon } from '../../assets/icons/file.svg';
 import useFileSelect from '../../hooks/useFileSelect';
 import { humanFileSize } from '../../utils/utils';
+import Progress from '../Progress';
 
 interface FileListProps {
     length: number;
@@ -15,12 +16,13 @@ interface FileSelectorProps {
     files?: File | FileList | null;
     handler?: (files: File | FileList | null) => void;
     maxSize?: number;
+    usedSize?: number;
 }
 
-function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
+function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024, usedSize = 0
 }: FileSelectorProps) {
-    // const [multiple, setMultiple] = useState(false);
-    const [selectedFiles, handleFileSelect, removeFile, clearAllFiles] = useFileSelect({ multiple: true, initialFiles: files, handler, maxSize });
+
+    const [selectedFiles, handleFileSelect, removeFile] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles: handler, maxSize, usedSize });
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
@@ -30,6 +32,7 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
     const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
 
     const ShowFileList = ({ length, item }: FileListProps) => {
+
 
         return (
             <ul className='file-list'>
@@ -56,21 +59,22 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
         );
     };
 
+    // create a variable to store usedSize + currentSize
+    const usedSizePlusCurrentSize = usedSize + currentSize;
 
+    const percentage = usedSizePlusCurrentSize / maxSize * 100;
+
+    const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
     return (
         <div className="file-selector">
-            <p className="file-selector-title">Attachments</p>
             <label htmlFor="fileInput" className='input-file-container'>
-                <span className="">Add attachment</span>
+                <span className="button button-primary ">Add attachment</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
-            {currentSize > 0 && (
-                <span className="file-size-limit">
-                    <span className={`file-size-limit-${currentSize > 0 && 'success'}`}>
-                        {humanFileSize(currentSize)}
-                    </span>
-                    / {humanFileSize(maxSize)}</span>)
-            }            <ShowFileList {...fileListProps} />
+            <Progress percentage={percentage} label={label} />
+
+
+            <ShowFileList {...fileListProps} />
         </div >
     )
 }

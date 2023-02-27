@@ -105,35 +105,7 @@ const Table = ({ items }) => {
               <td className="table-cell">{test.product}</td>
               <td className="table-cell">{test.release}</td>
               <td className="table-cell">{test.branch}</td>
-              <td className="table-cell">
-                {test.files?.length > 0 ? (
-                  <button className="badge " onClick={() => handleFileClick(test._id)}>
-                    <Paperclip style={{ width: "14px", height: "14px" }} />
-                    {test.files?.length}
-                  </button>
-                ) : (
-                  <></>
-                )}
-                {selectedTestId === test._id &&
-                  testFiles &&
-                  testFiles.map((file) => (
-                    <div key={file._id} className="file">
-                      <Dropdown isMenu={true} label={<span className="link">{file.name}</span>}>
-                        <li onClick={() => downloadFile(file)}>View/download file</li>
-                        <li
-                          onClick={() =>
-                            removeFile({
-                              testId: test._id,
-                              fileId: file._id,
-                            })
-                          }
-                        >
-                          Delete file
-                        </li>
-                      </Dropdown>
-                    </div>
-                  ))}
-              </td>
+              <td className="table-cell">{test.files?.length > 0 ? test.files?.length : null}</td>
               <td className="table-cell">{test.priority}</td>
 
               <td className="table-cell">

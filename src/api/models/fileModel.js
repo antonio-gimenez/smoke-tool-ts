@@ -13,6 +13,11 @@ const fileSchema = new Schema(
     },
     name: {
       type: String,
+      default: "Untitled",
+    },
+    size: {
+      type: Number,
+      required: true,
     },
     checksum: {
       type: String,

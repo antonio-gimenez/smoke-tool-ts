@@ -4,6 +4,7 @@
 @import url("buttons.css");
 @import url("card.css");
 @import url("collapse.css");
+@import url("drawer.css");
 @import url("dropdown.css");
 @import url("file.css");
 @import url("fonts.css");
@@ -13,6 +14,8 @@
 @import url("lightbox.css");
 @import url("menu.css");
 @import url("modal.css");
+@import url("pagination.css");
+@import url("progress.css");
 @import url("reset.css");
 @import url("table.css");
 @import url("tabs.css");
@@ -21,7 +24,6 @@
 @import url("switch.css");
 @import url("snippets.css");
 @import url("typography.css");
-@import url("pagination.css");
 /* @import url("dracula.css"); */
 
 *:disabled,

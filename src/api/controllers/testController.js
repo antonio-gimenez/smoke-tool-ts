@@ -46,6 +46,7 @@ const createTest = async (req, res) => {
       const newFile = new File({
         name: file.originalname,
         file: file.buffer,
+        size: file.size,
         checksum: calculateChecksum(file.buffer),
         contentType: file.mimetype,
       });

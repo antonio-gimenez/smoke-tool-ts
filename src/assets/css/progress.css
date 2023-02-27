@@ -1,0 +1,24 @@
+.progress {
+  display: flex;
+  align-items: center;
+  background-color: var(--neutral);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius-large);
+}
+
+.progress-bar {
+  height: 100%;
+  height: clamp(1rem, 1.25rem, 1.5rem);
+
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-label {
+  text-align: center;
+  position: absolute;
+  flex-grow: 1;
+  width: 100%;
+  font-size: var(--fs-regular);
+}

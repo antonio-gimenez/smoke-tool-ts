@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 import { ModalContext } from "../../contexts/ModalContext";
 import useKey from "../../hooks/useKey";
-import useLockScroll from "../../hooks/useScrollLock";
+import useScrollLock from "../../hooks/useScrollLock";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { generateUUID } from "../../utils/utils";
 interface ModalProps {
@@ -50,7 +50,7 @@ const Modal = ({
     handler: closeOnEscape ? () => closeModal(id) : () => { },
   });
 
-  useLockScroll(document, isOpen);
+  useScrollLock(document, isOpen);
 
   const modalHeader = header ? (
     <div className="modal-header">
