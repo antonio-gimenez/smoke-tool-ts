@@ -97,8 +97,7 @@
 .textarea::placeholder,
 .combobox-placeholder {
   font-size: var(--fs-regular);
-  --text-opacity: 0.75;
-  opacity: 0.75;
+  opacity: 0.5;
   color: var(--muted);
 }
 

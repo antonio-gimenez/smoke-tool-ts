@@ -11,7 +11,7 @@
   border-collapse: separate;
   border-spacing: var(--border-width);
   margin-block: var(--space-4);
-  background-color: transparent;
+  /* background-color: var(--base); */
   border: var(--border-width) solid hsl(var(--color-base-content), 0.15);
   border-radius: var(--border-radius-small);
 }
@@ -19,6 +19,7 @@
 .table-header {
   overflow: hidden;
   background-color: var(--base-deep);
+  color: hsl(var(--color-base-content));
   text-transform: uppercase;
 }
 

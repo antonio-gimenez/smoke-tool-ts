@@ -81,10 +81,10 @@ const Table = ({ items }) => {
 
   return (
     <>
-      <button className="button button-accent" onClick={generateReportMail}>
+      <button className="button button-primary" onClick={generateReportMail}>
         Convert to EML
       </button>
-      <table className="table">
+      <table className="table glass-light">
         <thead className="table-header">
           <tr>
             <th>Test Name</th>

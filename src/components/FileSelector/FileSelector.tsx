@@ -59,8 +59,9 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024 // 10mb
 
     return (
         <div className="file-selector">
+            <p className="file-selector-title">Attachments</p>
             <label htmlFor="fileInput" className='input-file-container'>
-                <span className="button button-primary">Add attachment</span>
+                <span className="">Add attachment</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
             {currentSize > 0 && (

@@ -37,6 +37,7 @@ const Modal = ({
 
   useEffect(() => {
     modalRef.current = document.createElement("div");
+    // portalRef.current = document.createElement("div");
   }, []);
 
   useOnClickOutside({
@@ -91,7 +92,7 @@ const ModalCloseButton = ({ id }: { id: string }) => {
   return isForcedOpen ? (
     <div className="modal-close-button">
       <button onClick={() => closeModal(id)} className="button">
-        <CloseIcon className="icon-24" />
+        <CloseIcon />
       </button>
     </div>
   ) : null;

@@ -1,7 +1,7 @@
 [data-theme="light"] {
   color-scheme: light;
-  --color-dark: 0, 0%, 0%;
-  --color-light: 0, 0%, 100%;
+  --color-dark: 0, 0%, 20%;
+  --color-light: 0, 0%, 80%;
   --color-base: 0, 0%, 93%;
   --color-base-mid: 220, 10%, 90%;
   --color-base-deep: 200, 5%, 87%;
@@ -78,44 +78,7 @@
   --error: hsl(var(--color-error));
   --error-content: hsl(var(--color-light));
 }
-[data-theme="ubuntu"] {
-  /* color-scheme: light; */
-  --color-dark: 0, 0%, 0%;
-  --color-light: 0, 0%, 100%;
-  --color-base: 0, 0%, 95%;
-  --color-base-mid: 32, 8%, 65%;
-  --color-base-deep: 328, 49%, 41%;
-  --color-base-content: 0, 0%, 10%;
-  --color-primary: 16, 82%, 52%;
-  --color-secondary: 180, 100%, 50%;
-  --color-accent: 306, 57%, 30%;
-  --color-neutral: 220, 80%, 70%;
-  --color-info: var(--color-secondary);
-  --color-success: 140, 100%, 50%;
-  --color-warning: var(--color-accent);
-  --color-error: 350, 100%, 50%;
 
-  --base: hsl(var(--color-base));
-  --base-mid: hsl(var(--color-base-mid));
-  --base-deep: hsl(var(--color-base-deep));
-  --base-content: hsl(var(--color-base-content));
-  --primary: hsl(var(--color-primary));
-  --primary-content: hsl(var(--color-dark));
-  --secondary: hsl(var(--color-secondary));
-  --secondary-content: hsl(var(--color-dark));
-  --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-light));
-  --neutral: hsl(var(--color-neutral));
-  --neutral-content: hsl(var(--color-light));
-  --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-dark));
-  --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-dark));
-  --warning: hsl(var(--color-warning));
-  --warning-content: hsl(var(--color-dark));
-  --error: hsl(var(--color-error));
-  --error-content: hsl(var(--color-light));
-}
 [data-theme="dracula"] {
   /* This theme is based on the Dracula theme by Zeno Rocha */
   color-scheme: dark;
@@ -156,13 +119,13 @@
   --error-content: hsl(var(--color-light));
 }
 
-[data-theme="solarized-dark"] {
+[data-theme="solarized"] {
   /* This theme is based on the Solarized Dark a theme by Ethan Schoonover */
   color-scheme: dark;
   --color-dark: 0, 0%, 0%;
   --color-light: 0, 0%, 100%;
-  --color-base: 192, 81%, 14%;
-  --color-base-mid: 192, 100%, 11%;
+  --color-base: 192, 100%, 11%;
+  --color-base-mid: 192, 81%, 14%;
   --color-base-deep: 192, 100%, 8%;
   --color-base-content: 180, 7%, 60%;
   --color-primary: 45, 100%, 35%;
@@ -212,6 +175,45 @@
   --color-success: 167, 100%, 44%;
   --color-warning: 45, 87%, 69%;
   --color-error: 359, 75%, 44%;
+
+  --base: hsl(var(--color-base));
+  --base-mid: hsl(var(--color-base-mid));
+  --base-deep: hsl(var(--color-base-deep));
+  --base-content: hsl(var(--color-base-content));
+  --primary: hsl(var(--color-primary));
+  --primary-content: hsl(var(--color-dark));
+  --secondary: hsl(var(--color-secondary));
+  --secondary-content: hsl(var(--color-light));
+  --accent: hsl(var(--color-accent));
+  --accent-content: hsl(var(--color-dark));
+  --neutral: hsl(var(--color-neutral));
+  --neutral-content: hsl(var(--color-light));
+  --info: hsl(var(--color-info));
+  --info-content: hsl(var(--color-dark));
+  --success: hsl(var(--color-success));
+  --success-content: hsl(var(--color-dark));
+  --warning: hsl(var(--color-warning));
+  --warning-content: hsl(var(--color-dark));
+  --error: hsl(var(--color-error));
+  --error-content: hsl(var(--color-light));
+}
+
+[data-theme="nord"] {
+  --color-dark: 216, 15%, 8%; /* hsl(216, 15%, 8%) */
+  --color-light: 224, 14%, 62%; /* hsl(224, 14%, 62%) */
+  --color-base: 220, 16%, 22%; /* hsl(220, 16%, 22%) */
+  --color-base-mid: 222, 16%, 28%; /* hsl(222, 16%, 28%) */
+  --color-base-deep: 220, 17%, 32%; /* hsl(220, 17%, 32%) */
+  /* --color-base-content: 218, 27%, 92%; */
+  --color-base-content: 219, 28%, 88%; /* hsl(219, 28%, 88%) */
+  --color-primary: 213, 32%, 52%; /* hsl(213, 32%, 52%) */
+  --color-secondary: 210, 34%, 63%; /* hsl(210, 34%, 63%) */
+  --color-accent: 311, 20%, 63%; /* hsl(311, 20%, 63%) */
+  --color-neutral: 220, 16%, 36%; /* hsl(220, 16%, 36%) */
+  --color-info: 207, 44%, 64%; /* hsl(207, 44%, 64%) */
+  --color-success: 92, 28%, 65%; /* hsl(92, 28%, 65%) */
+  --color-warning: 14, 51%, 63%; /* hsl(14, 51%, 63%) */
+  --color-error: 354, 42%, 56%; /* hsl(354, 42%, 56%) */
 
   --base: hsl(var(--color-base));
   --base-mid: hsl(var(--color-base-mid));

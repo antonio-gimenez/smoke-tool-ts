@@ -27,9 +27,7 @@
     hsla(var(--color-base-mid), var(--glass-opacity)) 20%,
     hsla(var(--color-base-deep), var(--glass-opacity)) 100%
   );
-  /* box-shadow: 0 0 0 1px var(--base), 0 0 0 2px #0000000d; */
   border-bottom: 1px solid var(--base-mid);
-  /* text-shadow: 0 1px var(--base); */
 }
 
 .navbar {
