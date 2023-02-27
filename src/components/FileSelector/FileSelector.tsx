@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
-import { ReactComponent as ImageIcon } from '../../assets/icons/image.svg';
-import { ReactComponent as FileIcon } from '../../assets/icons/file.svg';
+import { ReactComponent as UploadIcon } from '../../assets/icons/upload.svg';
 import useFileSelect from '../../hooks/useFileSelect';
-import { humanFileSize } from '../../utils/utils';
+import { humanFileSize } from '../../utils/file';
 import Progress from '../Progress';
 
 interface FileListProps {
@@ -14,15 +12,15 @@ interface FileListProps {
 
 interface FileSelectorProps {
     files?: File | FileList | null;
-    handler?: (files: File | FileList | null) => void;
+    onSelectFiles?: (files: File | FileList | null) => void;
     maxSize?: number;
     usedSize?: number;
 }
 
-function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024, usedSize = 0
+function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSize = 0
 }: FileSelectorProps) {
 
-    const [selectedFiles, handleFileSelect, removeFile] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles: handler, maxSize, usedSize });
+    const [selectedFiles, handleFileSelect, removeFile] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles, maxSize, usedSize });
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
@@ -32,8 +30,6 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024, usedSize = 0
     const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
 
     const ShowFileList = ({ length, item }: FileListProps) => {
-
-
         return (
             <ul className='file-list'>
                 {item && (
@@ -41,11 +37,7 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024, usedSize = 0
                         const url = file ? URL.createObjectURL(file) : '';
                         return (
                             <li key={`file - ${index}`} className='file'>
-                                {file.type.startsWith('image') ? (
-                                    <ImageIcon className="file-image-icon" />
-                                ) : (
-                                    <FileIcon style={{ height: '18' }} />
-                                )}
+                                <UploadIcon />
                                 <a title={file.name} href={url} target="_blank"
                                     rel="noreferrer"
                                     className='file-name'>{file.name}</a>
@@ -59,12 +51,10 @@ function FileSelector({ files, handler, maxSize = 10 * 1024 * 1024, usedSize = 0
         );
     };
 
-    // create a variable to store usedSize + currentSize
     const usedSizePlusCurrentSize = usedSize + currentSize;
-
     const percentage = usedSizePlusCurrentSize / maxSize * 100;
-
     const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
+
     return (
         <div className="file-selector">
             <label htmlFor="fileInput" className='input-file-container'>

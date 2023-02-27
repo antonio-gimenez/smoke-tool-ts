@@ -92,7 +92,7 @@ function NewTest({ modalId }: { modalId: string }) {
         </select>
         <input className="input" placeholder="Due date" type="date" id="dueDate" onChange={onChange} />
         <input className="input" placeholder="Test name" id="name" onChange={onChange} />
-        <FileSelector files={filesToUpload} handler={handleFileSelect} />
+        <FileSelector files={filesToUpload} onSelectFiles={handleFileSelect} />
 
         <select className="select" id="branch" onChange={onChange}>
           {branches.length > 0 ? (

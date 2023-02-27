@@ -56,37 +56,9 @@ export function formatSelectOptions({ options }) {
   return formattedOptions;
 }
 
-export function humanFileSize(bytes, decimalPlaces = 2) {
-  if (!bytes) return "0 B";
-  const threshold = 1024;
-
-  if (Math.abs(bytes) < threshold) {
-    return bytes + " B";
-  }
-  const units = ["kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-  let u = -1;
-  const r = 10 ** decimalPlaces;
-  do {
-    bytes /= threshold;
-    ++u;
-  } while (Math.round(Math.abs(bytes) * r) / r >= threshold && u < units.length - 1);
-  return bytes.toFixed(decimalPlaces) + " " + units[u];
-}
-
 export const upperCaseFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-
-export function getBase64(file) {
-  if (!file) return null;
-  if (file.contentType) {
-    const bytes = new Uint8Array(file.file.data);
-    const binary = bytes.reduce((acc, byte) => acc + String.fromCharCode(byte), "");
-    const base64Data = btoa(binary);
-    return `data:${file.contentType};base64,${base64Data}`;
-  }
-}
 
 const fileTypes = {
   image: ["image/png", "image/jpeg", "image/jpg", "image/gif"],

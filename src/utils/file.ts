@@ -1,20 +1,49 @@
-import { getBase64 } from "./utils";
+export function humanFileSize(bytes: number, decimalPlaces = 2): string {
+  if (!bytes) return "0 B";
+  const threshold = 1024;
 
-export const createFileList = (files: File[]) => {
+  if (Math.abs(bytes) < threshold) {
+    return bytes + " B";
+  }
+
+  const units: string[] = ["kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+  let u = -1;
+  const r = 10 ** decimalPlaces;
+
+  do {
+    bytes /= threshold;
+    ++u;
+  } while (Math.round(Math.abs(bytes) * r) / r >= threshold && u < units.length - 1);
+
+  return bytes.toFixed(decimalPlaces) + " " + units[u];
+}
+
+export function getBase64(file: any): string | null {
+  if (!file) return null;
+  if (file.contentType) {
+    const bytes = new Uint8Array(file.file.data);
+    const binary = bytes.reduce((acc: string, byte: number) => acc + String.fromCharCode(byte), "");
+    const base64Data = btoa(binary);
+    return `data:${file.contentType};base64,${base64Data}`;
+  }
+  return null;
+}
+
+export const createFileList = (files: File[]): FileList => {
   const fileList = new DataTransfer();
-  files.forEach((file) => fileList.items.add(file));
+  files.forEach((file: File) => fileList.items.add(file));
   return fileList.files;
 };
 
-export function getAttachments(files: FileList) {
-  const attachments = [];
+export function getAttachments(files: FileList): File[] {
+  const attachments: File[] = [];
   for (let i = 0; i < files.length; i++) {
     attachments.push(files[i]);
   }
   return attachments;
 }
 
-export function downloadFile(file: any) {
+export function downloadFile(file: any): void | HTMLImageElement {
   const base64 = getBase64(file) as string;
   const type = file.contentType;
   const isImage = type.includes("image");
@@ -23,12 +52,11 @@ export function downloadFile(file: any) {
   if (isSvg) {
     const svg = document.createElement("img") as HTMLImageElement;
     svg.src = base64 as string;
-
     return svg;
   }
 
-  if (type.includes("image")) {
-    return window.open(base64, "_blank");
+  if (isImage) {
+    return window.open(base64, "_blank") as any;
   }
 
   const link = document.createElement("a");
@@ -36,5 +64,5 @@ export function downloadFile(file: any) {
   link.download = file.name;
   document.body.appendChild(link);
   link.click();
-  return document.body.removeChild(link);
+  document.body.removeChild(link);
 }

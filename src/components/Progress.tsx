@@ -9,11 +9,11 @@ interface ProgressProps {
 const Progress: FunctionComponent<ProgressProps> = ({
     percentage,
     label = '',
-    color = 'var(--accent)',
+    color = 'var(--success)',
 }) => {
     const progressBarStyle = {
         width: `${percentage}%`,
-        backgroundColor: color,
+        backgroundColor: percentage >= 99.3 ? 'var(--error)' : color,
     };
 
     return (

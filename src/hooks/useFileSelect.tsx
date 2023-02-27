@@ -1,7 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
-import { createFileList } from "../utils/file";
-import { humanFileSize } from "../utils/utils";
+import { createFileList, humanFileSize } from "../utils/file";
 
 type FileHookReturnType = [
     File | FileList | null,

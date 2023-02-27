@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { ReactComponent as FileIcon } from "../assets/icons/file.svg";
 import Drawer from "../components/Drawer/Drawer";
 import FileSelector from "../components/FileSelector/FileSelector";
 import { TestContext } from "../contexts/TestContext";
 import api from "../services/use-axios";
-import { downloadFile } from "../utils/file";
-import { getBase64, humanFileSize } from "../utils/utils";
+import { downloadFile, humanFileSize } from "../utils/file";
 
 function ViewTest() {
   const { id } = useParams();
@@ -52,14 +52,15 @@ function ViewTest() {
                   {testFiles && (
                     <ul className="file-list">
                       {testFiles.map((file) => (
-                        <li key={file._id} onClick={() => downloadFile(file)}>
+                        <li key={file._id} className="file" onClick={() => downloadFile(file)}>
+                          <FileIcon />
                           <span className="file-name link ">{file.name}</span>
                           <span className="file-size">{humanFileSize(file.size)}</span>
                         </li>
                       ))}
                     </ul>
                   )}
-
+                  <span className="title">Upload</span>
                   <FileSelector usedSize={usedFileSize} maxSize={16000000} />
                 </Drawer>
               )}

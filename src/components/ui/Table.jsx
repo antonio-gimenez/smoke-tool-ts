@@ -3,7 +3,7 @@ import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import { AlertContext } from "../../contexts/AlertContext";
 import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
-import { getBase64 } from "../../utils/utils";
+import { getBase64 } from "../../utils/file";
 import { generateReportWithAttachments } from "../../utils/mail";
 
 import Dropdown from "./Dropdown";
