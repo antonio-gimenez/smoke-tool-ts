@@ -55,8 +55,11 @@
 }
 
 .file-name {
+  cursor: pointer;
   flex-grow: 1;
-  color: var(--primary, --accent);
+  /* color: var(--primary, --accent); */
+  color: var(--primary);
+  /* text-decoration: underline; */
   max-width: 30ch;
   overflow: hidden;
   white-space: nowrap;

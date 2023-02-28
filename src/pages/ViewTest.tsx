@@ -119,7 +119,7 @@ function ViewTest() {
                       testFiles?.map((file) => (
                         <li key={file._id} className="file">
                           <FileIcon />
-                          <span className="file-name link " onClick={() => downloadFile(file)}>
+                          <span className="file-name" onClick={() => downloadFile(file)}>
                             {file.name}
                           </span>
                           <span className="file-size">{humanFileSize(file.size)}</span>
