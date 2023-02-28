@@ -1,3 +1,5 @@
+import api from "../services/use-axios";
+
 export function humanFileSize(bytes: number, decimalPlaces = 2): string {
   if (!bytes) return "0 B";
   const threshold = 1024;
@@ -35,12 +37,13 @@ export const createFileList = (files: File[]): FileList => {
   return fileList.files;
 };
 
-export function getAttachments(files: FileList): File[] {
-  const attachments: File[] = [];
-  for (let i = 0; i < files.length; i++) {
-    attachments.push(files[i]);
+export async function getAttachments(testId: number): Promise<any> {
+  try {
+    const response = await api.get(`/tests/files/${testId}`);
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
   }
-  return attachments;
 }
 
 export function downloadFile(file: any): void | HTMLImageElement {

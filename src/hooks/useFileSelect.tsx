@@ -5,9 +5,7 @@ import { createFileList, humanFileSize } from "../utils/file";
 type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
-    (index: number) => void,
-    () => void
-];
+    (index: number) => void];
 
 type UseFileSelectProps = {
     multiple?: boolean;
@@ -39,9 +37,7 @@ const useFileSelect = ({
         });
     }, []);
 
-    const clearAllFiles = useCallback(() => {
-        setSelectedFiles(null);
-    }, []);
+
 
     const handleFileSelect = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +94,7 @@ const useFileSelect = ({
         [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles]
     );
 
-    return [selectedFiles, handleFileSelect, removeFile, clearAllFiles];
+    return [selectedFiles, handleFileSelect, removeFile];
 };
 
 export default useFileSelect;

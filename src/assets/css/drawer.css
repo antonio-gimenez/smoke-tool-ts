@@ -10,13 +10,13 @@
   z-index: 1;
 }
 
-.drawer.left {
+.drawer.drawer-left {
   left: 0;
   position: absolute;
   height: 100%;
 }
 
-.drawer.right {
+.drawer.drawer-right {
   right: 0;
   position: absolute;
   height: 100%;
@@ -35,7 +35,7 @@
   max-height: 100vh;
   background-color: var(--base);
   color: var(--base-content);
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   overflow: auto;

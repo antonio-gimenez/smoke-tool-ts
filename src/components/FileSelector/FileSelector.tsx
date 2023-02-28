@@ -30,8 +30,11 @@ function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSi
     const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
 
     const ShowFileList = ({ length, item }: FileListProps) => {
+        if (length === 0) {
+            return null;
+        }
         return (
-            <ul className='file-list'>
+            <ul className='file-list to-be-uploaded'>
                 {item && (
                     Array.from({ length }, (_, index) => item(index)).map((file, index) => {
                         const url = file ? URL.createObjectURL(file) : '';

@@ -12,7 +12,9 @@ const Table = ({ items }) => {
   const [testFiles, setTestFiles] = useState(null);
   const { fetch } = useContext(TestContext);
   const { addAlert } = useContext(AlertContext);
-
+  const navigate = (id) => {
+    window.location.href = `/view/${id}`;
+  };
   const handleFileClick = async (id) => {
     if (selectedTestId === id) {
       setSelectedTestId(null);
@@ -100,7 +102,9 @@ const Table = ({ items }) => {
         <tbody>
           {items?.map((test, testIndex) => (
             <tr key={test._id + testIndex} className="table-row">
-              <td className="table-cell">{test.name}</td>
+              <td className="table-cell" onClick={() => navigate(test._id)}>
+                {test.name}
+              </td>
               <td className="table-cell">{test.dueDate}</td>
               <td className="table-cell">{test.product}</td>
               <td className="table-cell">{test.release}</td>

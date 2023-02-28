@@ -15,11 +15,16 @@
 }
 
 .file-list {
-  /* background: hsl(var(--color-dark), 0.075);
-  border-radius: var(--border-radius-small); */
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+}
+
+.file-list.to-be-uploaded {
+  border: 1px solid hsl(var(--color-success), 0.35);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-1);
+  background-color: hsl(var(--color-success), 0.09);
 }
 
 .input-file-container {
@@ -52,6 +57,7 @@
 .file-name {
   flex-grow: 1;
   color: var(--primary, --accent);
+  max-width: 30ch;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -68,9 +74,4 @@
   flex-shrink: 0;
   color: var(--base-content);
   cursor: pointer;
-}
-
-/* when hovering file-close-icon. set a .file background color */
-.file-close-icon:hover + .file {
-  background: red;
 }

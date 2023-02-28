@@ -77,7 +77,7 @@ const Drawer = ({
 
     const drawerContent = (
         <div className="drawer-overlay">
-            <aside className={`drawer ${position}`} ref={drawerRef} id={id}>
+            <aside className={`drawer drawer-${position}`} ref={drawerRef} id={id}>
                 {drawerHeader}
                 {children}
             </aside>

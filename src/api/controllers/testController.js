@@ -118,35 +118,42 @@ const removeFile = async (req, res) => {
     const deletedFile = await File.findById(fileId);
 
     if (!deletedFile) {
-      throw new Error("File not found in collection");
+      return res.status(404).send({ message: "File not found in collection" });
+      // throw new Error("File not found in collection");
     }
 
     await deletedFile.remove();
-
+    if (deletedFile) {
+      console.log("File deleted from collection");
+    }
     // remove the file on the test
 
     const test = await Test.findById(testId);
 
     if (!test) {
-      throw new Error("Test not found in collection");
+      return res.status(404).send({ message: "Test not found in collection" });
+      // throw new Error("Test not found in collection");
     }
 
     const files = test.files;
 
     const fileIndex = files.findIndex((file) => file._id.toString() === fileId);
 
+    console.log({ fileIndex });
+
     if (fileIndex === -1) {
-      throw new Error("File not found in test");
+      return res.status(404).send({ message: "File not found in test" });
+      // throw new Error("File not found in test");
     }
 
     files.splice(fileIndex, 1);
 
     await test.save();
 
-    return "File successfully removed";
+    return res.status(200).send({ message: "File deleted successfully" });
   } catch (error) {
     console.log(error);
-    return error.message;
+    return res.status(400).send({ message: error.message });
   }
 };
 

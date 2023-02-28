@@ -20,6 +20,6 @@
   position: absolute;
   flex-grow: 1;
   width: 100%;
-  color: var(--success-content);
+  color: var(--base-content);
   font-size: var(--fs-regular);
 }
