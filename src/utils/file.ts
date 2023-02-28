@@ -37,7 +37,7 @@ export const createFileList = (files: File[]): FileList => {
   return fileList.files;
 };
 
-export async function getAttachments(testId: number): Promise<any> {
+export async function getAttachments(testId: number | string | undefined): Promise<any> {
   try {
     const response = await api.get(`/tests/files/${testId}`);
     return response.data.data;

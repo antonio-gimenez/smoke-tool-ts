@@ -16,7 +16,7 @@ interface DrawerProps {
     closeOnEscape?: boolean;
     closeKey?: string;
     open?: boolean;
-    header?: React.ReactNode;
+    title?: React.ReactNode;
     trigger?: React.ReactNode;
 }
 const Drawer = ({
@@ -27,7 +27,7 @@ const Drawer = ({
     closeOnEscape = true,
     closeKey = "Escape",
     open = false,
-    header,
+    title,
     trigger,
 }: DrawerProps) => {
 
@@ -53,10 +53,10 @@ const Drawer = ({
 
     useScrollLock(document, isOpen);
 
-    const drawerHeader = header ? (
+    const drawerHeader = title ? (
         <div className="drawer-header">
             <span className="title">
-                {header}
+                {title}
             </span>
             <CloseIcon onClick={() => setIsOpen(false)} />
         </div>
