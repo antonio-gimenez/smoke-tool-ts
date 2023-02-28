@@ -1,65 +1,16 @@
 import { useContext, useState } from "react";
-import { ReactComponent as Paperclip } from "../../assets/icons/paperclip.svg";
 import { AlertContext } from "../../contexts/AlertContext";
 import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
 import { getBase64 } from "../../utils/file";
 import { generateReportWithAttachments } from "../../utils/mail";
 
-import Dropdown from "./Dropdown";
 const Table = ({ items }) => {
-  const [selectedTestId, setSelectedTestId] = useState(null);
-  const [testFiles, setTestFiles] = useState(null);
   const { fetch } = useContext(TestContext);
   const { addAlert } = useContext(AlertContext);
+  const [isGeneratingReport, setIsGeneratingReport] = useState(false);
   const navigate = (id) => {
     window.location.href = `/view/${id}`;
-  };
-  const handleFileClick = async (id) => {
-    if (selectedTestId === id) {
-      setSelectedTestId(null);
-      setTestFiles(null);
-      return;
-    }
-    try {
-      const response = await api.get(`/tests/files/${id}`);
-      console.log(response.data.data);
-      setTestFiles(response.data.data);
-      setSelectedTestId(id);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const downloadFile = (file) => {
-    const base64 = getBase64(file);
-    const type = file.contentType;
-    console.log(type);
-    if (type.includes("svg")) {
-      const svg = document.createElement("img");
-      svg.src = base64;
-      return window.open().document.write(svg.outerHTML);
-    }
-
-    if (type.includes("image")) {
-      return window.open(base64, "_blank");
-    }
-
-    const link = document.createElement("a");
-    link.href = base64;
-    link.download = file.name;
-    document.body.appendChild(link);
-    link.click();
-    return document.body.removeChild(link);
-  };
-
-  const removeFile = async ({ testId, fileId }) => {
-    try {
-      const response = await api.delete(`/tests/files/${testId}/${fileId}`);
-      setTestFiles(response.data.data);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const removeTest = async (id) => {
@@ -73,19 +24,27 @@ const Table = ({ items }) => {
   };
 
   const generateReportMail = async () => {
+    setIsGeneratingReport(true);
     const status = await generateReportWithAttachments(items);
     if (status.type === "success") {
       addAlert(status);
-      return;
+      return setIsGeneratingReport(false);
     }
+    setIsGeneratingReport(false);
     return addAlert(status);
   };
 
   return (
     <>
-      <button className="button button-primary" onClick={generateReportMail}>
-        Convert to EML
-      </button>
+      {isGeneratingReport ? (
+        <button className="button button-primary loading" disabled>
+          Working on it...
+        </button>
+      ) : (
+        <button className="button button-primary" onClick={generateReportMail}>
+          Convert to EML
+        </button>
+      )}
       <table className="table glass-light">
         <thead className="table-header">
           <tr>

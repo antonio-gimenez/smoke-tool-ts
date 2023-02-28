@@ -20,7 +20,7 @@ interface FileSelectorProps {
 function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSize = 0
 }: FileSelectorProps) {
 
-    const [selectedFiles, handleFileSelect, removeFile] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles, maxSize, usedSize });
+    const [selectedFiles, handleFileSelect, removeFile, invalidFiles] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles, maxSize, usedSize });
 
     const fileListProps = {
         length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
@@ -58,6 +58,7 @@ function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSi
     const percentage = usedSizePlusCurrentSize / maxSize * 100;
     const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
 
+    console.log('invalidFiles', invalidFiles)
     return (
         <div className="file-selector">
             <label htmlFor="fileInput" className='input-file-container'>
