@@ -17,6 +17,7 @@ function ViewTest() {
   const [testFiles, setTestFiles] = useState<{ _id: string, name: string, size: number }[]>([]);
   const [filesToUpload, setFilesToUpload] = useState<File | FileList | null>(null);
   const [isLoadingAttachments, setIsLoadingAttachments] = useState(true); // New state variable
+  const [isRemovingFile, setIsRemovingFile] = useState(false);
   const { addAlert } = useContext(AlertContext);
   const history = useNavigate();
   useEffect(() => {
@@ -38,12 +39,15 @@ function ViewTest() {
 
   const removeFile = async ({ testId, fileId }: { testId: string, fileId: string }) => {
     try {
+      setIsRemovingFile(true);
       const response = await api.delete(`/tests/files/${testId}/${fileId}`);
       addAlert({ message: response.data.message, type: "success" });
       const newTestFiles = await getAttachments(testId);
+      setIsRemovingFile(false);
       setTestFiles(newTestFiles);
     } catch (error) {
       console.log(error);
+      setIsRemovingFile(false);
       addAlert({ message: error, type: "error" });
     }
   };
@@ -119,12 +123,13 @@ function ViewTest() {
                       testFiles?.map((file) => (
                         <li key={file._id} className="file">
                           <FileIcon />
-                          <span className="file-name" onClick={() => downloadFile(file)}>
+                          <span className="file-name" title={file.name} onClick={() => downloadFile(file)}>
                             {file.name}
                           </span>
                           <span className="file-size">{humanFileSize(file.size)}</span>
                           <CloseIcon
                             className="file-close-icon"
+                            aria-disabled={isRemovingFile}
                             onClick={() => removeFile({ testId: test._id, fileId: file._id })}
                           />
                         </li>

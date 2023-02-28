@@ -85,7 +85,7 @@ const useFileSelect = ({
                         onSelectFiles(newFiles);
                     }
                 } catch (error: any) {
-                    addAlert({ type: "error", message: error.message });
+                    addAlert({ type: "error", message: error });
                 }
                 setInvalidFiles(newInvalidFiles);
             } else {
