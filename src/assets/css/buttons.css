@@ -193,6 +193,6 @@ button {
   background: hsla(var(--color-info), 0.9);
 }
 
-.button-block {
+.block {
   width: 100%;
 }

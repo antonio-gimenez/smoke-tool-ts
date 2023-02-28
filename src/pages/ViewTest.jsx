@@ -59,7 +59,10 @@ function ViewTest() {
             <p>Priority: {test.priority}</p>
             <p>Branch: {test.branch}</p>
             {test.files?.length > 0 && (
-              <Drawer trigger={<span className="button button-primary">View Attachments</span>} header="Attachments">
+              <Drawer
+                trigger={<span className="button button-block button-primary">View Attachments</span>}
+                header="Attachments"
+              >
                 <>
                   <FileSelector usedSize={usedFileSize} maxSize={16000000} />
                   <ul className="file-list">

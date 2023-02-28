@@ -66,9 +66,9 @@ const Drawer = ({
 
 
     const drawerTrigger = trigger ? (
-        <div onClick={() => setIsOpen(true)}>
+        <span onClick={() => setIsOpen(true)}>
             {trigger}
-        </div>
+        </span>
     ) : (
         <div onClick={() => setIsOpen(true)}>
             <span>Open</span>

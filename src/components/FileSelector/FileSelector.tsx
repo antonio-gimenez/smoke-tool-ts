@@ -62,7 +62,7 @@ function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSi
     return (
         <div className="file-selector">
             <label htmlFor="fileInput" className='input-file-container'>
-                <span className="button button-primary ">Add attachment</span>
+                <span className="button button-primary block ">Add attachment</span>
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
             <Progress percentage={percentage} label={label} />
