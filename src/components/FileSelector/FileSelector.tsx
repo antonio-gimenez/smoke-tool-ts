@@ -65,8 +65,6 @@ function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSi
                 <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
             </label>
             <Progress percentage={percentage} label={label} />
-
-
             <ShowFileList {...fileListProps} />
         </div >
     )

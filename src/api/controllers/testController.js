@@ -112,6 +112,58 @@ const getFiles = async (req, res) => {
   }
 };
 
+const uploadFilesToTest = async (req, res) => {
+  const { id } = req.params;
+  const filesToSave = [];
+
+  if (!req.files) {
+    console.log(`No files were uploaded.`);
+  } else if (req.files && Array.isArray(req.files)) {
+    console.log(`Files uploaded: ${req.files.length}`);
+    req.files.forEach((file) => {
+      const newFile = new File({
+        name: file.originalname,
+        file: file.buffer,
+        size: file.size,
+        checksum: calculateChecksum(file.buffer),
+        contentType: file.mimetype,
+      });
+      filesToSave.push(newFile);
+    });
+    try {
+      await File.insertMany(filesToSave);
+      if (!filesToSave) {
+        return res.status(400).send({ message: "Error saving files" });
+      }
+      await Test.findByIdAndUpdate(id, { $push: { files: filesToSave } });
+      res.status(200).send({ message: "Files uploaded successfully" });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({ message: "Error saving files" });
+    }
+  } else {
+    console.log(`File uploaded: ${req.files.originalname}`);
+    const newFile = new File({
+      name: req.files.originalname,
+      checksum: calculateChecksum(req.files.buffer),
+      file: req.files.buffer,
+      contentType: req.files.mimetype,
+    });
+    filesToSave.push(newFile);
+    try {
+      await newFile.save();
+      if (!newFile) {
+        return res.status(400).send({ message: "Error saving file" });
+      }
+      await Test.findByIdAndUpdate(id, { $push: { files: newFile } });
+      res.status(200).send({ message: "File uploaded successfully" });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({ message: "Error saving file" });
+    }
+  }
+};
+
 const removeFile = async (req, res) => {
   const { testId, fileId } = req.params;
   try {
@@ -178,4 +230,5 @@ module.exports = {
   getTests,
   getFiles,
   removeFile,
+  uploadFilesToTest,
 };

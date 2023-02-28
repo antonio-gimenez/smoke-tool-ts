@@ -11,6 +11,7 @@ router.post("/tests/", uploadFiles, testController.createTest);
 // Files
 router.get("/tests/files/:id", testController.getFiles);
 router.delete("/tests/files/:testId/:fileId", testController.removeFile);
+router.put("/tests/files/:id", uploadFiles, testController.uploadFilesToTest);
 
 router.get("/products/", productController.getProducts);
 router.post("/products/:name", productController.createProduct);

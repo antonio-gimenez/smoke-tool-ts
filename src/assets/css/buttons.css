@@ -35,6 +35,49 @@ button {
   user-select: none;
 }
 
+.button.loading {
+  pointer-events: none;
+  cursor: wait;
+}
+
+.loading {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.loading::before {
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  border-width: 2px;
+  border-style: solid;
+  animation: spin 2s linear infinite;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: currentColor;
+  border-right-color: currentColor;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .button:active {
   animation: button-pop 0.9s;
 }
