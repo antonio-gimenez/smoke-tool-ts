@@ -28,9 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "api": "nodemon --quiet src/api/index.js",
-    "api-dev": "node src/api/index.js",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "api-dev": "node src/api/index.js"
   },
   "eslintConfig": {
     "extends": [
@@ -49,11 +47,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.4"
   }
 }
