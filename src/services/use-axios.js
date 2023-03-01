@@ -38,6 +38,7 @@ api.interceptors.response.use(
   },
   (error) => {
     const { status } = error.response;
+    console.log(`Request failed with status code ${status}.`);
     return Promise.reject({ message: returnMessageFromStatusCodes(status) });
   }
 );

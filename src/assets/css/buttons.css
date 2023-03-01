@@ -26,9 +26,9 @@ button {
   white-space: nowrap;
   text-align: center;
   padding: var(--padding-y) var(--padding-x);
-  height: var(--button-height, 2.5rem);
+  min-height: var(--button-height);
+  max-height: var(--button-height);
   width: fit-content;
-  /* max-width: calc(var(--button-width) + 2 * var(--padding-x)); */
   border-radius: var(--border-radius-small);
   cursor: pointer;
   border: 2px solid transparent;

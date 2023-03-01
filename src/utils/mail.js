@@ -1,4 +1,5 @@
 import api from "../services/use-axios";
+import { humanFileSize } from "./file";
 
 function arrayBufferToBase64(buffer) {
   let binary = "";
@@ -22,7 +23,11 @@ export async function generateReport(selectedItems) {
     );
 
     const filteredFiles = files.flat().filter((file) => file);
-
+    // get all the file sizes
+    const totalSize = filteredFiles.reduce((acc, file) => {
+      return acc + file.size;
+    }, 0);
+    console.log("Total size:", humanFileSize(totalSize));
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
         try {

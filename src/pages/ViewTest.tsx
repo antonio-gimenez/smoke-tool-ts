@@ -39,7 +39,7 @@ function ViewTest() {
 
     return () => {
       setTestFiles([]);
-      setIsLoadingAttachments(true);
+      setIsLoadingAttachments(false);
     }
 
   }, [tests?.length, id]);
@@ -61,6 +61,7 @@ function ViewTest() {
 
   const usedFileSize = testFiles?.length > 0 ? testFiles.reduce((acc, file) => acc + file.size, 0) : 0;
   const totalFileSize = usedFileSize + (filesToUpload instanceof FileList ? Array.from(filesToUpload).reduce((acc, file) => acc + file.size, 0) : 0);
+
 
 
   const uploadFilesToTest = async (files: File | FileList | null) => {

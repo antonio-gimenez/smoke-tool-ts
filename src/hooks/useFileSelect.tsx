@@ -1,11 +1,13 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { createFileList, humanFileSize } from "../utils/file";
+
 type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
     (index: number) => void,
-    File[]
+    File[],
+    (files: File | FileList | null) => void
 ];
 
 type UseFileSelectProps = {
@@ -23,9 +25,7 @@ const useFileSelect = ({
     maxSize = 10 * 1024 * 1024,
     usedSize = 0,
 }: UseFileSelectProps = {}): FileHookReturnType => {
-    const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(
-        initialFiles
-    );
+    const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
     const [invalidFiles, setInvalidFiles] = useState<File[]>([]);
     const { addAlert } = useContext(AlertContext);
 
@@ -38,6 +38,14 @@ const useFileSelect = ({
             return null;
         });
     }, []);
+
+    const updateSelectedFiles = useCallback(
+        (newFiles: File | FileList | null) => {
+            setSelectedFiles(newFiles);
+            onSelectFiles(newFiles);
+        },
+        [onSelectFiles]
+    );
 
 
     const handleFileSelect = useCallback(
@@ -61,44 +69,42 @@ const useFileSelect = ({
                         totalSize += files[i].size;
                     }
                 }
-                try {
-                    if (isSizeValid) {
-                        const newFiles = multiple
-                            ? createFileList([
-                                ...(selectedFiles instanceof FileList
-                                    ? Array.from(selectedFiles)
-                                    : []),
-                                ...Array.from(files),
-                            ])
-                            : createFileList([files[0]]);
-                        const newTotalSize = Array.from(newFiles).reduce(
-                            (size, file) => size + file.size,
-                            usedSize
-                        );
-                        if (newTotalSize > maxSize) {
-                            // throw new Error(
-                            //     `Total file size exceeds the maximum size of ${humanFileSize(
-                            //         maxSize
-                            //     )}.`
-                            // );
-                        }
+                if (isSizeValid) {
+                    const newFiles = multiple
+                        ? createFileList([
+                            ...(selectedFiles instanceof FileList ? Array.from(selectedFiles) : []),
+                            ...Array.from(files),
+                        ])
+                        : createFileList([files[0]]);
+                    const newTotalSize = Array.from(newFiles).reduce((size, file) => size + file.size, usedSize);
+                    if (newTotalSize > maxSize) {
+                        addAlert({
+                            type: "error",
+                            message: `Total file size exceeds the maximum size of ${humanFileSize(
+                                maxSize
+                            )}.`,
+                        });
+                        setInvalidFiles(newInvalidFiles as File[]);
+                    } else {
                         setSelectedFiles(newFiles);
                         onSelectFiles(newFiles);
+                        setInvalidFiles(newInvalidFiles);
                     }
-                } catch (error) {
-                    console.log(error);
+                } else {
+                    setSelectedFiles(initialFiles);
+                    onSelectFiles(initialFiles);
+                    setInvalidFiles(newInvalidFiles);
                 }
-                setInvalidFiles(newInvalidFiles);
             } else {
                 setSelectedFiles(null);
                 onSelectFiles(null);
                 setInvalidFiles([]);
             }
         },
-        [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles]
+        [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles, initialFiles]
     );
 
-    return [selectedFiles, handleFileSelect, removeFile, invalidFiles];
+    return [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles];
 };
 
 export default useFileSelect;

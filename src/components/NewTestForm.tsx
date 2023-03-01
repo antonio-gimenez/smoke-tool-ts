@@ -42,6 +42,7 @@ function NewTest({ modalId }: { modalId: string }) {
   };
 
   function createTest(data: any, files?: FileList | null) {
+    console.log({ data, files });
     const formData = new FormData();
 
     // Append each field of the form data
@@ -57,6 +58,7 @@ function NewTest({ modalId }: { modalId: string }) {
         formData.append('files', files[i]);
       }
     }
+
 
     // Send the form data to the server
     api.post('/tests', formData).then(response => {

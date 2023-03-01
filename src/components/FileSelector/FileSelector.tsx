@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as UploadIcon } from '../../assets/icons/upload.svg';
 import useFileSelect from '../../hooks/useFileSelect';
@@ -25,7 +25,7 @@ function FileSelector({
     usedSize = 0,
     disabled = false,
 }: FileSelectorProps) {
-    const [selectedFiles, handleFileSelect, removeFile, invalidFiles] = useFileSelect({
+    const [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles] = useFileSelect({
         multiple: true,
         initialFiles: files,
         onSelectFiles,
@@ -41,6 +41,10 @@ function FileSelector({
     }, [selectedFiles]);
 
     const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
+
+    useEffect(() => {
+        updateSelectedFiles(files || null)
+    }, [files]);
 
     const ShowFileList = ({ length, item }: FileListProps) => {
         if (length === 0) {

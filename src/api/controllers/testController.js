@@ -8,7 +8,6 @@ const getTests = async (req, res) => {
     const totalCount = await Test.countDocuments(query);
     const options = createPaginationOptions({ req, totalCount });
     let tests;
-    console.log({ query, options });
     try {
       tests = await Test.find(query, null, options);
       if (!tests) {
@@ -37,7 +36,7 @@ const getTests = async (req, res) => {
 const createTest = async (req, res) => {
   const data = req.body;
   const filesToSave = [];
-
+  console.log(req.files);
   if (!req.files) {
     console.log(`No files were uploaded.`);
   } else if (req.files && Array.isArray(req.files)) {
