@@ -27,7 +27,12 @@ export async function generateReport(selectedItems) {
     const totalSize = filteredFiles.reduce((acc, file) => {
       return acc + file.size;
     }, 0);
-    console.log("Total size:", humanFileSize(totalSize));
+
+    if (totalSize > 20000000) {
+      console.warn(`Total size of attachments exceeds 20MB, total size: ${humanFileSize(totalSize)}`);
+      throw new Error("Total size of attachments exceeds 20MB");
+    }
+
     const attachments = await Promise.all(
       filteredFiles.map(async (file) => {
         try {
@@ -71,6 +76,7 @@ export async function generateReport(selectedItems) {
 
     const emlContent = `data:application/octet-stream;base64,${btoa(emailContent)}`;
 
+    // trigger the email download
     const encodedUri = encodeURI(emlContent);
     const a = document.createElement("a");
     const linkText = document.createTextNode("fileLink");
@@ -89,11 +95,15 @@ export async function generateReport(selectedItems) {
     return false; // indicate failure
   }
 }
-
 export async function generateReportWithAttachments(selectedItems) {
   try {
-    await generateReport(selectedItems);
-    return { type: "success", message: "Report generated successfully" };
+    const status = await generateReport(selectedItems);
+    if (!!status) {
+      return { type: "success", message: "Report generated successfully" };
+    }
+    return { type: "error", message: "Failed to generate report" };
+
+    // return { type: "success", message: "Report generated successfully" };
   } catch (error) {
     console.error("An error occurred while sending the report:", error);
     return { type: "error", message: `An error occurred while sending the report: ${error}` };
