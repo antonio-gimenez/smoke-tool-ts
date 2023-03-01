@@ -31,7 +31,7 @@ const Table = ({ items }) => {
       return setIsGeneratingReport(false);
     }
     setIsGeneratingReport(false);
-    return addAlert(status);
+    return addAlert({ ...status, position: "top-center" });
   };
 
   return (
