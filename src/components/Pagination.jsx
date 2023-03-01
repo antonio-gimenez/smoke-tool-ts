@@ -5,7 +5,7 @@ import { ReactComponent as ChevronLeftIcon } from "../assets/icons/chevron-left.
 import { ReactComponent as ChevronRightIcon } from "../assets/icons/chevron-right.svg";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
-import { Modal, ModalContent, ModalHeader, ModalTrigger } from "./ui/Modal";
+import { Modal, ModalTrigger } from "./ui/Modal";
 
 const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, pageSize }) => {
   const paginationRange = usePagination({
@@ -16,7 +16,7 @@ const Pagination = ({ onPageChange, totalCount, siblingCount = 1, currentPage, p
   });
   const [jumpTo, setJumpTo] = useState("");
   if (totalCount <= 0 || !totalCount) return null;
-
+  if (totalCount <= pageSize) return null;
   const onNext = () => {
     onPageChange(currentPage + 1);
   };
