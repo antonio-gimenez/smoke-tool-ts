@@ -1,10 +1,8 @@
 # TODO List
-- [X] Dracula theme
-- [ ] Fix file upload
-- [ ] Add file upload with droparea
-- [X] Add a backdrop to reuse on other components
-- [X] Refactor ThemeSelector
-- [X] Refactor buttons
+- [X] File uploads
+- [ ] More verbose error messages
+- [ ] Friendlier UI 
+
 <!-- https://www.google.com/url?sa=i&url=https%3A%2F%2Fbbbootstrap.com%2Fsnippets%2Ftailwind-css-add-document-form-file-upload-input-37652196&psig=AOvVaw07Gr8OJrlPzkmNOn9HRioa&ust=1677384146015000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIjnjoPlr_0CFQAAAAAdAAAAABBj -->
 - [X] Refactor dropdowns
     <!-- https://coolors.co/c965b0-003094-00246b-ee5fa1-002e8c -->

@@ -9,7 +9,7 @@ import { TestContext } from "../contexts/TestContext";
 import api from "../services/use-axios";
 import { downloadFile, getAttachments, humanFileSize } from "../utils/file";
 import { ReactComponent as LoaderIcon } from '../assets/icons/loader.svg';
-const MAX_FILE_SIZE = 16000000;
+const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
 function ViewTest() {
   const { id } = useParams();
