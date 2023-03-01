@@ -42,7 +42,7 @@ button {
 
 .loading {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: inline-flex;
   gap: 0.5rem;
 }

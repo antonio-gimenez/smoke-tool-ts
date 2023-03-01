@@ -3,6 +3,7 @@ import Pagination from "../components/Pagination";
 const withPagination = ({
   WrappedComponent,
   items,
+  fetch,
   pageSize,
   totalPages,
   totalCount,
@@ -29,6 +30,7 @@ const withPagination = ({
         <Pagination
           currentPage={currentPage}
           pageSize={pageSize}
+          fetch={fetch}
           totalCount={totalCount}
           totalPages={totalPages}
           siblingCount={1}

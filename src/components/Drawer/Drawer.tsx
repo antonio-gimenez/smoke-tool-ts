@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
@@ -38,6 +36,7 @@ const Drawer = ({
     useEffect(() => {
         drawerRef.current = document.createElement("div");
         // portalRef.current = document.createElement("div");
+
     }, []);
 
     useOnClickOutside({

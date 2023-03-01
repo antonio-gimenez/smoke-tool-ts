@@ -27,6 +27,13 @@
   background-color: hsl(var(--color-success), 0.09);
 }
 
+.file-list.to-be-fixed {
+  border: 1px solid hsl(var(--color-error), 0.35);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-1);
+  background-color: hsl(var(--color-error), 0.09);
+}
+
 .input-file-container {
   display: flex;
   align-items: center;

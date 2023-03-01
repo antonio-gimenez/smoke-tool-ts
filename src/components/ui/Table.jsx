@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../../contexts/AlertContext";
-import { TestContext } from "../../contexts/TestContext";
 import api from "../../services/use-axios";
-import { getBase64 } from "../../utils/file";
 import { generateReportWithAttachments } from "../../utils/mail";
-
-const Table = ({ items }) => {
-  const { fetch } = useContext(TestContext);
+import Drawer from "../Drawer/Drawer";
+import TestAttachments from "../TestAttachments/TestAttachments";
+import { ReactComponent as PaperClipIcon } from "../../assets/icons/paperclip.svg";
+const Table = ({ items, fetch }) => {
   const { addAlert } = useContext(AlertContext);
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
   const navigate = (id) => {
@@ -15,7 +14,7 @@ const Table = ({ items }) => {
 
   const removeTest = async (id) => {
     try {
-      const response = await api.delete(`/tests/${id}`);
+      await api.delete(`/tests/${id}`);
       addAlert({ type: "success", message: "Test deleted successfully" });
       fetch();
     } catch (error) {
@@ -32,6 +31,10 @@ const Table = ({ items }) => {
     }
     setIsGeneratingReport(false);
     return addAlert({ ...status, position: "top-center" });
+  };
+
+  const handleViewAttachments = (test) => {
+    return <TestAttachments test={test} />;
   };
 
   return (
@@ -68,7 +71,7 @@ const Table = ({ items }) => {
               <td className="table-cell">{test.product}</td>
               <td className="table-cell">{test.release}</td>
               <td className="table-cell">{test.branch}</td>
-              <td className="table-cell">{test.files?.length > 0 ? test.files?.length : null}</td>
+              <td className="table-cell">{test.files?.length > 0 ? test.files?.length : ""}</td>
               <td className="table-cell">{test.priority}</td>
 
               <td className="table-cell">

@@ -4,11 +4,11 @@ import { ReactComponent as CloseIcon } from "../assets/icons/close.svg";
 import { ReactComponent as FileIcon } from "../assets/icons/file.svg";
 import Drawer from "../components/Drawer/Drawer";
 import FileSelector from "../components/FileSelector/FileSelector";
+import TestAttachments from "../components/TestAttachments/TestAttachments";
 import { AlertContext } from "../contexts/AlertContext";
 import { TestContext } from "../contexts/TestContext";
 import api from "../services/use-axios";
 import { downloadFile, getAttachments, humanFileSize } from "../utils/file";
-import { ReactComponent as LoaderIcon } from '../assets/icons/loader.svg';
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
 function ViewTest() {
@@ -28,10 +28,8 @@ function ViewTest() {
     async function loadAttachments() {
       if (tests?.length > 0 && tests[0]?.files?.length > 0) {
         setIsLoadingAttachments(true);
-        // setIsLoadingAttachments(true); // Set isLoadingAttachments to true before loading attachments
         const attachments = await getAttachments(id);
         setTestFiles(attachments);
-        // setIsLoadingAttachments(false); // Set isLoadingAttachments to false once attachments have been loaded
         setIsLoadingAttachments(false);
       }
     }
@@ -47,8 +45,7 @@ function ViewTest() {
   const removeFile = async ({ testId, fileId }: { testId: string, fileId: string }) => {
     try {
       setIsRemovingFile(true);
-      const response = await api.delete(`/tests/files/${testId}/${fileId}`);
-      // addAlert({ message: response.data.message, type: "success" });
+      await api.delete(`/tests/files/${testId}/${fileId}`);
       const newTestFiles = await getAttachments(testId);
       setIsRemovingFile(false);
       setTestFiles(newTestFiles);
@@ -61,8 +58,6 @@ function ViewTest() {
 
   const usedFileSize = testFiles?.length > 0 ? testFiles.reduce((acc, file) => acc + file.size, 0) : 0;
   const totalFileSize = usedFileSize + (filesToUpload instanceof FileList ? Array.from(filesToUpload).reduce((acc, file) => acc + file.size, 0) : 0);
-
-
 
   const uploadFilesToTest = async (files: File | FileList | null) => {
     if (!files) return;
@@ -93,7 +88,6 @@ function ViewTest() {
 
   return (
     <div>
-      <h1>{JSON.stringify(`filesToBeUploaded: ${filesToUpload}`)}</h1>
       <button className="button button-primary" onClick={() => history(-1)}>Go Back</button>
       <section className="view">
         {tests?.map((test) => (
@@ -103,49 +97,7 @@ function ViewTest() {
             <p>Product: {test.product}</p>
             <p>Priority: {test.priority}</p>
             <p>Branch: {test.branch}</p>
-
-            <Drawer trigger={
-              <button className={`button button-primary ${isLoadingAttachments ? 'loading disabled ' : ''
-                }`}>{isLoadingAttachments ? 'Loading' : 'View'} Attachments</button>
-            } title="Attachments">
-              <>
-                <FileSelector
-                  disabled={isLoadingAttachments}
-                  files={filesToUpload}
-                  onSelectFiles={(files) => {
-                    setFilesToUpload(files);
-                  }}
-                  usedSize={usedFileSize}
-                  maxSize={MAX_FILE_SIZE}
-                />
-                <button
-                  className={`button button-primary block ${!filesToUpload ? 'hidden' : ''}`}
-
-                  onClick={() => uploadFilesToTest(filesToUpload)}
-                  disabled={!filesToUpload || totalFileSize > MAX_FILE_SIZE}
-                >
-                  Upload
-                </button>
-                <ul className="file-list">
-                  {testFiles?.length > 0 &&
-                    testFiles?.map((file) => (
-                      <li key={file._id} className="file">
-                        <FileIcon />
-                        <span className="file-name" title={file.name} onClick={() => downloadFile(file)}>
-                          {file.name}
-                        </span>
-                        <span className="file-size">{humanFileSize(file.size)}</span>
-                        {isRemovingFile ? <span className="loading" /> :
-                          <CloseIcon
-                            className="file-close-icon"
-                            aria-disabled={isRemovingFile}
-                            onClick={() => removeFile({ testId: test._id, fileId: file._id })}
-                          />}
-                      </li>
-                    ))}
-                </ul>
-              </>
-            </Drawer>
+            <TestAttachments test={test} />
           </div>
         ))}
       </section>

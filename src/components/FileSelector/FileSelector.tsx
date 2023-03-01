@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as UploadIcon } from '../../assets/icons/upload.svg';
 import useFileSelect from '../../hooks/useFileSelect';
@@ -16,6 +16,7 @@ interface FileSelectorProps {
     maxSize?: number;
     usedSize?: number;
     disabled?: boolean;
+    maxFiles?: number;
 }
 
 function FileSelector({
@@ -23,6 +24,7 @@ function FileSelector({
     onSelectFiles,
     maxSize = 10 * 1024 * 1024,
     usedSize = 0,
+    maxFiles = 10,
     disabled = false,
 }: FileSelectorProps) {
     const [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles] = useFileSelect({
@@ -51,28 +53,42 @@ function FileSelector({
             return null;
         }
         return (
-            <ul className='file-list to-be-uploaded'>
-                {item &&
-                    Array.from({ length }, (_, index) => item(index)).map((file, index) => {
-                        const url = file ? URL.createObjectURL(file) : '';
-                        return (
-                            <li key={`file-${index}`} className='file'>
-                                <UploadIcon />
-                                <a
-                                    title={file.name}
-                                    href={url}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className='file-name'
-                                >
-                                    {file.name}
-                                </a>
-                                <span className='file-size'>{humanFileSize(file.size)}</span>
+            <>
+                <ul className='file-list to-be-uploaded'>
+                    {item &&
+                        Array.from({ length }, (_, index) => item(index)).map((file, index) => {
+                            const url = file ? URL.createObjectURL(file) : '';
+                            return (
+                                <li key={`file-${index}`} className='file'>
+                                    <UploadIcon />
+                                    <a
+                                        title={file.name}
+                                        href={url}
+                                        target='_blank'
+                                        rel='noreferrer'
+                                        className='file-name'
+                                    >
+                                        {file.name}
+                                    </a>
+                                    <span className='file-size'>{humanFileSize(file.size)}</span>
+                                    <CloseIcon className='file-close-icon' key={`file-close-${index}`} onClick={() => removeFile(index)} />
+                                </li>
+                            );
+                        })}
+                </ul>
+                {invalidFiles.length > 0 && (
+                    <ul className='file-list to-be-fixed'>
+                        {invalidFiles.map((file, index) => (
+                            <li key={`invalid-file-${index}`} className='file'>
                                 <CloseIcon className='file-close-icon' key={`file-close-${index}`} onClick={() => removeFile(index)} />
+                                <span className='file-name'>{file.name}</span>
+                                <span className='file-size'>{humanFileSize(file.size)}</span>
+                                <span className='file-error'>File is too large</span>
                             </li>
-                        );
-                    })}
-            </ul>
+                        ))}
+                    </ul>
+                )}
+            </>
         );
     };
 

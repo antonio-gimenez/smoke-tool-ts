@@ -10,6 +10,11 @@ const SmokeTest = () => {
   const PaginatedTable = withPagination({
     WrappedComponent: Table,
     items: tests || [],
+    fetch: () =>
+      fetch({
+        page: currentPage,
+        pageSize,
+      }),
     pageSize: pageSize,
     totalCount: totalCount,
     totalPages: totalPages,
