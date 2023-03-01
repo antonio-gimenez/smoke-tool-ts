@@ -27,7 +27,7 @@ const Table = ({ items }) => {
     setIsGeneratingReport(true);
     const status = await generateReportWithAttachments(items);
     if (status.type === "success") {
-      addAlert(status);
+      addAlert({ ...status, position: "top-center" });
       return setIsGeneratingReport(false);
     }
     setIsGeneratingReport(false);

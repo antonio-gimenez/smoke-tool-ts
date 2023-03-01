@@ -78,7 +78,7 @@
 
 .alert {
   margin: 0;
-  padding: var(--space-2);
+  padding: var(--space-5);
   position: relative;
   max-width: 100%;
   border-radius: var(--border-radius-default);
@@ -107,7 +107,8 @@
   white-space: pre-wrap;
   max-width: 50ch;
   font-weight: var(--fw-regular, --fw-medium);
-  font-size: var(--fs-regular, 15px);
+  /* font-size: var(--fs-medium, 15px); */
+  font-size: calc(var(--fs-medium) * 0.9);
 }
 
 .alert-title {
