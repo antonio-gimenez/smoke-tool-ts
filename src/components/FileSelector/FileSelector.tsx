@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as UploadIcon } from '../../assets/icons/upload.svg';
 import useFileSelect from '../../hooks/useFileSelect';
@@ -9,23 +10,35 @@ interface FileListProps {
     item?: (index: number) => File;
 }
 
-
 interface FileSelectorProps {
     files?: File | FileList | null;
     onSelectFiles?: (files: File | FileList | null) => void;
     maxSize?: number;
     usedSize?: number;
+    disabled?: boolean;
 }
 
-function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSize = 0
+function FileSelector({
+    files,
+    onSelectFiles,
+    maxSize = 10 * 1024 * 1024,
+    usedSize = 0,
+    disabled = false,
 }: FileSelectorProps) {
+    const [selectedFiles, handleFileSelect, removeFile, invalidFiles] = useFileSelect({
+        multiple: true,
+        initialFiles: files,
+        onSelectFiles,
+        maxSize,
+        usedSize,
+    });
 
-    const [selectedFiles, handleFileSelect, removeFile, invalidFiles] = useFileSelect({ multiple: true, initialFiles: files, onSelectFiles, maxSize, usedSize });
-
-    const fileListProps = {
-        length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
-        item: selectedFiles ? (i: number) => (selectedFiles instanceof FileList ? selectedFiles[i] : selectedFiles) : undefined,
-    };
+    const fileListProps = useMemo(() => {
+        return {
+            length: selectedFiles ? (selectedFiles instanceof FileList ? selectedFiles.length : 1) : 0,
+            item: selectedFiles ? (i: number) => (selectedFiles instanceof FileList ? selectedFiles[i] : selectedFiles) : undefined,
+        };
+    }, [selectedFiles]);
 
     const currentSize = selectedFiles ? (selectedFiles instanceof FileList ? Array.from(selectedFiles).reduce((acc, file) => acc + file.size, 0) : selectedFiles.size) : 0;
 
@@ -35,40 +48,44 @@ function FileSelector({ files, onSelectFiles, maxSize = 10 * 1024 * 1024, usedSi
         }
         return (
             <ul className='file-list to-be-uploaded'>
-                {item && (
+                {item &&
                     Array.from({ length }, (_, index) => item(index)).map((file, index) => {
                         const url = file ? URL.createObjectURL(file) : '';
                         return (
-                            <li key={`file - ${index}`} className='file'>
+                            <li key={`file-${index}`} className='file'>
                                 <UploadIcon />
-                                <a title={file.name} href={url} target="_blank"
-                                    rel="noreferrer"
-                                    className='file-name'>{file.name}</a>
+                                <a
+                                    title={file.name}
+                                    href={url}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    className='file-name'
+                                >
+                                    {file.name}
+                                </a>
                                 <span className='file-size'>{humanFileSize(file.size)}</span>
-                                <CloseIcon className="file-close-icon" key={`file - close - ${index}`} onClick={() => removeFile(index)} />
+                                <CloseIcon className='file-close-icon' key={`file-close-${index}`} onClick={() => removeFile(index)} />
                             </li>
                         );
-                    })
-                )}
+                    })}
             </ul>
         );
     };
 
     const usedSizePlusCurrentSize = usedSize + currentSize;
-    const percentage = usedSizePlusCurrentSize / maxSize * 100;
+    const percentage = (usedSizePlusCurrentSize / maxSize) * 100;
     const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
 
-    console.log('invalidFiles', invalidFiles)
     return (
-        <div className="file-selector">
-            <label htmlFor="fileInput" className='input-file-container'>
-                <span className="button button-primary block ">Add attachment</span>
-                <input id="fileInput" className="form-control-hidden" type="file" multiple={true} onChange={handleFileSelect} />
+        <div className='file-selector'>
+            <label htmlFor='fileInput' aria-disabled={!!disabled} className='button button-primary block'>
+                Add attachment
             </label>
+            <input id='fileInput' className='form-control-hidden' type='file' multiple={true} onChange={handleFileSelect} />
             <Progress percentage={percentage} label={label} />
             <ShowFileList {...fileListProps} />
-        </div >
-    )
+        </div>
+    );
 }
 
 export default FileSelector;

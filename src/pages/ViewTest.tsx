@@ -27,13 +27,20 @@ function ViewTest() {
   useEffect(() => {
     async function loadAttachments() {
       if (tests?.length > 0 && tests[0]?.files?.length > 0) {
-        setIsLoadingAttachments(true); // Set isLoadingAttachments to true before loading attachments
+        setIsLoadingAttachments(true);
+        // setIsLoadingAttachments(true); // Set isLoadingAttachments to true before loading attachments
         const attachments = await getAttachments(id);
         setTestFiles(attachments);
-        setIsLoadingAttachments(false); // Set isLoadingAttachments to false once attachments have been loaded
+        // setIsLoadingAttachments(false); // Set isLoadingAttachments to false once attachments have been loaded
+        setIsLoadingAttachments(false);
       }
     }
     loadAttachments();
+
+    return () => {
+      setTestFiles([]);
+      setIsLoadingAttachments(true);
+    }
 
   }, [tests?.length, id]);
 
@@ -41,7 +48,7 @@ function ViewTest() {
     try {
       setIsRemovingFile(true);
       const response = await api.delete(`/tests/files/${testId}/${fileId}`);
-      addAlert({ message: response.data.message, type: "success" });
+      // addAlert({ message: response.data.message, type: "success" });
       const newTestFiles = await getAttachments(testId);
       setIsRemovingFile(false);
       setTestFiles(newTestFiles);
@@ -54,7 +61,6 @@ function ViewTest() {
 
   const usedFileSize = testFiles?.length > 0 ? testFiles.reduce((acc, file) => acc + file.size, 0) : 0;
   const totalFileSize = usedFileSize + (filesToUpload instanceof FileList ? Array.from(filesToUpload).reduce((acc, file) => acc + file.size, 0) : 0);
-  const hasTestFiles = tests[0]?.files?.length > 0;
 
 
   const uploadFilesToTest = async (files: File | FileList | null) => {
@@ -74,9 +80,9 @@ function ViewTest() {
         },
       });
       addAlert({ message: response.data.message, type: "success" });
+      setFilesToUpload(null);
       const newTestFiles = await getAttachments(id);
       setTestFiles(newTestFiles);
-      setFilesToUpload(null);
 
     } catch (error) {
       console.log(error);
@@ -86,7 +92,7 @@ function ViewTest() {
 
   return (
     <div>
-      <h1>Test Number: {id}</h1>
+      <h1>{JSON.stringify(`filesToBeUploaded: ${filesToUpload}`)}</h1>
       <button className="button button-primary" onClick={() => history(-1)}>Go Back</button>
       <section className="view">
         {tests?.map((test) => (
@@ -97,47 +103,48 @@ function ViewTest() {
             <p>Priority: {test.priority}</p>
             <p>Branch: {test.branch}</p>
 
-            {hasTestFiles && (
-              <Drawer trigger={
-                <button className={`button button-primary ${isLoadingAttachments ? 'loading disabled ' : ''
-                  }`}>{isLoadingAttachments ? 'Loading' : 'View'} Attachments</button>
-              } title="Attachments">
-                <>
-                  <FileSelector
-                    files={filesToUpload}
-                    onSelectFiles={(files) => {
-                      setFilesToUpload(files);
-                    }}
-                    usedSize={usedFileSize}
-                    maxSize={MAX_FILE_SIZE}
-                  />
-                  <button
-                    className="button button-primary"
-                    onClick={() => uploadFilesToTest(filesToUpload)}
-                    disabled={!filesToUpload || totalFileSize > MAX_FILE_SIZE}
-                  >
-                    Upload
-                  </button>
-                  <ul className="file-list">
-                    {testFiles?.length > 0 &&
-                      testFiles?.map((file) => (
-                        <li key={file._id} className="file">
-                          <FileIcon />
-                          <span className="file-name" title={file.name} onClick={() => downloadFile(file)}>
-                            {file.name}
-                          </span>
-                          <span className="file-size">{humanFileSize(file.size)}</span>
+            <Drawer trigger={
+              <button className={`button button-primary ${isLoadingAttachments ? 'loading disabled ' : ''
+                }`}>{isLoadingAttachments ? 'Loading' : 'View'} Attachments</button>
+            } title="Attachments">
+              <>
+                <FileSelector
+                  disabled={isLoadingAttachments}
+                  files={filesToUpload}
+                  onSelectFiles={(files) => {
+                    setFilesToUpload(files);
+                  }}
+                  usedSize={usedFileSize}
+                  maxSize={MAX_FILE_SIZE}
+                />
+                <button
+                  className={`button button-primary block ${!filesToUpload ? 'hidden' : ''}`}
+
+                  onClick={() => uploadFilesToTest(filesToUpload)}
+                  disabled={!filesToUpload || totalFileSize > MAX_FILE_SIZE}
+                >
+                  Upload
+                </button>
+                <ul className="file-list">
+                  {testFiles?.length > 0 &&
+                    testFiles?.map((file) => (
+                      <li key={file._id} className="file">
+                        <FileIcon />
+                        <span className="file-name" title={file.name} onClick={() => downloadFile(file)}>
+                          {file.name}
+                        </span>
+                        <span className="file-size">{humanFileSize(file.size)}</span>
+                        {isRemovingFile ? <span className="loading" /> :
                           <CloseIcon
                             className="file-close-icon"
                             aria-disabled={isRemovingFile}
                             onClick={() => removeFile({ testId: test._id, fileId: file._id })}
-                          />
-                        </li>
-                      ))}
-                  </ul>
-                </>
-              </Drawer>
-            )}
+                          />}
+                      </li>
+                    ))}
+                </ul>
+              </>
+            </Drawer>
           </div>
         ))}
       </section>

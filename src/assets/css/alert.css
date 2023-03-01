@@ -78,7 +78,7 @@
 
 .alert {
   margin: 0;
-  padding: var(--space-4);
+  padding: var(--space-2);
   position: relative;
   max-width: 100%;
   border-radius: var(--border-radius-default);

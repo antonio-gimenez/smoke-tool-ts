@@ -39,6 +39,7 @@ const useFileSelect = ({
         });
     }, []);
 
+
     const handleFileSelect = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             const files = event.target.files;
@@ -75,17 +76,17 @@ const useFileSelect = ({
                             usedSize
                         );
                         if (newTotalSize > maxSize) {
-                            throw new Error(
-                                `Total file size exceeds the maximum size of ${humanFileSize(
-                                    maxSize
-                                )}.`
-                            );
+                            // throw new Error(
+                            //     `Total file size exceeds the maximum size of ${humanFileSize(
+                            //         maxSize
+                            //     )}.`
+                            // );
                         }
                         setSelectedFiles(newFiles);
                         onSelectFiles(newFiles);
                     }
-                } catch (error: any) {
-                    addAlert({ type: "error", message: error });
+                } catch (error) {
+                    console.log(error);
                 }
                 setInvalidFiles(newInvalidFiles);
             } else {
