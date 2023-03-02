@@ -104,7 +104,6 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
                         loading={isLoadingAttachments || isRemovingFile}
                         disabled={isLoadingAttachments}
-
                         files={filesToUpload}
                         onSelectFiles={onSelectFiles}
                         uploadFiles={uploadFilesToTest}

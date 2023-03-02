@@ -9,3 +9,8 @@ a.link,
   font-weight: var(--fw-semibold, 500);
   margin-block: var(--space-1);
 }
+
+.muted {
+  font-size: var(--fs-regular);
+  color: hsl(var(--color-base-content), 0.5);
+}

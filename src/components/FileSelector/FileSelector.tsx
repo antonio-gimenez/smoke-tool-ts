@@ -52,6 +52,7 @@ function FileSelector({
 
 
     const usedSizePlusCurrentSize = usedSize + currentSize;
+    const remainingSize = maxSize - usedSizePlusCurrentSize;
     const percentage = (usedSizePlusCurrentSize / maxSize) * 100;
     const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
 
@@ -62,20 +63,26 @@ function FileSelector({
         }
         return (
             <>
-                <h1 className='file-list-title'>Files to be uploaded</h1>
+                <span className='file-list-title'>Files to be uploaded</span>
+                <div className='file-advert'>
+                    <span className='muted'>Files must be smaller and not exceed {humanFileSize(maxSize)}</span>
+                    <span className='muted'>
+                        Remaining size: {humanFileSize(remainingSize)}
+                    </span>
+                </div>
                 <ul className='file-list to-be-uploaded'>
                     {item &&
                         Array.from({ length }, (_, index) => item(index)).map((file, index) => {
                             const url = file ? URL.createObjectURL(file) : '';
                             return (
                                 <li key={`file-${index}`} className='file'>
-                                    <UploadIcon />
+                                    <UploadIcon className='file-icon' />
                                     <a
                                         title={file.name}
                                         href={url}
                                         target='_blank'
                                         rel='noreferrer'
-                                        className='file-na  me'
+                                        className='file-name to-upload'
                                     >
                                         {file.name}
                                     </a>
@@ -91,13 +98,18 @@ function FileSelector({
 
     return (
         <div className='file-selector'>
-            {uploadFiles && selectedFiles && (selectedFiles instanceof FileList ? selectedFiles.length : 1) > 0 ? <>
-                <span className={`button button-primary block ${loading && 'loading'}`} aria-disabled={disabled} onClick={() => uploadFiles(selectedFiles)}>Upload selected</span>
-                <span className='button button-secondary block' onClick={clearSelectedFiles}>
+            {uploadFiles && selectedFiles && (selectedFiles instanceof FileList ? selectedFiles.length : 1) > 0 ? <div className='file-actions'>
+                <button className={`button button-primary block ${loading && 'loading'}`} aria-disabled={disabled} onClick={() => uploadFiles(selectedFiles)}>Upload selected</button>
+                <label htmlFor='fileInput'>
+
+                    <span className='button button-secondary block'>Browse More Files</span></label>
+                <button className='button button-secondary block' onClick={clearSelectedFiles}>
                     Clear selected files
-                </span></> : <label htmlFor='fileInput'>
+                </button></div> : <label htmlFor='fileInput'>
 
                 <span className='button button-secondary block'>Browse Files</span></label>}
+
+
             <input id='fileInput' className='form-control-hidden' type='file' multiple={true} onChange={handleFileSelect} />
 
             {/* <Progress isLoadingData={true} percentage={50} label={label} /> */}

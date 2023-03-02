@@ -7,47 +7,57 @@
   border-radius: var(--border-radius-small);
 }
 
-.file-selector-title {
-  font-weight: var(--fw-semibold, 500);
-  font-size: var(--fs-medium);
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid hsl(var(--color-base-content), 0.15);
-}
-
 .file-list {
   display: flex;
   flex-direction: column;
+  /* gap: var(--space-1); */
+}
+
+.file-advert {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-block: var(--space-1);
   gap: var(--space-1);
+}
+
+.file-list-title {
+  font-size: var(--fs-large);
+  font-weight: 500;
+  margin-block: var(--space-1);
+}
+
+.file-list-subtitle {
+  font-size: var(--fs-medium);
+  font-weight: 400;
+  margin-block: var(--space-1);
 }
 
 .file-list.to-be-uploaded {
   border: 1px solid hsl(var(--color-success), 0.35);
   border-radius: var(--border-radius-small);
   padding: var(--space-1);
+  color: hsl(var(--color-success), 0.5);
   background-color: hsl(var(--color-success), 0.09);
 }
 
-.file-list.to-be-fixed {
-  border: 1px solid hsl(var(--color-error), 0.35);
-  border-radius: var(--border-radius-small);
-  padding: var(--space-1);
-  background-color: hsl(var(--color-error), 0.09);
+.file-name.to-upload {
+  color: hsl(var(--color-success), 1) !important;
 }
 
 .input-file-container {
   display: flex;
   align-items: center;
   position: relative;
-  /* width: fit-content; */
   gap: var(--space-2);
 }
 
-.file-size-limit-success {
-  color: var(--success);
-}
-
-.file-size-limit-error {
-  color: var(--error);
+.file-actions {
+  display: flex;
+  gap: var(--space-1);
 }
 
 .file {
@@ -57,14 +67,9 @@
   justify-content: space-between;
 }
 
-.file > * {
-  margin-inline: var(--space-1);
-}
-
 .file-name {
   cursor: pointer;
   flex-grow: 1;
-  /* color: var(--primary, --accent); */
   color: var(--primary);
   text-decoration: underline;
   max-width: 30ch;
@@ -74,8 +79,14 @@
 }
 
 .file-size {
-  margin-inline: var(--space-2);
   color: hsl(var(--color-base-content), 0.5);
+}
+
+.file-icon {
+  flex-shrink: 0;
+  height: 18px;
+  width: 18px;
+  color: var(--base-content);
 }
 
 .file-close-icon {

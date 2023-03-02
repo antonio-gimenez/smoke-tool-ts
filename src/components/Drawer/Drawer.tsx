@@ -52,16 +52,13 @@ const Drawer = ({
 
     useScrollLock(document, isOpen);
 
-    const drawerHeader = title ? (
-        <div className="drawer-header">
-            <span className="title">
-                {title}
-            </span>
-            <CloseIcon onClick={() => setIsOpen(false)} />
-        </div>
-    ) : (
-        <span>Close</span>
-    );
+
+    const drawerHeader = <div tabIndex={0} className="drawer-header">
+        <span className="title">
+            {title ? title : 'Drawer'}
+        </span>
+        <CloseIcon onClick={() => setIsOpen(false)} />
+    </div>
 
 
     const drawerTrigger = trigger ? (
@@ -76,7 +73,7 @@ const Drawer = ({
 
     const drawerContent = (
         <div className="drawer-overlay">
-            <aside className={`drawer drawer-${position}`} ref={drawerRef} id={id}>
+            <aside className={`drawer ${isOpen ? 'open' : ''} drawer-${position}`} ref={drawerRef} id={id}>
                 {drawerHeader}
                 {children}
             </aside>
