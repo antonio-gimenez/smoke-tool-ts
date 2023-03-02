@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
 import { AlertContext } from "../../contexts/AlertContext";
 import api from "../../services/use-axios";
+import { getAttachments, getFileSize } from "../../utils/file";
 import { generateReportWithAttachments } from "../../utils/mail";
-import Drawer from "../Drawer/Drawer";
 import TestAttachments from "../TestAttachments/TestAttachments";
-import { ReactComponent as PaperClipIcon } from "../../assets/icons/paperclip.svg";
 const Table = ({ items, fetch }) => {
   const { addAlert } = useContext(AlertContext);
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
@@ -31,10 +30,6 @@ const Table = ({ items, fetch }) => {
     }
     setIsGeneratingReport(false);
     return addAlert({ ...status, position: "top-center" });
-  };
-
-  const handleViewAttachments = (test) => {
-    return <TestAttachments test={test} />;
   };
 
   return (

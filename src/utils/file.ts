@@ -20,6 +20,15 @@ export function humanFileSize(bytes: number, decimalPlaces = 2): string {
   return bytes.toFixed(decimalPlaces) + " " + units[u];
 }
 
+export function getFileSize(files: FileList | File[]): number {
+  let size = 0;
+  for (let i = 0; i < files.length; i++) {
+    console.log(files);
+    size += files[i].size;
+  }
+  return size;
+}
+
 export function getBase64(file: any): string | null {
   if (!file) return null;
   if (file.contentType) {

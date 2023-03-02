@@ -27,11 +27,10 @@ function TestAttachments({ test }: TestAttachmentsProps) {
     useEffect(() => {
         async function loadAttachments() {
             if (test.files?.length > 0) {
-                setIsLoadingAttachments(true);
                 const attachments = await getAttachments(test._id);
                 setTestFiles(attachments);
-                setIsLoadingAttachments(false);
             }
+            setIsLoadingAttachments(false);
         }
         loadAttachments();
 
