@@ -21,7 +21,8 @@ function TestAttachments({ test }: TestAttachmentsProps) {
     const [testFiles, setTestFiles] = useState<{ _id: string; name: string; size: number }[]>([]);
     const [filesToUpload, setFilesToUpload] = useState<File | FileList | null>(null);
     const [isLoadingAttachments, setIsLoadingAttachments] = useState(true);
-    const [isRemovingFile, setIsRemovingFile] = useState(false);
+    const [deletingFileIds, setDeletingFileIds] = useState<string[]>([]);
+    const isRemovingFile = (fileId: string) => deletingFileIds.includes(fileId);
     const { addAlert } = useContext(AlertContext)
     useEffect(() => {
         async function loadAttachments() {
@@ -42,17 +43,18 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
     const removeFile = async ({ testId, fileId }: { testId: string; fileId: string }) => {
         try {
-            setIsRemovingFile(true);
+            setDeletingFileIds([...deletingFileIds, fileId]);
             await api.delete(`/tests/files/${testId}/${fileId}`);
             const newTestFiles = await getAttachments(testId);
-            setIsRemovingFile(false);
             setTestFiles(newTestFiles);
+            setDeletingFileIds(deletingFileIds.filter((id) => id !== fileId));
         } catch (error) {
             console.log(error);
-            setIsRemovingFile(false);
+            setDeletingFileIds(deletingFileIds.filter((id) => id !== fileId));
             addAlert({ message: error, type: "error" });
         }
     };
+
 
     const usedFileSize = testFiles?.length > 0 ? testFiles.reduce((acc, file) => acc + file.size, 0) : 0;
     const totalFileSize =
@@ -117,13 +119,12 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                                     {file.name}
                                 </span>
                                 <span className="file-size">{humanFileSize(file.size)}</span>
-                                {isRemovingFile ? (
+                                {isRemovingFile(file._id) ? (
                                     <span className="loading" />
                                 ) : (
                                     <CloseIcon
                                         className="file-close-icon"
-                                        aria-disabled={isRemovingFile}
-                                        onClick={() => removeFile({ testId: test._id, fileId: file._id })}
+                                        aria-disabled={isRemovingFile(file._id)} onClick={() => removeFile({ testId: test._id, fileId: file._id })}
                                     />
                                 )}
                             </li>
