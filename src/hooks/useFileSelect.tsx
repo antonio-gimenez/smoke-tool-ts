@@ -2,15 +2,6 @@ import { useCallback, useContext, useState } from "react";
 import { AlertContext } from "../contexts/AlertContext";
 import { createFileList, humanFileSize } from "../utils/file";
 
-type UseFileSelectProps = {
-    multiple?: boolean;
-    initialFiles?: File | FileList | null;
-    onSelectFiles?: (files: File | FileList | null) => void;
-    maxSize?: number;
-    usedSize?: number;
-    maxFiles?: number;
-};
-
 type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
@@ -19,13 +10,20 @@ type FileHookReturnType = [
     (files: File | FileList | null) => void
 ];
 
+type UseFileSelectProps = {
+    multiple?: boolean;
+    initialFiles?: File | FileList | null;
+    onSelectFiles?: (files: File | FileList | null) => void;
+    maxSize?: number;
+    usedSize?: number;
+};
+
 const useFileSelect = ({
     multiple = false,
     initialFiles = null,
     onSelectFiles = () => { },
     maxSize = 10 * 1024 * 1024,
     usedSize = 0,
-    maxFiles = Infinity
 }: UseFileSelectProps = {}): FileHookReturnType => {
     const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
     const [invalidFiles, setInvalidFiles] = useState<File[]>([]);
@@ -49,6 +47,7 @@ const useFileSelect = ({
         [onSelectFiles]
     );
 
+
     const handleFileSelect = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             const files = event.target.files;
@@ -56,12 +55,14 @@ const useFileSelect = ({
                 let totalSize = usedSize;
                 let isSizeValid = true;
                 const newInvalidFiles: File[] = [];
-                if (files.length > maxFiles) {
-                    isSizeValid = false;
-                    newInvalidFiles.push(...Array.from(files).slice(maxFiles));
-                }
                 for (let i = 0; i < files.length; i++) {
                     if (files[i].size > maxSize) {
+                        addAlert({
+                            type: "error",
+                            message: `File ${files[i].name} is too large. Max file size is ${humanFileSize(
+                                maxSize
+                            )}.`,
+                        });
                         isSizeValid = false;
                         newInvalidFiles.push(files[i]);
                     } else {
@@ -72,16 +73,22 @@ const useFileSelect = ({
                     const newFiles = multiple
                         ? createFileList([
                             ...(selectedFiles instanceof FileList ? Array.from(selectedFiles) : []),
-                            ...Array.from(files)
+                            ...Array.from(files),
                         ])
                         : createFileList([files[0]]);
                     const newTotalSize = Array.from(newFiles).reduce((size, file) => size + file.size, usedSize);
                     if (newTotalSize > maxSize) {
-                        setInvalidFiles(Array.from(files));
+                        addAlert({
+                            type: "error",
+                            message: `Total file size exceeds the maximum size of ${humanFileSize(
+                                maxSize
+                            )}.`,
+                        });
+                        setInvalidFiles(newInvalidFiles as File[]);
                     } else {
                         setSelectedFiles(newFiles);
                         onSelectFiles(newFiles);
-                        setInvalidFiles([]);
+                        setInvalidFiles(newInvalidFiles);
                     }
                 } else {
                     setSelectedFiles(initialFiles);
@@ -94,17 +101,7 @@ const useFileSelect = ({
                 setInvalidFiles([]);
             }
         },
-        [
-            selectedFiles,
-            usedSize,
-            maxSize,
-            multiple,
-            maxFiles,
-            addAlert,
-            onSelectFiles,
-            initialFiles,
-            invalidFiles
-        ]
+        [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles, initialFiles]
     );
 
     return [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles];
