@@ -95,7 +95,7 @@ button {
 }
 
 .button-base {
-  --background-opacity: 1;
+  --background-opacity: 0;
   background: hsla(var(--color-base), var(--background-opacity));
   color: var(--base-content);
   outline: var(--outline-width) solid var(--base);
@@ -121,7 +121,7 @@ button {
 .button-ghost:focus,
 .button-ghost:active {
   --background-opacity: 0.2;
-  background: hsla(var(--color-base-contet), var(--background-opacity));
+  background: hsla(var(--color-base-content), 0.12);
 }
 
 .button-accent {

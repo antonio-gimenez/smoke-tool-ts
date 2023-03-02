@@ -62,11 +62,11 @@ const Drawer = ({
 
 
     const drawerTrigger = trigger ? (
-        <span onClick={() => setIsOpen(true)}>
+        <span onClick={() => setIsOpen(true)} aria-disabled={isOpen}>
             {trigger}
         </span>
     ) : (
-        <div onClick={() => setIsOpen(true)}>
+        <div onClick={() => setIsOpen(true)} aria-disabled={isOpen}>
             <span>Open</span>
         </div>
     );

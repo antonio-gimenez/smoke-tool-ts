@@ -29,8 +29,7 @@
 .drawer {
   position: absolute;
   height: auto;
-  min-width: 25vw;
-  max-width: 45vw;
+  min-width: clamp(300px, 50vw, 500px);
   max-height: 100vh;
   background-color: var(--base);
   color: var(--base-content);
