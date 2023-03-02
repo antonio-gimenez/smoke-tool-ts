@@ -37,9 +37,10 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
+    console.log(JSON.stringify(error));
     const { status } = error.response;
-    console.log(`Request failed with status code ${status}.`);
-    return Promise.reject({ message: returnMessageFromStatusCodes(status) });
+    return console.log(`Request failed with status code ${status}.`);
+    // return Promise.reject({ message: returnMessageFromStatusCodes(status) });
   }
 );
 

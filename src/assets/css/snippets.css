@@ -26,3 +26,8 @@
   border: var(--border-width, 1px) solid hsl(var(--base-content) / var(--border-opacity, 1));
   height: 100%;
 }
+
+.centered {
+  display: flex;
+  place-content: center;
+}

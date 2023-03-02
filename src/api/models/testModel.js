@@ -40,6 +40,11 @@ const testSchema = new Schema(
       required: true,
       default: "low",
     },
+    status: {
+      type: String,
+      required: true,
+      default: "pending",
+    },
   },
   {
     versionKey: false,

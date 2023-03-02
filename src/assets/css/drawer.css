@@ -28,9 +28,9 @@
 
 .drawer {
   position: absolute;
-  width: auto;
+  /* width: auto; */
   height: auto;
-  min-width: 20rem;
+  min-width: 30rem;
   max-width: 50vw;
   max-height: 100vh;
   background-color: var(--base);

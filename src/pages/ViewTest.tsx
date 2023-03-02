@@ -23,6 +23,7 @@ function ViewTest() {
             <p>Product: {test.product}</p>
             <p>Priority: {test.priority}</p>
             <p>Branch: {test.branch}</p>
+
             <TestAttachments test={test} />
           </div>
         ))}

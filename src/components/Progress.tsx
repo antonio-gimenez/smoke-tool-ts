@@ -1,26 +1,27 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
 
 interface ProgressProps {
     percentage: number;
     label?: string;
     color?: string;
+    isLoadingData?: boolean,
 }
 
 const Progress: FunctionComponent<ProgressProps> = ({
     percentage,
     label = '',
     color = 'var(--success)',
+    isLoadingData = false,
 }) => {
     const progressBarStyle = {
         width: `${percentage}%`,
-        backgroundColor: percentage >= 99.3 ? 'var(--error)' : color,
+        backgroundColor: percentage >= 90 ? 'var(--warning)' : color,
     };
 
     return (
-
-        <div className="progress">
-            <div className="progress-bar" style={progressBarStyle} />
-            {label && <span className="progress-label">{label}</span>}
+        <div className={`progress ${isLoadingData ? 'striped' : ''}`}>
+            <div className={`progress-bar ${isLoadingData ? 'striped' : ''}`} style={progressBarStyle} />
+            {label ? <span className={"progress-label"}>{isLoadingData ? 'Loading...' : label}</span> : null}
         </div>
     );
 };

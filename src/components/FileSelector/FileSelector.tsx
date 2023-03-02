@@ -16,6 +16,8 @@ interface FileSelectorProps {
     maxSize?: number;
     usedSize?: number;
     disabled?: boolean;
+    uploadFiles?: (files: File | FileList | null) => void;
+    loading?: boolean;
 }
 
 function FileSelector({
@@ -24,8 +26,10 @@ function FileSelector({
     maxSize = 10 * 1024 * 1024,
     usedSize = 0,
     disabled = false,
+    loading = false,
+    uploadFiles,
 }: FileSelectorProps) {
-    const [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles] = useFileSelect({
+    const [selectedFiles, handleFileSelect, removeFile, updateSelectedFiles, clearSelectedFiles] = useFileSelect({
         multiple: true,
         initialFiles: files,
         onSelectFiles,
@@ -46,49 +50,59 @@ function FileSelector({
         updateSelectedFiles(files || null)
     }, [files]);
 
-    const ShowFileList = ({ length, item }: FileListProps) => {
-        if (length === 0) {
-            return null;
-        }
-        return (
-            <ul className='file-list to-be-uploaded'>
-                {item &&
-                    Array.from({ length }, (_, index) => item(index)).map((file, index) => {
-                        const url = file ? URL.createObjectURL(file) : '';
-                        return (
-                            <li key={`file-${index}`} className='file'>
-                                <UploadIcon />
-                                <a
-                                    title={file.name}
-                                    href={url}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className='file-name'
-                                >
-                                    {file.name}
-                                </a>
-                                <span className='file-size'>{humanFileSize(file.size)}</span>
-                                <CloseIcon className='file-close-icon' key={`file-close-${index}`} onClick={() => removeFile(index)} />
-                            </li>
-                        );
-                    })}
-            </ul>
-        );
-    };
 
     const usedSizePlusCurrentSize = usedSize + currentSize;
     const percentage = (usedSizePlusCurrentSize / maxSize) * 100;
     const label = `${humanFileSize(usedSizePlusCurrentSize)}/${humanFileSize(maxSize)}`;
 
+
+    const ShowFileList = ({ length, item }: FileListProps) => {
+        if (length === 0) {
+            return null;
+        }
+        return (
+            <>
+                <h1 className='file-list-title'>Files to be uploaded</h1>
+                <ul className='file-list to-be-uploaded'>
+                    {item &&
+                        Array.from({ length }, (_, index) => item(index)).map((file, index) => {
+                            const url = file ? URL.createObjectURL(file) : '';
+                            return (
+                                <li key={`file-${index}`} className='file'>
+                                    <UploadIcon />
+                                    <a
+                                        title={file.name}
+                                        href={url}
+                                        target='_blank'
+                                        rel='noreferrer'
+                                        className='file-na  me'
+                                    >
+                                        {file.name}
+                                    </a>
+                                    <span className='file-size'>{humanFileSize(file.size)}</span>
+                                    <CloseIcon className='file-close-icon' key={`file-close-${index}`} onClick={() => removeFile(index)} />
+                                </li>
+                            );
+                        })}
+                </ul>
+            </>
+        );
+    };
+
     return (
         <div className='file-selector'>
-            <label htmlFor='fileInput' aria-disabled={!!disabled} className='button button-primary block'>
-                Add attachment
-            </label>
+            {uploadFiles && selectedFiles && (selectedFiles instanceof FileList ? selectedFiles.length : 1) > 0 ? <>
+                <span className={`button button-primary block ${loading && 'loading'}`} aria-disabled={disabled} onClick={() => uploadFiles(selectedFiles)}>Upload selected</span>
+                <span className='button button-secondary block' onClick={clearSelectedFiles}>
+                    Clear selected files
+                </span></> : <label htmlFor='fileInput'>
+
+                <span className='button button-secondary block'>Browse Files</span></label>}
             <input id='fileInput' className='form-control-hidden' type='file' multiple={true} onChange={handleFileSelect} />
-            <Progress percentage={percentage} label={label} />
+
+            {/* <Progress isLoadingData={true} percentage={50} label={label} /> */}
             <ShowFileList {...fileListProps} />
-        </div>
+        </div >
     );
 }
 

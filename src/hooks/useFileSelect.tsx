@@ -6,8 +6,8 @@ type FileHookReturnType = [
     File | FileList | null,
     (event: React.ChangeEvent<HTMLInputElement>) => void,
     (index: number) => void,
-    File[],
-    (files: File | FileList | null) => void
+    (files: File | FileList | null) => void,
+    (() => void)
 ];
 
 type UseFileSelectProps = {
@@ -16,6 +16,7 @@ type UseFileSelectProps = {
     onSelectFiles?: (files: File | FileList | null) => void;
     maxSize?: number;
     usedSize?: number;
+    maxSelectedFiles?: number;
 };
 
 const useFileSelect = ({
@@ -24,20 +25,26 @@ const useFileSelect = ({
     onSelectFiles = () => { },
     maxSize = 10 * 1024 * 1024,
     usedSize = 0,
+    maxSelectedFiles = 10, // This prevents the user selection of more than 10 files at once. Will reject all files if the user tries to select more than 10 files.
 }: UseFileSelectProps = {}): FileHookReturnType => {
     const [selectedFiles, setSelectedFiles] = useState<File | FileList | null>(initialFiles);
-    const [invalidFiles, setInvalidFiles] = useState<File[]>([]);
     const { addAlert } = useContext(AlertContext);
 
-    const removeFile = useCallback((index: number) => {
-        setSelectedFiles((prevFiles) => {
-            if (prevFiles instanceof FileList) {
-                const newFiles = Array.from(prevFiles).filter((_, i) => i !== index);
-                return newFiles.length > 0 ? createFileList(newFiles) : null;
+    const removeFile = useCallback(
+        (index: number) => {
+            setSelectedFiles((prevFiles) => {
+                if (prevFiles instanceof FileList) {
+                    const newFiles = Array.from(prevFiles).filter((_, i) => i !== index);
+                    return newFiles.length > 0 ? createFileList(newFiles) : null;
+                }
+                return null;
+            });
+            if (!selectedFiles) {
+                onSelectFiles(null);
             }
-            return null;
-        });
-    }, []);
+        },
+        [onSelectFiles, selectedFiles]
+    );
 
     const updateSelectedFiles = useCallback(
         (newFiles: File | FileList | null) => {
@@ -48,63 +55,71 @@ const useFileSelect = ({
     );
 
 
+    const clearSelectedFiles = useCallback(() => {
+        setSelectedFiles(null);
+        onSelectFiles(null);
+    }, [onSelectFiles]);
+
     const handleFileSelect = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             const files = event.target.files;
             if (files) {
-                let totalSize = usedSize;
-                let isSizeValid = true;
-                const newInvalidFiles: File[] = [];
-                for (let i = 0; i < files.length; i++) {
-                    if (files[i].size > maxSize) {
-                        addAlert({
-                            type: "error",
-                            message: `File ${files[i].name} is too large. Max file size is ${humanFileSize(
-                                maxSize
-                            )}.`,
-                        });
-                        isSizeValid = false;
-                        newInvalidFiles.push(files[i]);
-                    } else {
-                        totalSize += files[i].size;
+                const numSelectedFiles = selectedFiles && selectedFiles instanceof FileList ? selectedFiles.length : 0;
+                const filesToSelect = Array.from(files).slice(0, maxSelectedFiles - numSelectedFiles);
+                if (filesToSelect.length > 0) {
+                    let totalSize = usedSize;
+                    let isSizeValid = true;
+                    for (let i = 0; i < filesToSelect.length; i++) {
+                        if (filesToSelect[i].size > maxSize) {
+                            addAlert({
+                                type: "error",
+                                position: "top-center",
+                                message: `File ${filesToSelect[i].name} is too large. Max file size is ${humanFileSize(maxSize)}.`,
+                            });
+                            isSizeValid = false;
+                        } else {
+                            totalSize += filesToSelect[i].size;
+                        }
                     }
-                }
-                if (isSizeValid) {
-                    const newFiles = multiple
-                        ? createFileList([
-                            ...(selectedFiles instanceof FileList ? Array.from(selectedFiles) : []),
-                            ...Array.from(files),
-                        ])
-                        : createFileList([files[0]]);
-                    const newTotalSize = Array.from(newFiles).reduce((size, file) => size + file.size, usedSize);
-                    if (newTotalSize > maxSize) {
-                        addAlert({
-                            type: "error",
-                            message: `Total file size exceeds the maximum size of ${humanFileSize(
-                                maxSize
-                            )}.`,
-                        });
-                        setInvalidFiles(newInvalidFiles as File[]);
+                    if (isSizeValid) {
+                        const newFiles = multiple
+                            ? createFileList([
+                                ...(selectedFiles instanceof FileList ? Array.from(selectedFiles) : []),
+                                ...filesToSelect,
+                            ])
+                            : createFileList([filesToSelect[0]]);
+                        const newTotalSize = Array.from(newFiles).reduce((size, file) => size + file.size, usedSize);
+                        if (newTotalSize > maxSize) {
+                            addAlert({
+                                type: "error",
+                                position: "top-center",
+                                message: `Total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
+                            });
+                        } else {
+                            setSelectedFiles(newFiles);
+                            onSelectFiles(newFiles);
+                        }
                     } else {
-                        setSelectedFiles(newFiles);
-                        onSelectFiles(newFiles);
-                        setInvalidFiles(newInvalidFiles);
+                        setSelectedFiles(initialFiles);
+                        onSelectFiles(initialFiles);
                     }
                 } else {
-                    setSelectedFiles(initialFiles);
-                    onSelectFiles(initialFiles);
-                    setInvalidFiles(newInvalidFiles);
+                    addAlert({
+                        type: "error",
+                        position: "top-center",
+                        message: `Cannot select more than ${maxSelectedFiles} files.`,
+                    });
                 }
             } else {
                 setSelectedFiles(null);
                 onSelectFiles(null);
-                setInvalidFiles([]);
             }
         },
-        [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles, initialFiles]
+        [selectedFiles, usedSize, maxSize, multiple, addAlert, onSelectFiles, initialFiles, maxSelectedFiles]
     );
 
-    return [selectedFiles, handleFileSelect, removeFile, invalidFiles, updateSelectedFiles];
+    return [selectedFiles, handleFileSelect, removeFile, updateSelectedFiles, clearSelectedFiles];
 };
+
 
 export default useFileSelect;

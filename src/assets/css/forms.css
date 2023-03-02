@@ -47,6 +47,7 @@
 
 /* hide form control */
 .form-control-hidden {
+  display: none;
   width: 0;
   height: 0;
   padding: 0;
