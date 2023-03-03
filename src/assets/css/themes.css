@@ -12,7 +12,7 @@
   --color-neutral: 221, 5%, 39%;
   --color-info: 199, 98%, 48%;
   --color-success: 129, 81%, 34%;
-  --color-warning: 16, 82%, 52%;
+  --color-warning: 40, 70%, 62%;
   --color-error: 0, 80%, 50%;
 
   --base: hsl(var(--color-base));

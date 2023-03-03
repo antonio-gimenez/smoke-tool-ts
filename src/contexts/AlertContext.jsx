@@ -30,25 +30,28 @@ export function AlertProvider({ children }) {
 
   return (
     <AlertContext.Provider value={{ alerts, addAlert, removeAlert, isAlertVisible }}>
+      {/* some alerts */}
+      {alerts && alerts.length > 0 && (
+        <div className={`alert-overlay`}>
+          {Object.entries(groupedAlerts).map(([position, alerts]) => (
+            <div key={`stack-alerts-on-${position}`} className={`position-${position}`}>
+              {alerts.map((alert) => (
+                <Alert
+                  position={position}
+                  key={alert.id}
+                  id={alert.id}
+                  title={alert.title}
+                  type={alert.type}
+                  duration={alert.duration}
+                >
+                  {alert.message}
+                </Alert>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
       {children}
-      <div className={`alert-wrapper`}>
-        {Object.entries(groupedAlerts).map(([position, alerts]) => (
-          <div key={`stack-alerts-on-${position}`} className={`position-${position}`}>
-            {alerts.map((alert) => (
-              <Alert
-                position={position}
-                key={alert.id}
-                id={alert.id}
-                title={alert.title}
-                type={alert.type}
-                duration={alert.duration}
-              >
-                {alert.message}
-              </Alert>
-            ))}
-          </div>
-        ))}
-      </div>
     </AlertContext.Provider>
   );
 }

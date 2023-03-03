@@ -66,7 +66,7 @@ const Modal = ({
   ) : null;
 
   const modalWindow = (
-    <div className="backdrop">
+    <div className="modal-overlay">
       <div className="modal" ref={modalRef} id={id}>
         {modalHeader}
         <div className="modal-content">{children}</div>

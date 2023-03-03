@@ -64,15 +64,18 @@
   display: flex;
   align-items: center;
   padding: var(--space-1);
+  gap: var(--space-3);
   justify-content: space-between;
 }
 
 .file-name {
   cursor: pointer;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  /* flex auto */
+  flex: 1;
   color: var(--primary);
   text-decoration: underline;
-  max-width: 30ch;
+  max-width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -83,16 +86,19 @@
 }
 
 .file-icon {
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
   height: 18px;
   width: 18px;
+  flex: none;
+
   color: var(--base-content);
 }
 
 .file-close-icon {
   height: 20px;
   width: 20px;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
+  flex: none;
   color: var(--base-content);
   cursor: pointer;
 }

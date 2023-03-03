@@ -104,7 +104,7 @@ function FileSelector({
                     <span className='button button-primary block'>Browse More Files</span></label>
                 <button className='button button-secondary block' onClick={clearSelectedFiles}>
                     Clear selected files
-                </button></div> : <label htmlFor='fileInput'>
+                </button></div> : <label aria-disabled={disabled || loading} htmlFor='fileInput'>
 
                 <span className='button button-secondary block'>Browse Files</span></label>}
 

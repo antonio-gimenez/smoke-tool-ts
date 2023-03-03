@@ -1,5 +1,38 @@
 import api from "../services/use-axios";
 
+export function compressImage(file: File, quality: number): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event: any) => {
+      const img = new Image();
+      img.src = event.target.result;
+      img.onload = () => {
+        const elem = document.createElement("canvas");
+        elem.width = img.width;
+        elem.height = img.height;
+        const ctx = elem.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(img, 0, 0);
+          ctx.canvas.toBlob(
+            (blob: Blob | null) => {
+              if (!blob) return;
+              const newFile = new File([blob], file.name, {
+                type: file.type,
+                lastModified: Date.now(),
+              });
+              resolve(newFile);
+            },
+            file.type,
+            quality
+          );
+        }
+      };
+      img.onerror = (error) => reject(error);
+    };
+  });
+}
+
 export function humanFileSize(bytes: number, decimalPlaces = 2): string {
   if (!bytes) return "0 B";
   const threshold = 1024;

@@ -32,7 +32,7 @@ const Header = () => {
             Test Cases
           </a>
           <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal header={"New Test"} closeOnOverlayClick={false} closeOnEscape={false} id="create-test">
+          <Modal header={"New Test"} closeOnEscape={false} id="create-test">
             <NewTestForm modalId="create-test" />
           </Modal>
         </nav>

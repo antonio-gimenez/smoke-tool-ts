@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
-import { ReactComponent as FileIcon } from "../../assets/icons/file.svg";
+// import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
+import { ReactComponent as CloseIcon } from "../../assets/icons/trash.svg";
 import Drawer from "../Drawer/Drawer";
 import FileSelector from "../FileSelector/FileSelector";
 import { downloadFile, getAttachments, humanFileSize } from "../../utils/file";
@@ -92,18 +92,17 @@ function TestAttachments({ test }: TestAttachmentsProps) {
     return (
         <>
             <Drawer
+                position="left"
                 trigger={
                     <button className={`button button-primary ${isLoadingAttachments ? "loading" : ''} `}> {isLoadingAttachments ? "Loading" : "View"} Attachments</button>
                 }
                 title="Manage Attachments"
             >
-
                 <>
                     <FileSelector
-
-
                         loading={isLoadingAttachments || isRemovingFile}
                         disabled={isLoadingAttachments}
+                        // disabled={true}
                         files={filesToUpload}
                         onSelectFiles={onSelectFiles}
                         uploadFiles={uploadFilesToTest}
@@ -114,11 +113,11 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
                     <ul className="file-list">
                         <h1>Test Attachments</h1>
+                        {testFiles && testFiles.length ? <span className="muted">Size of all attachments: {humanFileSize(usedFileSize)}</span> : null}
                         {testFiles && testFiles.length > 0 && !isLoadingAttachments ? (
 
                             testFiles.map((file) => (
                                 <li key={file._id} className="file">
-                                    <FileIcon />
                                     <span
                                         className="file-name"
                                         title={file.name}
@@ -145,7 +144,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                                 </button>
                             </div>
                         ) : (
-                            test.files?.length === 0 && <p>{testFiles?.length} No attachments</p>
+                            test.files?.length === 0 && <p>No attachments</p>
                         )}
                     </ul>
                 </>

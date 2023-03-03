@@ -3,9 +3,10 @@ import { useCallback, useEffect } from "react";
 interface onClickOutsideProps {
   ref: React.RefObject<HTMLElement>;
   handler: (event: MouseEvent | TouchEvent) => void;
+  exclude?: string[];
 }
 
-function useOnClickOutside({ ref, handler }: onClickOutsideProps) {
+function useOnClickOutside({ ref, handler, exclude = ['alert'] }: onClickOutsideProps) {
   const clickOutsideListener = useCallback(
     // useCallback is used to prevent the handler from being recreated on every render.
     (event: MouseEvent | TouchEvent
@@ -14,10 +15,20 @@ function useOnClickOutside({ ref, handler }: onClickOutsideProps) {
         // If the ref is not set or the ref contains the target, do nothing.
         return;
       }
+
+      // If the target contains the exclude class, do nothing.
+      let targetElement = event.target as HTMLElement | null;
+      while (targetElement != null) {
+        if (exclude.some(className => targetElement?.classList.contains(className))) {
+          return;
+        }
+        targetElement = targetElement.parentElement;
+      }
+
       // Otherwise, call the handler.
       handler(event);
     },
-    [ref, handler]
+    [ref, handler, exclude]
   );
 
 

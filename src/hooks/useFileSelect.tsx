@@ -73,7 +73,7 @@ const useFileSelect = ({
                         if (filesToSelect[i].size > maxSize) {
                             addAlert({
                                 type: "error",
-                                position: "top-center",
+                                position: "top-right",
                                 message: `File ${filesToSelect[i].name} is too large. Max file size is ${humanFileSize(maxSize)}.`,
                             });
                             isSizeValid = false;
@@ -92,8 +92,11 @@ const useFileSelect = ({
                         if (newTotalSize > maxSize) {
                             addAlert({
                                 type: "error",
-                                position: "top-center",
-                                message: `Total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
+                                title: "Total file size exceeds the maximum size",
+                                duration: 0,
+                                position: "top-right",
+                                message: `Due to the size of the files you selected, the total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
+                                // message: `Total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
                             });
                         } else {
                             setSelectedFiles(newFiles);
@@ -105,9 +108,11 @@ const useFileSelect = ({
                     }
                 } else {
                     addAlert({
-                        type: "error",
-                        position: "top-center",
-                        message: `Cannot select more than ${maxSelectedFiles} files.`,
+                        type: "warning",
+                        title: "Too many files selected",
+                        position: "top-right",
+                        duration: 0,
+                        message: `Cannot select more than ${maxSelectedFiles} files at once.\nIf you want to select more, please do so in batches of ${maxSelectedFiles} or less.`,
                     });
                 }
             } else {
