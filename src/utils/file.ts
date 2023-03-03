@@ -1,5 +1,17 @@
 import api from "../services/use-axios";
 
+export function humanReadeableDate(date: Date): string {
+  const options = {
+    minute: "numeric",
+    hour: "2-digit",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+
+    hour12: false,
+  };
+  return new Date(date).toLocaleDateString("en-US", options as Object);
+}
 export function compressImage(file: File, quality: number): Promise<File> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

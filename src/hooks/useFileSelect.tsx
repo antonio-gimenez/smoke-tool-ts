@@ -74,7 +74,9 @@ const useFileSelect = ({
                             addAlert({
                                 type: "error",
                                 position: "top-center",
-                                message: `File ${filesToSelect[i].name} is too large. Max file size is ${humanFileSize(maxSize)}.`,
+                                message: <span>
+                                    File <strong>{filesToSelect[i].name}</strong> is too large. Max file size is {humanFileSize(maxSize)}
+                                </span>
                             });
                             isSizeValid = false;
                         } else {

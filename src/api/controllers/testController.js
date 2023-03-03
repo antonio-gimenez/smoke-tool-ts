@@ -104,8 +104,13 @@ const getFiles = async (req, res) => {
     if (files.length === 0) {
       return res.status(204).send({ message: "No files found" });
     }
+    // sort files by uploadedAt
 
-    res.status(200).send({ data: files });
+    const sortedFiles = files.sort((a, b) => {
+      return new Date(a.uploadedAt) - new Date(b.uploadedAt);
+    });
+
+    return res.status(200).send({ data: sortedFiles });
   } catch (error) {
     console.log(error);
   }

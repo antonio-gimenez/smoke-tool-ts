@@ -3,14 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { ReactComponent as CloseIcon } from "../../assets/icons/trash.svg";
 import Drawer from "../Drawer/Drawer";
 import FileSelector from "../FileSelector/FileSelector";
-import { downloadFile, getAttachments, humanFileSize } from "../../utils/file";
+import { downloadFile, getAttachments, humanFileSize, humanReadeableDate } from "../../utils/file";
 import { AlertContext } from "../../contexts/AlertContext";
 import api from "../../services/use-axios";
 
 type TestAttachmentsProps = {
     test: {
         _id: string;
-        files: { _id: string; name: string; size: number }[];
+        files: { _id: string; name: string; size: number, uploadedAt: Date }[];
     };
 };
 
@@ -18,7 +18,9 @@ type TestAttachmentsProps = {
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
 function TestAttachments({ test }: TestAttachmentsProps) {
-    const [testFiles, setTestFiles] = useState<{ _id: string; name: string; size: number }[]>([]);
+    const [testFiles, setTestFiles] = useState<{
+        uploadedAt: Date; _id: string; name: string; size: number
+    }[]>([]);
     const [filesToUpload, setFilesToUpload] = useState<File | FileList | null>(null);
     const [isLoadingAttachments, setIsLoadingAttachments] = useState(true);
     const [isRemovingFile, setIsRemovingFile] = useState(false);
@@ -86,7 +88,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
     };
 
     const onSelectFiles = (files: File | FileList | null) => {
-        setFilesToUpload(files as FileList);
+        setFilesToUpload(files);
     };
 
     return (
@@ -115,9 +117,11 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                         <h1>Test Attachments</h1>
                         {testFiles && testFiles.length ? <span className="muted">Size of all attachments: {humanFileSize(usedFileSize)}</span> : null}
                         {testFiles && testFiles.length > 0 && !isLoadingAttachments ? (
-
                             testFiles.map((file) => (
                                 <li key={file._id} className="file">
+                                    <span className="">{humanReadeableDate(
+                                        file.uploadedAt
+                                    )}</span>
                                     <span
                                         className="file-name"
                                         title={file.name}
