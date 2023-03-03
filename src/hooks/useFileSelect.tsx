@@ -73,7 +73,7 @@ const useFileSelect = ({
                         if (filesToSelect[i].size > maxSize) {
                             addAlert({
                                 type: "error",
-                                position: "top-right",
+                                position: "top-center",
                                 message: `File ${filesToSelect[i].name} is too large. Max file size is ${humanFileSize(maxSize)}.`,
                             });
                             isSizeValid = false;
@@ -92,11 +92,9 @@ const useFileSelect = ({
                         if (newTotalSize > maxSize) {
                             addAlert({
                                 type: "error",
-                                title: "Total file size exceeds the maximum size",
-                                duration: 0,
-                                position: "top-right",
+                                title: "Total file size exceeds maximum size allowed",
+                                position: "top-center",
                                 message: `Due to the size of the files you selected, the total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
-                                // message: `Total file size exceeds the maximum size of ${humanFileSize(maxSize)}.`,
                             });
                         } else {
                             setSelectedFiles(newFiles);
@@ -110,8 +108,7 @@ const useFileSelect = ({
                     addAlert({
                         type: "warning",
                         title: "Too many files selected",
-                        position: "top-right",
-                        duration: 0,
+                        position: "top-center",
                         message: `Cannot select more than ${maxSelectedFiles} files at once.\nIf you want to select more, please do so in batches of ${maxSelectedFiles} or less.`,
                     });
                 }

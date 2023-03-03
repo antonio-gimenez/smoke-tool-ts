@@ -92,7 +92,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
     return (
         <>
             <Drawer
-                position="left"
+                position="right"
                 trigger={
                     <button className={`button button-primary ${isLoadingAttachments ? "loading" : ''} `}> {isLoadingAttachments ? "Loading" : "View"} Attachments</button>
                 }
