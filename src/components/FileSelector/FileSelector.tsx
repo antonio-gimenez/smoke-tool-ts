@@ -98,8 +98,8 @@ function FileSelector({
 
     return (
         <div className='file-selector'>
-            {uploadFiles && selectedFiles && (selectedFiles instanceof FileList ? selectedFiles.length : 1) > 0 ? <div className='file-actions'>
-                <button className={`button button-success block ${loading && 'loading'}`} aria-disabled={disabled} onClick={() => uploadFiles(selectedFiles)}>Upload selected</button>
+            {selectedFiles && (selectedFiles instanceof FileList ? selectedFiles.length : 1) > 0 ? <div className='file-actions'>
+                {uploadFiles && <button className={`button button-success block ${loading && 'loading'}`} aria-disabled={disabled} onClick={() => uploadFiles(selectedFiles)}>Upload selected</button>}
                 <label htmlFor='fileInput'>
                     <span className='button button-primary block'>Browse More Files</span></label>
                 <button className='button button-secondary block' onClick={clearSelectedFiles}>

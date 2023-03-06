@@ -10,8 +10,8 @@
   overflow: auto;
   position: absolute;
   z-index: 1;
-  background: var(--base-deep);
-  color: var(--base-content);
+  background: var(--color-surface-light);
+  color: var(--color-surface-content);
   border-radius: var(--border-radius-default);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;

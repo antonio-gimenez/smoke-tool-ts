@@ -1,30 +1,3 @@
-:root {
-  --modal-backdrop-opacity: 0.4;
-  --modal-backdrop-color: var(--color-dark);
-  --modal-backdrop-blur: 1px;
-  --modal-background-color: var(--base);
-  --modal-border-radius: var(--border-radius-large);
-  --modal-width: 20rem;
-  --modal-max-width: 95vw;
-  --modal-max-height: 95vh;
-
-  --modal-header-background-color: var(--base);
-  --modal-header-color: var(--base-content);
-  --modal-header-border-bottom: 1px solid var(--base-mid);
-  --modal-header-padding: 1rem;
-  --modal-header-border-bottom-color: hsl(var(--color-base-content), 0.07);
-
-  --modal-body-background-color: var(--base);
-  --modal-body-color: var(--base-content);
-  --modal-body-padding: 1rem;
-
-  --modal-footer-background-color: var(--base);
-  --modal-footer-color: var(--base-content);
-  --modal-footer-border-top: 1px solid var(--base-mid);
-  --modal-footer-padding: 1rem;
-  --modal-footer-border-top-color: hsl(var(--color-base-content), 0.07);
-}
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -32,8 +5,7 @@
   /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
   width: 100vw;
   height: 100vh;
-  background: hsla(var(--color-dark), 0.4);
-  /* how to add opacity to the background only */
+  background-color: var(--color-backdrop);
   scroll-padding-top: var(--header-height);
   backdrop-filter: blur(1px);
   z-index: 1;
@@ -49,16 +21,13 @@
   min-width: 20rem;
   max-width: 95vw;
   max-height: 95vh;
-  background-color: var(--base);
-  color: var(--base-content);
+  background-color: var(--color-surface-light);
+  color: var(--color-surface-content);
   border-radius: var(--border-radius-large);
   z-index: 2;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  border: 1px solid hsl(var(--color-base-content), 0.15);
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .modal-header {
@@ -68,11 +37,12 @@
   top: 0;
   left: 0;
   padding: var(--space-3);
-  border-bottom: 1px solid hsl(var(--color-base-content), 0.15);
+  /* border-bottom: 1px solid hsl(var(--color-base-content), 0.15); */
   display: flex;
-  font-weight: var(--fw-semibold, 500);
-  font-size: var(--fs-medium);
-  background-color: hsl(var(--color-base-mid), 1);
+  font-weight: var(--font-weight-semibold, 500);
+  font-size: var(--font-size-medium);
+  background: inherit;
+  /* background-color: hsl(var(--color-base-mid), 1); */
   justify-content: space-between;
   align-items: center;
   height: 4rem;
@@ -95,7 +65,7 @@
   position: sticky;
   bottom: 0;
   background-color: var(--base-mid);
-  border-top: 1px solid hsl(var(--color-base-content), 0.15);
+  /* border-top: 1px solid hsl(var(--color-base-content), 0.15); */
   padding: var(--space-3);
   display: flex;
   align-items: center;

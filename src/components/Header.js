@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import useScrollState from "../hooks/useScrollState";
 import { upperCaseFirstLetter } from "../utils/utils";
 import NewTestForm from "./NewTestForm";
@@ -20,9 +21,9 @@ const Header = () => {
     <header className={`header ${isBodyScrolled ? "glass" : ""}`}>
       <div className="navbar container">
         <nav aria-label="Main navigation">
-          <span className="navbar-branding">
-            <span>{process.env.REACT_APP_APP_NAME}</span>
-          </span>
+          <NavLink className={"navbar-branding"} to={"/"} end>
+            {process.env.REACT_APP_APP_NAME}
+          </NavLink>
         </nav>
         <nav className="nav-links" aria-label="Links">
           <a className="link" href="/tests/">

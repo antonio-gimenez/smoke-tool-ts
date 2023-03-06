@@ -5,12 +5,16 @@ a.link,
 }
 
 .title {
-  font-size: var(--fs-large);
-  font-weight: var(--fw-semibold, 500);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-semibold, 500);
   margin-block: var(--space-1);
 }
 
 .muted {
-  font-size: var(--fs-regular);
+  font-size: var(--font-size-regular);
   color: hsl(var(--color-base-content), 0.5);
+}
+
+.text-primary {
+  color: var(--primary);
 }

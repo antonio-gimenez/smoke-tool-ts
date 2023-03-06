@@ -5,7 +5,7 @@ button {
   cursor: pointer;
   margin: 0;
   padding: 0;
-  font-weight: var(--fw-regular);
+  font-weight: var(--font-weight-regular);
   transition: background 0.1s ease 0s, color 0.1s ease 0s, box-shadow 0.1s ease 0s;
   pointer-events: auto;
 }
@@ -16,8 +16,8 @@ button {
   --padding-x: var(--space-2, 0.25rem);
   --padding-y: var(--space-2, 0.25rem);
   position: relative;
-  font-size: var(--fs-regular);
-  font-weight: var(--fw-medium);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-medium);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +31,7 @@ button {
   width: fit-content;
   border-radius: var(--border-radius-small);
   cursor: pointer;
+  gap: 0.25rem;
   border: 2px solid transparent;
   user-select: none;
 }
@@ -79,7 +80,7 @@ button {
 }
 
 .button:active {
-  animation: button-pop 0.9s;
+  animation: button-pop 2s;
 }
 
 @keyframes button-pop {
@@ -96,103 +97,103 @@ button {
 
 .button-base {
   --background-opacity: 0;
-  background: hsla(var(--color-base), var(--background-opacity));
-  color: var(--base-content);
-  outline: var(--outline-width) solid var(--base);
+  /* background: hsla(var(--color-surface-light), var(--background-opacity)); */
+  background: var(--color-surface-medium);
+  color: var(--color-surface-content);
+  outline: var(--outline-width) solid var(--color-surface-content);
 }
 
 .button-base:hover {
-  --background-opacity: 0.2;
-  background: hsla(var(--color-base), var(--background-opacity));
+  /* --background-opacity: 0.2; */
+  /* background: hsla(var(--color-base), var(--background-opacity)); */
+  background: var(--color-surface-dark);
 }
 
 .button[disabled="true"],
 .button[aria-disabled="true"],
-.button:disabled,
-*[aria-disabled="true"],
-*[disabled="true"] {
+.button:disabled {
   pointer-events: none;
   cursor: not-allowed;
-  opacity: 0.5;
-  /* background-color: hsl(var(--color-dark), 0.5); */
+  /* opacity: 0.5; */
+  background-color: var(--color-disabled);
+  color: var(--color-disabled-content);
 }
 
 .button-ghost:hover,
 .button-ghost:focus,
 .button-ghost:active {
-  --background-opacity: 0.2;
-  background: hsla(var(--color-base-content), 0.12);
+  background: var(--color-surface-medium);
 }
 
 .button-accent {
-  background: var(--accent);
-  color: var(--accent-content);
+  background: var(--color-accent-medium);
+  color: var(--color-accent-content);
 }
 
 .button-neutral {
-  background: var(--neutral);
-  color: var(--neutral-content);
+  background: var(--color-neutral-medium);
+  color: var(--color-neutral-content);
 }
 
 .button-primary {
-  background: var(--primary);
-  color: var(--primary-content);
+  background: var(--color-primary-medium);
+  color: var(--color-primary-content);
 }
 
 .button-secondary {
-  background: var(--secondary);
-  color: var(--secondary-content);
+  background: var(--color-secondary-medium);
+  color: var(--color-secondary-content);
 }
 
 .button-success {
-  background: var(--success);
-  color: var(--success-content);
+  background: var(--color-success-medium);
+  color: var(--color-success-content);
 }
 
 .button-warning {
-  background: var(--warning);
-  color: var(--warning-content);
+  background: var(--color-warning-medium);
+  color: var(--color-warning-content);
 }
 
 .button-error {
-  background: var(--error);
-  color: var(--error-content);
+  background: var(--color-error-medium);
+  color: var(--color-error-content);
 }
 
 .button-info {
-  background: var(--info);
-  color: var(--info-content);
+  background: var(--color-info-medium);
+  color: var(--color-info-content);
 }
 
 .button-neutral:hover {
-  background: hsla(var(--color-neutral), 0.9);
+  background: var(--color-neutral-dark);
 }
 
 .button-accent:hover {
-  background: hsla(var(--color-accent), 0.9);
+  background: var(--color-accent-dark);
 }
 
 .button-primary:hover {
-  background: hsla(var(--color-primary), 0.9);
+  background: var(--color-primary-dark);
 }
 .button-secondary:hover {
-  background: hsla(var(--color-secondary), 0.9);
+  background: var(--color-secondary-dark);
 }
 
 .button-success:hover {
-  background: hsla(var(--color-success), 0.9);
+  background: var(--color-success-dark);
 }
 
 .button-warning:hover {
-  background: hsla(var(--color-warning), 0.9);
+  background: var(--color-warning-dark);
 }
 
 .button-error:hover {
-  background: hsla(var(--color-error), 0.9);
+  background: var(--color-error-dark);
 }
 
 .button-info:hover {
-  background: hsla(var(--color-info), 0.9);
+  background: var(--color-info-dark);
 }
 
 .block {

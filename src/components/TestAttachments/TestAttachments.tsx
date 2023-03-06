@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-// import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
-import { ReactComponent as CloseIcon } from "../../assets/icons/trash.svg";
+import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
 import Drawer from "../Drawer/Drawer";
 import FileSelector from "../FileSelector/FileSelector";
 import { downloadFile, getAttachments, humanFileSize, humanReadeableDate } from "../../utils/file";
@@ -28,6 +27,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
     useEffect(() => {
         async function loadAttachments() {
+            setIsLoadingAttachments(true);
             if (test.files?.length > 0) {
                 const attachments = await getAttachments(test._id);
                 setTestFiles(attachments);
@@ -35,7 +35,6 @@ function TestAttachments({ test }: TestAttachmentsProps) {
             setIsLoadingAttachments(false);
         }
         loadAttachments();
-
         return () => {
             setTestFiles([]);
             setIsLoadingAttachments(false);
@@ -95,8 +94,9 @@ function TestAttachments({ test }: TestAttachmentsProps) {
         <>
             <Drawer
                 position="right"
+                disableTrigger={isLoadingAttachments}
                 trigger={
-                    <button className={`button button-primary ${isLoadingAttachments ? "loading" : ''} `}> {isLoadingAttachments ? "Loading" : "View"} Attachments</button>
+                    <button className={`button button-primary ${isLoadingAttachments ? "loading" : ''} `}> {isLoadingAttachments ? "Loading" : "View Attachments"}</button>
                 }
                 title="Manage Attachments"
             >
@@ -104,7 +104,6 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                     <FileSelector
                         loading={isLoadingAttachments || isRemovingFile}
                         disabled={isLoadingAttachments}
-                        // disabled={true}
                         files={filesToUpload}
                         onSelectFiles={onSelectFiles}
                         uploadFiles={uploadFilesToTest}
@@ -115,6 +114,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
                     <ul className="file-list">
                         <h1>Test Attachments</h1>
+                        {JSON.stringify(isLoadingAttachments)}
                         {testFiles && testFiles.length ? <span className="muted">Size of all attachments: {humanFileSize(usedFileSize)}</span> : null}
                         {testFiles && testFiles.length > 0 && !isLoadingAttachments ? (
                             testFiles.map((file) => (
@@ -133,7 +133,7 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                                     {isRemovingFile ? (
                                         <span className="loading" />
                                     ) : (
-                                        <CloseIcon
+                                        <TrashIcon
                                             className="file-close-icon"
                                             aria-disabled={isRemovingFile}
                                             onClick={() => removeFile({ testId: test._id, fileId: file._id })}
@@ -142,11 +142,9 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                                 </li>
                             ))
                         ) : isLoadingAttachments ? (
-                            <div>
-                                <button className="button loading" disabled>
-                                    Loading attachments
-                                </button>
-                            </div>
+                            <button className="button loading" disabled>
+                                Loading attachments
+                            </button>
                         ) : (
                             test.files?.length === 0 && <p>No attachments</p>
                         )}

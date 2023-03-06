@@ -1,15 +1,16 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../contexts/AlertContext";
 import api from "../../services/use-axios";
-import { getAttachments, getFileSize } from "../../utils/file";
 import { generateReportWithAttachments } from "../../utils/mail";
-import TestAttachments from "../TestAttachments/TestAttachments";
 const Table = ({ items, fetch }) => {
   const { addAlert } = useContext(AlertContext);
   const [isGeneratingReport, setIsGeneratingReport] = useState(false);
-  const navigate = (id) => {
-    window.location.href = `/view/${id}`;
-  };
+  const navigate = useNavigate();
+
+  // const navigate = (id) => {
+  //   window.location.href = `/view/${id}`;
+  // };
 
   const removeTest = async (id) => {
     try {
@@ -59,7 +60,7 @@ const Table = ({ items, fetch }) => {
         <tbody>
           {items?.map((test, testIndex) => (
             <tr key={test._id + testIndex} className="table-row">
-              <td className="table-cell" onClick={() => navigate(test._id)}>
+              <td className="table-cell" onClick={() => navigate(`/view/${test._id}`)}>
                 {test.name}
               </td>
               <td className="table-cell">{test.dueDate}</td>

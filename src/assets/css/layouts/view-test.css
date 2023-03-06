@@ -1,0 +1,58 @@
+.view-test-layout {
+  display: grid;
+  /* the first col is 65% and the second the rest */
+  margin-block: var(--space-4);
+  gap: var(--space-2);
+  grid-template-columns: 70% 1fr;
+}
+
+.view-test-section {
+  height: 100%;
+  padding: var(--space-6);
+  border-radius: var(--border-radius-large);
+}
+
+.view-test-section.test-summary {
+  position: sticky;
+  top: calc(var(--header-height) * 1.05);
+  right: 0;
+  background-color: var(--color-surface-medium);
+  height: fit-content;
+}
+
+.view-test-navigation {
+  /* some rules */
+}
+
+.view-test-section.test-steps {
+  border: 1px solid var(--color-backdrop);
+  min-height: 2040px;
+}
+
+.view-test-section-title {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-semibold, 500);
+  margin-block: var(--space-6);
+  color: var(--color-primary-dark);
+}
+
+.view-test-summary-section-name {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-regular);
+  margin-block: var(--space-4);
+}
+
+.view-test-summary-last-edit {
+  margin-block: var(--space-2);
+  background-color: var(--color-surface-light);
+  border-radius: var(--border-radius-default);
+  padding: var(--space-4);
+}
+
+.view-test-step {
+  margin-block: var(--space-2);
+  background-color: var(--color-surface-light);
+  border-radius: var(--border-radius-large);
+  padding: var(--space-2);
+}

@@ -17,7 +17,7 @@
   background-color: var(--base);
   color: var(--base-content);
   border-radius: var(--border-radius-small);
-  font-size: var(--fs-regular);
+  font-size: var(--font-size-regular);
 }
 
 .page-item,

@@ -6,6 +6,7 @@ import useKey from "../../hooks/useKey";
 import useScrollLock from "../../hooks/useScrollLock";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { generateUUID } from "../../utils/utils";
+import useScrollState from "../../hooks/useScrollState";
 interface ModalProps {
   children: React.ReactNode;
   id?: string;
@@ -35,6 +36,12 @@ const Modal = ({
   const { modals, closeModal } = useContext(ModalContext);
   const isOpen = open || modals[id];
 
+  const [isBodyScrolled] = useScrollState({
+    initialState: false,
+    axis: "y",
+    offset: 20,
+  });
+
   useEffect(() => {
     modalRef.current = document.createElement("div");
     // portalRef.current = document.createElement("div");
@@ -53,7 +60,7 @@ const Modal = ({
   useScrollLock(document, isOpen);
 
   const modalHeader = header ? (
-    <div className="modal-header">
+    <div className={`modal-header ${isBodyScrolled ? 'glass' : ''} `}>
       {header}
       <ModalCloseButton id={id} />
     </div>

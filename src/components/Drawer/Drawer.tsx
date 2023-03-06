@@ -14,6 +14,7 @@ interface DrawerProps {
     closeOnEscape?: boolean;
     closeKey?: string;
     open?: boolean;
+    disableTrigger?: boolean;
     title?: React.ReactNode;
     trigger?: React.ReactNode;
 }
@@ -25,6 +26,7 @@ const Drawer = ({
     closeOnEscape = true,
     closeKey = "Escape",
     open = false,
+    disableTrigger,
     title,
     trigger,
 }: DrawerProps) => {
@@ -53,6 +55,11 @@ const Drawer = ({
     useScrollLock(document, isOpen);
 
 
+    // if trigger, add onClick function to trigger
+    // if no trigger, add onClick function to div
+
+
+
     const drawerHeader = <div tabIndex={0} className="drawer-header">
         <span className="title">
             {title ? title : 'Drawer'}
@@ -62,7 +69,7 @@ const Drawer = ({
 
 
     const drawerTrigger = trigger ? (
-        <span onClick={() => setIsOpen(true)} aria-disabled={isOpen}>
+        <span onClick={() => setIsOpen(true)} aria-disabled={disableTrigger ?? false}>
             {trigger}
         </span>
     ) : (

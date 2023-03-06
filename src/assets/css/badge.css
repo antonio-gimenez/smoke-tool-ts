@@ -1,7 +1,7 @@
 .badge {
   display: inline-block;
   padding: var(--space-1) var(--space-2);
-  font-size: var(--fs-small);
+  font-size: var(--font-size-small);
   background-color: var(--base-mid);
   border: 1px solid hsl(var(--color-base-content), 0.12);
   color: var(--base-content);

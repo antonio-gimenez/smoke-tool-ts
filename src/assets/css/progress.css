@@ -21,7 +21,7 @@
   flex-grow: 1;
   width: 100%;
   color: var(--base-content);
-  font-size: var(--fs-regular);
+  font-size: var(--font-size-regular);
 }
 
 .striped {

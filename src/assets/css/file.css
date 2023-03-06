@@ -25,13 +25,13 @@
 }
 
 .file-list-title {
-  font-size: var(--fs-large);
+  font-size: var(--font-size-large);
   font-weight: 500;
   margin-block: var(--space-1);
 }
 
 .file-list-subtitle {
-  font-size: var(--fs-medium);
+  font-size: var(--font-size-medium);
   font-weight: 400;
   margin-block: var(--space-1);
 }
@@ -74,6 +74,7 @@
   /* flex: none; */
   flex: auto;
   color: var(--primary);
+  text-decoration: underline;
   text-overflow: ellipsis;
 }
 
@@ -93,6 +94,10 @@
   height: 20px;
   width: 20px;
   flex: none;
-  color: var(--base-content);
+  color: hsl(var(--color-base-content), 0.5);
   cursor: pointer;
+}
+
+.file-close-icon:hover {
+  color: hsl(var(--color-error), 0.8);
 }

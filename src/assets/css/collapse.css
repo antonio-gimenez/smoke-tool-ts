@@ -26,7 +26,7 @@
   color: var(--clr-text);
   width: 100%;
   line-height: normal;
-  font-weight: var(--fw-regular);
+  font-weight: var(--font-weight-regular);
 }
 
 .collapse-content {

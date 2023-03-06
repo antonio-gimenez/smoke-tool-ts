@@ -48,8 +48,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-regular);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-regular);
   border-radius: var(--border-radius-large);
 }
 

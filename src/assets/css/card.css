@@ -15,8 +15,8 @@
 }
 
 .card-header {
-  font-size: var(--fs-regular);
-  font-weight: var(--fw-light);
+  font-size: var(--font-size-regular);
+  font-weight: var(--font-weight-light);
   height: auto;
   display: flex;
   flex-wrap: wrap;

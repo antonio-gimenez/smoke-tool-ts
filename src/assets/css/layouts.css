@@ -21,26 +21,3 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
-
-.view {
-  display: flex;
-  flex-direction: column;
-  background: var(--base-mid);
-  border: 1px solid hsl(var(--color-base-content), 0.15);
-  gap: var(--space-1);
-  padding: var(--space-9);
-  border-radius: var(--border-radius-small);
-}
-
-.attachment-list {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-6);
-  border-radius: var(--border-radius-small);
-  border: 2px dashed hsl(var(--color-base-content), 0.15);
-  background: hsl(var(--color-dark), 0.075);
-}

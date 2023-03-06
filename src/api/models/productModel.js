@@ -29,7 +29,7 @@ const branchSchema = new Schema(
   { versionKey: false }
 );
 
-// ensre that the name is unique
+// ensure that the name is unique
 productSchema.index({ name: 1 }, { unique: true });
 branchSchema.index({ name: 1 }, { unique: true });
 

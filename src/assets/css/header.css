@@ -5,29 +5,30 @@
   left: 0;
   height: var(--header-height);
   width: 100%;
-  background-color: var(--base-mid);
-  color: hsl(var(--base-content));
-  fill: hsl(var(--base-content));
-  border-bottom: 1px solid var(--base-mid);
+  background-color: var(--color-surface-medium);
+  color: hsl(var(--color-surface-content));
+  fill: hsl(var(--color-surface-content));
+  border-bottom-left-radius: var(--border-radius-large);
+  border-bottom-right-radius: var(--border-radius-large);
   z-index: 1;
   display: flex;
   align-items: center;
   /* flex-wrap: wrap; */
   padding: 1rem;
-  border-bottom: 1px solid hsl(var(--color-base-content), 0.07);
+  /* border-bottom: 1px solid hsl(var(--color-base-content), 0.07); */
 }
 
 .glass {
   -webkit-backdrop-filter: blur(1.25rem);
   backdrop-filter: blur(1.25rem);
-  background-color: transparent;
+  background: transparent !important;
   background-image: linear-gradient(
     135deg,
-    hsla(var(--color-base), 0.35) 0%,
-    hsla(var(--color-base-mid), 0.35) 50%,
-    hsla(var(--color-base-deep), 0.35) 100%
+    hsla(var(--color-surface-light), 0.35) 0%,
+    hsla(var(--color-surface-medium), 0.35) 50%,
+    hsla(var(--color-surface-dark), 0.35) 100%
   );
-  border-bottom: 1px solid var(--base-mid);
+  border-bottom: 1px solid var(--color-surface-medium);
 }
 
 .navbar {
@@ -54,11 +55,12 @@
 }
 
 .navbar-branding {
-  font-size: var(--fs-big);
-  font-weight: var(--fw-semibold);
+  font-size: var(--font-size-big);
+  font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   position: relative;
-  color: var(--base-content);
+  text-decoration: none;
+  color: var(--color-surface-content);
 }
 
 .nav-right {

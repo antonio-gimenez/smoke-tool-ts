@@ -10,6 +10,7 @@
 @import url("fonts.css");
 @import url("forms.css");
 @import url("header.css");
+@import url("icons.css");
 @import url("layouts.css");
 @import url("menu.css");
 @import url("modal.css");
@@ -25,9 +26,10 @@
 @import url("typography.css");
 /* @import url("dracula.css"); */
 
-*:disabled,
-*[aria-disabled="true"] {
-  opacity: 0.5;
+/* Components */
+@import url("./layouts/view-test.css");
+
+[aria-disabled="true"] {
   pointer-events: none;
   cursor: not-allowed;
 }
@@ -47,18 +49,18 @@ html {
 }
 
 html {
-  color: var(--base-content);
-  background-color: var(--base);
+  color: var(--color-surface-content);
+  background-color: var(--color-surface-light);
   min-height: 100%;
   min-width: 100%;
   /* background-color: hsla(230, 60%, 54%, 1); */
   /* background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%); */
-  font-size: var(--fs-regular);
+  font-size: var(--font-size-regular);
   line-height: normal;
   overflow: auto;
   scroll-behavior: smooth;
   font-family: var(--ff-family);
-  font-weight: var(--fw-regular);
+  font-weight: var(--font-weight-regular);
 }
 
 .app {

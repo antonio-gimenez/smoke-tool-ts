@@ -1,0 +1,17 @@
+.icon-small {
+  width: 20px;
+  height: 20px;
+  background-size: 20px 20px;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  background-size: 24px 24px;
+}
+
+.icon-large {
+  width: 24px;
+  height: 24px;
+  background-size: 24px 24px;
+}

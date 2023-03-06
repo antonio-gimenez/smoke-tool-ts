@@ -1,25 +1,25 @@
 html {
   --ff-family: "Fira Sans", sans-serif;
 
-  --fw-light: 300;
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
   /* 
-  Default font size is --fs-regular.
-  --fs-small is 12px on desktop and 10px on mobile.
-  --fs-regular is 14px on desktop and 12px on mobile.
-  --fs-medium is 16px on desktop and 14px on mobile.
-  --fs-large is 18px on desktop and 16px on mobile.
-  --fs-big is 20px on desktop and 18px on mobile
+  Default font size is --font-size-regular.
+  --font-size-small is 12px on desktop and 10px on mobile.
+  --font-size-regular is 14px on desktop and 12px on mobile.
+  --font-size-medium is 16px on desktop and 14px on mobile.
+  --font-size-large is 18px on desktop and 16px on mobile.
+  --font-size-big is 20px on desktop and 18px on mobile
   */
 
-  --fs-small: clamp(0.64rem, 0.05vw + 0.63rem, 0.67rem);
-  --fs-regular: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
-  --fs-medium: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-  --fs-large: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
-  --fs-big: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+  --font-size-small: clamp(0.64rem, 0.05vw + 0.63rem, 0.67rem);
+  --font-size-regular: clamp(0.8rem, 0.17vw + 0.76rem, 0.89rem);
+  --font-size-medium: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+  --font-size-large: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
+  --font-size-big: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
 
   --header-height: clamp(32px, 64px, 64px);
 
