@@ -5,6 +5,8 @@ import { TestContext } from "../contexts/TestContext";
 import { ReactComponent as ArrowLeftIcon } from '../assets/icons/arrow-left.svg';
 import { humanReadeableDate } from "../utils/file";
 import useScrollState from "../hooks/useScrollState";
+import NotFound from "./NotFound";
+import { Tab, Tabs } from "../components/ui/Tabs";
 function ViewTest() {
   const { id } = useParams();
   const { tests, fetch } = useContext(TestContext);
@@ -19,10 +21,26 @@ function ViewTest() {
     offset: 20,
   });
 
+
+  // return 404 if test is not found
+  if (!tests?.length) {
+    return <NotFound />
+  }
+
   const today = new Date();
 
   return (
     <div className="container">
+      <Tabs onClick={() => { }}>
+        <Tab label="Test">
+          <p>
+            Test Summary
+          </p>
+        </Tab>
+        <Tab label="Attachments">
+          <TestAttachments test={tests[0]} />
+        </Tab>
+      </Tabs>
       <div className={`view-test-navigation ${isBodyScrolled ? 'is-scrolling' : ''}`}>
         <button className="button button-ghost " onClick={() => history(-1)}><ArrowLeftIcon className="icon-small text-primary" /> Back to list</button>
       </div>

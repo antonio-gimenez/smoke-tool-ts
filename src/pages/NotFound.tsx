@@ -4,7 +4,7 @@ import { ReactComponent as Astronaut404 } from "../assets/icons/astronaut-404.sv
 function NotFound() {
     const navigate = useNavigate();
     return (
-        <div className="container-404">
+        <div className="container-404 ">
             {/* <Vampire404 className="logo404" /> */}
             <Astronaut404 className="logo404" />
             <div>

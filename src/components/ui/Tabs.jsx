@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-const Tab = ({ label, children }) => {
+export const Tab = ({ label, children }) => {
   return <div label={label}>{children}</div>;
 };
 
-const Tabs = ({ children, active = 0, onClick }) => {
+export const Tabs = ({ children, active = 0, onClick }) => {
   const [activeTab, setActiveTab] = useState(active);
 
   const onClickTabItem = (tab) => {
@@ -62,4 +62,4 @@ const Tabs = ({ children, active = 0, onClick }) => {
   );
 };
 
-export default Object.assign(Tabs, { Tab });
+export default { Tabs, Tab };
