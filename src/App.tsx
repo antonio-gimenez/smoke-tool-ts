@@ -6,6 +6,7 @@ import { AlertProvider } from "./contexts/AlertContext.jsx";
 import { ModalProvider } from "./contexts/ModalContext.jsx";
 import { TestProvider } from "./contexts/TestContext";
 import useThemeState from "./hooks/useThemeState";
+import NotFound from "./pages/NotFound";
 import SmokeTest from "./pages/SmokeTest.jsx";
 import ViewTest from "./pages/ViewTest";
 
@@ -26,7 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<SmokeTest />} />
               <Route path="/view/:id" element={<ViewTest />} />
-              <Route path="*" element={<h1>404</h1>} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </TestProvider>

@@ -13,8 +13,8 @@ button {
 .button {
   --button-width: 18rem;
   --button-height: 2.2rem;
-  --padding-x: var(--space-2, 0.25rem);
-  --padding-y: var(--space-2, 0.25rem);
+  --padding-x: var(--space-4, 0.25rem);
+  --padding-y: var(--space-4, 0.25rem);
   position: relative;
   font-size: var(--font-size-regular);
   font-weight: var(--font-weight-medium);
@@ -198,4 +198,14 @@ button {
 
 .block {
   width: 100%;
+}
+
+.button-large {
+  margin-block: var(--space-4, 0.25rem);
+  --button-height: 3rem;
+  --padding-x: var(--space-4, 0.25rem);
+  --padding-y: var(--space-4, 0.25rem);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-medium);
+  border-radius: 2rem;
 }

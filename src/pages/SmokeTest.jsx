@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Table from "../components/ui/Table.jsx";
 import { TestContext } from "../contexts/TestContext";
 import withPagination from "../hocs/withPagination.jsx";
+import { ReactComponent as PlusIcon } from "../assets/icons/plus.svg";
 const SmokeTest = () => {
   const { tests, fetch, totalCount, totalPages } = useContext(TestContext);
   const [pageSize] = useState(25);
@@ -30,7 +31,14 @@ const SmokeTest = () => {
     });
   }, [currentPage, status]);
 
-  return <>{tests?.length > 0 ? <PaginatedTable /> : null}</>;
+  return (
+    <>
+      <button className="button button-primary">
+        <PlusIcon className="icon-mini" /> Add new test
+      </button>
+      {tests?.length > 0 ? <PaginatedTable /> : null}
+    </>
+  );
 };
 
 export default SmokeTest;

@@ -40,7 +40,7 @@ const Table = ({ items, fetch }) => {
           Working on it...
         </button>
       ) : (
-        <button className="button button-primary" onClick={generateReportMail}>
+        <button className=" " onClick={generateReportMail}>
           Convert to EML
         </button>
       )}
