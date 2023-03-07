@@ -1,16 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertContext } from "../../contexts/AlertContext";
 import api from "../../services/use-axios";
-import { generateReportWithAttachments } from "../../utils/mail";
 const Table = ({ items, fetch }) => {
   const { addAlert } = useContext(AlertContext);
-  const [isGeneratingReport, setIsGeneratingReport] = useState(false);
-  const navigate = useNavigate();
 
-  // const navigate = (id) => {
-  //   window.location.href = `/view/${id}`;
-  // };
+  const navigate = useNavigate();
 
   const removeTest = async (id) => {
     try {
@@ -22,29 +17,9 @@ const Table = ({ items, fetch }) => {
     }
   };
 
-  const generateReportMail = async () => {
-    setIsGeneratingReport(true);
-    const status = await generateReportWithAttachments(items);
-    if (status.type === "success") {
-      addAlert({ ...status, position: "top-center" });
-      return setIsGeneratingReport(false);
-    }
-    setIsGeneratingReport(false);
-    return addAlert({ ...status, position: "top-center" });
-  };
-
   return (
     <>
-      {isGeneratingReport ? (
-        <button className="button button-primary loading" disabled>
-          Working on it...
-        </button>
-      ) : (
-        <button className=" " onClick={generateReportMail}>
-          Convert to EML
-        </button>
-      )}
-      <table className="table glass-light">
+      <table className="table">
         <thead className="table-header">
           <tr>
             <th>Test Name</th>

@@ -82,6 +82,7 @@
   position: relative;
   max-width: 100%;
   border-radius: var(--border-radius-default);
+  box-shadow: var(--shadow-1);
 }
 
 .alert-section {

@@ -34,13 +34,12 @@
   width: clamp(50px, calc(var(--input-width) + 2 * var(--padding-x)), 100%);
   min-height: var(--input-height, 2.5rem);
   line-height: normal;
-  --background-opacity: 0.75;
   background: var(--base-mid);
   color: hsla(var(--color-base-content), 1);
   outline: var(--outline-width) solid transparent;
   border: var(--border-width, 2px) solid;
   --border-opacity: 0.12;
-  border-color: hsla(var(--color-base-content), var(--border-opacity));
+  border-color: var(--color-surface-content);
   resize: vertical;
   transition: all 0.1s ease 0s;
 }

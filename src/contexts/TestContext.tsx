@@ -83,6 +83,7 @@ const TestProvider = ({ children, initialParams = defaultParams }: Props) => {
         totalCount: tests.totalCount,
         totalPages: tests.totalPages,
         fetch: fetchTests,
+
         isEmpty,
         isLoading
       }}

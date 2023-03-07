@@ -96,16 +96,12 @@ button {
 }
 
 .button-base {
-  --background-opacity: 0;
-  /* background: hsla(var(--color-surface-light), var(--background-opacity)); */
   background: var(--color-surface-medium);
   color: var(--color-surface-content);
   outline: var(--outline-width) solid var(--color-surface-content);
 }
 
 .button-base:hover {
-  /* --background-opacity: 0.2; */
-  /* background: hsla(var(--color-base), var(--background-opacity)); */
   background: var(--color-surface-dark);
 }
 

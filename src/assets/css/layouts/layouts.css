@@ -21,3 +21,9 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}

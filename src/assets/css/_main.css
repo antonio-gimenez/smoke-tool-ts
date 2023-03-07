@@ -16,6 +16,7 @@
 @import url("./components/card.css");
 @import url("./components/drawer.css");
 @import url("./components/dropdown.css");
+@import url("./components/hero.css");
 @import url("./components/menu.css");
 @import url("./components/modal.css");
 @import url("./components/collapse.css");
@@ -30,10 +31,6 @@
 /* Layouts */
 @import url("./layouts/layouts.css");
 @import url("./layouts/view-test.css");
-
-/* Testing */
-@import url("./main.layout.css");
-@import url("./components/sidenav.css");
 
 [aria-disabled="true"] {
   pointer-events: none;
@@ -61,8 +58,6 @@ html {
   background-color: var(--color-surface-light);
   min-height: 100%;
   min-width: 100%;
-  /* background-color: hsla(230, 60%, 54%, 1); */
-  /* background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%); */
   font-size: var(--font-size-regular);
   line-height: normal;
   overflow: auto;
@@ -71,7 +66,10 @@ html {
   font-weight: var(--font-weight-regular);
 }
 
-.app {
+.main-app {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
   padding-top: calc(var(--header-height) + 1rem);
 }
 

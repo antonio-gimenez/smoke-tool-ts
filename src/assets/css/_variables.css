@@ -39,7 +39,7 @@ html {
   --border-opacity: 1;
   --outline-opacity: 1;
   --border-width: 0.1rem;
-  /* --border-width: 2px; */
+
   /* 
     The following calc fixes the border radius overlapping on some overflowed elements.
   */
@@ -51,6 +51,6 @@ html {
   --outline-offset: var(--outline-width, 1px);
   --glass-opacity: 0.95;
 
-  /* Gradients */
-  /* how to gradient text */
+  /* Shadows */
+  --shadow-1: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.1rem 0.1rem rgba(0, 0, 0, 0.06);
 }

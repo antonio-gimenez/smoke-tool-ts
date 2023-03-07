@@ -108,9 +108,9 @@ const ModalCloseButton = ({ id }: { id: string }) => {
 const ModalTrigger = ({ id, children }: { id: string, children: React.ReactNode }) => {
   const { openModal } = useContext(ModalContext);
   return (
-    <button className="button-ghost" type="button" onClick={() => openModal(id)}>
+    <span onClick={() => openModal(id)}>
       {children}
-    </button>
+    </span>
   );
 };
 

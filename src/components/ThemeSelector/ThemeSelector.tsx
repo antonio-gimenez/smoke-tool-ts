@@ -47,8 +47,8 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
 
   return (
     <div className="dropdown dropdown-bottom dropdown-start" ref={dropdownRef}>
-      <button
-        className="button button-ghost"
+      <span
+        className=""
         onClick={() => setOpen(!open)}
         aria-haspopup="listbox"
         aria-expanded={open}
@@ -56,7 +56,7 @@ function ThemeSelector({ themes }: ThemeSelectorProps): JSX.Element {
         {isSystemPreferenceUsed
           ? 'Theme'
           : upperCaseFirstLetter(currentTheme)}
-      </button>
+      </span>
 
       <div
         className={`dropdown-content ${open ? "visible" : "hidden"}`}

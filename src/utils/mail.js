@@ -12,6 +12,13 @@ function arrayBufferToBase64(buffer) {
 }
 
 export async function generateReport(selectedItems) {
+  class Warning extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "Warning";
+    }
+  }
+
   try {
     const files = await Promise.all(
       selectedItems?.map(async (item) => {
@@ -29,8 +36,12 @@ export async function generateReport(selectedItems) {
     }, 0);
 
     if (totalSize > 20000000) {
-      console.warn(`Total size of attachments exceeds 20MB, total size: ${humanFileSize(totalSize)}`);
-      throw new Error("Total size of attachments exceeds 20MB");
+      console.warn(
+        `Total size of attachments exceeds 20MB, attachments of selected items size: ${humanFileSize(totalSize)}`
+      );
+      throw new Error(
+        "Total size of attachments exceeds 20MB, attachments of selected items size: " + humanFileSize(totalSize)
+      );
     }
 
     const attachments = await Promise.all(
@@ -76,7 +87,6 @@ export async function generateReport(selectedItems) {
 
     const emlContent = `data:application/octet-stream;base64,${btoa(emailContent)}`;
 
-    // trigger the email download
     const encodedUri = encodeURI(emlContent);
     const a = document.createElement("a");
     const linkText = document.createTextNode("fileLink");
@@ -89,23 +99,33 @@ export async function generateReport(selectedItems) {
     document.getElementById("fileLink").click();
     document.body.removeChild(a);
 
-    return true; // indicate success
+    return {
+      type: "success",
+      message: "Report generated successfully",
+    };
   } catch (error) {
-    console.error("Error sending report:", error);
-    return false; // indicate failure
+    return {
+      type: "error",
+      message: (
+        <span>
+          An error occurred while generating the report: <strong>{error.message}</strong>
+        </span>
+      ),
+    };
   }
 }
 export async function generateReportWithAttachments(selectedItems) {
   try {
     const status = await generateReport(selectedItems);
-    if (!!status) {
-      return { type: "success", message: "Report generated successfully" };
-    }
-    return { type: "error", message: "Failed to generate report" };
-
-    // return { type: "success", message: "Report generated successfully" };
+    return status;
   } catch (error) {
-    console.error("An error occurred while sending the report:", error);
-    return { type: "error", message: `An error occurred while sending the report: ${error}` };
+    return {
+      type: "error",
+      message: (
+        <span>
+          An error occurred while sending the report: <strong>{error}</strong>
+        </span>
+      ),
+    };
   }
 }

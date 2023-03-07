@@ -11,9 +11,9 @@
   --color-surface-dark: hsl(0, 0%, 90%);
   --color-surface-content: hsl(0, 0%, 0%);
 
-  --color-primary-light: hsl(240, 38%, 53%);
-  --color-primary-medium: hsl(240, 38%, 43%);
-  --color-primary-dark: hsl(240, 38%, 33%);
+  --color-primary-light: hsl(220, 68%, 53%);
+  --color-primary-medium: hsl(220, 68%, 43%);
+  --color-primary-dark: hsl(220, 68%, 33%);
   --color-primary-content: hsl(0, 0%, 100%);
 
   --color-secondary-light: hsl(210, 15%, 51%);
@@ -21,9 +21,9 @@
   --color-secondary-dark: hsl(210, 15%, 31%);
   --color-secondary-content: hsl(0, 0%, 100%);
 
-  --color-accent-light: hsl(45, 100%, 60%);
-  --color-accent-medium: hsl(45, 100%, 50%);
-  --color-accent-dark: hsl(45, 100%, 40%);
+  --color-accent-light: hsl(276, 38%, 53%);
+  --color-accent-medium: hsl(276, 38%, 43%);
+  --color-accent-dark: hsl(276, 38%, 33%);
   --color-accent-content: hsl(0, 0%, 100%);
 
   --color-neutral-light: hsl(221, 5%, 49%);
@@ -53,13 +53,12 @@
 }
 
 [data-theme="dark"] {
-  /* #212123 */
   color-scheme: dark;
   --color-black: hsl(0, 0%, 0%);
   --color-white: hsl(0, 0%, 100%);
   --color-backdrop: hsla(0, 0%, 0%, 0.4);
-  --color-disabled: hsl(0, 0%, 80%);
-  --color-disabled-content: hsl(0, 0%, 60%);
+  --color-disabled: hsl(220, 5%, 60%);
+  --color-disabled-content: hsl(220, 5%, 40%);
   --color-surface-light: hsl(240, 3%, 13%);
   --color-surface-medium: hsl(240, 5%, 11%);
   --color-surface-dark: hsl(240, 7%, 9%);
@@ -95,55 +94,72 @@
   --color-success-dark: hsl(129, 81%, 24%);
   --color-success-content: hsl(0, 0%, 80%);
 
-  --color-warning-light: hsl(40, 70%, 72%);
-  --color-warning-medium: hsl(40, 70%, 62%);
-  --color-warning-dark: hsl(40, 70%, 52%);
-  --color-warning-content: hsl(0, 0%, 80%);
+  --color-warning-light: hsl(40, 60%, 72%);
+  --color-warning-medium: hsl(40, 60%, 50%);
+  --color-warning-dark: hsl(40, 60%, 52%);
+  --color-warning-content: hsl(0, 0%, 20%);
 
-  --color-error-light: hsl(0, 80%, 60%);
-  --color-error-medium: hsl(0, 80%, 50%);
-  --color-error-dark: hsl(0, 80%, 40%);
+  --color-error-light: hsl(0, 60%, 60%);
+  --color-error-medium: hsl(0, 60%, 50%);
+  --color-error-dark: hsl(0, 60%, 40%);
   --color-error-content: hsl(0, 0%, 80%);
 }
 
 [data-theme="dracula"] {
   /* This theme is based on the Dracula theme by Zeno Rocha */
   color-scheme: dark;
-  --color-dark: 0, 0%, 0%;
-  --color-light: 0, 0%, 100%;
-  --color-base: 231, 15%, 18%;
-  --color-base-mid: 231, 15%, 16%;
-  --color-base-deep: 231, 15%, 14%;
-  --color-base-content: 60, 30%, 96%;
-  --color-primary: 265, 89%, 78%;
-  --color-secondary: 225, 27%, 51%;
-  --color-accent: 326, 100%, 74%;
-  --color-neutral: 225, 14%, 31%;
-  --color-info: 191, 97%, 77%;
-  --color-success: 135, 94%, 65%;
-  --color-warning: 65, 92%, 76%;
-  --color-error: 0, 100%, 67%;
 
-  --base: hsl(var(--color-base));
-  --base-mid: hsl(var(--color-base-mid));
-  --base-deep: hsl(var(--color-base-deep));
-  --base-content: hsl(var(--color-base-content));
-  --primary: hsl(var(--color-primary));
-  --primary-content: hsl(var(--color-dark));
-  --secondary: hsl(var(--color-secondary));
-  --secondary-content: hsl(var(--color-light));
-  --accent: hsl(var(--color-accent));
-  --accent-content: hsl(var(--color-dark));
-  --neutral: hsl(var(--color-neutral));
-  --neutral-content: hsl(var(--color-light));
-  --info: hsl(var(--color-info));
-  --info-content: hsl(var(--color-dark));
-  --success: hsl(var(--color-success));
-  --success-content: hsl(var(--color-dark));
-  --warning: hsl(var(--color-warning));
-  --warning-content: hsl(var(--color-dark));
-  --error: hsl(var(--color-error));
-  --error-content: hsl(var(--color-light));
+  --color-black: hsl(60, 30%, 6%);
+  --color-white: hsl(60, 30%, 96%);
+
+  --color-backdrop: hsla(0, 0%, 0%, 0.4);
+  --color-disabled: hsl(220, 5%, 60%);
+  --color-disabled-content: hsl(220, 5%, 40%);
+
+  --color-surface-light: hsl(231, 15%, 18%);
+  --color-surface-medium: hsl(231, 15%, 16%);
+  --color-surface-dark: hsl(231, 15%, 14%);
+  --color-surface-content: hsl(60, 30%, 96%);
+
+  --color-primary-light: hsl(265, 89%, 83%);
+  --color-primary-medium: hsl(265, 89%, 78%);
+  --color-primary-dark: hsl(265, 89%, 73%);
+  --color-primary-content: hsl(60, 30%, 6%);
+
+  --color-secondary-light: hsl(225, 27%, 61%);
+  --color-secondary-medium: hsl(225, 27%, 51%);
+  --color-secondary-dark: hsl(225, 27%, 41%);
+  --color-secondary-content: hsl(60, 30%, 96%);
+
+  --color-accent-light: hsl(326, 100%, 84%);
+  --color-accent-medium: hsl(326, 100%, 74%);
+  --color-accent-dark: hsl(326, 100%, 64%);
+  --color-accent-content: hsl(60, 30%, 96%);
+
+  --color-neutral-light: hsl(225, 14%, 41%);
+  --color-neutral-medium: hsl(225, 14%, 31%);
+  --color-neutral-dark: hsl(225, 14%, 21%);
+  --color-neutral-content: hsl(60, 30%, 96%);
+
+  --color-info-light: hsl(191, 97%, 87%);
+  --color-info-medium: hsl(191, 97%, 77%);
+  --color-info-dark: hsl(191, 97%, 67%);
+  --color-info-content: hsl(60, 30%, 96%);
+
+  --color-success-light: hsl(135, 94%, 75%);
+  --color-success-medium: hsl(135, 94%, 65%);
+  --color-success-dark: hsl(135, 94%, 55%);
+  --color-success-content: hsl(60, 30%, 96%);
+
+  --color-warning-light: hsl(65, 92%, 82%);
+  --color-warning-medium: hsl(65, 92%, 72%);
+  --color-warning-dark: hsl(65, 92%, 62%);
+  --color-warning-content: hsl(0, 0%, 20%);
+
+  --color-error-light: hsl(0, 100%, 77%);
+  --color-error-medium: hsl(0, 100%, 67%);
+  --color-error-dark: hsl(0, 100%, 57%);
+  --color-error-content: hsl(60, 30%, 96%);
 }
 
 [data-theme="solarized"] {
