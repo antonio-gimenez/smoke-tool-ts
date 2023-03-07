@@ -114,8 +114,8 @@ function TestAttachments({ test }: TestAttachmentsProps) {
 
                     <ul className="file-list">
                         <h1>Test Attachments</h1>
-                        {JSON.stringify(isLoadingAttachments)}
-                        {testFiles && testFiles.length ? <span className="muted">Size of all attachments: {humanFileSize(usedFileSize)}</span> : null}
+                        {testFiles && testFiles.length ? <span className="muted">Used: {humanFileSize(usedFileSize)} / {humanFileSize(MAX_FILE_SIZE)}
+                        </span> : null}
                         {testFiles && testFiles.length > 0 && !isLoadingAttachments ? (
                             testFiles.map((file) => (
                                 <li key={file._id} className="file">
@@ -142,9 +142,9 @@ function TestAttachments({ test }: TestAttachmentsProps) {
                                 </li>
                             ))
                         ) : isLoadingAttachments ? (
-                            <button className="button loading" disabled>
+                            <span className="loading" >
                                 Loading attachments
-                            </button>
+                            </span>
                         ) : (
                             test.files?.length === 0 && <p>No attachments</p>
                         )}

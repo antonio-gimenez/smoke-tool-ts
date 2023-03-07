@@ -1,33 +1,39 @@
 @import url("_variables.css");
-@import url("alert.css");
-@import url("badge.css");
-@import url("buttons.css");
-@import url("card.css");
-@import url("collapse.css");
-@import url("drawer.css");
-@import url("dropdown.css");
+
+/* Global */
 @import url("file.css");
 @import url("fonts.css");
-@import url("forms.css");
-@import url("header.css");
 @import url("icons.css");
-@import url("layouts.css");
-@import url("menu.css");
-@import url("modal.css");
-@import url("pagination.css");
-@import url("progress.css");
 @import url("reset.css");
-@import url("table.css");
-@import url("tabs.css");
-@import url("tags.css");
 @import url("themes.css");
-@import url("switch.css");
 @import url("snippets.css");
 @import url("typography.css");
-/* @import url("dracula.css"); */
 
 /* Components */
+@import url("./components/alert.css");
+@import url("./components/badge.css");
+@import url("./components/buttons.css");
+@import url("./components/card.css");
+@import url("./components/drawer.css");
+@import url("./components/dropdown.css");
+@import url("./components/menu.css");
+@import url("./components/modal.css");
+@import url("./components/collapse.css");
+@import url("./components/pagination.css");
+@import url("./components/progress.css");
+@import url("./components/forms.css");
+@import url("./components/header.css");
+@import url("./components/table.css");
+@import url("./components/tabs.css");
+@import url("./components/tags.css");
+
+/* Layouts */
+@import url("./layouts/layouts.css");
 @import url("./layouts/view-test.css");
+
+/* Testing */
+@import url("./main.layout.css");
+@import url("./components/sidenav.css");
 
 [aria-disabled="true"] {
   pointer-events: none;
@@ -45,6 +51,8 @@ html {
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 

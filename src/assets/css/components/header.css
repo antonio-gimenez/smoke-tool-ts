@@ -1,5 +1,5 @@
 .header {
-  position: fixed;
+  /* position: fixed; */
   --top-offset: 0;
   top: var(--top-offset);
   left: 0;
@@ -10,12 +10,9 @@
   fill: hsl(var(--color-surface-content));
   border-bottom-left-radius: var(--border-radius-large);
   border-bottom-right-radius: var(--border-radius-large);
-  z-index: 1;
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   padding: 1rem;
-  /* border-bottom: 1px solid hsl(var(--color-base-content), 0.07); */
 }
 
 .glass {
@@ -31,43 +28,9 @@
   border-bottom: 1px solid var(--color-surface-medium);
 }
 
-.navbar {
+.header-bar {
   display: flex;
   align-items: center;
-  /* gap: 1.5rem; */
-  user-select: none;
-  flex-wrap: wrap;
-}
-
-.navbar nav {
-  white-space: nowrap;
-  flex: 1 0 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-}
-
-.navbar .container {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-branding {
-  font-size: var(--font-size-big);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  position: relative;
-  text-decoration: none;
-  color: var(--color-surface-content);
-}
-
-.nav-right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 0 !important;
-  margin-right: 0;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
 }

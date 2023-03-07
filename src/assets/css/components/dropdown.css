@@ -18,7 +18,7 @@
 }
 
 .dropdown-content:not(.menu) {
-  padding: var(--space-2, 0.5rem);
+  /* padding: var(--space-2, 0.5rem); */
 }
 
 .dropdown-start .dropdown-content {

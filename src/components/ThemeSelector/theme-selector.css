@@ -19,14 +19,14 @@
   border-radius: var(--border-radius-small);
   padding: var(--space-4);
   justify-content: space-between;
-  background-color: var(--base);
-  color: var(--base-content);
+  background-color: var(--color-surface-medium);
+  color: var(--color-surface-content);
   cursor: pointer;
 }
 
 .theme-list-item.active {
   --outline-width: 2px;
-  outline: var(--outline-width) solid var(--primary);
+  outline: var(--outline-width) solid var(--color-primary-medium);
   outline-offset: var(--outline-offset);
 }
 
@@ -54,17 +54,17 @@
 }
 
 .theme-list-palette-accent-bullet {
-  background-color: var(--accent);
+  background-color: var(--color-accent-medium);
 }
 
 .theme-list-palette-primary-bullet {
-  background-color: var(--primary);
+  background-color: var(--color-primary-medium);
 }
 
 .theme-list-palette-secondary-bullet {
-  background-color: var(--secondary);
+  background-color: var(--color-secondary-medium);
 }
 
 .theme-list-palette-neutral-bullet {
-  background-color: var(--neutral);
+  background-color: var(--color-neutral-medium);
 }

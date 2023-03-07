@@ -97,6 +97,7 @@ function NewTest({ modalId }: { modalId: string }) {
         <FileSelector files={filesToUpload} onSelectFiles={handleFileSelect} />
 
         <select className="select" id="branch" onChange={onChange}>
+          <option value="">Select branch</option>
           {branches.length > 0 ? (
             branchesFormatted.map((branch: any) => (
               <option key={branch.value} value={branch.value} onChange={onChange}>

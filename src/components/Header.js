@@ -19,24 +19,26 @@ const Header = () => {
 
   return (
     <header className={`header ${isBodyScrolled ? "glass" : ""}`}>
-      <div className="navbar container">
-        <nav aria-label="Main navigation">
-          <NavLink className={"navbar-branding"} to={"/"} end>
-            {process.env.REACT_APP_APP_NAME}
-          </NavLink>
-        </nav>
-        <nav className="nav-links" aria-label="Links">
-          <a className="link" href="/tests/">
-            Tests
-          </a>
-          <a className="link" href="/testcases/">
-            Test Cases
-          </a>
-          <ModalTrigger id="create-test">Create</ModalTrigger>
-          <Modal header={"New Test"} closeOnEscape={false} id="create-test">
-            <NewTestForm modalId="create-test" />
-          </Modal>
-        </nav>
+      <div className="header-bar container">
+        <ul className="menu menu-horizontal ">
+          <li>
+            <NavLink className={"navbar-branding"} to={"/"} end>
+              {process.env.REACT_APP_APP_NAME}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={"/tests"}>Tests</NavLink>
+          </li>
+          <li>
+            <NavLink to={"/tests-cases/"}>Test Cases</NavLink>
+          </li>
+          <li>
+            <ModalTrigger id="create-test">Create</ModalTrigger>
+            <Modal header={"New Test"} closeOnEscape={false} id="create-test">
+              <NewTestForm modalId="create-test" />
+            </Modal>
+          </li>
+        </ul>
         <nav aria-label="Theme switcher">
           <ThemeSelector themes={themes} />
         </nav>

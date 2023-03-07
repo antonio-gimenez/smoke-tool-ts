@@ -21,7 +21,7 @@ function App() {
       <ModalProvider>
         <TestProvider>
           <Header />
-          <div className="app container  container-centered">
+          <div className="app container container-centered">
             <WhatsNew />
             <Routes>
               <Route path="/" element={<SmokeTest />} />

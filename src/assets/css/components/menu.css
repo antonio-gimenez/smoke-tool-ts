@@ -1,11 +1,12 @@
 .menu {
   display: flex;
+  align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.menu.horizontal {
-  display: inline-flex;
+.menu.menu-horizontal {
+  display: flex;
   flex-direction: row;
 }
 
@@ -27,8 +28,8 @@
 }
 
 .menu li:hover {
-  background-color: var(--primary);
-  color: var(--primary-content);
+  background-color: var(--color-primary-medium);
+  color: var(--color-primary-content);
 }
 
 .menu li:active {

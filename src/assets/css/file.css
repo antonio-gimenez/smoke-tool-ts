@@ -73,6 +73,9 @@
   cursor: pointer;
   /* flex: none; */
   flex: auto;
+  max-width: 50ch;
+  white-space: nowrap;
+  overflow: hidden;
   color: var(--primary);
   text-decoration: underline;
   text-overflow: ellipsis;
