@@ -53,4 +53,8 @@ html {
 
   /* Shadows */
   --shadow-1: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.1rem 0.1rem rgba(0, 0, 0, 0.06);
+
+  --container-max-width: 90rem;
+  --container-padding-x: var(--space-4);
+  --container-padding-y: var(--space-4);
 }

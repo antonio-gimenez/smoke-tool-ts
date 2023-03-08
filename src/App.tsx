@@ -22,7 +22,7 @@ function App() {
       <ModalProvider>
         <TestProvider>
           <Header />
-          <div className="main-app">
+          <div className="main-app container">
             <WhatsNew />
             <Routes>
               <Route path="/tests" element={<SmokeTest />} />

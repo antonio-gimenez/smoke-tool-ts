@@ -2,32 +2,26 @@ import { NavLink } from "react-router-dom";
 import { upperCaseFirstLetter } from "../utils/utils";
 import ThemeSelector from "./ThemeSelector/ThemeSelector";
 const Header = () => {
-  const themes = ["light", "dark", "dracula", "coffee", "solarized", "nord"].map((theme) => ({
+  const themes = ["light", "dark", "dracula", "coffee", "solarized"].map((theme) => ({
     id: theme,
     label: upperCaseFirstLetter(theme),
     value: theme,
   }));
 
   return (
-    <header className="navbar">
-      {/* <nav> */}
-      <ul className="menu menu-horizontal">
-        <li className="nav-item">
-          <NavLink className={"navbar-branding"} to={"/"} end>
-            {process.env.REACT_APP_APP_NAME}
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to={"/tests"}>Tests</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink to={"/tests-cases/"}>Test Cases</NavLink>
-        </li>
-        <li className="nav-item">
-          <ThemeSelector themes={themes} />
-        </li>
-      </ul>
-      {/* </nav> */}
+    <header className="navbar ">
+      <nav className="nav-start">
+        <NavLink className={"navbar-branding text-primary"} to={"/"} end>
+          {process.env.REACT_APP_APP_NAME}
+        </NavLink>
+      </nav>
+      <nav className="nav-center">
+        <NavLink to={"/tests"}>Tests</NavLink>
+        <NavLink to={"/tests-cases/"}>Test Cases</NavLink>
+      </nav>
+      <nav className="nav-end">
+        <ThemeSelector themes={themes} />
+      </nav>
     </header>
   );
 };

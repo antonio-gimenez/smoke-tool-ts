@@ -201,7 +201,7 @@ button {
   --button-height: 3rem;
   --padding-x: var(--space-4, 0.25rem);
   --padding-y: var(--space-4, 0.25rem);
-  font-size: var(--font-size-large);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-semibold);
   border-radius: 2rem;
 }

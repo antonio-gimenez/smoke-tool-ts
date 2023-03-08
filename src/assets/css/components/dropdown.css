@@ -1,6 +1,7 @@
 .dropdown {
   user-select: none;
   position: relative;
+
   display: inline-block;
 }
 
@@ -9,7 +10,7 @@
   min-width: 10vw;
   overflow: auto;
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   background: var(--color-surface-medium);
   color: var(--color-surface-content);
   border-radius: var(--border-radius-default);

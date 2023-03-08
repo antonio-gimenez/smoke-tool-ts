@@ -1,7 +1,3 @@
-# TODO List
-- [X] File uploads
-- [ ] More verbose error messages
-- [ ] Friendlier UI 
 
 <!--TESTRAILAPIKEY: rLqJp2WBB884cpmqrJwi-5GAoB4ib.DsiNfVy10nT -->
 <!-- https://hp-testrail.external.hp.com/index.php?/runs/view/371948&group_by=cases:section_id&group_order=asc&group_id=3449790 -->
@@ -11,4 +7,6 @@
 # Used utilities
 - [Fluid Type Scale](https://www.fluid-type-scale.com/)
 - [Feather Icons](https://feathericons.com/)
-- [Dracula Theme](https://draculatheme.com/)
+- [Dracula Theme Colors](https://draculatheme.com/)
+- [Solarized Theme Colors](https://ethanschoonover.com/solarized/)
+- [Hyperplexed Recommendations](https://youtube.com/@Hyperplexed)
