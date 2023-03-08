@@ -16,7 +16,7 @@
   position: sticky;
   top: calc(var(--header-height) * 1.05);
   right: 0;
-  background-color: var(--color-surface-medium);
+  background-color: var(--clr-surface-medium);
   height: fit-content;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .view-test-section.test-steps {
-  border: 1px solid var(--color-backdrop);
+  border: 1px solid var(--clr-backdrop);
   min-height: 2040px;
 }
 
@@ -33,26 +33,26 @@
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-semibold, 500);
   margin-block: var(--space-6);
-  color: var(--color-primary-dark);
+  color: var(--clr-primary-dark);
 }
 
 .view-test-summary-section-name {
   font-weight: var(--font-weight-semibold);
-  color: var(--color-primary-dark);
+  color: var(--clr-primary-dark);
   font-size: var(--font-size-regular);
   margin-block: var(--space-4);
 }
 
 .view-test-summary-last-edit {
   margin-block: var(--space-2);
-  background-color: var(--color-surface-light);
+  background-color: var(--clr-surface-light);
   border-radius: var(--border-radius-default);
   padding: var(--space-4);
 }
 
 .view-test-step {
   margin-block: var(--space-2);
-  background-color: var(--color-surface-light);
+  background-color: var(--clr-surface-light);
   border-radius: var(--border-radius-large);
   padding: var(--space-2);
 }

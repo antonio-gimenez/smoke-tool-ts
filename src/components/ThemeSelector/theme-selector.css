@@ -19,14 +19,14 @@
   border-radius: var(--border-radius-small);
   padding: var(--space-4);
   justify-content: space-between;
-  background-color: var(--color-surface-medium);
-  color: var(--color-surface-content);
+  background-color: var(--clr-surface-medium);
+  color: var(--clr-surface-content);
   cursor: pointer;
 }
 
 .theme-list-item.active {
   --outline-width: 2px;
-  outline: var(--outline-width) solid var(--color-primary-medium);
+  outline: var(--outline-width) solid var(--clr-primary-medium);
   outline-offset: var(--outline-offset);
 }
 
@@ -54,17 +54,17 @@
 }
 
 .theme-list-palette-accent-bullet {
-  background-color: var(--color-accent-medium);
+  background-color: var(--clr-accent-medium);
 }
 
 .theme-list-palette-primary-bullet {
-  background-color: var(--color-primary-medium);
+  background-color: var(--clr-primary-medium);
 }
 
 .theme-list-palette-secondary-bullet {
-  background-color: var(--color-secondary-medium);
+  background-color: var(--clr-secondary-medium);
 }
 
 .theme-list-palette-neutral-bullet {
-  background-color: var(--color-neutral-medium);
+  background-color: var(--clr-neutral-medium);
 }

@@ -11,14 +11,14 @@
   border-collapse: separate;
   border-spacing: var(--border-width);
   margin-block: var(--space-4);
-  border: var(--border-width) solid hsl(var(--color-base-content), 0.15);
+  border: var(--border-width) solid hsl(var(--clr-base-content), 0.15);
   border-radius: var(--border-radius-small);
 }
 
 .table-header {
   overflow: hidden;
-  background-color: var(--color-surface-medium);
-  color: hsl(var(--color-surface-content));
+  background-color: var(--clr-surface-medium);
+  color: hsl(var(--clr-surface-content));
   text-transform: uppercase;
 }
 

@@ -7,7 +7,7 @@
 
 .card {
   overflow: hidden;
-  background: var(--color-suface-medium);
+  background: var(--clr-suface-medium);
   height: fit-content;
   width: clamp(200px, 100%, 480px);
   padding: var(--space-4);

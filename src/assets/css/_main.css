@@ -29,7 +29,7 @@
 @import url("./classes/tags.css");
 
 /* Layouts */
-@import url("./componentes/layouts.css");
+@import url("./components/layouts.css");
 @import url("./components/view-test.css");
 
 [aria-disabled="true"] {
@@ -54,8 +54,8 @@ html {
 }
 
 html {
-  color: var(--color-surface-content);
-  background-color: var(--color-surface-light);
+  color: var(--clr-surface-content);
+  background-color: var(--clr-surface-light);
   min-height: 100%;
   min-width: 100%;
   font-size: var(--font-size-regular);
@@ -84,9 +84,9 @@ ul {
   background: transparent !important;
   background-image: linear-gradient(
     135deg,
-    hsla(var(--color-surface-light), 0.35) 0%,
-    hsla(var(--color-surface-medium), 0.35) 50%,
-    hsla(var(--color-surface-dark), 0.35) 100%
+    hsla(var(--clr-surface-light), 0.35) 0%,
+    hsla(var(--clr-surface-medium), 0.35) 50%,
+    hsla(var(--clr-surface-dark), 0.35) 100%
   );
-  border-bottom: 1px solid var(--color-surface-medium);
+  border-bottom: 1px solid var(--clr-surface-medium);
 }

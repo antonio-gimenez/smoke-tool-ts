@@ -5,7 +5,7 @@
   /* Setting the width and height to 100vw and 100vh will make the backdrop appear full screen on the current viewport. */
   width: 100vw;
   height: 100vh;
-  background-color: var(--color-backdrop);
+  background-color: var(--clr-backdrop);
   scroll-padding-top: var(--header-height);
   backdrop-filter: blur(1px);
   z-index: 1;
@@ -21,8 +21,8 @@
   min-width: 20rem;
   max-width: 95vw;
   max-height: 95vh;
-  background-color: var(--color-surface-light);
-  color: var(--color-surface-content);
+  background-color: var(--clr-surface-light);
+  color: var(--clr-surface-content);
   border-radius: var(--border-radius-large);
   z-index: 2;
   display: flex;
@@ -37,12 +37,12 @@
   top: 0;
   left: 0;
   padding: var(--space-3);
-  /* border-bottom: 1px solid hsl(var(--color-base-content), 0.15); */
+  /* border-bottom: 1px solid hsl(var(--clr-base-content), 0.15); */
   display: flex;
   font-weight: var(--font-weight-semibold, 500);
   font-size: var(--font-size-medium);
   background: inherit;
-  /* background-color: hsl(var(--color-base-mid), 1); */
+  /* background-color: hsl(var(--clr-base-mid), 1); */
   justify-content: space-between;
   align-items: center;
   height: 4rem;
@@ -65,7 +65,7 @@
   position: sticky;
   bottom: 0;
   background-color: var(--base-mid);
-  /* border-top: 1px solid hsl(var(--color-base-content), 0.15); */
+  /* border-top: 1px solid hsl(var(--clr-base-content), 0.15); */
   padding: var(--space-3);
   display: flex;
   align-items: center;

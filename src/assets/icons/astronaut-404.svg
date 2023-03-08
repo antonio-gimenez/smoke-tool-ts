@@ -5,20 +5,20 @@
 <style type="text/css">
 	<!-- .st0{fill:#EC8C92;} -->
 	.st0 {
-		fill: var(--color-primary-medium);
+		fill: var(--clr-primary-medium);
 	}
 	<!-- .st1{fill:#FFFFFF;} -->
-	.st1{fill: var(--color-surface-medium)}
+	.st1{fill: var(--clr-surface-medium)}
 	<!-- .st2{fill:#274D76;} -->
-	.st2{fill: var(--color-secondary-dark)}
+	.st2{fill: var(--clr-secondary-dark)}
 	<!-- .st3{fill:#FFF3A1;} -->
-	.st3{fill: var(--color-accent-dark)}
+	.st3{fill: var(--clr-accent-dark)}
 	<!-- .st4{fill:#F2BDBA;} -->
-	.st4{fill: var(--color-primary-light)}
+	.st4{fill: var(--clr-primary-light)}
 	<!-- .st5{fill:#93B4F6;} -->
-	.st5{fill: var(--color-accent-medium)}
+	.st5{fill: var(--clr-accent-medium)}
 	<!-- .st6{fill:#74BAAB;} -->
-	.st6{fill: var(--color-accent-light)}
+	.st6{fill: var(--clr-accent-light)}
 </style>
 <g id="BG">
 	<g>

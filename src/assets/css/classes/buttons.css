@@ -96,13 +96,13 @@ button {
 }
 
 .button-base {
-  background: var(--color-surface-medium);
-  color: var(--color-surface-content);
-  outline: var(--outline-width) solid var(--color-surface-content);
+  background: var(--clr-surface-medium);
+  color: var(--clr-surface-content);
+  outline: var(--outline-width) solid var(--clr-surface-content);
 }
 
 .button-base:hover {
-  background: var(--color-surface-dark);
+  background: var(--clr-surface-dark);
 }
 
 .button[disabled="true"],
@@ -111,85 +111,85 @@ button {
   pointer-events: none;
   cursor: not-allowed;
   /* opacity: 0.5; */
-  background-color: var(--color-disabled);
-  color: var(--color-disabled-content);
+  background-color: var(--clr-disabled);
+  color: var(--clr-disabled-content);
 }
 
 .button-ghost:hover,
 .button-ghost:focus,
 .button-ghost:active {
-  background: var(--color-surface-medium);
+  background: var(--clr-surface-medium);
 }
 
 .button-accent {
-  background: var(--color-accent-medium);
-  color: var(--color-accent-content);
+  background: var(--clr-accent-medium);
+  color: var(--clr-accent-content);
 }
 
 .button-neutral {
-  background: var(--color-neutral-medium);
-  color: var(--color-neutral-content);
+  background: var(--clr-neutral-medium);
+  color: var(--clr-neutral-content);
 }
 
 .button-primary {
-  background: var(--color-primary-medium);
-  color: var(--color-primary-content);
+  background: var(--clr-primary-medium);
+  color: var(--clr-primary-content);
 }
 
 .button-secondary {
-  background: var(--color-secondary-medium);
-  color: var(--color-secondary-content);
+  background: var(--clr-secondary-medium);
+  color: var(--clr-secondary-content);
 }
 
 .button-success {
-  background: var(--color-success-medium);
-  color: var(--color-success-content);
+  background: var(--clr-success-medium);
+  color: var(--clr-success-content);
 }
 
 .button-warning {
-  background: var(--color-warning-medium);
-  color: var(--color-warning-content);
+  background: var(--clr-warning-medium);
+  color: var(--clr-warning-content);
 }
 
 .button-error {
-  background: var(--color-error-medium);
-  color: var(--color-error-content);
+  background: var(--clr-error-medium);
+  color: var(--clr-error-content);
 }
 
 .button-info {
-  background: var(--color-info-medium);
-  color: var(--color-info-content);
+  background: var(--clr-info-medium);
+  color: var(--clr-info-content);
 }
 
 .button-neutral:hover {
-  background: var(--color-neutral-dark);
+  background: var(--clr-neutral-dark);
 }
 
 .button-accent:hover {
-  background: var(--color-accent-dark);
+  background: var(--clr-accent-dark);
 }
 
 .button-primary:hover {
-  background: var(--color-primary-dark);
+  background: var(--clr-primary-dark);
 }
 .button-secondary:hover {
-  background: var(--color-secondary-dark);
+  background: var(--clr-secondary-dark);
 }
 
 .button-success:hover {
-  background: var(--color-success-dark);
+  background: var(--clr-success-dark);
 }
 
 .button-warning:hover {
-  background: var(--color-warning-dark);
+  background: var(--clr-warning-dark);
 }
 
 .button-error:hover {
-  background: var(--color-error-dark);
+  background: var(--clr-error-dark);
 }
 
 .button-info:hover {
-  background: var(--color-info-dark);
+  background: var(--clr-info-dark);
 }
 
 .block {

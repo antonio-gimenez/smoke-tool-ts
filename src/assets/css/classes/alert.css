@@ -121,20 +121,20 @@
 }
 
 .alert-error {
-  background-color: var(--color-error-medium);
-  color: var(--color-error-content);
+  background-color: var(--clr-error-medium);
+  color: var(--clr-error-content);
   border-color: var(--error);
 }
 
 .alert-success {
-  background-color: var(--color-success-medium);
-  color: var(--color-success-content);
+  background-color: var(--clr-success-medium);
+  color: var(--clr-success-content);
   border-color: var(--success);
 }
 
 .alert-warning {
-  background-color: var(--color-warning-medium);
-  color: var(--color-warning-content);
+  background-color: var(--clr-warning-medium);
+  color: var(--clr-warning-content);
   border-color: var(--warning);
 }
 
@@ -145,7 +145,7 @@
 }
 
 .alert-base {
-  background-color: var(--color-surface-medium);
-  color: var(--color-surface-content);
-  border-color: var(--color-surface-content);
+  background-color: var(--clr-surface-medium);
+  color: var(--clr-surface-content);
+  border-color: var(--clr-surface-content);
 }

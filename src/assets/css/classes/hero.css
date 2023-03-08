@@ -16,7 +16,7 @@
 .hero-title {
   font-size: var(--font-size-big);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-accent-medium);
+  color: var(--clr-accent-medium);
 }
 
 .hero-content {
@@ -27,7 +27,7 @@
   gap: var(--space-3);
   width: 100%;
   padding: var(--space-3);
-  color: var(--color-surface-content);
-  /* background-color: var(--color-neutral-dark); */
+  color: var(--clr-surface-content);
+  /* background-color: var(--clr-neutral-dark); */
   border-radius: var(--border-radius-large);
 }

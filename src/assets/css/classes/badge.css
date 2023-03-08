@@ -2,9 +2,9 @@
   display: inline-block;
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-regular);
-  background-color: var(--color-surface-medium);
-  border: 1px solid hsl(var(--color-surface-content), 0.12);
-  color: var(--color-surface-content);
+  background-color: var(--clr-surface-medium);
+  border: 1px solid hsl(var(--clr-surface-content), 0.12);
+  color: var(--clr-surface-content);
   font-weight: var(--font-weight-medium);
   line-height: 1;
   width: fit-content;
@@ -15,36 +15,36 @@
 }
 
 .badge-primary {
-  background-color: var(--color-primary-medium);
-  color: var(--color-primary-content);
+  background-color: var(--clr-primary-medium);
+  color: var(--clr-primary-content);
 }
 
 .badge-secondary {
-  background-color: var(--color-secondary-medium);
-  color: var(--color-secondary-content);
+  background-color: var(--clr-secondary-medium);
+  color: var(--clr-secondary-content);
 }
 
 .badge-accent {
-  background-color: var(--color-accent-medium);
-  color: var(--color-accent-content);
+  background-color: var(--clr-accent-medium);
+  color: var(--clr-accent-content);
 }
 
 .badge-success {
-  background-color: var(--color-success-medium);
-  color: var(--color-success-content);
+  background-color: var(--clr-success-medium);
+  color: var(--clr-success-content);
 }
 
 .badge-warning {
-  background-color: var(--color-warning-medium);
-  color: var(--color-warning-content);
+  background-color: var(--clr-warning-medium);
+  color: var(--clr-warning-content);
 }
 
 .badge-info {
-  background-color: var(--color-info-medium);
-  color: var(--color-info-content);
+  background-color: var(--clr-info-medium);
+  color: var(--clr-info-content);
 }
 
 .badge-error {
-  background-color: var(--color-error-medium);
-  color: var(--color-error-content);
+  background-color: var(--clr-error-medium);
+  color: var(--clr-error-content);
 }

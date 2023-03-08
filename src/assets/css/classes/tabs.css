@@ -22,9 +22,9 @@
   padding: 0.5rem 1rem;
   border: none;
   background-color: transparent;
-  color: hsla(var(--color-base-content), 0.5);
+  color: hsla(var(--clr-base-content), 0.5);
   cursor: pointer;
-  border-bottom: 2px solid hsla(var(--color-base-content), 0.5);
+  border-bottom: 2px solid hsla(var(--clr-base-content), 0.5);
 }
 
 .neon {

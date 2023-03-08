@@ -17,7 +17,7 @@ a {
 
 .muted {
   font-size: var(--font-size-regular);
-  color: hsl(var(--color-base-content), 0.5);
+  color: hsl(var(--clr-base-content), 0.5);
 }
 
 .text-primary {

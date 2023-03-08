@@ -1,274 +1,274 @@
 [data-theme="light"] {
   color-scheme: light dark !important;
-  --color-black: hsl(0, 0%, 0%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-backdrop: hsla(0, 0%, 0%, 0.4);
-  --color-disabled: hsl(0, 0%, 80%);
-  --color-disabled-content: hsl(0, 0%, 60%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-backdrop: hsla(0, 0%, 0%, 0.4);
+  --clr-disabled: hsl(0, 0%, 80%);
+  --clr-disabled-content: hsl(0, 0%, 60%);
 
-  --color-surface-light: hsl(0, 0%, 100%);
-  --color-surface-medium: hsl(0, 0%, 95%);
-  --color-surface-dark: hsl(0, 0%, 90%);
-  --color-surface-content: hsl(0, 0%, 0%);
+  --clr-surface-light: hsl(0, 0%, 100%);
+  --clr-surface-medium: hsl(0, 0%, 95%);
+  --clr-surface-dark: hsl(0, 0%, 90%);
+  --clr-surface-content: hsl(0, 0%, 0%);
 
-  --color-primary-light: hsl(220, 68%, 53%);
-  --color-primary-medium: hsl(220, 68%, 43%);
-  --color-primary-dark: hsl(220, 68%, 33%);
-  --color-primary-content: hsl(0, 0%, 100%);
+  --clr-primary-light: hsl(220, 68%, 53%);
+  --clr-primary-medium: hsl(220, 68%, 43%);
+  --clr-primary-dark: hsl(220, 68%, 33%);
+  --clr-primary-content: hsl(0, 0%, 100%);
 
-  --color-secondary-light: hsl(210, 15%, 51%);
-  --color-secondary-medium: hsl(210, 15%, 41%);
-  --color-secondary-dark: hsl(210, 15%, 31%);
-  --color-secondary-content: hsl(0, 0%, 100%);
+  --clr-secondary-light: hsl(210, 15%, 51%);
+  --clr-secondary-medium: hsl(210, 15%, 41%);
+  --clr-secondary-dark: hsl(210, 15%, 31%);
+  --clr-secondary-content: hsl(0, 0%, 100%);
 
-  --color-accent-light: hsl(600, 38%, 53%);
-  --color-accent-medium: hsl(600, 38%, 43%);
-  --color-accent-dark: hsl(600, 38%, 33%);
-  --color-accent-content: hsl(0, 0%, 100%);
+  --clr-accent-light: hsl(600, 38%, 53%);
+  --clr-accent-medium: hsl(600, 38%, 43%);
+  --clr-accent-dark: hsl(600, 38%, 33%);
+  --clr-accent-content: hsl(0, 0%, 100%);
 
-  --color-neutral-light: hsl(221, 5%, 49%);
-  --color-neutral-medium: hsl(221, 5%, 39%);
-  --color-neutral-dark: hsl(221, 5%, 29%);
-  --color-neutral-content: hsl(0, 0%, 100%);
+  --clr-neutral-light: hsl(221, 5%, 49%);
+  --clr-neutral-medium: hsl(221, 5%, 39%);
+  --clr-neutral-dark: hsl(221, 5%, 29%);
+  --clr-neutral-content: hsl(0, 0%, 100%);
 
-  --color-info-light: hsl(199, 98%, 58%);
-  --color-info-medium: hsl(199, 98%, 48%);
-  --color-info-dark: hsl(199, 98%, 38%);
-  --color-info-content: hsl(0, 0%, 100%);
+  --clr-info-light: hsl(199, 98%, 58%);
+  --clr-info-medium: hsl(199, 98%, 48%);
+  --clr-info-dark: hsl(199, 98%, 38%);
+  --clr-info-content: hsl(0, 0%, 100%);
 
-  --color-success-light: hsl(129, 81%, 44%);
-  --color-success-medium: hsl(129, 81%, 34%);
-  --color-success-dark: hsl(129, 81%, 24%);
-  --color-success-content: hsl(0, 0%, 100%);
+  --clr-success-light: hsl(129, 81%, 44%);
+  --clr-success-medium: hsl(129, 81%, 34%);
+  --clr-success-dark: hsl(129, 81%, 24%);
+  --clr-success-content: hsl(0, 0%, 100%);
 
-  --color-warning-light: hsl(40, 70%, 72%);
-  --color-warning-medium: hsl(40, 70%, 62%);
-  --color-warning-dark: hsl(40, 70%, 52%);
-  --color-warning-content: hsl(0, 0%, 100%);
+  --clr-warning-light: hsl(40, 70%, 72%);
+  --clr-warning-medium: hsl(40, 70%, 62%);
+  --clr-warning-dark: hsl(40, 70%, 52%);
+  --clr-warning-content: hsl(0, 0%, 100%);
 
-  --color-error-light: hsl(0, 80%, 60%);
-  --color-error-medium: hsl(0, 80%, 50%);
-  --color-error-dark: hsl(0, 80%, 40%);
-  --color-error-content: hsl(0, 0%, 100%);
+  --clr-error-light: hsl(0, 80%, 60%);
+  --clr-error-medium: hsl(0, 80%, 50%);
+  --clr-error-dark: hsl(0, 80%, 40%);
+  --clr-error-content: hsl(0, 0%, 100%);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --color-black: hsl(0, 0%, 0%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-backdrop: hsla(0, 0%, 0%, 0.4);
-  --color-disabled: hsl(220, 5%, 60%);
-  --color-disabled-content: hsl(220, 5%, 40%);
-  --color-surface-light: hsl(240, 3%, 13%);
-  --color-surface-medium: hsl(240, 5%, 11%);
-  --color-surface-dark: hsl(240, 7%, 9%);
-  --color-surface-content: hsl(0, 0%, 80%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-backdrop: hsla(0, 0%, 0%, 0.4);
+  --clr-disabled: hsl(220, 5%, 60%);
+  --clr-disabled-content: hsl(220, 5%, 40%);
+  --clr-surface-light: hsl(240, 3%, 13%);
+  --clr-surface-medium: hsl(240, 5%, 11%);
+  --clr-surface-dark: hsl(240, 7%, 9%);
+  --clr-surface-content: hsl(0, 0%, 80%);
 
-  --color-primary-light: hsl(220, 100%, 60%);
-  --color-primary-medium: hsl(220, 100%, 50%);
-  --color-primary-dark: hsl(220, 100%, 40%);
-  --color-primary-content: hsl(0, 0%, 80%);
+  --clr-primary-light: hsl(220, 100%, 60%);
+  --clr-primary-medium: hsl(220, 100%, 50%);
+  --clr-primary-dark: hsl(220, 100%, 40%);
+  --clr-primary-content: hsl(0, 0%, 80%);
 
-  --color-secondary-light: hsl(210, 15%, 51%);
-  --color-secondary-medium: hsl(210, 15%, 41%);
-  --color-secondary-dark: hsl(210, 15%, 31%);
-  --color-secondary-content: hsl(0, 0%, 80%);
+  --clr-secondary-light: hsl(210, 15%, 51%);
+  --clr-secondary-medium: hsl(210, 15%, 41%);
+  --clr-secondary-dark: hsl(210, 15%, 31%);
+  --clr-secondary-content: hsl(0, 0%, 80%);
 
-  --color-accent-light: hsl(380, 100%, 60%);
-  --color-accent-medium: hsl(380, 100%, 50%);
-  --color-accent-dark: hsl(380, 100%, 40%);
-  --color-accent-content: hsl(0, 0%, 80%);
+  --clr-accent-light: hsl(380, 100%, 60%);
+  --clr-accent-medium: hsl(380, 100%, 50%);
+  --clr-accent-dark: hsl(380, 100%, 40%);
+  --clr-accent-content: hsl(0, 0%, 80%);
 
-  --color-neutral-light: hsl(221, 5%, 49%);
-  --color-neutral-medium: hsl(221, 5%, 39%);
-  --color-neutral-dark: hsl(221, 5%, 29%);
-  --color-neutral-content: hsl(0, 0%, 80%);
+  --clr-neutral-light: hsl(221, 5%, 49%);
+  --clr-neutral-medium: hsl(221, 5%, 39%);
+  --clr-neutral-dark: hsl(221, 5%, 29%);
+  --clr-neutral-content: hsl(0, 0%, 80%);
 
-  --color-info-light: hsl(199, 98%, 58%);
-  --color-info-medium: hsl(199, 98%, 48%);
-  --color-info-dark: hsl(199, 98%, 38%);
-  --color-info-content: hsl(0, 0%, 80%);
+  --clr-info-light: hsl(199, 98%, 58%);
+  --clr-info-medium: hsl(199, 98%, 48%);
+  --clr-info-dark: hsl(199, 98%, 38%);
+  --clr-info-content: hsl(0, 0%, 80%);
 
-  --color-success-light: hsl(129, 81%, 44%);
-  --color-success-medium: hsl(129, 81%, 34%);
-  --color-success-dark: hsl(129, 81%, 24%);
-  --color-success-content: hsl(0, 0%, 80%);
+  --clr-success-light: hsl(129, 81%, 44%);
+  --clr-success-medium: hsl(129, 81%, 34%);
+  --clr-success-dark: hsl(129, 81%, 24%);
+  --clr-success-content: hsl(0, 0%, 80%);
 
-  --color-warning-light: hsl(40, 60%, 72%);
-  --color-warning-medium: hsl(40, 60%, 50%);
-  --color-warning-dark: hsl(40, 60%, 52%);
-  --color-warning-content: hsl(0, 0%, 20%);
+  --clr-warning-light: hsl(40, 60%, 72%);
+  --clr-warning-medium: hsl(40, 60%, 50%);
+  --clr-warning-dark: hsl(40, 60%, 52%);
+  --clr-warning-content: hsl(0, 0%, 20%);
 
-  --color-error-light: hsl(0, 60%, 60%);
-  --color-error-medium: hsl(0, 60%, 50%);
-  --color-error-dark: hsl(0, 60%, 40%);
-  --color-error-content: hsl(0, 0%, 80%);
+  --clr-error-light: hsl(0, 60%, 60%);
+  --clr-error-medium: hsl(0, 60%, 50%);
+  --clr-error-dark: hsl(0, 60%, 40%);
+  --clr-error-content: hsl(0, 0%, 80%);
 }
 
 [data-theme="dracula"] {
   /* This theme is based on the Dracula theme by Zeno Rocha */
   color-scheme: dark;
 
-  --color-black: hsl(60, 30%, 6%);
-  --color-white: hsl(60, 30%, 96%);
+  --clr-black: hsl(60, 30%, 6%);
+  --clr-white: hsl(60, 30%, 96%);
 
-  --color-backdrop: hsla(0, 0%, 0%, 0.4);
-  --color-disabled: hsl(220, 5%, 60%);
-  --color-disabled-content: hsl(220, 5%, 40%);
+  --clr-backdrop: hsla(0, 0%, 0%, 0.4);
+  --clr-disabled: hsl(220, 5%, 60%);
+  --clr-disabled-content: hsl(220, 5%, 40%);
 
-  --color-surface-light: hsl(231, 15%, 18%);
-  --color-surface-medium: hsl(231, 15%, 16%);
-  --color-surface-dark: hsl(231, 15%, 14%);
-  --color-surface-content: hsl(60, 30%, 96%);
+  --clr-surface-light: hsl(231, 15%, 18%);
+  --clr-surface-medium: hsl(231, 15%, 16%);
+  --clr-surface-dark: hsl(231, 15%, 14%);
+  --clr-surface-content: hsl(60, 30%, 96%);
 
-  --color-primary-light: hsl(265, 89%, 83%);
-  --color-primary-medium: hsl(265, 89%, 78%);
-  --color-primary-dark: hsl(265, 89%, 73%);
-  --color-primary-content: hsl(60, 30%, 6%);
+  --clr-primary-light: hsl(265, 89%, 83%);
+  --clr-primary-medium: hsl(265, 89%, 78%);
+  --clr-primary-dark: hsl(265, 89%, 73%);
+  --clr-primary-content: hsl(60, 30%, 6%);
 
-  --color-secondary-light: hsl(225, 27%, 61%);
-  --color-secondary-medium: hsl(225, 27%, 51%);
-  --color-secondary-dark: hsl(225, 27%, 41%);
-  --color-secondary-content: hsl(60, 30%, 96%);
+  --clr-secondary-light: hsl(225, 27%, 61%);
+  --clr-secondary-medium: hsl(225, 27%, 51%);
+  --clr-secondary-dark: hsl(225, 27%, 41%);
+  --clr-secondary-content: hsl(60, 30%, 96%);
 
-  --color-accent-light: hsl(326, 100%, 84%);
-  --color-accent-medium: hsl(326, 100%, 74%);
-  --color-accent-dark: hsl(326, 100%, 64%);
-  --color-accent-content: hsl(60, 30%, 96%);
+  --clr-accent-light: hsl(326, 100%, 84%);
+  --clr-accent-medium: hsl(326, 100%, 74%);
+  --clr-accent-dark: hsl(326, 100%, 64%);
+  --clr-accent-content: hsl(60, 30%, 96%);
 
-  --color-neutral-light: hsl(225, 14%, 41%);
-  --color-neutral-medium: hsl(225, 14%, 31%);
-  --color-neutral-dark: hsl(225, 14%, 21%);
-  --color-neutral-content: hsl(60, 30%, 96%);
+  --clr-neutral-light: hsl(225, 14%, 41%);
+  --clr-neutral-medium: hsl(225, 14%, 31%);
+  --clr-neutral-dark: hsl(225, 14%, 21%);
+  --clr-neutral-content: hsl(60, 30%, 96%);
 
-  --color-info-light: hsl(191, 97%, 87%);
-  --color-info-medium: hsl(191, 97%, 77%);
-  --color-info-dark: hsl(191, 97%, 67%);
-  --color-info-content: hsl(60, 30%, 96%);
+  --clr-info-light: hsl(191, 97%, 87%);
+  --clr-info-medium: hsl(191, 97%, 77%);
+  --clr-info-dark: hsl(191, 97%, 67%);
+  --clr-info-content: hsl(60, 30%, 96%);
 
-  --color-success-light: hsl(135, 94%, 75%);
-  --color-success-medium: hsl(135, 94%, 65%);
-  --color-success-dark: hsl(135, 94%, 55%);
-  --color-success-content: hsl(60, 30%, 96%);
+  --clr-success-light: hsl(135, 94%, 75%);
+  --clr-success-medium: hsl(135, 94%, 65%);
+  --clr-success-dark: hsl(135, 94%, 55%);
+  --clr-success-content: hsl(60, 30%, 96%);
 
-  --color-warning-light: hsl(65, 92%, 82%);
-  --color-warning-medium: hsl(65, 92%, 72%);
-  --color-warning-dark: hsl(65, 92%, 62%);
-  --color-warning-content: hsl(0, 0%, 20%);
+  --clr-warning-light: hsl(65, 92%, 82%);
+  --clr-warning-medium: hsl(65, 92%, 72%);
+  --clr-warning-dark: hsl(65, 92%, 62%);
+  --clr-warning-content: hsl(0, 0%, 20%);
 
-  --color-error-light: hsl(0, 100%, 77%);
-  --color-error-medium: hsl(0, 100%, 67%);
-  --color-error-dark: hsl(0, 100%, 57%);
-  --color-error-content: hsl(60, 30%, 96%);
+  --clr-error-light: hsl(0, 100%, 77%);
+  --clr-error-medium: hsl(0, 100%, 67%);
+  --clr-error-dark: hsl(0, 100%, 57%);
+  --clr-error-content: hsl(60, 30%, 96%);
 }
 
 [data-theme="solarized"] {
   /* This theme is based on the Solarized Dark a theme by Ethan Schoonover */
   color-scheme: dark;
-  --color-black: hsl(0, 0%, 0%);
-  --color-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
 
-  --color-backdrop: hsla(0, 0%, 10%, 0.4);
-  --color-disabled: hsl(0, 0%, 50%);
-  --color-disabled-content: hsl(0, 0%, 40%);
+  --clr-backdrop: hsla(0, 0%, 10%, 0.4);
+  --clr-disabled: hsl(0, 0%, 50%);
+  --clr-disabled-content: hsl(0, 0%, 40%);
 
-  --color-surface-light: hsl(192, 100%, 14%);
-  --color-surface-medium: hsl(192, 100%, 11%);
-  --color-surface-dark: hsl(192, 100%, 8%);
-  --color-surface-content: hsl(180, 7%, 60%);
+  --clr-surface-light: hsl(192, 100%, 14%);
+  --clr-surface-medium: hsl(192, 100%, 11%);
+  --clr-surface-dark: hsl(192, 100%, 8%);
+  --clr-surface-content: hsl(180, 7%, 60%);
 
-  --color-primary-light: hsl(45, 100%, 40%);
-  --color-primary-medium: hsl(45, 100%, 35%);
-  --color-primary-dark: hsl(45, 100%, 30%);
-  --color-primary-content: hsl(0, 0%, 10%);
+  --clr-primary-light: hsl(45, 100%, 40%);
+  --clr-primary-medium: hsl(45, 100%, 35%);
+  --clr-primary-dark: hsl(45, 100%, 30%);
+  --clr-primary-content: hsl(0, 0%, 10%);
 
-  --color-secondary-light: hsl(196, 8%, 60%);
-  --color-secondary-medium: hsl(196, 8%, 55%);
-  --color-secondary-dark: hsl(196, 8%, 50%);
-  --color-secondary-content: hsl(0, 0%, 10%);
+  --clr-secondary-light: hsl(196, 8%, 60%);
+  --clr-secondary-medium: hsl(196, 8%, 55%);
+  --clr-secondary-dark: hsl(196, 8%, 50%);
+  --clr-secondary-content: hsl(0, 0%, 10%);
 
-  --color-accent-light: hsl(175, 59%, 50%);
-  --color-accent-medium: hsl(175, 59%, 40%);
-  --color-accent-dark: hsl(175, 59%, 30%);
-  --color-accent-content: hsl(0, 0%, 10%);
+  --clr-accent-light: hsl(175, 59%, 50%);
+  --clr-accent-medium: hsl(175, 59%, 40%);
+  --clr-accent-dark: hsl(175, 59%, 30%);
+  --clr-accent-content: hsl(0, 0%, 10%);
 
-  --color-neutral-light: hsl(196, 13%, 55%);
-  --color-neutral-medium: hsl(196, 13%, 45%);
-  --color-neutral-dark: hsl(196, 13%, 35%);
-  --color-neutral-content: hsl(0, 0%, 10%);
+  --clr-neutral-light: hsl(196, 13%, 55%);
+  --clr-neutral-medium: hsl(196, 13%, 45%);
+  --clr-neutral-dark: hsl(196, 13%, 35%);
+  --clr-neutral-content: hsl(0, 0%, 10%);
 
-  --color-info-light: hsl(205, 69%, 59%);
-  --color-info-medium: hsl(205, 69%, 49%);
-  --color-info-dark: hsl(205, 69%, 39%);
-  --color-info-content: hsl(0, 0%, 10%);
+  --clr-info-light: hsl(205, 69%, 59%);
+  --clr-info-medium: hsl(205, 69%, 49%);
+  --clr-info-dark: hsl(205, 69%, 39%);
+  --clr-info-content: hsl(0, 0%, 10%);
 
-  --color-success-light: hsl(68, 100%, 40%);
-  --color-success-medium: hsl(68, 100%, 30%);
-  --color-success-dark: hsl(68, 100%, 20%);
-  --color-success-content: hsl(0, 0%, 10%);
+  --clr-success-light: hsl(68, 100%, 40%);
+  --clr-success-medium: hsl(68, 100%, 30%);
+  --clr-success-dark: hsl(68, 100%, 20%);
+  --clr-success-content: hsl(0, 0%, 10%);
 
-  --color-warning-light: hsl(18, 80%, 54%);
-  --color-warning-medium: hsl(18, 80%, 44%);
-  --color-warning-dark: hsl(18, 80%, 34%);
-  --color-warning-content: hsl(0, 0%, 10%);
+  --clr-warning-light: hsl(18, 80%, 54%);
+  --clr-warning-medium: hsl(18, 80%, 44%);
+  --clr-warning-dark: hsl(18, 80%, 34%);
+  --clr-warning-content: hsl(0, 0%, 10%);
 
-  --color-error-light: hsl(1, 71%, 62%);
-  --color-error-medium: hsl(1, 71%, 52%);
-  --color-error-dark: hsl(1, 71%, 42%);
-  --color-error-content: hsl(0, 0%, 100%);
+  --clr-error-light: hsl(1, 71%, 62%);
+  --clr-error-medium: hsl(1, 71%, 52%);
+  --clr-error-dark: hsl(1, 71%, 42%);
+  --clr-error-content: hsl(0, 0%, 100%);
 }
 
 [data-theme="coffee"] {
   color-scheme: dark;
-  --color-black: hsl(0, 0%, 0%);
-  --color-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
 
-  --color-backdrop: hsla(0, 0%, 10%, 0.4);
-  --color-disabled: hsl(0, 0%, 50%);
-  --color-disabled-content: hsl(0, 0%, 40%);
+  --clr-backdrop: hsla(0, 0%, 10%, 0.4);
+  --clr-disabled: hsl(0, 0%, 50%);
+  --clr-disabled-content: hsl(0, 0%, 40%);
 
-  --color-surface-light: hsl(13, 20%, 22%);
-  --color-surface-medium: hsl(12, 18%, 18%);
-  --color-surface-dark: hsl(15, 16%, 15%);
-  --color-surface-content: hsl(96, 96%, 98%);
+  --clr-surface-light: hsl(13, 20%, 22%);
+  --clr-surface-medium: hsl(12, 18%, 18%);
+  --clr-surface-dark: hsl(15, 16%, 15%);
+  --clr-surface-content: hsl(96, 96%, 98%);
 
-  --color-primary-light: hsl(40, 100%, 80%);
-  --color-primary-medium: hsl(40, 100%, 70%);
-  --color-primary-dark: hsl(40, 100%, 65%);
-  --color-primary-content: hsl(0, 0%, 10%);
+  --clr-primary-light: hsl(40, 100%, 80%);
+  --clr-primary-medium: hsl(40, 100%, 70%);
+  --clr-primary-dark: hsl(40, 100%, 65%);
+  --clr-primary-content: hsl(0, 0%, 10%);
 
-  --color-secondary-light: hsl(20, 12%, 55%);
-  --color-secondary-medium: hsl(20, 12%, 50%);
-  --color-secondary-dark: hsl(20, 12%, 45%);
-  --color-secondary-content: hsl(0, 0%, 16%);
+  --clr-secondary-light: hsl(20, 12%, 55%);
+  --clr-secondary-medium: hsl(20, 12%, 50%);
+  --clr-secondary-dark: hsl(20, 12%, 45%);
+  --clr-secondary-content: hsl(0, 0%, 16%);
 
-  --color-accent-light: hsl(300, 100%, 80%);
-  --color-accent-medium: hsl(300, 100%, 70%);
-  --color-accent-dark: hsl(300, 100%, 60%);
-  --color-accent-content: hsl(0, 0%, 10%);
+  --clr-accent-light: hsl(300, 100%, 80%);
+  --clr-accent-medium: hsl(300, 100%, 70%);
+  --clr-accent-dark: hsl(300, 100%, 60%);
+  --clr-accent-content: hsl(0, 0%, 10%);
 
-  --color-neutral-light: hsl(196, 13%, 55%);
-  --color-neutral-medium: hsl(196, 13%, 45%);
-  --color-neutral-dark: hsl(196, 13%, 35%);
-  --color-neutral-content: hsl(0, 0%, 10%);
+  --clr-neutral-light: hsl(196, 13%, 55%);
+  --clr-neutral-medium: hsl(196, 13%, 45%);
+  --clr-neutral-dark: hsl(196, 13%, 35%);
+  --clr-neutral-content: hsl(0, 0%, 10%);
 
-  --color-info-light: hsl(205, 69%, 59%);
-  --color-info-medium: hsl(205, 69%, 49%);
-  --color-info-dark: hsl(205, 69%, 39%);
-  --color-info-content: hsl(0, 0%, 10%);
+  --clr-info-light: hsl(205, 69%, 59%);
+  --clr-info-medium: hsl(205, 69%, 49%);
+  --clr-info-dark: hsl(205, 69%, 39%);
+  --clr-info-content: hsl(0, 0%, 10%);
 
-  --color-success-light: hsl(68, 100%, 40%);
-  --color-success-medium: hsl(68, 100%, 30%);
-  --color-success-dark: hsl(68, 100%, 20%);
-  --color-success-content: hsl(0, 0%, 10%);
+  --clr-success-light: hsl(68, 100%, 40%);
+  --clr-success-medium: hsl(68, 100%, 30%);
+  --clr-success-dark: hsl(68, 100%, 20%);
+  --clr-success-content: hsl(0, 0%, 10%);
 
-  --color-warning-light: hsl(18, 80%, 54%);
-  --color-warning-medium: hsl(18, 80%, 44%);
-  --color-warning-dark: hsl(18, 80%, 34%);
-  --color-warning-content: hsl(0, 0%, 10%);
+  --clr-warning-light: hsl(18, 80%, 54%);
+  --clr-warning-medium: hsl(18, 80%, 44%);
+  --clr-warning-dark: hsl(18, 80%, 34%);
+  --clr-warning-content: hsl(0, 0%, 10%);
 
-  --color-error-light: hsl(1, 71%, 62%);
-  --color-error-medium: hsl(1, 71%, 52%);
-  --color-error-dark: hsl(1, 71%, 42%);
-  --color-error-content: hsl(0, 0%, 100%);
+  --clr-error-light: hsl(1, 71%, 62%);
+  --clr-error-medium: hsl(1, 71%, 52%);
+  --clr-error-dark: hsl(1, 71%, 42%);
+  --clr-error-content: hsl(0, 0%, 100%);
 }

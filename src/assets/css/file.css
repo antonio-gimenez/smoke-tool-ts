@@ -37,15 +37,15 @@
 }
 
 .file-list.to-be-uploaded {
-  border: 1px solid hsl(var(--color-success), 0.35);
+  border: 1px solid hsl(var(--clr-success), 0.35);
   border-radius: var(--border-radius-small);
   padding: var(--space-1);
-  color: hsl(var(--color-success), 0.5);
-  background-color: hsl(var(--color-success), 0.09);
+  color: hsl(var(--clr-success), 0.5);
+  background-color: hsl(var(--clr-success), 0.09);
 }
 
 .file-name.to-upload {
-  color: hsl(var(--color-success), 1) !important;
+  color: hsl(var(--clr-success), 1) !important;
 }
 
 .input-file-container {
@@ -83,7 +83,7 @@
 
 .file-size {
   flex: none;
-  color: hsl(var(--color-base-content), 0.5);
+  color: hsl(var(--clr-base-content), 0.5);
 }
 
 .file-icon {
@@ -97,10 +97,10 @@
   height: 20px;
   width: 20px;
   flex: none;
-  color: hsl(var(--color-base-content), 0.5);
+  color: hsl(var(--clr-base-content), 0.5);
   cursor: pointer;
 }
 
 .file-close-icon:hover {
-  color: hsl(var(--color-error), 0.8);
+  color: hsl(var(--clr-error), 0.8);
 }
