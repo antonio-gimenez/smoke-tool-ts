@@ -10,27 +10,27 @@
 @import url("typography.css");
 
 /* Components */
-@import url("./components/alert.css");
-@import url("./components/badge.css");
-@import url("./components/buttons.css");
-@import url("./components/card.css");
-@import url("./components/drawer.css");
-@import url("./components/dropdown.css");
-@import url("./components/hero.css");
-@import url("./components/menu.css");
-@import url("./components/modal.css");
-@import url("./components/collapse.css");
-@import url("./components/pagination.css");
-@import url("./components/progress.css");
-@import url("./components/forms.css");
-@import url("./components/header.css");
-@import url("./components/table.css");
-@import url("./components/tabs.css");
-@import url("./components/tags.css");
+@import url("./classes/alert.css");
+@import url("./classes/badge.css");
+@import url("./classes/buttons.css");
+@import url("./classes/card.css");
+@import url("./classes/drawer.css");
+@import url("./classes/dropdown.css");
+@import url("./classes/hero.css");
+@import url("./classes/menu.css");
+@import url("./classes/modal.css");
+@import url("./classes/collapse.css");
+@import url("./classes/pagination.css");
+@import url("./classes/progress.css");
+@import url("./classes/forms.css");
+@import url("./classes/header.css");
+@import url("./classes/table.css");
+@import url("./classes/tabs.css");
+@import url("./classes/tags.css");
 
 /* Layouts */
-@import url("./layouts/layouts.css");
-@import url("./layouts/view-test.css");
+@import url("./componentes/layouts.css");
+@import url("./components/view-test.css");
 
 [aria-disabled="true"] {
   pointer-events: none;
